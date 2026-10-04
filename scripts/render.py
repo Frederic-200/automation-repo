@@ -32,23 +32,16 @@ import edge_tts
 import requests
 
 W, H, FPS = 1080, 1920, 30
-# Alternates male / female day by day. A script can force one with a "voice" key.
-VOICES = [
-    "en-US-AndrewMultilingualNeural",  # male
-    "en-US-AvaMultilingualNeural",     # female
-    "en-US-BrianMultilingualNeural",   # male
-    "en-US-EmmaMultilingualNeural",    # female
-]
+# Odd day of the month -> female voice, even day -> male voice.
+# A script can force a voice with a "voice" key.
+FEMALE_VOICE = "en-US-AvaMultilingualNeural"
+MALE_VOICE = "en-US-AndrewMultilingualNeural"
 
 
 def pick_voice(script_path):
     m = re.search(r"(\d{4})-(\d{2})-(\d{2})", str(script_path))
-    if m:
-        import datetime
-        day = datetime.date(*map(int, m.groups())).toordinal()
-    else:
-        day = random.randint(0, 1000)
-    return VOICES[day % len(VOICES)]
+    day = int(m.group(3)) if m else 1
+    return FEMALE_VOICE if day % 2 == 1 else MALE_VOICE
 PEXELS_KEY = os.environ.get("PEXELS_API_KEY", "")
 
 
