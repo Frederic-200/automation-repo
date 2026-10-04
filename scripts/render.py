@@ -32,7 +32,23 @@ import edge_tts
 import requests
 
 W, H, FPS = 1080, 1920, 30
-DEFAULT_VOICE = "en-US-AndrewMultilingualNeural"
+# Alternates male / female day by day. A script can force one with a "voice" key.
+VOICES = [
+    "en-US-AndrewMultilingualNeural",  # male
+    "en-US-AvaMultilingualNeural",     # female
+    "en-US-BrianMultilingualNeural",   # male
+    "en-US-EmmaMultilingualNeural",    # female
+]
+
+
+def pick_voice(script_path):
+    m = re.search(r"(\d{4})-(\d{2})-(\d{2})", str(script_path))
+    if m:
+        import datetime
+        day = datetime.date(*map(int, m.groups())).toordinal()
+    else:
+        day = random.randint(0, 1000)
+    return VOICES[day % len(VOICES)]
 PEXELS_KEY = os.environ.get("PEXELS_API_KEY", "")
 
 
@@ -139,7 +155,7 @@ def ass_time(t):
 
 def build_ass(word_events, path):
     header = (
-        "[Script Info]\nScriptType: v4.00+\nPlayResX: %d\nPlayResY: %d\n\n"
+        "[Script Info]\nScriptType: v4.00+\nWrapStyle: 2\nPlayResX: %d\nPlayResY: %d\n\n"
         "[V4+ Styles]\nFormat: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,"
         "OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,"
         "Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding\n"
@@ -147,15 +163,22 @@ def build_ass(word_events, path):
         "1,0,0,0,100,100,0,0,1,7,2,2,60,60,520,1\n\n"
         "[Events]\nFormat: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text\n"
         % (W, H))
+    # Fixed anchor: text is centered on the same point every time, never wraps,
+    # and each group stays short enough to fit the screen width.
+    pos = r"{\an5\pos(%d,%d)}" % (W // 2, 1380)
     lines, i = [], 0
     while i < len(word_events):
-        group = word_events[i:i + 3]
-        i += 3
+        group = [word_events[i]]
+        i += 1
+        while (i < len(word_events) and len(group) < 3
+               and len(" ".join(w[0] for w in group + [word_events[i]])) <= 15):
+            group.append(word_events[i])
+            i += 1
         text = " ".join(w[0] for w in group).upper()
         text = re.sub(r"[{}\\]", "", text)
         start = group[0][1]
         end = group[-1][2] + 0.05
-        lines.append(f"Dialogue: 0,{ass_time(start)},{ass_time(end)},Default,,0,0,0,,{text}")
+        lines.append(f"Dialogue: 0,{ass_time(start)},{ass_time(end)},Default,,0,0,0,,{pos}{text}")
     path.write_text(header + "\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -168,7 +191,8 @@ def main():
     args = ap.parse_args()
 
     spec = json.loads(Path(args.script).read_text(encoding="utf-8"))
-    voice = spec.get("voice", DEFAULT_VOICE)
+    voice = spec.get("voice") or pick_voice(args.script)
+    print("voice:", voice)
     tmp = Path(args.tmp)
     tmp.mkdir(parents=True, exist_ok=True)
     out = Path(args.out)
