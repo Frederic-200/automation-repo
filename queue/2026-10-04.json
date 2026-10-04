@@ -1,10 +1,55 @@
 {
-  "title": "Chatbot Nearly Triggered US-China Clash",
+  "title": "Meta AI Helps Crack Open Math Problems",
   "beats": [
-    {"text": "Did you know a chatbot reportedly nearly pushed the United States into a clash with China? Yes, really.", "image_prompt": "Cinematic vertical shot of a massive dark cargo ship at night on a stormy ocean, glowing red warning light on the horizon, dramatic moody lighting, no text", "stock_query": "cargo ship ocean"},
-    {"text": "An intelligence analyst fed a Chinese cargo ship's paperwork into an AI chatbot. It answered that the ship carried nuclear weapons parts headed for Iran.", "image_prompt": "Close-up of a glowing computer screen in a dark military command room, lines of data reflected on a worried analyst's silhouette, cold blue light, cinematic, no text", "stock_query": "computer screen data"},
-    {"text": "That claim climbed the chain as a real report. Aircraft and armed boarding teams were readied to intercept the ship.", "image_prompt": "Military helicopter and fast boat teams preparing at dawn on a naval base, dramatic orange sky, tense atmosphere, cinematic vertical composition, no text", "stock_query": "military helicopter"},
-    {"text": "Then officials found the source was a chatbot, and the operation was stopped. Reporters could not even confirm what the ship was really carrying.", "image_prompt": "A hand pressing a big red stop button in a dim control room, shallow depth of field, tense cinematic lighting, no text", "stock_query": "control room"},
-    {"text": "One source said AI helps you get to a bad idea faster. Scary, right? For more videos like this, like and follow.", "image_prompt": "A glowing humanoid robot head made of circuit patterns looming over a tiny globe, neon purple and blue, futuristic cinematic scene, no text", "stock_query": "robot technology"}
+    {
+      "text": "Did you know Meta says its AI just helped mathematicians crack five math problems that had no known answer? Problems nobody had solved... until now.",
+      "image_prompt": "A glowing chalkboard-like wall of abstract geometric shapes and equations dissolving into light particles, deep blue and gold, cinematic vertical composition, no text",
+      "stock_query": "math equations"
+    },
+    {
+      "text": "On October second, Meta published six research papers, all written with human mathematicians and its Muse Spark model. Five of them answer questions that were still open.",
+      "image_prompt": "Six floating glowing papers hovering above a dark desk, beams of light connecting them to a luminous digital brain, cinematic lighting, no text",
+      "stock_query": "research papers"
+    },
+    {
+      "text": "One team found a group with just three hundred eighty four elements that breaks a long-standing conjecture. Another proved a wave equation can collapse in finite time, answering a question from twenty fifteen.",
+      "image_prompt": "A huge ocean wave of glowing blue energy curling and collapsing into a single bright point in a dark void, dramatic cinematic style, no text",
+      "stock_query": "ocean wave"
+    },
+    {
+      "text": "And here is the wild part. They did not use a secret lab system. They used the regular Meta AI chat window!",
+      "image_prompt": "A lone glowing chat window floating in a dark room, soft screen light on a desk, cinematic shallow depth of field, no text",
+      "stock_query": "laptop screen"
+    },
+    {
+      "text": "Humans steered the work. The AI helped with calculations, search programs, counterexamples and draft proofs. Then separate mathematicians checked everything.",
+      "image_prompt": "A human hand and a robotic hand together placing glowing puzzle pieces onto a large board, warm studio lighting, cinematic, no text",
+      "stock_query": "robot hand"
+    },
+    {
+      "text": "But hold on... not so fast. Meta itself admits other teams solved some of these problems independently. One AI agent even found a different counterexample first, on September sixteenth.",
+      "image_prompt": "Two glowing paths racing across a dark landscape toward the same bright finish line, one slightly ahead, dramatic cinematic lighting, no text",
+      "stock_query": "race finish line"
+    },
+    {
+      "text": "And one reviewer claims only three of the six results are truly new. That is one critic's claim, not a settled fact.",
+      "image_prompt": "A magnifying glass over a glowing circuit-like page, sharp focus, moody dramatic light, no text",
+      "stock_query": "magnifying glass"
+    },
+    {
+      "text": "So why does it matter? Because AI is moving from contest puzzles to working next to researchers on real unsolved questions. Earlier this year, these models reached gold medal level in competitions.",
+      "image_prompt": "A gleaming golden trophy on a pedestal inside a futuristic laboratory, blue light rays, cinematic vertical shot, no text",
+      "stock_query": "trophy gold"
+    },
+    {
+      "text": "What to watch next? Peer review. If these proofs hold up, expect rival labs to race after the same prize. If they do not, expect a lot of arguments.",
+      "image_prompt": "A crowd of silhouetted scientists in a vast hall looking up at a huge glowing screen of abstract shapes, cinematic wide light beams, no text",
+      "stock_query": "scientists lab"
+    },
+    {
+      "text": "Would you trust an AI as a co-author? The race to put AI into real science just got a lot more interesting... For more videos like this, like and follow.",
+      "image_prompt": "A futuristic robot silhouette standing at sunrise on a hill overlooking a glowing city, epic cinematic mood, no text",
+      "stock_query": "robot sunrise"
+    }
   ]
 }
