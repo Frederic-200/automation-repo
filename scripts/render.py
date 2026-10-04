@@ -25,6 +25,8 @@ import random
 import re
 import subprocess
 import sys
+import time
+import traceback
 import urllib.parse
 from pathlib import Path
 
@@ -36,6 +38,9 @@ W, H, FPS = 1080, 1920, 30
 # A script can force a voice with a "voice" key.
 FEMALE_VOICE = "en-US-AvaMultilingualNeural"
 MALE_VOICE = "en-US-AndrewMultilingualNeural"
+# Tried in order if the preferred voice fails (same gender first).
+FEMALE_BACKUPS = ["en-US-EmmaMultilingualNeural", "en-US-JennyNeural", "en-US-AriaNeural"]
+MALE_BACKUPS = ["en-US-BrianMultilingualNeural", "en-US-GuyNeural", "en-US-DavisNeural"]
 
 
 def pick_voice(script_path):
@@ -101,7 +106,7 @@ def beat_audio(text, voice, n, tmp, lead=0.0, tail=0.0):
     for k, (sent, pause) in enumerate(split_segments(text)):
         mp3 = tmp / f"b{n}_s{k}.mp3"
         wav = tmp / f"b{n}_s{k}.wav"
-        sw = asyncio.run(synth(sent, voice, mp3))
+        sw = synth_retry(sent, voice, mp3)
         run(["ffmpeg", "-y", "-i", str(mp3), "-ar", "24000", "-ac", "1", str(wav)])
         words += [(w, s + t, e + t) for w, s, e in sw]
         parts.append(wav)
@@ -118,6 +123,38 @@ def beat_audio(text, voice, n, tmp, lead=0.0, tail=0.0):
     out = tmp / f"beat_{n}.wav"
     run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(out)])
     return out, words
+
+
+def synth_retry(text, voice, mp3_path, tries=3):
+    """Edge TTS is a free web service and occasionally hiccups: retry a few times."""
+    last = None
+    for attempt in range(1, tries + 1):
+        try:
+            words = asyncio.run(synth(text, voice, mp3_path))
+            if mp3_path.exists() and mp3_path.stat().st_size > 0:
+                return words
+            last = RuntimeError("empty audio")
+        except Exception as e:  # noqa: BLE001
+            last = e
+        print(f"  voice attempt {attempt}/{tries} failed ({voice}): {last}", file=sys.stderr)
+        time.sleep(2 * attempt)
+    raise last
+
+
+def working_voice(preferred, tmp):
+    """Return the first voice that actually produces audio."""
+    female = preferred in [FEMALE_VOICE] + FEMALE_BACKUPS
+    candidates = [preferred] + [v for v in (FEMALE_BACKUPS if female else MALE_BACKUPS) if v != preferred]
+    candidates += [MALE_VOICE if female else FEMALE_VOICE]  # last resort: other gender
+    for v in candidates:
+        try:
+            synth_retry("Testing the voice.", v, tmp / "probe.mp3", tries=2)
+            if v != preferred:
+                print(f"::warning::Voice {preferred} failed; using {v} instead")
+            return v
+        except Exception as e:  # noqa: BLE001
+            print(f"  voice {v} unusable: {e}", file=sys.stderr)
+    raise RuntimeError("no working voice found")
 
 
 async def synth(text, voice, mp3_path):
@@ -366,10 +403,10 @@ def main():
     args = ap.parse_args()
 
     spec = json.loads(Path(args.script).read_text(encoding="utf-8"))
-    voice = spec.get("voice") or pick_voice(args.script)
-    print("voice:", voice)
     tmp = Path(args.tmp)
     tmp.mkdir(parents=True, exist_ok=True)
+    voice = working_voice(spec.get("voice") or pick_voice(args.script), tmp)
+    print("voice:", voice)
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
 
@@ -417,4 +454,13 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except subprocess.CalledProcessError as e:
+        msg = (e.stderr or b"").decode(errors="replace")[-600:].replace("\n", " | ")
+        print(f"::error::ffmpeg failed: {e.cmd[:3]} ... {msg}")
+        raise
+    except Exception as e:  # noqa: BLE001
+        print(f"::error::{type(e).__name__}: {e}")
+        traceback.print_exc()
+        raise
