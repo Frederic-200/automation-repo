@@ -58,9 +58,71 @@ def duration(path):
 
 
 # ---------------------------------------------------------------- voice
+# Pacing (seconds). Tweak these to taste.
+SPEECH_RATE = "-6%"     # slower than default; was +8%
+LEAD_IN = 1.0           # silence before the very first word
+TAIL_OUT = 1.5          # silence after the very last word
+SENTENCE_PAUSE = 0.45   # between sentences inside a beat
+DRAMATIC_PAUSE = 0.8    # where the script writes "..."
+BEAT_PAUSE = 0.6        # between beats
+
+
+def split_segments(text):
+    """Split a beat into speakable pieces, each with the pause that follows it.
+
+    "..." marks a dramatic pause; . ! ? end a sentence.
+    """
+    pieces = []
+    for part in re.split(r"(\.\.\.|…)", text):
+        if part in ("...", "…"):
+            if pieces:
+                pieces[-1][1] = DRAMATIC_PAUSE
+            continue
+        for sent in re.split(r"(?<=[.!?])\s+", part.strip()):
+            if re.search(r"\w", sent):
+                pieces.append([sent.strip(), SENTENCE_PAUSE])
+    if pieces:
+        pieces[-1][1] = 0.0
+    return pieces
+
+
+def silence(secs, dest):
+    run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono",
+         "-t", f"{secs:.3f}", "-c:a", "pcm_s16le", str(dest)])
+
+
+def beat_audio(text, voice, n, tmp, lead=0.0, tail=0.0):
+    """Build one beat's audio with human-like pauses. Returns (wav, words)."""
+    parts, words, t = [], [], 0.0
+    if lead:
+        silence(lead, tmp / f"b{n}_lead.wav")
+        parts.append(tmp / f"b{n}_lead.wav")
+        t += lead
+    for k, (sent, pause) in enumerate(split_segments(text)):
+        mp3 = tmp / f"b{n}_s{k}.mp3"
+        wav = tmp / f"b{n}_s{k}.wav"
+        sw = asyncio.run(synth(sent, voice, mp3))
+        run(["ffmpeg", "-y", "-i", str(mp3), "-ar", "24000", "-ac", "1", str(wav)])
+        words += [(w, s + t, e + t) for w, s, e in sw]
+        parts.append(wav)
+        t += duration(wav)
+        if pause:
+            silence(pause, tmp / f"b{n}_p{k}.wav")
+            parts.append(tmp / f"b{n}_p{k}.wav")
+            t += pause
+    end_pad = tail or BEAT_PAUSE
+    silence(end_pad, tmp / f"b{n}_end.wav")
+    parts.append(tmp / f"b{n}_end.wav")
+    lst = tmp / f"b{n}_parts.txt"
+    lst.write_text("".join(f"file '{p.name}'\n" for p in parts))
+    out = tmp / f"beat_{n}.wav"
+    run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(out)])
+    return out, words
+
+
 async def synth(text, voice, mp3_path):
-    """Synthesize one beat; return word timings [(word, start_s, end_s)]."""
-    comm = edge_tts.Communicate(text, voice, rate="+8%", boundary="WordBoundary")
+    """Synthesize one sentence; return word timings [(word, start_s, end_s)]."""
+    comm = edge_tts.Communicate(text, voice, rate=SPEECH_RATE, boundary="WordBoundary")
     words = []
     with open(mp3_path, "wb") as f:
         async for chunk in comm.stream():
@@ -192,12 +254,15 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
 
     clips, audios, all_words, offset = [], [], [], 0.0
-    for n, beat in enumerate(spec["beats"], 1):
-        print(f"beat {n}/{len(spec['beats'])}: {beat['text'][:60]}")
-        mp3 = tmp / f"voice_{n}.mp3"
-        words = asyncio.run(synth(beat["text"], voice, mp3))
-        secs = duration(mp3) + 0.25  # small breathing gap
+    beats = spec["beats"]
+    for n, beat in enumerate(beats, 1):
+        print(f"beat {n}/{len(beats)}: {beat['text'][:60]}")
+        wav, words = beat_audio(beat["text"], voice, n, tmp,
+                                lead=LEAD_IN if n == 1 else 0.0,
+                                tail=TAIL_OUT if n == len(beats) else 0.0)
+        secs = duration(wav)
         all_words += [(w, s + offset, e + offset) for w, s, e in words]
+        mp3 = wav
         clip = tmp / f"clip_{n}.mp4"
         kind = make_visual(beat, secs, clip, tmp)
         print(f"  visual: {kind}, {secs:.1f}s")
@@ -225,7 +290,10 @@ def main():
     run(["ffmpeg", "-y", "-i", str(tmp / "video_nosound.mp4"), "-i", str(tmp / "voice_all.m4a"),
          "-vf", f"ass={ass}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "21",
          "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", str(out)])
-    print(f"done: {out} ({duration(out):.1f}s)")
+    total = duration(out)
+    print(f"done: {out} ({total:.1f}s)")
+    if not 60 <= total <= 180:
+        print(f"WARNING: video is {total:.0f}s; target is 60-180s", file=sys.stderr)
 
 
 if __name__ == "__main__":
