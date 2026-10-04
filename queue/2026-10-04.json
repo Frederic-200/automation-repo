@@ -1,0 +1,10 @@
+{
+  "title": "Chatbot Nearly Triggered US-China Clash",
+  "beats": [
+    {"text": "Did you know a chatbot reportedly nearly pushed the United States into a clash with China? Yes, really.", "image_prompt": "Cinematic vertical shot of a massive dark cargo ship at night on a stormy ocean, glowing red warning light on the horizon, dramatic moody lighting, no text", "stock_query": "cargo ship ocean"},
+    {"text": "An intelligence analyst fed a Chinese cargo ship's paperwork into an AI chatbot. It answered that the ship carried nuclear weapons parts headed for Iran.", "image_prompt": "Close-up of a glowing computer screen in a dark military command room, lines of data reflected on a worried analyst's silhouette, cold blue light, cinematic, no text", "stock_query": "computer screen data"},
+    {"text": "That claim climbed the chain as a real report. Aircraft and armed boarding teams were readied to intercept the ship.", "image_prompt": "Military helicopter and fast boat teams preparing at dawn on a naval base, dramatic orange sky, tense atmosphere, cinematic vertical composition, no text", "stock_query": "military helicopter"},
+    {"text": "Then officials found the source was a chatbot, and the operation was stopped. Reporters could not even confirm what the ship was really carrying.", "image_prompt": "A hand pressing a big red stop button in a dim control room, shallow depth of field, tense cinematic lighting, no text", "stock_query": "control room"},
+    {"text": "One source said AI helps you get to a bad idea faster. Scary, right? For more videos like this, like and follow.", "image_prompt": "A glowing humanoid robot head made of circuit patterns looming over a tiny globe, neon purple and blue, futuristic cinematic scene, no text", "stock_query": "robot technology"}
+  ]
+}
