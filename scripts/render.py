@@ -59,12 +59,12 @@ def duration(path):
 
 # ---------------------------------------------------------------- voice
 # Pacing (seconds). Tweak these to taste.
-SPEECH_RATE = "-6%"     # slower than default; was +8%
+SPEECH_RATE = "+2%"     # history: +8% too fast, -6% too slow
 LEAD_IN = 1.0           # silence before the very first word
 TAIL_OUT = 1.5          # silence after the very last word
-SENTENCE_PAUSE = 0.45   # between sentences inside a beat
-DRAMATIC_PAUSE = 0.8    # where the script writes "..."
-BEAT_PAUSE = 0.6        # between beats
+SENTENCE_PAUSE = 0.35   # between sentences inside a beat
+DRAMATIC_PAUSE = 0.7    # where the script writes "..."
+BEAT_PAUSE = 0.45       # between beats
 
 
 def split_segments(text):
@@ -154,25 +154,75 @@ def image_to_clip(img, secs, dest):
          "-t", f"{secs:.3f}", "-r", str(FPS), "-c:v", "libx264", "-preset", "veryfast", str(dest)])
 
 
+USED_STOCK = set()  # Pexels video IDs already used in this video: never reuse
+
+
+def pexels_search(query):
+    vids = []
+    for page in (1, 2):
+        r = requests.get("https://api.pexels.com/videos/search",
+                         headers={"Authorization": PEXELS_KEY},
+                         params={"query": query, "orientation": "portrait",
+                                 "per_page": 20, "page": page},
+                         timeout=30)
+        r.raise_for_status()
+        vids += r.json().get("videos", [])
+    return [v for v in vids if v["id"] not in USED_STOCK]
+
+
 def pexels_clip(query, secs, dest, tmp):
+    """Fill `secs` with stock footage that is never repeated or looped.
+
+    Prefers one clip long enough for the whole beat; otherwise chains several
+    different clips back to back.
+    """
     if not PEXELS_KEY:
         raise RuntimeError("no PEXELS_API_KEY")
-    r = requests.get("https://api.pexels.com/videos/search",
-                     headers={"Authorization": PEXELS_KEY},
-                     params={"query": query, "orientation": "portrait", "per_page": 15},
-                     timeout=30)
-    r.raise_for_status()
-    vids = r.json().get("videos", [])
+    vids = pexels_search(query)
+    if len(vids) < 3:
+        vids += [v for v in pexels_search("technology future")
+                 if v["id"] not in {x["id"] for x in vids}]
     if not vids:
-        raise RuntimeError("no stock results")
-    vid = random.choice(vids)
-    files = sorted(vid["video_files"], key=lambda f: abs((f.get("height") or 0) - H))
-    raw = tmp / "stock_raw.mp4"
-    raw.write_bytes(requests.get(files[0]["link"], timeout=120).content)
+        raise RuntimeError("no unused stock results")
+    random.shuffle(vids)
+    long_enough = [v for v in vids if (v.get("duration") or 0) >= secs]
+    picks, total = [], 0.0
+    if long_enough:
+        picks = [long_enough[0]]
+    else:
+        for v in sorted(vids, key=lambda v: -(v.get("duration") or 0)):
+            picks.append(v)
+            total += v.get("duration") or 0
+            if total >= secs:
+                break
+        if total < secs:
+            raise RuntimeError("not enough unique stock footage")
     vf = (f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
           f"fps={FPS},format=yuv420p")
-    run(["ffmpeg", "-y", "-stream_loop", "-1", "-i", str(raw), "-vf", vf, "-an",
-         "-t", f"{secs:.3f}", "-c:v", "libx264", "-preset", "veryfast", str(dest)])
+    parts, remaining = [], secs
+    for k, v in enumerate(picks):
+        USED_STOCK.add(v["id"])
+        files = sorted(v["video_files"], key=lambda f: abs((f.get("height") or 0) - H))
+        raw = tmp / f"stock_raw_{k}.mp4"
+        raw.write_bytes(requests.get(files[0]["link"], timeout=120).content)
+        part = tmp / f"stock_part_{k}.mp4"
+        seg = remaining if k == len(picks) - 1 else min(remaining, v.get("duration") or remaining)
+        run(["ffmpeg", "-y", "-i", str(raw), "-vf", vf, "-an", "-t", f"{seg:.3f}",
+             "-c:v", "libx264", "-preset", "veryfast", str(part)])
+        seg = duration(part)
+        parts.append(part)
+        remaining -= seg
+        if remaining <= 0.05:
+            break
+    if remaining > 0.05:
+        raise RuntimeError("stock footage came up short")
+    if len(parts) == 1:
+        parts[0].replace(dest)
+    else:
+        lst = tmp / "stock_parts.txt"
+        lst.write_text("".join(f"file '{p.name}'\n" for p in parts))
+        run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(lst),
+             "-c", "copy", str(dest)])
 
 
 def gradient_clip(secs, dest):
@@ -181,21 +231,35 @@ def gradient_clip(secs, dest):
          "-c:v", "libx264", "-preset", "veryfast", str(dest)])
 
 
-def make_visual(beat, secs, dest, tmp):
+def make_visual(beat, secs, dest, tmp, first=False):
+    """First scene: real video first. Other scenes: AI image first, stock fallback."""
     errors = []
-    if beat.get("image_prompt"):
+
+    def try_stock():
+        try:
+            pexels_clip(beat.get("stock_query") or "technology", secs, dest, tmp)
+            return True
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"stock: {e}")
+            return False
+
+    def try_ai():
+        if not beat.get("image_prompt"):
+            return False
         try:
             img = tmp / "ai.jpg"
             ai_image(beat["image_prompt"], img)
             image_to_clip(img, secs, dest)
-            return "ai"
+            return True
         except Exception as e:  # noqa: BLE001
             errors.append(f"ai: {e}")
-    try:
-        pexels_clip(beat.get("stock_query") or "technology", secs, dest, tmp)
-        return "stock"
-    except Exception as e:  # noqa: BLE001
-        errors.append(f"stock: {e}")
+            return False
+
+    order = [("stock", try_stock), ("ai", try_ai)] if first else \
+            [("ai", try_ai), ("stock", try_stock)]
+    for kind, fn in order:
+        if fn():
+            return kind
     print("  visual fallbacks failed:", errors, file=sys.stderr)
     gradient_clip(secs, dest)
     return "gradient"
@@ -264,7 +328,7 @@ def main():
         all_words += [(w, s + offset, e + offset) for w, s, e in words]
         mp3 = wav
         clip = tmp / f"clip_{n}.mp4"
-        kind = make_visual(beat, secs, clip, tmp)
+        kind = make_visual(beat, secs, clip, tmp, first=(n == 1))
         print(f"  visual: {kind}, {secs:.1f}s")
         clips.append(clip)
         audios.append(mp3)
