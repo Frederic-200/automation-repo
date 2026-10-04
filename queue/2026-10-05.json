@@ -1,0 +1,50 @@
+{
+  "title": "AI Hacker Tool Exploited Within A Day",
+  "beats": [
+    {
+      "text": "Stop scrolling. An AI just turned a boring file server bug into a working hacking tool... and attackers pounced in about a day.",
+      "image_prompt": "glowing red warning lights across a dark server corridor, cinematic, vertical",
+      "stock_query": "robot hand"
+    },
+    {
+      "text": "The AI is Anthropic's Mythos, a model built to hunt for security flaws. Researcher Zach Hanley at the firm Horizon3 pointed it at Rejetto HFS, a file sharing server.",
+      "image_prompt": "a lone analyst silhouette facing a wall of glowing code monitors in a dark room, cinematic",
+      "stock_query": "hacker code"
+    },
+    {
+      "text": "Here is the trick. The server made its secret login keys with a weak random number generator. And separately, it leaked the outputs of that generator.",
+      "image_prompt": "a cracked glass dice floating over streams of blue binary digits, dramatic lighting",
+      "stock_query": "digital data"
+    },
+    {
+      "text": "Humans had treated those as two small problems. Mythos connected them! It used a math solver to rewind the generator, recover the secret key, and forge an admin login. No password needed.",
+      "image_prompt": "a glowing golden key forming from streams of light inside a giant digital lock, macro, cinematic",
+      "stock_query": "key lock"
+    },
+    {
+      "text": "That means full control of the server. Remote code execution. It is tracked as CVE-2026-61500.",
+      "image_prompt": "a server rack with one door swinging open and red light spilling out, moody atmosphere",
+      "stock_query": "server room"
+    },
+    {
+      "text": "Then came the twist. Within roughly a day of disclosure, an attacker on a China-hosted address started hitting vulnerable servers in the US and Japan.",
+      "image_prompt": "a glowing world map at night with red lines racing across the Pacific Ocean, futuristic",
+      "stock_query": "world map"
+    },
+    {
+      "text": "Horizon3 says this does not prove a wave of AI attacks. But work researchers might once have abandoned, for lack of time or expertise, is suddenly getting much easier.",
+      "image_prompt": "a giant mountain of tangled cables and equations being cleared by a beam of light, epic scale",
+      "stock_query": "city night"
+    },
+    {
+      "text": "If you run Rejetto HFS, update right now. Reports point to version three point two point one as the fix.",
+      "image_prompt": "a hand pressing a glowing update button on a futuristic holographic panel, close-up",
+      "stock_query": "computer screen"
+    },
+    {
+      "text": "The same AI that finds the holes can help close them. The race between defenders and attackers just got faster... Who wins? Like and follow so you don't miss what happens next.",
+      "image_prompt": "two glowing runners made of light racing down a neon digital highway, dynamic motion",
+      "stock_query": "neon lights"
+    }
+  ]
+}
