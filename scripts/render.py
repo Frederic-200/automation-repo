@@ -272,32 +272,88 @@ def ass_time(t):
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
+# Karaoke captions: a short phrase is shown in white; the word being spoken
+# turns yellow. Black outline throughout. Colours are ASS &HBBGGRR.
+CAP_FONT_SIZE = 84
+CAP_WHITE = r"&H00FFFFFF&"
+CAP_YELLOW = r"&H0000FFFF&"
+CAP_Y = 1380            # fixed vertical centre of the caption block
+CAP_LINE_CHARS = 16     # max characters per caption line (fits 1080px)
+CAP_MAX_WORDS = 6       # max words shown at once (up to 2 lines)
+CAP_BREAK_GAP = 0.3     # a silence longer than this starts a new phrase
+
+
+def caption_groups(word_events):
+    groups, cur = [], []
+    for w in word_events:
+        if cur:
+            gap = w[1] - cur[-1][2]
+            lines = layout([x[0] for x in cur + [w]])
+            if gap > CAP_BREAK_GAP or len(cur) >= CAP_MAX_WORDS or lines is None:
+                groups.append(cur)
+                cur = []
+        cur.append(w)
+    if cur:
+        groups.append(cur)
+    return groups
+
+
+def layout(words):
+    """Split words into at most 2 lines of <= CAP_LINE_CHARS. None if impossible."""
+    words = [w.upper() for w in words]
+    if len(" ".join(words)) <= CAP_LINE_CHARS:
+        return [len(words)]
+    best = None
+    for k in range(1, len(words)):
+        a, b = " ".join(words[:k]), " ".join(words[k:])
+        if len(a) <= CAP_LINE_CHARS and len(b) <= CAP_LINE_CHARS:
+            score = abs(len(a) - len(b))
+            if best is None or score < best[0]:
+                best = (score, [k, len(words) - k])
+    return best[1] if best else None
+
+
+def render_line(group, active):
+    words = [re.sub(r"[{}\\]", "", w[0]).upper() for w in group]
+    split = layout([w[0] for w in group]) or [len(words)]
+    out = []
+    for j, word in enumerate(words):
+        if j == split[0] and len(split) > 1:
+            out.append(r"\N")
+        elif j:
+            out.append(" ")
+        colour = CAP_YELLOW if j == active else CAP_WHITE
+        out.append(r"{\c%s}%s" % (colour, word))
+    return "".join(out)
+
+
 def build_ass(word_events, path):
     header = (
         "[Script Info]\nScriptType: v4.00+\nWrapStyle: 2\nPlayResX: %d\nPlayResY: %d\n\n"
         "[V4+ Styles]\nFormat: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,"
         "OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,"
         "Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding\n"
-        "Style: Default,DejaVu Sans,96,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,"
-        "1,0,0,0,100,100,0,0,1,7,2,2,60,60,520,1\n\n"
+        "Style: Default,DejaVu Sans,%d,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,"
+        "1,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1\n\n"
         "[Events]\nFormat: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text\n"
-        % (W, H))
-    # Fixed anchor: text is centered on the same point every time, never wraps,
-    # and each group stays short enough to fit the screen width.
-    pos = r"{\an5\pos(%d,%d)}" % (W // 2, 1380)
-    lines, i = [], 0
-    while i < len(word_events):
-        group = [word_events[i]]
-        i += 1
-        while (i < len(word_events) and len(group) < 3
-               and len(" ".join(w[0] for w in group + [word_events[i]])) <= 15):
-            group.append(word_events[i])
-            i += 1
-        text = " ".join(w[0] for w in group).upper()
-        text = re.sub(r"[{}\\]", "", text)
-        start = group[0][1]
-        end = group[-1][2] + 0.05
-        lines.append(f"Dialogue: 0,{ass_time(start)},{ass_time(end)},Default,,0,0,0,,{pos}{text}")
+        % (W, H, CAP_FONT_SIZE))
+    pos = r"{\an5\pos(%d,%d)}" % (W // 2, CAP_Y)
+    groups = caption_groups(word_events)
+    lines = []
+    for g, group in enumerate(groups):
+        next_start = groups[g + 1][0][1] if g + 1 < len(groups) else None
+        for j, w in enumerate(group):
+            start = w[1]
+            if j + 1 < len(group):
+                end = group[j + 1][1]
+            else:
+                end = w[2] + 0.2
+                if next_start is not None:
+                    end = min(end, next_start)
+            if end <= start:
+                continue
+            lines.append(f"Dialogue: 0,{ass_time(start)},{ass_time(end)},Default,,0,0,0,,"
+                         f"{pos}{render_line(group, j)}")
     path.write_text(header + "\n".join(lines) + "\n", encoding="utf-8")
 
 
