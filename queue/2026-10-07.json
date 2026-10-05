@@ -1,0 +1,55 @@
+{
+ "title": "OpenAI's AI Agents Work While You Sleep",
+ "beats": [
+  {
+   "text": "Did you know an AI assistant can now keep working after you close the chat? OpenAI just launched agents that get their very own computer.",
+   "image_prompt": "A glowing lone laptop floating in a dark digital void, screen alive with moving light while a sleeping city skyline lies below, cinematic, vertical composition",
+   "stock_query": "robot hand"
+  },
+  {
+   "text": "OpenAI calls them dots. At its developer event last week, the company said a dot is an always-on agent. It can plug into more than four thousand apps, and it works in the background.",
+   "image_prompt": "A swarm of small glowing orbs connected by thin light threads to hundreds of floating app-like squares, deep blue night, cinematic",
+   "stock_query": "neon lights"
+  },
+  {
+   "text": "So what is an agent? A chatbot answers a question and stops. An agent takes a goal, makes a plan, uses tools, and checks its own work.",
+   "image_prompt": "A friendly robotic hand moving chess pieces across a glowing board while a checklist of light beams ticks off one by one, no text, cinematic",
+   "stock_query": "chess board"
+  },
+  {
+   "text": "Here's how it works. First, you give it a job, like looking into a bug someone mentioned in Slack. Next, it uses its own cloud computer and browser to do the work. Finally, it brings you the result to approve.",
+   "image_prompt": "Three-stage visual metaphor: a hand passing a glowing key, a small computer working in clouds, a finished glowing package returned, cinematic vertical",
+   "stock_query": "cloud computing"
+  },
+  {
+   "text": "Quick pause... if this just made AI agents click for you, hit like, and share it with the friend who still thinks AI only chats.",
+   "image_prompt": "A group of silhouettes in a warm glowing room all looking at one bright screen, sparks of light rising, no faces visible, cinematic",
+   "stock_query": "friends laughing"
+  },
+  {
+   "text": "Now the safety part. Reports say users set rules for when a dot acts alone and when it must ask first. Sensitive things, like changing passwords, always stay with the human.",
+   "image_prompt": "A heavy glowing gate with a single human-shaped keyhole of light in front of a vast digital landscape, cinematic, no text",
+   "stock_query": "key lock"
+  },
+  {
+   "text": "Why does that matter? An agent can click, send and change things for you. Be careful about what you let it touch... because a mistake can happen at machine speed.",
+   "image_prompt": "A runaway glowing train of light rushing along tracks with a hand-shaped brake lever in the foreground, dramatic lighting, cinematic",
+   "stock_query": "fast train"
+  },
+  {
+   "text": "It also shows where the industry is heading. The same week, OpenAI said it shelved a more advanced model after researchers raised concerns.",
+   "image_prompt": "Two glowing runners on a night track, one far ahead, the other chasing with a lantern, dramatic cinematic",
+   "stock_query": "running track"
+  },
+  {
+   "text": "Right now, dots are for Pro and Business Premium subscribers, with Enterprise access if admins turn it on.",
+   "image_prompt": "A row of identical glowing doors opening one by one in a long futuristic corridor, cinematic vertical",
+   "stock_query": "city night"
+  },
+  {
+   "text": "So here are your takeaways. One, an agent is an AI that plans, uses tools and acts, not just chats. Two, always-on agents work while you are away, so set clear rules. Three, never hand over passwords or money decisions. Follow for a new AI lesson every day.",
+   "image_prompt": "Bright glowing three-step staircase of light rising toward a rising sun over a calm futuristic horizon, hopeful cinematic",
+   "stock_query": "sunrise horizon"
+  }
+ ]
+}
