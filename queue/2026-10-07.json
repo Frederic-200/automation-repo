@@ -1,0 +1,60 @@
+{
+  "title": "AI Decision Models Pick Answers, Not Words",
+  "beats": [
+    {
+      "text": "Did you know some of the hottest new AI models never write a single word? They only pick an answer.",
+      "image_prompt": "A glowing glass brain floating above a field of tiny switches that flip on and off, deep blue and gold light, cinematic vertical composition",
+      "stock_query": "robot hand"
+    },
+    {
+      "text": "In the past few weeks, a new kind of AI exploded. It's called a decision model.",
+      "image_prompt": "Several identical sleek silver capsules racing along parallel neon tracks toward a finish line, dramatic cinematic lighting",
+      "stock_query": "futuristic city"
+    },
+    {
+      "text": "A startup called Typesafe AI released one named Jev in September. Then OpenAI, Amazon and Cloudflare all rushed out their own versions.",
+      "image_prompt": "A row of different colored futuristic doors opening in sequence down a long hallway, soft glowing light",
+      "stock_query": "server room"
+    },
+    {
+      "text": "So what is it? Think of a normal chatbot as a writer, and a decision model as a referee holding a card. Green, yellow, or red... No essay. Just the call.",
+      "image_prompt": "A giant referee whistle and glowing green, yellow and red cards floating in a dark stadium of light, cinematic",
+      "stock_query": "traffic lights"
+    },
+    {
+      "text": "Here's how it works. First, you give it a situation, like a support email. Then you give it a short list of allowed answers, like urgent, normal, or spam. Finally, it reads everything once and scores each answer with a probability.",
+      "image_prompt": "A paper letter dissolving into streams of light that flow into three glowing buckets of different heights, clean macro shot",
+      "stock_query": "email inbox"
+    },
+    {
+      "text": "Quick pause... if this just made AI click for you, hit like, and share it with the friend who thinks every AI has to chat.",
+      "image_prompt": "Two glowing hands passing a luminous spark between them across a dark gap, warm cinematic glow",
+      "stock_query": "friends sharing"
+    },
+    {
+      "text": "Why is this a big deal? AI agents make small choices all day. Should I keep going? Should I block this? Writing full sentences for each one is slow and costs money.",
+      "image_prompt": "A tireless robot at a conveyor belt sorting thousands of small glowing boxes at high speed, industrial cinematic lighting",
+      "stock_query": "conveyor belt"
+    },
+    {
+      "text": "A small fast model can make those calls instead. Cloudflare reports its Clef model was about two and a half times faster than Jev at the median. Those are the company's own numbers, so treat them with care.",
+      "image_prompt": "A race between a lightning bolt and a snail made of circuits, dramatic motion blur, vertical frame",
+      "stock_query": "speed lines"
+    },
+    {
+      "text": "There's a catch. Decision models can't write replies, code, or summaries. They only judge. So the best setups pair a big model that writes with a small one that decides.",
+      "image_prompt": "A massive ornate typewriter beside a small precise compass, split lighting, symbolic still life",
+      "stock_query": "typewriter keys"
+    },
+    {
+      "text": "So here are your takeaways. One, a decision model picks from a menu instead of writing text. Two, that makes it fast and cheap for yes or no style choices inside AI agents. Three, check speed claims, because many early numbers come from the makers themselves.",
+      "image_prompt": "Three glowing numbered stepping stones rising over a calm dark lake toward a bright horizon, hopeful cinematic light",
+      "stock_query": "light bulb idea"
+    },
+    {
+      "text": "Follow for a new AI lesson every day.",
+      "image_prompt": "A small glowing sunrise over a futuristic skyline, gentle and inviting",
+      "stock_query": "sunrise city"
+    }
+  ]
+}
