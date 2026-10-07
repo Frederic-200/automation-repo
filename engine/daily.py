@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Daily run: pick the next lesson script -> validate -> build video -> (upload) -> log as covered.
-Usage: python3 engine/daily.py [--lesson N] [--no-upload] [--no-log]
+Usage: python3 engine/daily.py [--lesson N] [--no-upload] [--no-log] [--force]
+Without --lesson/--force it does nothing if a lesson was already logged today (Manila date),
+so a late scheduled run plus a watchdog re-run can never publish two lessons in one day.
 Exit 1 (red run, GitHub emails you) if nothing is queued or the script is invalid; nothing is logged then."""
 import json, os, re, subprocess, sys, shutil, datetime
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
@@ -13,9 +15,21 @@ def fail(msg):
     if s: open(s, 'a').write('### Lesson skipped\n' + msg + '\n')
     sys.exit(1)
 
+def manila_today():
+    return (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=8)).date().isoformat()
+
 def main():
     cov_path = os.path.join(ROOT, 'curriculum', 'covered.json')
     cov = json.load(open(cov_path)); done = {c['lesson'] for c in cov['covered']}
+    today = manila_today()
+    if '--lesson' not in sys.argv and '--force' not in sys.argv:
+        already = [c for c in cov['covered'] if c.get('date') == today]
+        if already:
+            msg = f'Lesson {already[-1]["lesson"]} was already published today ({today}); nothing to do.'
+            print(msg)
+            s = os.environ.get('GITHUB_STEP_SUMMARY')
+            if s: open(s, 'a').write('### Already done today\n' + msg + '\n')
+            return
     q = os.path.join(ROOT, 'queue')
     files = {}
     for f in sorted(os.listdir(q)):
@@ -42,7 +56,7 @@ def main():
         hook = next(s for s in script['scenes'] if s['type'] == 'hook')['narration']
         ana = next((s for s in script['scenes'] if s['beat'] == 'analogy'), {})
         ex = next((s for s in script['scenes'] if s['beat'] == 'example'), {})
-        cov['covered'].append({'lesson': n, 'title': script['title'], 'date': datetime.date.today().isoformat(), 'hook': hook,
+        cov['covered'].append({'lesson': n, 'title': script['title'], 'date': today, 'hook': hook,
                                'analogy': ana.get('narration', '')[:140], 'example': ex.get('narration', '')[:140], 'status': 'rendered'})
         json.dump(cov, open(cov_path, 'w'), indent=1, ensure_ascii=False)
         os.makedirs(os.path.join(ROOT, 'archive'), exist_ok=True)

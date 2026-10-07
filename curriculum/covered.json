@@ -8,6 +8,15 @@
    "analogy": "recipe vs learning from examples",
    "example": "spam filter, face unlock, maps, keyboard",
    "status": "published-manually"
+  },
+  {
+   "lesson": 2,
+   "title": "AI vs machine learning vs deep learning",
+   "date": "2026-10-08",
+   "hook": "AI, machine learning, and deep learning are not the same thing.",
+   "analogy": "Think of cooking. AI is cooking in general, any way a machine can act smart. Machine learning is learning recipes by tasting thousands of di",
+   "example": "ChatGPT is deep learning, which makes it machine learning, which makes it AI. All three labels fit.",
+   "status": "rendered"
   }
  ]
 }

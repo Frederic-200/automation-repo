@@ -2,7 +2,7 @@ name: Daily FredsDesk lesson
 
 on:
   schedule:
-    - cron: "0 21 * * *"   # 21:00 UTC = 05:00 Philippine time
+    - cron: "7 21 * * *"   # 21:07 UTC = 05:07 Philippine time (off the hour: GitHub drops on-the-hour jobs under load)
   workflow_dispatch:
     inputs:
       lesson:
@@ -15,6 +15,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: daily-lesson
+  cancel-in-progress: false
 
 jobs:
   lesson:
@@ -38,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          npm install --no-audit --no-fund
+          npm ci --no-audit --no-fund
 
       - name: Cache voice model
         id: models
@@ -79,4 +83,4 @@ jobs:
           git config user.name "fredsdesk-bot"
           git config user.email "fredsdesk-bot@users.noreply.github.com"
           git add -A curriculum archive queue
-          git diff --cached --quiet || (git commit -m "Lesson published: update covered log" && git pull --rebase origin main && git push)
+          git diff --cached --quiet || (git commit -m "Lesson published: update covered log" && git pull --rebase --autostash origin main && git push)

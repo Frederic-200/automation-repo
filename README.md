@@ -4,7 +4,8 @@ A daily educational AI short (1080x1920, max 90s) generated entirely in code: an
 
 ## How it runs
 - **Weekly (Claude scheduled task):** writes the next 7 lesson scripts into `queue/` following `WRITING_GUIDE.md`.
-- **Daily 05:00 PH (GitHub Actions, `daily.yml`):** `engine/daily.py` picks the lowest-numbered uncovered script in `queue/`, validates it, renders MP4 + post text + preview, uploads all three to Drive as `Lesson NN - Title.*`, logs it in `curriculum/covered.json` and moves the script to `archive/`.
+- **Daily 05:07 PH (GitHub Actions, `daily.yml`):** `engine/daily.py` picks the lowest-numbered uncovered script in `queue/`, validates it, renders MP4 + post text + preview, uploads all three to Drive as `Lesson NN - Title.*`, logs it in `curriculum/covered.json` and moves the script to `archive/`.
+- **Watchdog 06:20 PH (Claude scheduled task):** if no lesson run happened today (GitHub sometimes skips scheduled runs), it starts one. `daily.py` refuses to publish twice on the same Manila date, so this is safe.
 - A red run (invalid or missing script) means nothing was published that day; fix the script and re-run via Actions > Run workflow (optionally enter a lesson number).
 
 ## Layout
