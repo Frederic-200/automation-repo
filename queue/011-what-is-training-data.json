@@ -1,0 +1,174 @@
+{
+  "lesson": 11,
+  "season": "Foundations",
+  "title": "What is training data?",
+  "voice": "auto",
+  "say": {
+    "ChatGPT": "Chat G P T",
+    "FredsDesk": "Freds Desk",
+    "AI": "A I",
+    "GPUs": "G P U s",
+    "GPUs.": "G P U s."
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "beat": "hook",
+      "narration": "AI can only learn from what it's shown.",
+      "lines": [
+        "AI can only learn",
+        "from what",
+        "it's shown."
+      ],
+      "accent": 1,
+      "input": "Is this a dog?"
+    },
+    {
+      "type": "promise",
+      "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson eleven. In under a minute, you'll see why training data shapes everything an AI does.",
+      "cues": {
+        "logo": "Welcome",
+        "title": "lesson"
+      }
+    },
+    {
+      "type": "concept",
+      "beat": "definition",
+      "narration": "Training data is the collection of examples a model learns from, such as text, images, or sounds.",
+      "term": "TRAINING DATA",
+      "definition": "The examples a model learns from: text, images, sounds.",
+      "cues": {
+        "term": "Training",
+        "def": "examples"
+      }
+    },
+    {
+      "type": "compare",
+      "beat": "analogy",
+      "narration": "Imagine learning a language only from song lyrics. You'd sound poetic, but ordering lunch would be rough. Everyday conversation gives you a wider range.",
+      "left": {
+        "title": "Narrow data",
+        "icon": "doc",
+        "points": [
+          "One kind of example",
+          "Strong in one area",
+          "Fails on the rest"
+        ]
+      },
+      "right": {
+        "title": "Broad data",
+        "icon": "db",
+        "points": [
+          "Many kinds of example",
+          "Handles variety",
+          "Fewer blind spots"
+        ]
+      },
+      "cues": {
+        "left": "lyrics",
+        "right": "everyday"
+      }
+    },
+    {
+      "type": "anatomy",
+      "beat": "how_it_works",
+      "narration": "Three things matter most. Quantity: enough examples to find patterns. Quality: accurate, clean examples. And variety: many situations, not just one. Better data, better AI.",
+      "parts": [
+        {
+          "label": "Quantity",
+          "text": "Enough examples",
+          "color": "blue"
+        },
+        {
+          "label": "Quality",
+          "text": "Accurate and clean",
+          "color": "teal"
+        },
+        {
+          "label": "Variety",
+          "text": "Many situations",
+          "color": "warm"
+        }
+      ],
+      "footer": "Better data, better AI",
+      "cues": {
+        "p1": "quantity",
+        "p2": "quality",
+        "p3": "variety",
+        "footer": "better#2"
+      }
+    },
+    {
+      "type": "chat",
+      "beat": "example",
+      "narration": "Imagine a model trained on dog photos, almost all taken on grass. Show it a cat on grass, and it may say dog. It learned the background, not the animal.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Is this a dog? [photo: a cat on grass]",
+          "cue": "Show"
+        },
+        {
+          "role": "ai",
+          "text": "Yes, that's a dog.",
+          "cue": "dog",
+          "flags": [
+            {
+              "text": "dog",
+              "kind": "bad",
+              "note": "Learned grass, not dogs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recap",
+      "beat": "recap",
+      "narration": "Quick recap. One: training data is what a model learns from. Two: quantity, quality, and variety all matter. Three: narrow data makes a narrow AI.",
+      "points": [
+        "Training data = examples to learn from",
+        "Quantity, quality, variety",
+        "Narrow data, narrow AI"
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three"
+      }
+    },
+    {
+      "type": "quiz_end",
+      "beat": "quiz_teaser",
+      "narration": "Quiz time! If training data is narrow, the AI will be: A, great at everything, or B, weak outside what it saw? Answer in the comments. Tomorrow: why AI needs GPUs. Follow FredsDesk, and see you at the desk.",
+      "question": "If training data is narrow, the AI will be...",
+      "options": [
+        "Great at everything",
+        "Weak outside what it saw"
+      ],
+      "teaser": "Why AI needs GPUs",
+      "cues": {
+        "quiz": "quiz",
+        "optA": "=a",
+        "optB": "=b",
+        "answer": "answer",
+        "end": "tomorrow",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "What is training data? Why AI is what it learns | AI Lesson #11",
+    "description": "Lesson 11 of FredsDesk's daily AI series: what training data is, what makes it good, and how narrow data makes narrow AI. Quiz inside!",
+    "hashtags": [
+      "#AI",
+      "#TrainingData",
+      "#MachineLearning",
+      "#LearnAI",
+      "#Data",
+      "#Shorts"
+    ],
+    "pinned_comment": "Quiz answer: B. A model can only be as broad as the examples it learned from. What did you pick? 👇"
+  }
+}

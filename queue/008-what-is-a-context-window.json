@@ -1,0 +1,165 @@
+{
+  "lesson": 8,
+  "season": "Foundations",
+  "title": "What is a context window?",
+  "voice": "auto",
+  "say": {
+    "ChatGPT": "Chat G P T",
+    "FredsDesk": "Freds Desk",
+    "AI": "A I"
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "beat": "hook",
+      "narration": "AI forgets the start of very long chats.",
+      "lines": [
+        "AI forgets",
+        "the start of",
+        "very long chats."
+      ],
+      "accent": 0,
+      "input": "Remember my dog's name?"
+    },
+    {
+      "type": "promise",
+      "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson eight. In under a minute, you'll learn why that happens.",
+      "cues": {
+        "logo": "Welcome",
+        "title": "lesson"
+      }
+    },
+    {
+      "type": "concept",
+      "beat": "definition",
+      "narration": "A context window is the amount of text a model can look at all at once, measured in tokens.",
+      "term": "CONTEXT WINDOW",
+      "definition": "The amount of text a model can look at at once, measured in tokens.",
+      "cues": {
+        "term": "context",
+        "def": "amount"
+      }
+    },
+    {
+      "type": "stat",
+      "beat": "analogy",
+      "narration": "Think of a whiteboard on your desk. It only fits so much. Keep writing, and the oldest lines have to be erased to make room.",
+      "text": "Whiteboard",
+      "label": "Only so much fits",
+      "icon": "doc",
+      "sub": "Write more, and old lines get erased.",
+      "note": "A window is a fixed size",
+      "cues": {
+        "reveal": "whiteboard",
+        "sub": "erased"
+      }
+    },
+    {
+      "type": "anatomy",
+      "beat": "how_it_works",
+      "narration": "Everything shares one window: the instructions, your earlier messages, your new question, and even the space the answer needs. When it's full, older text may get cut.",
+      "parts": [
+        {
+          "label": "Instructions",
+          "text": "Rules for the AI",
+          "color": "blue"
+        },
+        {
+          "label": "Chat history",
+          "text": "Earlier messages",
+          "color": "teal"
+        },
+        {
+          "label": "New question",
+          "text": "What you just asked",
+          "color": "warm"
+        },
+        {
+          "label": "Reply space",
+          "text": "Room for the answer",
+          "color": "coral"
+        }
+      ],
+      "footer": "Full window, old text gets cut",
+      "cues": {
+        "p1": "instructions",
+        "p2": "earlier",
+        "p3": "question",
+        "p4": "answer",
+        "footer": "full"
+      }
+    },
+    {
+      "type": "chat",
+      "beat": "example",
+      "narration": "Here's how it looks. Early on, you mention your dog's name. Much later, after the window fills up, the AI no longer sees it, and can't answer.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "My dog is Biscuit. ... Hundreds of messages later ... What's my dog's name?",
+          "cue": "early"
+        },
+        {
+          "role": "ai",
+          "text": "I don't see a name in our conversation. Could you remind me?",
+          "cue": "later",
+          "flags": [
+            {
+              "text": "I don't see a name",
+              "kind": "bad",
+              "note": "Pushed out of the window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recap",
+      "beat": "recap",
+      "narration": "Quick recap. One: the context window is how much text a model sees at once. Two: it's measured in tokens. Three: when it fills up, older text can be cut.",
+      "points": [
+        "Context window = text seen at once",
+        "Measured in tokens",
+        "When full, older text can be cut"
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three"
+      }
+    },
+    {
+      "type": "quiz_end",
+      "beat": "quiz_teaser",
+      "narration": "Quiz time! A full context window may make an AI: A, lose older text, or B, grow a bigger memory? Answer in the comments. Tomorrow: why AI hallucinates. Follow FredsDesk, and see you at the desk.",
+      "question": "A full context window may make an AI...",
+      "options": [
+        "Lose older text",
+        "Grow a bigger memory"
+      ],
+      "teaser": "Why AI hallucinates",
+      "cues": {
+        "quiz": "quiz",
+        "optA": "=a",
+        "optB": "=b",
+        "answer": "answer",
+        "end": "tomorrow",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "What is a context window? Why AI forgets | AI Lesson #8",
+    "description": "Lesson 8 of FredsDesk's daily AI series: the context window is the text an AI can see at once, and why long chats can lose early details. Quiz inside!",
+    "hashtags": [
+      "#AI",
+      "#ContextWindow",
+      "#LLM",
+      "#LearnAI",
+      "#ChatGPT",
+      "#Shorts"
+    ],
+    "pinned_comment": "Quiz answer: A. Once the window is full, older text may be cut, so the AI can't use it. What did you pick? 👇"
+  }
+}

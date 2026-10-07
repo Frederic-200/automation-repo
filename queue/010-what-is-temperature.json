@@ -1,0 +1,176 @@
+{
+  "lesson": 10,
+  "season": "Foundations",
+  "title": "What is temperature?",
+  "voice": "auto",
+  "say": {
+    "ChatGPT": "Chat G P T",
+    "FredsDesk": "Freds Desk",
+    "AI": "A I"
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "beat": "hook",
+      "narration": "One setting decides if AI plays safe or gets wild.",
+      "lines": [
+        "One setting decides",
+        "if AI plays safe",
+        "or gets wild."
+      ],
+      "accent": 2,
+      "input": "Write a slogan"
+    },
+    {
+      "type": "promise",
+      "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson ten. In under a minute, you'll learn what temperature does.",
+      "cues": {
+        "logo": "Welcome",
+        "title": "lesson"
+      }
+    },
+    {
+      "type": "concept",
+      "beat": "definition",
+      "narration": "Temperature is a setting that controls how adventurous a model is when it picks its next word.",
+      "term": "TEMPERATURE",
+      "definition": "Low means safe, predictable picks. High means varied, surprising picks.",
+      "cues": {
+        "term": "Temperature",
+        "def": "adventurous"
+      }
+    },
+    {
+      "type": "compare",
+      "beat": "analogy",
+      "narration": "Think of ordering at a restaurant. A low-temperature diner always picks the favorite dish. A high-temperature diner is happy to try anything on the menu.",
+      "left": {
+        "title": "Low temperature",
+        "icon": "target",
+        "points": [
+          "Picks the favorite",
+          "Predictable",
+          "Consistent answers"
+        ]
+      },
+      "right": {
+        "title": "High temperature",
+        "icon": "spark",
+        "points": [
+          "Tries the menu",
+          "Surprising",
+          "Varied answers"
+        ]
+      },
+      "cues": {
+        "left": "low",
+        "right": "high"
+      }
+    },
+    {
+      "type": "anatomy",
+      "beat": "how_it_works",
+      "narration": "Take the sentence, the sky is. The model scores each next word: blue, clear, gray, or purple. Low temperature almost always takes the top score. High temperature gives the others a real chance.",
+      "parts": [
+        {
+          "label": "blue",
+          "text": "60%",
+          "color": "blue"
+        },
+        {
+          "label": "clear",
+          "text": "25%",
+          "color": "teal"
+        },
+        {
+          "label": "gray",
+          "text": "10%",
+          "color": "warm"
+        },
+        {
+          "label": "purple",
+          "text": "5%",
+          "color": "coral"
+        }
+      ],
+      "footer": "Illustrative scores for the next word",
+      "cues": {
+        "p1": "blue",
+        "p2": "clear",
+        "p3": "gray",
+        "p4": "purple",
+        "footer": "high"
+      }
+    },
+    {
+      "type": "chat",
+      "beat": "example",
+      "narration": "Same prompt, different settings. A low setting gives a safe slogan. A high one gives a wilder slogan.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Slogan for a lemonade stand?",
+          "cue": "Same"
+        },
+        {
+          "role": "ai",
+          "text": "Low: Fresh lemonade, ice cold.",
+          "cue": "safe"
+        },
+        {
+          "role": "ai",
+          "text": "High: Sunshine in a cup, squeezed just for you!",
+          "cue": "wilder"
+        }
+      ]
+    },
+    {
+      "type": "recap",
+      "beat": "recap",
+      "narration": "Quick recap. One: temperature controls how adventurous the picks are. Two: low is predictable. Three: high is creative, but riskier.",
+      "points": [
+        "Temperature = how adventurous",
+        "Low = predictable",
+        "High = creative, but riskier"
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three"
+      }
+    },
+    {
+      "type": "quiz_end",
+      "beat": "quiz_teaser",
+      "narration": "Quiz time! For a wild poem, which is better: A, high temperature, or B, low temperature? Answer in the comments. Tomorrow: what is training data? Follow FredsDesk, and see you at the desk.",
+      "question": "For a wild poem, which is better?",
+      "options": [
+        "High temperature",
+        "Low temperature"
+      ],
+      "teaser": "What is training data?",
+      "cues": {
+        "quiz": "quiz",
+        "optA": "=a",
+        "optB": "=b",
+        "answer": "answer",
+        "end": "tomorrow",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "What is temperature in AI? Safe vs creative | AI Lesson #10",
+    "description": "Lesson 10 of FredsDesk's daily AI series: how the temperature setting makes an AI predictable or creative. Quiz inside!",
+    "hashtags": [
+      "#AI",
+      "#Temperature",
+      "#LLM",
+      "#ChatGPT",
+      "#LearnAI",
+      "#Shorts"
+    ],
+    "pinned_comment": "Quiz answer: A. High temperature gives more varied, surprising picks. Low is better for facts and code. What did you pick? 👇"
+  }
+}

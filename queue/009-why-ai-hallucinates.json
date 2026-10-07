@@ -1,0 +1,170 @@
+{
+  "lesson": 9,
+  "season": "Foundations",
+  "title": "Why AI hallucinates",
+  "voice": "auto",
+  "say": {
+    "ChatGPT": "Chat G P T",
+    "FredsDesk": "Freds Desk",
+    "AI": "A I"
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "beat": "hook",
+      "narration": "AI will confidently describe books that don't exist.",
+      "lines": [
+        "AI will confidently",
+        "describe books",
+        "that don't exist."
+      ],
+      "accent": 1,
+      "input": "Summarize the book"
+    },
+    {
+      "type": "promise",
+      "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson nine. In under a minute, you'll learn why AI makes things up, and how to catch it.",
+      "cues": {
+        "logo": "Welcome",
+        "title": "lesson"
+      }
+    },
+    {
+      "type": "concept",
+      "beat": "definition",
+      "narration": "A hallucination is when an AI states something false, in a smooth and confident voice.",
+      "term": "HALLUCINATION",
+      "definition": "A false statement delivered fluently and confidently.",
+      "cues": {
+        "term": "hallucination",
+        "def": "false"
+      }
+    },
+    {
+      "type": "compare",
+      "beat": "analogy",
+      "narration": "Picture a student who didn't study but must answer anyway. An honest student says, I'm not sure. A bluffing student writes something that sounds right.",
+      "left": {
+        "title": "Honest student",
+        "icon": "check",
+        "points": [
+          "Says \"not sure\"",
+          "Checks the source",
+          "Stops when unsure"
+        ]
+      },
+      "right": {
+        "title": "AI model",
+        "icon": "brain",
+        "points": [
+          "Predicts likely words",
+          "Sounds fluent",
+          "Fills gaps with guesses"
+        ]
+      },
+      "cues": {
+        "left": "honest",
+        "right": "bluffing"
+      }
+    },
+    {
+      "type": "flow",
+      "beat": "how_it_works",
+      "narration": "A language model works like the bluffer. It predicts likely words. Fluent text sounds true. But nothing inside checks the facts first.",
+      "steps": [
+        {
+          "label": "Predict likely words",
+          "icon": "spark"
+        },
+        {
+          "label": "Sounds fluent",
+          "icon": "chat"
+        },
+        {
+          "label": "No fact check",
+          "sub": "Nothing verifies it",
+          "icon": "target"
+        }
+      ],
+      "loop": false,
+      "note": "Likely is not the same as true",
+      "cues": {
+        "s1": "predicts",
+        "s2": "fluent",
+        "s3": "checks"
+      }
+    },
+    {
+      "type": "chat",
+      "beat": "example",
+      "narration": "Watch. I ask about a book I just invented. A careful answer would say it can't find it. This one writes a whole plot.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Summarize the novel The Silent Orchard by Mara Venn.",
+          "cue": "Watch"
+        },
+        {
+          "role": "ai",
+          "text": "It follows a young beekeeper who inherits a ruined estate in Portugal.",
+          "cue": "writes",
+          "flags": [
+            {
+              "text": "young beekeeper",
+              "kind": "bad",
+              "note": "Invented"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recap",
+      "beat": "recap",
+      "narration": "Quick recap. One: a hallucination is a confident false answer. Two: AI predicts likely words, and doesn't check facts. Three: always verify important claims.",
+      "points": [
+        "Hallucination = confident false answer",
+        "AI predicts words, not facts",
+        "Verify anything important"
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three"
+      }
+    },
+    {
+      "type": "quiz_end",
+      "beat": "quiz_teaser",
+      "narration": "Quiz time! Does a confident tone prove an AI is right: A, yes, or B, no? Answer in the comments. Tomorrow: what is temperature? Follow FredsDesk, and see you at the desk.",
+      "question": "Does a confident tone prove an AI is right?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "teaser": "What is temperature?",
+      "cues": {
+        "quiz": "quiz",
+        "optA": "=a",
+        "optB": "=b",
+        "answer": "answer",
+        "end": "tomorrow",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "Why AI hallucinates (and how to spot it) | AI Lesson #9",
+    "description": "Lesson 9 of FredsDesk's daily AI series: why language models invent confident falsehoods, and why you should verify important claims. Quiz inside!",
+    "hashtags": [
+      "#AI",
+      "#Hallucination",
+      "#ChatGPT",
+      "#LearnAI",
+      "#LLM",
+      "#Shorts"
+    ],
+    "pinned_comment": "Quiz answer: B. Fluent, confident wording says nothing about whether the facts are true. What did you pick? 👇"
+  }
+}

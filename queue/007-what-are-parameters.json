@@ -1,0 +1,167 @@
+{
+  "lesson": 7,
+  "season": "Foundations",
+  "title": "What are parameters?",
+  "voice": "auto",
+  "say": {
+    "ChatGPT": "Chat G P T",
+    "FredsDesk": "Freds Desk",
+    "AI": "A I"
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "beat": "hook",
+      "narration": "Inside every AI are billions of tiny dials.",
+      "lines": [
+        "Inside every AI",
+        "are billions",
+        "of tiny dials."
+      ],
+      "accent": 1,
+      "input": "dial = 0.37"
+    },
+    {
+      "type": "promise",
+      "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson seven. In under a minute, you'll learn what parameters are.",
+      "cues": {
+        "logo": "Welcome",
+        "title": "lesson"
+      }
+    },
+    {
+      "type": "concept",
+      "beat": "definition",
+      "narration": "Parameters are the numbers inside a model that training adjusts. Together, they hold everything the model has learned.",
+      "term": "PARAMETERS",
+      "definition": "The adjustable numbers inside a model that hold what it learned.",
+      "cues": {
+        "term": "Parameters",
+        "def": "Together"
+      }
+    },
+    {
+      "type": "compare",
+      "beat": "analogy",
+      "narration": "Picture a mixing board in a music studio. With a few knobs, you get a simple sound. With thousands, you can shape almost any sound. Parameters are the model's knobs.",
+      "left": {
+        "title": "Few parameters",
+        "icon": "gear",
+        "points": [
+          "Simple patterns",
+          "Small and fast",
+          "Limited skill"
+        ]
+      },
+      "right": {
+        "title": "Many parameters",
+        "icon": "brain",
+        "points": [
+          "Subtle patterns",
+          "Big and costly",
+          "More skill, usually"
+        ]
+      },
+      "cues": {
+        "left": "few",
+        "right": "thousands"
+      }
+    },
+    {
+      "type": "flow",
+      "beat": "how_it_works",
+      "narration": "Here's the journey. A new model starts with random settings. Training turns every knob a little, again and again. When it's done, the final values are saved, and that saved file is the model.",
+      "steps": [
+        {
+          "label": "Random settings",
+          "icon": "cloud"
+        },
+        {
+          "label": "Training",
+          "sub": "Turn every knob",
+          "icon": "gear"
+        },
+        {
+          "label": "Final values",
+          "sub": "Tuned numbers",
+          "icon": "target"
+        },
+        {
+          "label": "Saved file",
+          "sub": "This is the model",
+          "icon": "db"
+        }
+      ],
+      "loop": false,
+      "note": "The model is its parameters",
+      "cues": {
+        "s1": "random",
+        "s2": "Training",
+        "s3": "final",
+        "s4": "saved"
+      }
+    },
+    {
+      "type": "stat",
+      "beat": "example",
+      "narration": "Large language models have billions of parameters. More can mean more skill, but it also costs more to train and run.",
+      "text": "Billions",
+      "label": "Parameters in a large model",
+      "icon": "brain",
+      "sub": "Each one is just a number.",
+      "note": "More knobs, more skill, more cost",
+      "cues": {
+        "reveal": "billions",
+        "sub": "costs"
+      }
+    },
+    {
+      "type": "recap",
+      "beat": "recap",
+      "narration": "Quick recap. One: parameters are the numbers inside a model. Two: training tunes them. Three: more parameters can mean more skill, at a higher cost.",
+      "points": [
+        "Parameters = numbers inside a model",
+        "Training tunes them",
+        "More can mean more skill, more cost"
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three"
+      }
+    },
+    {
+      "type": "quiz_end",
+      "beat": "quiz_teaser",
+      "narration": "Quiz time! Where does an AI keep what it learned: A, in its parameters, or B, in a hidden dictionary? Answer in the comments. Tomorrow: what is a context window? Follow FredsDesk, and see you at the desk.",
+      "question": "Where does an AI keep what it learned?",
+      "options": [
+        "In its parameters",
+        "In a hidden dictionary"
+      ],
+      "teaser": "What is a context window?",
+      "cues": {
+        "quiz": "quiz",
+        "optA": "=a",
+        "optB": "=b",
+        "answer": "answer",
+        "end": "tomorrow",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "What are parameters? The dials inside AI | AI Lesson #7",
+    "description": "Lesson 7 of FredsDesk's daily AI series: what parameters are, how training tunes them, and why bigger models have billions. Quiz inside!",
+    "hashtags": [
+      "#AI",
+      "#Parameters",
+      "#LLM",
+      "#LearnAI",
+      "#MachineLearning",
+      "#Shorts"
+    ],
+    "pinned_comment": "Quiz answer: A. What a model learns is stored in its parameters, the numbers training tunes. What did you pick? 👇"
+  }
+}

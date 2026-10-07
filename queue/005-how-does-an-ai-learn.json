@@ -1,0 +1,171 @@
+{
+  "lesson": 5,
+  "season": "Foundations",
+  "title": "How does an AI learn?",
+  "voice": "auto",
+  "say": {
+    "ChatGPT": "Chat G P T",
+    "FredsDesk": "Freds Desk",
+    "AI": "A I",
+    "LLM": "L L M",
+    "LLM?": "L L M?"
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "beat": "hook",
+      "narration": "Every AI starts out terrible. Practice fixes that.",
+      "lines": [
+        "Every AI starts out terrible.",
+        "Practice fixes that."
+      ],
+      "accent": 1,
+      "input": "What's in this photo?"
+    },
+    {
+      "type": "promise",
+      "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson five. In under a minute, you'll see how an AI gets better through practice.",
+      "cues": {
+        "logo": "Welcome",
+        "title": "lesson"
+      }
+    },
+    {
+      "type": "concept",
+      "beat": "definition",
+      "narration": "Learning means adjusting. The AI makes a guess, checks how wrong it was, and tweaks its settings to be a little less wrong next time.",
+      "term": "LEARNING",
+      "definition": "Guess, measure the mistake, adjust, repeat.",
+      "cues": {
+        "term": "Learning",
+        "def": "guess"
+      }
+    },
+    {
+      "type": "anatomy",
+      "beat": "analogy",
+      "narration": "Think of a basketball player at the free-throw line. She shoots, sees how far she missed, and adjusts her aim. A thousand shots later, the ball drops in almost every time.",
+      "parts": [
+        {
+          "label": "Shoot",
+          "text": "Take a guess",
+          "color": "blue"
+        },
+        {
+          "label": "Miss",
+          "text": "See how far off",
+          "color": "coral"
+        },
+        {
+          "label": "Adjust",
+          "text": "Tweak the aim",
+          "color": "teal"
+        }
+      ],
+      "footer": "Practice turns misses into skill",
+      "cues": {
+        "p1": "shoots",
+        "p2": "missed",
+        "p3": "adjusts",
+        "footer": "thousand"
+      }
+    },
+    {
+      "type": "flow",
+      "beat": "how_it_works",
+      "narration": "An AI does the same, with numbers. It predicts an answer. A score called the loss measures the error. Then training nudges the weights to shrink it. And the loop repeats, over and over.",
+      "steps": [
+        {
+          "label": "Predict",
+          "sub": "Make a guess",
+          "icon": "spark"
+        },
+        {
+          "label": "Measure error",
+          "sub": "The loss score",
+          "icon": "target"
+        },
+        {
+          "label": "Nudge weights",
+          "sub": "Shrink the error",
+          "icon": "gear"
+        },
+        {
+          "label": "Repeat",
+          "sub": "Again and again",
+          "icon": "bolt"
+        }
+      ],
+      "loop": true,
+      "note": "Guess, check, adjust, repeat",
+      "cues": {
+        "s1": "predicts",
+        "s2": "loss",
+        "s3": "nudges",
+        "s4": "repeats"
+      }
+    },
+    {
+      "type": "stat",
+      "beat": "example",
+      "narration": "No one hands it the rule. After millions of tiny nudges, the pattern simply emerges.",
+      "text": "Tiny nudges",
+      "label": "Millions of them add up to skill",
+      "icon": "brain",
+      "sub": "The pattern emerges on its own.",
+      "note": "Small steps, big skill",
+      "cues": {
+        "reveal": "millions",
+        "sub": "pattern"
+      }
+    },
+    {
+      "type": "recap",
+      "beat": "recap",
+      "narration": "Quick recap. One: learning is guess, check, adjust. Two: the loss measures how wrong the guess was. Three: millions of small nudges add up.",
+      "points": [
+        "Learning = guess, check, adjust",
+        "The loss measures the mistake",
+        "Millions of small nudges add up"
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three"
+      }
+    },
+    {
+      "type": "quiz_end",
+      "beat": "quiz_teaser",
+      "narration": "Quiz time! When an AI makes a mistake in training, does it A, adjust its weights, or B, erase its memory? Answer in the comments. Tomorrow: what is an LLM? Follow FredsDesk, and see you at the desk.",
+      "question": "When an AI makes a mistake in training, what happens?",
+      "options": [
+        "It adjusts its weights",
+        "It erases its memory"
+      ],
+      "teaser": "What is an LLM?",
+      "cues": {
+        "quiz": "quiz",
+        "optA": "=a",
+        "optB": "=b",
+        "answer": "answer",
+        "end": "tomorrow",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "How does an AI learn? Guess, check, adjust | AI Lesson #5",
+    "description": "Lesson 5 of FredsDesk's daily AI series: how an AI improves through a loop of guessing, measuring error and nudging its weights. Quiz inside!",
+    "hashtags": [
+      "#AI",
+      "#MachineLearning",
+      "#LearnAI",
+      "#NeuralNetworks",
+      "#Education",
+      "#Shorts"
+    ],
+    "pinned_comment": "Quiz answer: A. Training measures the mistake and nudges the weights to shrink it; nothing gets erased. What did you pick? 👇"
+  }
+}

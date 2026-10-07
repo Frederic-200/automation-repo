@@ -1,0 +1,179 @@
+{
+  "lesson": 6,
+  "season": "Foundations",
+  "title": "What is an LLM?",
+  "voice": "auto",
+  "say": {
+    "ChatGPT": "Chat G P T",
+    "FredsDesk": "Freds Desk",
+    "AI": "A I",
+    "LLM": "L L M",
+    "LLM,": "L L M,"
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "beat": "hook",
+      "narration": "ChatGPT writes every answer one piece at a time.",
+      "lines": [
+        "ChatGPT writes",
+        "every answer",
+        "one piece at a time."
+      ],
+      "accent": 2,
+      "input": "Tell me a joke"
+    },
+    {
+      "type": "promise",
+      "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson six. In under a minute, you'll know what an LLM really is.",
+      "cues": {
+        "logo": "Welcome",
+        "title": "lesson"
+      }
+    },
+    {
+      "type": "concept",
+      "beat": "definition",
+      "narration": "LLM stands for large language model: a huge neural network, trained on text, that predicts what comes next.",
+      "term": "LLM",
+      "definition": "A huge neural network trained on text to predict what comes next.",
+      "cues": {
+        "term": "LLM",
+        "def": "huge"
+      }
+    },
+    {
+      "type": "compare",
+      "beat": "analogy",
+      "narration": "You already know a tiny version. Your phone keyboard suggests the next word. An LLM does the same job, but it writes whole answers, and it reads your entire conversation first.",
+      "left": {
+        "title": "Phone keyboard",
+        "icon": "user",
+        "points": [
+          "Suggests one word",
+          "Looks at a few words",
+          "Small and simple"
+        ]
+      },
+      "right": {
+        "title": "LLM",
+        "icon": "brain",
+        "points": [
+          "Writes whole answers",
+          "Reads the whole chat",
+          "Huge and powerful"
+        ]
+      },
+      "cues": {
+        "left": "keyboard",
+        "right": "LLM#2"
+      }
+    },
+    {
+      "type": "flow",
+      "beat": "how_it_works",
+      "narration": "Here's the loop. Your text goes in. The model picks the most likely next piece. That piece is added to the text. Then it runs again, until the answer is finished.",
+      "steps": [
+        {
+          "label": "Your text",
+          "icon": "chat"
+        },
+        {
+          "label": "Pick next piece",
+          "sub": "Most likely",
+          "icon": "target"
+        },
+        {
+          "label": "Add it",
+          "sub": "Text grows",
+          "icon": "doc"
+        },
+        {
+          "label": "Run again",
+          "sub": "Until finished",
+          "icon": "bolt"
+        }
+      ],
+      "loop": true,
+      "note": "One piece at a time",
+      "cues": {
+        "s1": "text",
+        "s2": "picks",
+        "s3": "added",
+        "s4": "again"
+      }
+    },
+    {
+      "type": "chat",
+      "beat": "example",
+      "narration": "Try it. Given, the capital of France is, the likeliest next piece is Paris. Not because it looked anything up, but because that pattern appeared constantly in its training text.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "The capital of France is",
+          "cue": "Try"
+        },
+        {
+          "role": "ai",
+          "text": "Paris",
+          "cue": "Paris",
+          "flags": [
+            {
+              "text": "Paris",
+              "kind": "good",
+              "note": "Most likely next piece"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recap",
+      "beat": "recap",
+      "narration": "Quick recap. One: an LLM is a large language model. Two: it predicts the next piece, again and again. Three: it learned its patterns from huge amounts of text.",
+      "points": [
+        "LLM = large language model",
+        "It predicts the next piece, again",
+        "Learned from huge amounts of text"
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three"
+      }
+    },
+    {
+      "type": "quiz_end",
+      "beat": "quiz_teaser",
+      "narration": "Quiz time! What does an LLM do: A, predict the next piece of text, or B, search the web live? Answer in the comments. Tomorrow: what are parameters? Follow FredsDesk, and see you at the desk.",
+      "question": "What does an LLM do?",
+      "options": [
+        "Predict the next piece of text",
+        "Search the web live"
+      ],
+      "teaser": "What are parameters?",
+      "cues": {
+        "quiz": "quiz",
+        "optA": "=a",
+        "optB": "=b",
+        "answer": "answer",
+        "end": "tomorrow",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "What is an LLM? Large language models explained | AI Lesson #6",
+    "description": "Lesson 6 of FredsDesk's daily AI series: what a large language model is and how it writes answers one piece at a time. Quiz inside!",
+    "hashtags": [
+      "#AI",
+      "#LLM",
+      "#ChatGPT",
+      "#LearnAI",
+      "#LanguageModels",
+      "#Shorts"
+    ],
+    "pinned_comment": "Quiz answer: A. An LLM predicts the next piece of text; by itself it does not search the web. What did you pick? 👇"
+  }
+}
