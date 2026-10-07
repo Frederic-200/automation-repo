@@ -1,0 +1,40 @@
+{
+  "lesson": 3, "season": "Foundations", "title": "What is a neural network?", "voice": "auto",
+  "say": { "ChatGPT": "Chat G P T", "FredsDesk": "Freds Desk", "GPT-3,": "G P T 3," },
+  "scenes": [
+    { "type": "hook", "beat": "hook", "narration": "AI doesn't think. It does math. Billions of times.",
+      "lines": ["AI doesn't think.", "It does math.", "Billions of times."], "accent": 1, "input": "Is this a cat?" },
+    { "type": "promise", "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson three. In one minute, you'll see how a neural network makes a decision.",
+      "cues": { "logo": "Welcome", "title": "lesson" } },
+    { "type": "concept", "beat": "definition",
+      "narration": "A neural network is layers of simple units, called neurons, that pass numbers to each other, and learn from examples.",
+      "term": "NEURAL NETWORK", "definition": "Layers of simple units that pass numbers to each other, and learn from examples.",
+      "cues": { "term": "neural", "def": "layers" } },
+    { "type": "network", "beat": "how_it_works",
+      "narration": "Here, a photo goes in on the left. Each neuron multiplies its inputs by weights, adds them up, and passes the result forward. Layer by layer, the signal builds, until the last layer makes a guess: cat, ninety-two percent.",
+      "layers": [4, 6, 6, 2], "labels": ["Input", "Hidden", "Hidden", "Output"], "inputText": "photo.jpg",
+      "outputs": [ { "label": "cat", "p": 0.92 }, { "label": "dog", "p": 0.08 } ], "winner": 0,
+      "note": "Illustrative · real networks have millions to billions of neurons",
+      "cues": { "forward": "Each", "output": "guess" } },
+    { "type": "stat", "beat": "example",
+      "narration": "GPT-3, released in twenty twenty, has a hundred and seventy-five billion of these weights. Training nudges every one of them until the guesses get good.",
+      "value": 175, "suffix": "B", "label": "weights in GPT-3", "icon": "brain",
+      "sub": "Training adjusts every one until predictions improve.", "note": "GPT-3 (2020): 175 billion parameters",
+      "cues": { "reveal": "hundred", "sub": "Training" } },
+    { "type": "recap", "beat": "recap",
+      "narration": "Quick recap. One: a neural network is layers of simple units. Two: it multiplies, adds, and passes signals forward. Three: training tunes the weights until answers improve.",
+      "points": ["Layers of simple units", "Multiply, add, pass forward", "Training tunes the weights"],
+      "cues": { "p1": "one", "p2": "two", "p3": "three" } },
+    { "type": "quiz_end", "beat": "quiz_teaser",
+      "narration": "Quiz time! What are weights: A, adjustable numbers, or B, stored photos? Answer in the comments. Tomorrow: what is a token? Follow FredsDesk, and see you at the desk.",
+      "question": "What are weights?", "options": ["Adjustable numbers", "Stored photos"], "teaser": "What is a token?",
+      "cues": { "quiz": "quiz", "optA": "=a", "optB": "=b", "answer": "answer", "end": "tomorrow", "follow": "follow" } }
+  ],
+  "post": {
+    "title": "What is a neural network? AI in one minute | AI Lesson #3",
+    "description": "Lesson 3 of FredsDesk's daily AI series: how a neural network turns numbers into a decision, and what 'weights' really are. Quiz inside!",
+    "hashtags": ["#AI", "#NeuralNetworks", "#MachineLearning", "#LearnAI", "#DeepLearning", "#Shorts"],
+    "pinned_comment": "Quiz answer: A. Weights are adjustable numbers that training tunes; photos are only the input. What did you pick? 👇"
+  }
+}

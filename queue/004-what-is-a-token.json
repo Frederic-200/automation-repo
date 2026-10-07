@@ -1,0 +1,161 @@
+{
+  "lesson": 4,
+  "season": "Foundations",
+  "title": "What is a token?",
+  "voice": "auto",
+  "say": {
+    "ChatGPT": "Chat G P T",
+    "FredsDesk": "Freds Desk",
+    "LEGO": "Lego",
+    "R's": "R's"
+  },
+  "scenes": [
+    {
+      "type": "hook",
+      "beat": "hook",
+      "narration": "ChatGPT has never read a single word you typed.",
+      "lines": [
+        "ChatGPT has never read",
+        "a single word",
+        "you typed."
+      ],
+      "accent": 1,
+      "input": "Hello, how are you?"
+    },
+    {
+      "type": "promise",
+      "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson four. In under a minute, you'll see exactly what AI reads instead.",
+      "cues": {
+        "logo": "Welcome",
+        "title": "lesson"
+      }
+    },
+    {
+      "type": "concept",
+      "beat": "definition",
+      "narration": "It reads tokens. A token is a small chunk of text that a model reads as one piece.",
+      "term": "TOKEN",
+      "definition": "A small chunk of text that an AI model reads as one piece.",
+      "example": {
+        "text": "Hello world!",
+        "tokens": [
+          "Hello",
+          " world",
+          "!"
+        ]
+      },
+      "cues": {
+        "term": "tokens",
+        "def": "token#2",
+        "example": "piece"
+      }
+    },
+    {
+      "type": "analogy",
+      "beat": "analogy",
+      "narration": "Think of LEGO. The model can't swallow a whole sentence at once, so your text gets snapped into bricks, and every brick is one token.",
+      "sentence": "I love learning AI",
+      "bricks": [
+        "I",
+        " love",
+        " learn",
+        "ing",
+        " AI"
+      ],
+      "cues": {
+        "sentence": "whole",
+        "drop": "snapped",
+        "label": "every"
+      }
+    },
+    {
+      "type": "tokens",
+      "beat": "how_it_works",
+      "narration": "Watch this sentence split. Common words stay whole, but long or rare words, like unbelievable, break into smaller parts. Then each piece becomes a number, because computers only understand numbers.",
+      "sentence": "Unbelievable results today",
+      "chips": [
+        "Un",
+        "believ",
+        "able",
+        "results",
+        "today"
+      ],
+      "ids": [
+        3118,
+        61835,
+        481,
+        3059,
+        2154
+      ],
+      "cues": {
+        "split": "split",
+        "numbers": "number"
+      }
+    },
+    {
+      "type": "versus",
+      "beat": "example",
+      "narration": "That's why AI can struggle to count the R's in strawberry. It never sees letters. It only sees tokens.",
+      "word": "strawberry",
+      "highlight": "r",
+      "chips": [
+        "str",
+        "aw",
+        "berry"
+      ],
+      "question": "How many R's?",
+      "cues": {
+        "letters": "count",
+        "tokens": "only"
+      }
+    },
+    {
+      "type": "recap",
+      "beat": "recap",
+      "narration": "Quick recap. One: AI reads tokens, not letters. Two: long or rare words split into pieces. Three: a token is about three quarters of a word.",
+      "points": [
+        "AI reads tokens, not letters",
+        "Long or rare words split into pieces",
+        "1 token ≈ ¾ of a word"
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three"
+      }
+    },
+    {
+      "type": "quiz_end",
+      "beat": "quiz_teaser",
+      "narration": "Quiz time! Which uses more tokens: A, cat, or B, internationalization? Answer in the comments. Tomorrow: how does an AI learn? Follow FredsDesk, and see you at the desk.",
+      "question": "Which uses more tokens?",
+      "options": [
+        "cat",
+        "internationalization"
+      ],
+      "teaser": "How does an AI learn?",
+      "cues": {
+        "quiz": "quiz",
+        "optA": "=a",
+        "optB": "=b",
+        "answer": "answer",
+        "end": "tomorrow",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "What is a token? How AI really reads your words | AI Lesson #4",
+    "description": "Lesson 4 of FredsDesk's daily AI series: what a token is, why AI struggles to count the R's in strawberry, and why long words cost more. Quiz inside!",
+    "hashtags": [
+      "#AI",
+      "#ArtificialIntelligence",
+      "#LearnAI",
+      "#ChatGPT",
+      "#LLM",
+      "#Shorts"
+    ],
+    "pinned_comment": "Quiz answer: B. 'internationalization' is a long word that most tokenizers split into several tokens, while 'cat' is usually a single token. Exact splits vary by model. What did you pick? 👇"
+  }
+}

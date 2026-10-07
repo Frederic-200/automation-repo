@@ -1,0 +1,4 @@
+{
+  "note": "Channel voice is fixed to Fenrir. To rotate later, list several voices; chosen by (lesson number - 1) % len(cycle).",
+  "cycle": ["am_fenrir"]
+}

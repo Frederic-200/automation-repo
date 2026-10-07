@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Upload a video to a Google Drive folder using an OAuth refresh token.
+"""Upload a file to a Google Drive folder using an OAuth refresh token.
 
 Env: GDRIVE_CLIENT_ID, GDRIVE_CLIENT_SECRET, GDRIVE_REFRESH_TOKEN, GDRIVE_FOLDER_ID
-Usage: python scripts/upload_drive.py output/video.mp4 "2026-10-05 - Title.mp4"
+Usage: python scripts/upload_drive.py output/x.mp4 "Lesson 02 - Title.mp4"
 """
+import mimetypes
 import os
 import sys
 
@@ -24,9 +25,10 @@ def main():
     )
     drive = build("drive", "v3", credentials=creds, cache_discovery=False)
     meta = {"name": name, "parents": [os.environ["GDRIVE_FOLDER_ID"]]}
-    media = MediaFileUpload(path, mimetype="video/mp4", resumable=True)
+    mime = mimetypes.guess_type(path)[0] or "application/octet-stream"
+    media = MediaFileUpload(path, mimetype=mime, resumable=True)
     f = drive.files().create(body=meta, media_body=media, fields="id,webViewLink").execute()
-    print("uploaded:", f.get("webViewLink"))
+    print("uploaded:", name, f.get("webViewLink"))
 
 
 if __name__ == "__main__":

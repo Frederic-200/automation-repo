@@ -1,0 +1,504 @@
+{
+ "lessons": [
+  {
+   "lesson": 1,
+   "season": "Foundations",
+   "title": "What is AI, really?"
+  },
+  {
+   "lesson": 2,
+   "season": "Foundations",
+   "title": "AI vs machine learning vs deep learning"
+  },
+  {
+   "lesson": 3,
+   "season": "Foundations",
+   "title": "What is a neural network?"
+  },
+  {
+   "lesson": 4,
+   "season": "Foundations",
+   "title": "What is a token?"
+  },
+  {
+   "lesson": 5,
+   "season": "Foundations",
+   "title": "How does an AI learn?"
+  },
+  {
+   "lesson": 6,
+   "season": "Foundations",
+   "title": "What is an LLM?"
+  },
+  {
+   "lesson": 7,
+   "season": "Foundations",
+   "title": "What are parameters?"
+  },
+  {
+   "lesson": 8,
+   "season": "Foundations",
+   "title": "What is a context window?"
+  },
+  {
+   "lesson": 9,
+   "season": "Foundations",
+   "title": "Why AI hallucinates"
+  },
+  {
+   "lesson": 10,
+   "season": "Foundations",
+   "title": "What is temperature?"
+  },
+  {
+   "lesson": 11,
+   "season": "Foundations",
+   "title": "What is training data?"
+  },
+  {
+   "lesson": 12,
+   "season": "Foundations",
+   "title": "Why AI needs GPUs"
+  },
+  {
+   "lesson": 13,
+   "season": "Foundations",
+   "title": "Training vs inference"
+  },
+  {
+   "lesson": 14,
+   "season": "Foundations",
+   "title": "Supervised vs unsupervised learning"
+  },
+  {
+   "lesson": 15,
+   "season": "Foundations",
+   "title": "What is reinforcement learning?"
+  },
+  {
+   "lesson": 16,
+   "season": "Foundations",
+   "title": "What is overfitting?"
+  },
+  {
+   "lesson": 17,
+   "season": "Foundations",
+   "title": "How do we benchmark AI?"
+  },
+  {
+   "lesson": 18,
+   "season": "Foundations",
+   "title": "What is generative AI?"
+  },
+  {
+   "lesson": 19,
+   "season": "Foundations",
+   "title": "Open vs closed models"
+  },
+  {
+   "lesson": 20,
+   "season": "Foundations",
+   "title": "What is a knowledge cutoff?"
+  },
+  {
+   "lesson": 21,
+   "season": "Using AI well",
+   "title": "What is a prompt?"
+  },
+  {
+   "lesson": 22,
+   "season": "Using AI well",
+   "title": "The anatomy of a great prompt"
+  },
+  {
+   "lesson": 23,
+   "season": "Using AI well",
+   "title": "Teaching AI by example"
+  },
+  {
+   "lesson": 24,
+   "season": "Using AI well",
+   "title": "Chain-of-thought prompting"
+  },
+  {
+   "lesson": 25,
+   "season": "Using AI well",
+   "title": "Role prompting"
+  },
+  {
+   "lesson": 26,
+   "season": "Using AI well",
+   "title": "What is a system prompt?"
+  },
+  {
+   "lesson": 27,
+   "season": "Using AI well",
+   "title": "Constraints that sharpen answers"
+  },
+  {
+   "lesson": 28,
+   "season": "Using AI well",
+   "title": "Asking for tables and JSON"
+  },
+  {
+   "lesson": 29,
+   "season": "Using AI well",
+   "title": "Iterating on a prompt"
+  },
+  {
+   "lesson": 30,
+   "season": "Using AI well",
+   "title": "What is prompt injection?"
+  },
+  {
+   "lesson": 31,
+   "season": "Using AI well",
+   "title": "Make AI critique itself"
+  },
+  {
+   "lesson": 32,
+   "season": "Using AI well",
+   "title": "Summarizing long text"
+  },
+  {
+   "lesson": 33,
+   "season": "Using AI well",
+   "title": "Brainstorming with AI"
+  },
+  {
+   "lesson": 34,
+   "season": "Using AI well",
+   "title": "AI as a personal tutor"
+  },
+  {
+   "lesson": 35,
+   "season": "Using AI well",
+   "title": "Fact-checking AI answers"
+  },
+  {
+   "lesson": 36,
+   "season": "Using AI well",
+   "title": "Reusable prompt templates"
+  },
+  {
+   "lesson": 37,
+   "season": "Using AI well",
+   "title": "Why negative instructions fail"
+  },
+  {
+   "lesson": 38,
+   "season": "Using AI well",
+   "title": "How image prompts work"
+  },
+  {
+   "lesson": 39,
+   "season": "Using AI well",
+   "title": "AI for coding help"
+  },
+  {
+   "lesson": 40,
+   "season": "Using AI well",
+   "title": "When NOT to use AI"
+  },
+  {
+   "lesson": 41,
+   "season": "Under the hood",
+   "title": "What is an embedding?"
+  },
+  {
+   "lesson": 42,
+   "season": "Under the hood",
+   "title": "What is a vector database?"
+  },
+  {
+   "lesson": 43,
+   "season": "Under the hood",
+   "title": "What is semantic search?"
+  },
+  {
+   "lesson": 44,
+   "season": "Under the hood",
+   "title": "What is RAG?"
+  },
+  {
+   "lesson": 45,
+   "season": "Under the hood",
+   "title": "Chunking your documents"
+  },
+  {
+   "lesson": 46,
+   "season": "Under the hood",
+   "title": "What is attention?"
+  },
+  {
+   "lesson": 47,
+   "season": "Under the hood",
+   "title": "What is a transformer?"
+  },
+  {
+   "lesson": 48,
+   "season": "Under the hood",
+   "title": "Pretraining vs fine-tuning"
+  },
+  {
+   "lesson": 49,
+   "season": "Under the hood",
+   "title": "What is RLHF?"
+  },
+  {
+   "lesson": 50,
+   "season": "Under the hood",
+   "title": "What is mixture of experts?"
+  },
+  {
+   "lesson": 51,
+   "season": "Under the hood",
+   "title": "How tokenizers really work"
+  },
+  {
+   "lesson": 52,
+   "season": "Under the hood",
+   "title": "What is quantization?"
+  },
+  {
+   "lesson": 53,
+   "season": "Under the hood",
+   "title": "What is model distillation?"
+  },
+  {
+   "lesson": 54,
+   "season": "Under the hood",
+   "title": "What is prompt caching?"
+  },
+  {
+   "lesson": 55,
+   "season": "Under the hood",
+   "title": "What are scaling laws?"
+  },
+  {
+   "lesson": 56,
+   "season": "Under the hood",
+   "title": "What is a multimodal model?"
+  },
+  {
+   "lesson": 57,
+   "season": "Under the hood",
+   "title": "How diffusion models make images"
+  },
+  {
+   "lesson": 58,
+   "season": "Under the hood",
+   "title": "What is a reasoning model?"
+  },
+  {
+   "lesson": 59,
+   "season": "Under the hood",
+   "title": "What is synthetic data?"
+  },
+  {
+   "lesson": 60,
+   "season": "Under the hood",
+   "title": "How to evaluate AI outputs"
+  },
+  {
+   "lesson": 61,
+   "season": "Agents and tools",
+   "title": "What is an AI agent?"
+  },
+  {
+   "lesson": 62,
+   "season": "Agents and tools",
+   "title": "What is tool use?"
+  },
+  {
+   "lesson": 63,
+   "season": "Agents and tools",
+   "title": "What is MCP?"
+  },
+  {
+   "lesson": 64,
+   "season": "Agents and tools",
+   "title": "The agent loop"
+  },
+  {
+   "lesson": 65,
+   "season": "Agents and tools",
+   "title": "How agents remember"
+  },
+  {
+   "lesson": 66,
+   "season": "Agents and tools",
+   "title": "How agents plan"
+  },
+  {
+   "lesson": 67,
+   "season": "Agents and tools",
+   "title": "What are multi-agent systems?"
+  },
+  {
+   "lesson": 68,
+   "season": "Agents and tools",
+   "title": "What are guardrails?"
+  },
+  {
+   "lesson": 69,
+   "season": "Agents and tools",
+   "title": "Human in the loop"
+  },
+  {
+   "lesson": 70,
+   "season": "Agents and tools",
+   "title": "What is computer use?"
+  },
+  {
+   "lesson": 71,
+   "season": "Agents and tools",
+   "title": "What is a coding agent?"
+  },
+  {
+   "lesson": 72,
+   "season": "Agents and tools",
+   "title": "How do you test an agent?"
+  },
+  {
+   "lesson": 73,
+   "season": "Agents and tools",
+   "title": "What are structured outputs?"
+  },
+  {
+   "lesson": 74,
+   "season": "Agents and tools",
+   "title": "Workflows vs agents"
+  },
+  {
+   "lesson": 75,
+   "season": "Agents and tools",
+   "title": "The cost and speed of AI"
+  },
+  {
+   "lesson": 76,
+   "season": "Agents and tools",
+   "title": "What is AI tracing?"
+  },
+  {
+   "lesson": 77,
+   "season": "Agents and tools",
+   "title": "How agents fail"
+  },
+  {
+   "lesson": 78,
+   "season": "Agents and tools",
+   "title": "What are agent skills?"
+  },
+  {
+   "lesson": 79,
+   "season": "Agents and tools",
+   "title": "Putting AI on a schedule"
+  },
+  {
+   "lesson": 80,
+   "season": "Agents and tools",
+   "title": "Build your first agent"
+  },
+  {
+   "lesson": 81,
+   "season": "AI in the real world",
+   "title": "How AI picks up bias"
+  },
+  {
+   "lesson": 82,
+   "season": "AI in the real world",
+   "title": "What is a deepfake?"
+  },
+  {
+   "lesson": 83,
+   "season": "AI in the real world",
+   "title": "AI and your privacy"
+  },
+  {
+   "lesson": 84,
+   "season": "AI in the real world",
+   "title": "AI and copyright"
+  },
+  {
+   "lesson": 85,
+   "season": "AI in the real world",
+   "title": "What is AI alignment?"
+  },
+  {
+   "lesson": 86,
+   "season": "AI in the real world",
+   "title": "What is a jailbreak?"
+  },
+  {
+   "lesson": 87,
+   "season": "AI in the real world",
+   "title": "How much energy does AI use?"
+  },
+  {
+   "lesson": 88,
+   "season": "AI in the real world",
+   "title": "AI and the job market"
+  },
+  {
+   "lesson": 89,
+   "season": "AI in the real world",
+   "title": "How AI is regulated"
+  },
+  {
+   "lesson": 90,
+   "season": "AI in the real world",
+   "title": "What is explainable AI?"
+  },
+  {
+   "lesson": 91,
+   "season": "AI in the real world",
+   "title": "AI in healthcare"
+  },
+  {
+   "lesson": 92,
+   "season": "AI in the real world",
+   "title": "AI in the classroom"
+  },
+  {
+   "lesson": 93,
+   "season": "AI in the real world",
+   "title": "AI and creative work"
+  },
+  {
+   "lesson": 94,
+   "season": "AI in the real world",
+   "title": "How AI powers robots"
+  },
+  {
+   "lesson": 95,
+   "season": "AI in the real world",
+   "title": "How self-driving cars see"
+  },
+  {
+   "lesson": 96,
+   "season": "AI in the real world",
+   "title": "What is AGI?"
+  },
+  {
+   "lesson": 97,
+   "season": "AI in the real world",
+   "title": "How to spot AI-made content"
+  },
+  {
+   "lesson": 98,
+   "season": "AI in the real world",
+   "title": "Daily habits of AI literacy"
+  },
+  {
+   "lesson": 99,
+   "season": "AI in the real world",
+   "title": "Skills that last in the AI era"
+  },
+  {
+   "lesson": 100,
+   "season": "AI in the real world",
+   "title": "A short history of AI"
+  }
+ ]
+}

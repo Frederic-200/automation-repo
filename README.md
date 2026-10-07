@@ -1,36 +1,20 @@
-# Daily AI Short Automation
+# FredsDesk daily AI lesson
 
-Claude writes a script every day and commits it to `queue/YYYY-MM-DD.json`.
-That push triggers GitHub Actions, which builds a vertical 1080x1920 video
-(Edge TTS voice, AI images with motion or Pexels stock, burned-in captions)
-and uploads it to Google Drive.
+A daily educational AI short (1080x1920, max 90s) generated entirely in code: animated canvas visuals, offline male voice (Kokoro `am_fenrir`), word-synced captions, synthesized sound effects, no music. Finished files land in Google Drive for manual upload.
 
-## Script format (`queue/*.json`)
+## How it runs
+- **Weekly (Claude scheduled task):** writes the next 7 lesson scripts into `queue/` following `WRITING_GUIDE.md`.
+- **Daily 05:00 PH (GitHub Actions, `daily.yml`):** `engine/daily.py` picks the lowest-numbered uncovered script in `queue/`, validates it, renders MP4 + post text + preview, uploads all three to Drive as `Lesson NN - Title.*`, logs it in `curriculum/covered.json` and moves the script to `archive/`.
+- A red run (invalid or missing script) means nothing was published that day; fix the script and re-run via Actions > Run workflow (optionally enter a lesson number).
 
-```json
-{
-  "title": "Short title",
-  "beats": [
-    {"text": "Did you know ...?", "image_prompt": "...", "stock_query": "..."}
-  ]
-}
-```
+## Layout
+`engine/` renderer, voice, audio, validator · `curriculum/lessons.json` the 100 lessons · `curriculum/covered.json` what's done · `queue/` scripts waiting · `archive/` used scripts · `samples/` extra example scripts.
 
-First beat opens with "Did you know...", last beat closes with
-"For more videos like this, like and follow...".
+## Secrets (already set from the old setup)
+`GDRIVE_CLIENT_ID`, `GDRIVE_CLIENT_SECRET`, `GDRIVE_REFRESH_TOKEN`, `GDRIVE_FOLDER_ID`. (`PEXELS_API_KEY` is no longer used.)
 
-## Repository secrets (Settings > Secrets and variables > Actions)
+## Go back to the old AI-news shorts
+`git checkout legacy-ai-news` (branch holds the original pipeline untouched).
 
-| Secret | What it is |
-|---|---|
-| `PEXELS_API_KEY` | Free key from pexels.com/api |
-| `GDRIVE_CLIENT_ID` | Google OAuth client ID |
-| `GDRIVE_CLIENT_SECRET` | Google OAuth client secret |
-| `GDRIVE_REFRESH_TOKEN` | One-time OAuth refresh token (Drive scope) |
-| `GDRIVE_FOLDER_ID` | ID of the Drive folder for finished videos |
-
-Never commit keys to the repo.
-
-## Run manually
-
-Actions tab > "Render daily AI short" > Run workflow.
+## Local test
+`pip install -r requirements.txt && npm install`, download the Kokoro model files into `models/` (see `daily.yml`), then `python3 engine/build.py queue/002-*.json`.

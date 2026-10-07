@@ -1,0 +1,82 @@
+name: Daily FredsDesk lesson
+
+on:
+  schedule:
+    - cron: "0 21 * * *"   # 21:00 UTC = 05:00 Philippine time
+  workflow_dispatch:
+    inputs:
+      lesson:
+        description: "Lesson number to build (default: next uncovered one in queue/)"
+        required: false
+      upload:
+        description: "Upload to Google Drive"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  lesson:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install system tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          npm install --no-audit --no-fund
+
+      - name: Cache voice model
+        id: models
+        uses: actions/cache@v4
+        with:
+          path: models
+          key: kokoro-v1.0-int8
+
+      - name: Download voice model (first run only)
+        if: steps.models.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p models
+          base=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0
+          curl -fL -o models/kokoro-v1.0.int8.onnx $base/kokoro-v1.0.int8.onnx
+          curl -fL -o models/voices-v1.0.bin $base/voices-v1.0.bin
+
+      - name: Build lesson (and upload to Drive)
+        env:
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: |
+          args=""
+          if [ -n "${{ github.event.inputs.lesson }}" ]; then args="$args --lesson ${{ github.event.inputs.lesson }}"; fi
+          if [ "${{ github.event.inputs.upload }}" = "false" ]; then args="$args --no-upload --no-log"; fi
+          python3 engine/daily.py $args
+
+      - name: Keep a 7-day backup copy
+        uses: actions/upload-artifact@v4
+        with:
+          name: lesson-video
+          path: output/*.mp4
+          retention-days: 7
+
+      - name: Log lesson as covered
+        run: |
+          git config user.name "fredsdesk-bot"
+          git config user.email "fredsdesk-bot@users.noreply.github.com"
+          git add -A curriculum archive queue
+          git diff --cached --quiet || (git commit -m "Lesson published: update covered log" && git pull --rebase origin main && git push)

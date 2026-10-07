@@ -1,4 +1,6 @@
 build/
 output/
+models/
+node_modules/
 __pycache__/
 .env

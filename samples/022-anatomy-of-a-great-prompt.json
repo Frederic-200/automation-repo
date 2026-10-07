@@ -1,0 +1,45 @@
+{
+  "lesson": 22, "season": "Using AI well", "title": "The anatomy of a great prompt", "voice": "auto",
+  "say": { "FredsDesk": "Freds Desk" },
+  "scenes": [
+    { "type": "hook", "beat": "hook", "narration": "Most people talk to AI like it's Google.",
+      "lines": ["Most people talk", "to AI like", "it's Google."], "accent": 2, "input": "fractions" },
+    { "type": "promise", "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson twenty-two. In one minute, you'll learn the four parts of a great prompt.",
+      "cues": { "logo": "Welcome", "title": "lesson" } },
+    { "type": "compare", "beat": "definition",
+      "narration": "A search engine finds pages from a few keywords. A prompt is different: it's a set of instructions, and the AI writes something new from them.",
+      "left": { "title": "Search engine", "icon": "search", "points": ["A few keywords", "Finds existing pages", "You do the reading"] },
+      "right": { "title": "AI prompt", "icon": "chat", "points": ["Full instructions", "Writes something new", "Context shapes the answer"] },
+      "cues": { "left": "search", "right": "prompt" } },
+    { "type": "anatomy", "beat": "how_it_works",
+      "narration": "A strong prompt has four parts. A role, who the AI should be. A task, what to do. Context, what it needs to know. And a format, how the answer should look.",
+      "parts": [
+        { "label": "Role", "text": "You are a patient math tutor.", "color": "blue" },
+        { "label": "Task", "text": "Explain fractions.", "color": "teal" },
+        { "label": "Context", "text": "My student is 10 and loves pizza.", "color": "warm" },
+        { "label": "Format", "text": "Use 3 short steps.", "color": "coral" } ],
+      "footer": "Clear prompt, better answer",
+      "cues": { "p1": "role", "p2": "task", "p3": "context", "p4": "format", "footer": "look" } },
+    { "type": "chat", "beat": "example",
+      "narration": "Watch the difference. With all four parts, the answer fits the student: pizza slices, short steps, and a simple example.",
+      "messages": [
+        { "role": "user", "text": "You are a patient math tutor. Explain fractions to a 10-year-old who loves pizza. Use 3 short steps.", "cue": "Watch" },
+        { "role": "ai", "text": "Step 1: Picture a pizza cut into 4 equal slices. Step 2: Eat 1 slice. You ate 1/4. Step 3: The bottom number counts all the slices.", "cue": "answer",
+          "flags": [ { "text": "1/4.", "kind": "good", "note": "Fits the student" } ] } ] },
+    { "type": "recap", "beat": "recap",
+      "narration": "Quick recap. One: a prompt is instructions, not keywords. Two: give a role, a task, context, and a format. Three: more detail means a better answer.",
+      "points": ["A prompt is instructions, not keywords", "Role + task + context + format", "More detail, better answer"],
+      "cues": { "p1": "one", "p2": "two", "p3": "three" } },
+    { "type": "quiz_end", "beat": "quiz_teaser",
+      "narration": "Quiz time! Which prompt is better: A, write about dogs, or B, three dog facts for kids? Answer in the comments. Tomorrow: teaching AI by example. Follow FredsDesk, and see you at the desk.",
+      "question": "Which prompt is better?", "options": ["Write about dogs", "3 dog facts for kids"], "teaser": "Teaching AI by example",
+      "cues": { "quiz": "quiz", "optA": "=a", "optB": "=b", "answer": "answer", "end": "tomorrow", "follow": "follow" } }
+  ],
+  "post": {
+    "title": "The 4 parts of a perfect AI prompt | AI Lesson #22",
+    "description": "Lesson 22 of FredsDesk's daily AI series: stop prompting like it's Google. Use role, task, context and format. Quiz inside!",
+    "hashtags": ["#AI", "#Prompting", "#PromptEngineering", "#ChatGPT", "#LearnAI", "#Shorts"],
+    "pinned_comment": "Quiz answer: B. It names the number, the topic and the audience, so the AI has much more to work with than 'write about dogs'. What did you pick? 👇"
+  }
+}

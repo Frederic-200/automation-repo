@@ -1,0 +1,49 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>FredsDesk lesson renderer</title>
+<style>
+@font-face{font-family:M;font-weight:800;src:url(fonts/m800.woff2)}
+@font-face{font-family:M;font-weight:500;src:url(fonts/m500.woff2)}
+@font-face{font-family:J;font-weight:700;src:url(fonts/j700.woff2)}
+@font-face{font-family:J;font-weight:500;src:url(fonts/j500.woff2)}
+html,body{margin:0;background:#000}
+canvas{display:block;width:100vw;max-height:100vh;aspect-ratio:9/16;margin:auto}
+</style>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="brand.js"></script>
+<script src="scenes.js"></script>
+<script src="scenes2.js"></script>
+<script>
+/* template.html?tl=<path to timeline.js>  -> window.renderFrame(n), window.getEvents() */
+let TL = null, CAPS = [];
+function frame(t) {
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.shadowBlur = 0;
+  drawBackground(t);
+  const S = TL.scenes.find(s => t >= s.start && t < s.end) || TL.scenes[TL.scenes.length - 1];
+  const e = eo3((t - S.start) / .32);
+  ctx.save(); ctx.globalAlpha = e; ctx.translate(0, (1 - e) * 34);
+  SCENES[S.type].draw(S, t);
+  ctx.restore();
+  drawChrome(t, TL);
+  if (S.type !== 'hook') drawCaptions(t, CAPS);
+  const fin = TL.duration - .35; if (t > fin) { ctx.fillStyle = `rgba(7,23,42,${clamp((t - fin) / .35)})`; ctx.fillRect(0, 0, W, H) }
+}
+function getEvents() {
+  const ev = [];
+  for (const S of TL.scenes) { ev.push({ t: S.start, kind: 'whoosh' }); for (const e of SCENES[S.type].events(S)) ev.push(e) }
+  return ev.sort((a, b) => a.t - b.t);
+}
+window.getEvents = getEvents;
+window.renderFrame = f => frame(f / TL.fps);
+window.ready = new Promise(res => {
+  const src = new URLSearchParams(location.search).get('tl');
+  const s = document.createElement('script'); s.src = src;
+  s.onload = async () => {
+    TL = window.TIMELINE; TL.scenes.forEach(S => { S.lesson = TL.lesson; S.titleText = TL.title }); CAPS = buildCaptions(TL);
+    await Promise.all([document.fonts.load('800 80px M'), document.fonts.load('500 40px M'), document.fonts.load('700 40px J'), document.fonts.load('500 40px J')]);
+    res();
+  };
+  document.head.appendChild(s);
+  if (new URLSearchParams(location.search).has('play')) { const t0 = performance.now(); (function loop() { if (TL) frame(((performance.now() - t0) / 1000) % TL.duration); requestAnimationFrame(loop) })() }
+});
+</script>

@@ -1,0 +1,48 @@
+{
+  "lesson": 44, "season": "Under the hood", "title": "What is RAG?", "voice": "auto",
+  "say": { "FredsDesk": "Freds Desk", "RAG": "rag", "RAG:": "rag:", "RAG?": "rag?" },
+  "scenes": [
+    { "type": "hook", "beat": "hook", "narration": "AI has never seen your company files.",
+      "lines": ["AI has never seen", "your company", "files."], "accent": 1, "input": "What is our refund policy?" },
+    { "type": "promise", "beat": "promise",
+      "narration": "Welcome to FredsDesk, lesson forty-four. In one minute, you'll learn how AI answers questions about documents it was never trained on.",
+      "cues": { "logo": "Welcome", "title": "lesson" } },
+    { "type": "concept", "beat": "definition",
+      "narration": "The trick is called RAG: retrieval-augmented generation. In plain English: look up the right facts first, then let the AI answer using them.",
+      "term": "RAG", "definition": "Look up the right facts first, then let the AI answer using them.",
+      "cues": { "term": "RAG", "def": "look" } },
+    { "type": "map", "beat": "how_it_works",
+      "narration": "First, your documents are turned into numbers called embeddings. Pieces with similar meaning land close together. When you ask a question, it becomes a point too, and the closest pieces are retrieved.",
+      "groups": ["Returns", "Shipping", "Accounts"],
+      "points": [
+        { "label": "refund policy", "x": 0.16, "y": 0.2, "g": 0 }, { "label": "returns", "x": 0.33, "y": 0.3, "g": 0 }, { "label": "money back", "x": 0.14, "y": 0.4, "g": 0 },
+        { "label": "delivery", "x": 0.74, "y": 0.18, "g": 1 }, { "label": "tracking", "x": 0.86, "y": 0.36, "g": 1 }, { "label": "shipping time", "x": 0.64, "y": 0.4, "g": 1 },
+        { "label": "password reset", "x": 0.36, "y": 0.82, "g": 2 }, { "label": "login help", "x": 0.62, "y": 0.72, "g": 2 }, { "label": "account", "x": 0.5, "y": 0.92, "g": 2 } ],
+      "query": { "label": "refund?", "x": 0.24, "y": 0.5 }, "k": 3,
+      "axisNote": "Meaning space, simplified to 2D", "matchLabel": "Closest meaning wins",
+      "cues": { "points": "embeddings", "query": "ask", "match": "closest" } },
+    { "type": "flow", "beat": "example",
+      "narration": "Then the pipeline runs in four steps. Your question goes in. The system searches your documents. The best matches are added to the prompt. And the AI writes an answer grounded in them.",
+      "steps": [
+        { "label": "Your question", "icon": "chat" },
+        { "label": "Search documents", "icon": "search", "sub": "find the closest pieces" },
+        { "label": "Add best matches", "icon": "doc", "sub": "put them in the prompt" },
+        { "label": "AI writes answer", "icon": "brain", "sub": "grounded in your files" } ],
+      "note": "Retrieval → Augmented → Generation",
+      "cues": { "s1": "question", "s2": "searches", "s3": "added", "s4": "writes" } },
+    { "type": "recap", "beat": "recap",
+      "narration": "Quick recap. One: RAG looks things up before answering. Two: similar meaning means close together. Three: the answer is grounded in your own documents.",
+      "points": ["RAG = look up, then answer", "Similar meaning = close together", "Answers grounded in your docs"],
+      "cues": { "p1": "one", "p2": "two", "p3": "three" } },
+    { "type": "quiz_end", "beat": "quiz_teaser",
+      "narration": "Quiz time! What does the R in RAG stand for: A, retrieval, or B, reasoning? Answer in the comments. Tomorrow: how AI splits documents into chunks. Follow FredsDesk, and see you at the desk.",
+      "question": "What does the R in RAG stand for?", "options": ["Retrieval", "Reasoning"], "teaser": "Chunking your documents",
+      "cues": { "quiz": "quiz", "optA": "=a", "optB": "=b", "answer": "answer", "end": "tomorrow", "follow": "follow" } }
+  ],
+  "post": {
+    "title": "What is RAG? How AI reads YOUR documents | AI Lesson #44",
+    "description": "Lesson 44 of FredsDesk's daily AI series: retrieval-augmented generation explained with embeddings and a 4-step pipeline. Quiz inside!",
+    "hashtags": ["#AI", "#RAG", "#LLM", "#Embeddings", "#LearnAI", "#Shorts"],
+    "pinned_comment": "Quiz answer: A. R stands for Retrieval: the system retrieves relevant pieces of your documents before the AI answers. What did you pick? 👇"
+  }
+}

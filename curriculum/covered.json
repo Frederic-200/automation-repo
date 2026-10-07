@@ -1,0 +1,13 @@
+{
+ "covered": [
+  {
+   "lesson": 1,
+   "title": "What is AI, really?",
+   "date": "2026-10-07",
+   "hook": "Nobody ever programmed ChatGPT to answer you.",
+   "analogy": "recipe vs learning from examples",
+   "example": "spam filter, face unlock, maps, keyboard",
+   "status": "published-manually"
+  }
+ ]
+}
