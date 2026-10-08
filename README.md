@@ -1,6 +1,6 @@
 # FredsDesk daily AI lesson
 
-A daily educational AI short (1080x1920, max 90s) generated entirely in code: animated canvas visuals, offline male voice (Kokoro `am_fenrir`), word-synced captions, synthesized sound effects, no music. Finished files land in Google Drive for manual upload.
+A daily educational AI short (1080x1920, max 90s) generated entirely in code: animated canvas visuals, offline male voice (Kokoro `am_puck`), word-synced captions, synthesized sound effects, no music. Finished files land in Google Drive for manual upload.
 
 ## How it runs
 - **Weekly (Claude scheduled task):** writes the next 7 lesson scripts into `queue/` following `WRITING_GUIDE.md`.
