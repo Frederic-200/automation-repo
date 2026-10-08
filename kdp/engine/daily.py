@@ -167,4 +167,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except SystemExit:
+        raise
+    except Exception:
+        import traceback
+        tb = traceback.format_exc().strip().splitlines()
+        print("::error::Crash: " + " | ".join(tb[-6:]))
+        raise
