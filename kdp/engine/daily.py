@@ -162,6 +162,7 @@ def main():
         with open(LOG, "w") as f:
             json.dump(log, f, indent=2)
         if os.path.dirname(os.path.abspath(path)) == os.path.join(KDP, "themes", "queue"):
+            os.makedirs(os.path.join(KDP, "themes", "done"), exist_ok=True)
             shutil.move(path, os.path.join(KDP, "themes", "done", os.path.basename(path)))
     summary(f"### Book made: {full_title}\n- Pages: {facts['interior_pages']}\n- Drive: {folder_url or '(not uploaded)'}")
 
