@@ -50,8 +50,23 @@ def validate(path):
     if sc and not MIN_WORDS <= words <= MAX_WORDS: errs.append(f'narration is {words} words (need {MIN_WORDS}-{MAX_WORDS})')
     for k in ('title', 'description', 'hashtags', 'pinned_comment'):
         if k not in s.get('post', {}): errs.append(f'post: missing "{k}"')
+    no_dates_on_screen(sc, errs)
     story_checks(s, errs)
     return s, errs, words
+
+DATE_RE = re.compile(r'\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+\d{1,2}\b|\b\d{4}-\d\d-\d\d\b|\b(19|20)\d\d\b|\b(today|yesterday|tomorrow)\b', re.I)
+def no_dates_on_screen(scenes, errs):
+    """the user wants no dates in the video: on-screen text (everything except narration/cues) must not contain one"""
+    def strings(x):
+        if isinstance(x, str): yield x
+        elif isinstance(x, list):
+            for v in x: yield from strings(v)
+        elif isinstance(x, dict):
+            for k, v in x.items():
+                if k not in ('narration', 'cues', 'type', 'icon', 'icons'): yield from strings(v)
+    for i, c in enumerate(scenes):
+        for txt in strings(c):
+            if DATE_RE.search(txt): errs.append(f'scene {i} ({c.get("type")}): no dates on screen, found {DATE_RE.search(txt).group(0)!r} in {txt!r}')
 
 def story_checks(s, errs):
     """don't cover the same story twice"""

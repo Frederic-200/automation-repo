@@ -20,7 +20,6 @@ function drawChromeNews(t, TL) {
     ctx.fillStyle = rg(94, 119, 0, 94, 119, 24, [[0, `rgba(255,122,107,${.8 * pulse})`], [1, 'rgba(255,122,107,0)']]); circ(94, 119, 24); ctx.fill();
     circ(94, 119, 8.5); ctx.fillStyle = C.coral; ctx.fill();
     T('NEWS', 122, 129, { size: 26, ls: 4, color: C.coral, align: 'left' });
-    T(dateStamp(TL.date), 272, 128, { size: 22, font: FM(500, 22), ls: 3, align: 'left', color: C.mute });
     drawLogo(768, 119, .15, 1, { a: 1, dx: 0, dy: 0, s: 1 });
     T('FredsDesk', 1020, 130, { size: 30, align: 'right', color: '#fff' });
     const bx = 60, bw = 960, by = 176, p = clamp(t / TL.duration);
@@ -104,12 +103,12 @@ SCENES.breaking = {
     P.lines.forEach((ln, i) => {
       const acc = i === P.accent, a = A(t, pl.l[i] - .1, .4), size = fitSize(ln, 800, acc ? 124 : 92, 940, false, 1), y = 590 + i * 156 + (1 - a) * 60;
       if (a <= 0) return;
-      const col = acc ? lg(140, 0, 940, 0, [[0, C.coral], [.55, C.warm], [1, C.warm]]) : '#FFFFFF';
+      if (acc) { const mw = measure(ln, FM(800, size), 1); marker(540 - mw / 2, y, mw, size, t, pl.l[i] + .3, C.coral, .2) }
       if (acc && t - pl.l[i] < .4) {
         const g = 1 - (t - pl.l[i]) / .4, j = Math.sin(t * 90) * 14 * g;
         T(ln, 540 + j, y, { size, color: 'rgba(63,167,214,.8)', alpha: a * .8 * g, ls: 1 }); T(ln, 540 - j, y, { size, color: 'rgba(255,122,107,.8)', alpha: a * .8 * g, ls: 1 });
       }
-      T(ln, 540, y, { size, color: col, alpha: a, ls: 1, shadow: 20 });
+      kinetic(ln, 540, y, t, pl.l[i] - .1, { size, ls: 1, shadow: 20, chars: acc, colors: acc ? sweepColors(C.coral, C.warm) : undefined });
       if (acc) { const u = eo3((t - pl.l[i] - .25) / .45), w = measure(ln, FM(800, size), 1); if (u > 0) { rr(540 - w / 2, y + 26, w * u, 10, 5); ctx.fillStyle = C.coral; ctx.fill() } }
     });
     if (P.source) { const sa = A(t, pl.tSrc, .5); if (sa > 0) { pill(540 - 250, 1170, 500, 76, 'rgba(255,255,255,.07)', 'rgba(255,255,255,.2)'); T('via ' + P.source, 540, 1220, { font: FM(500, 34), color: C.mute, alpha: sa }) } }
@@ -130,16 +129,15 @@ SCENES.story = {
     glass(70, 350, 940, bottom - 350, 44, .08); rr(70, 350, 14, bottom - 350, 7); ctx.fillStyle = C.coral; ctx.fill();
     const sf = FM(800, 26), sw = measure((P.source || '').toUpperCase(), sf, 3) + 50;
     pill(120, 392, sw, 52, 'rgba(255,122,107,.16)', 'rgba(255,122,107,.6)'); T((P.source || '').toUpperCase(), 120 + sw / 2, 428, { size: 26, ls: 3, color: C.coral });
-    if (P.when) T(P.when, 980, 428, { font: mono(500, 28), color: C.mute, align: 'right' });
-    typeText(lines, 120, 520, 66, hf, '#fff', t, pl.tHead, 1.5, { shadow: 12 });
+    lines.forEach((l, k) => kinetic(l, 120, 520 + k * 66, t, pl.tHead + k * .22, { size: 54, align: 'left', shadow: 12 }));
     ctx.restore();
     facts.forEach((f, i) => {
       const a = eback((t - pl.f[i] + .1) / .4); if (a <= 0) return;
       const y = yF + i * 138, s = clamp(a, 0, 1.1);
       ctx.save(); ctx.translate(540, y + 52); ctx.scale(lerp(.9, 1, clamp(a)), lerp(.9, 1, clamp(a))); ctx.translate(-540, -(y + 52)); ctx.globalAlpha *= clamp(a);
-      glass(110, y, 860, 108, 30, .1); circ(172, y + 54, 30); ctx.fillStyle = PAL[(i + 3) % PAL.length]; ctx.fill();
+      glass(110, y, 860, 108, 30, .1, pl.f[i] - .1); circ(172, y + 54, 30); ctx.fillStyle = PAL[(i + 3) % PAL.length]; ctx.fill();
       T(String(i + 1), 172, y + 70, { size: 36, color: C.ink });
-      const ff = FM(500, fitSize(f, 500, 40, 700)); T(f, 224, y + 66, { font: ff, align: 'left', color: '#fff' });
+      kinetic(f, 224, y + 66, t, pl.f[i], { size: fitSize(f, 500, 40, 700), weight: 500, align: 'left', stagger: .05 });
       ctx.restore();
     });
   },
@@ -155,7 +153,7 @@ SCENES.quote = {
     glass(90, 380, 900, h, 44, .08);
     T('“', 175, 640, { size: 300, color: C.coral, alpha: .9 });
     ctx.restore();
-    typeText(lines, 150, 700, 76, qf, '#fff', t, pl.tQ, Math.min(4, 0.6 + lines.join(' ').length * .045), { shadow: 12 });
+    lines.forEach((l, k) => kinetic(l, 150, 700 + k * 76, t, pl.tQ + k * .45, { size: 56, align: 'left', shadow: 12, stagger: .07 }));
     const wa = A(t, pl.tWho, .5);
     if (wa > 0) {
       const y = 700 + lines.length * 76 + 40; ctx.save(); ctx.globalAlpha *= wa;
@@ -199,11 +197,11 @@ SCENES.why = {
     P.points.forEach((p, i) => {
       const a = A(t, pl.p[i] - .1, .5), y = 480 + i * 250; if (a <= 0) return;
       ctx.save(); ctx.globalAlpha *= a; ctx.translate((1 - a) * 90, 0);
-      glass(90, y, 900, 210, 36, .09); rr(90, y, 12, 210, 6); ctx.fillStyle = PAL[(i + 3) % PAL.length]; ctx.fill();
+      glass(90, y, 900, 210, 36, .09, pl.p[i] - .1); rr(90, y, 12, 210, 6); ctx.fillStyle = PAL[(i + 3) % PAL.length]; ctx.fill();
       circ(185, y + 105, 52); ctx.fillStyle = 'rgba(255,255,255,.08)'; ctx.fill();
       icon(icons[i % icons.length], 185, y + 105, 1.05, PAL[(i + 3) % PAL.length]);
       const f = FM(800, 44), lines = wrap(p, 640, f);
-      lines.slice(0, 3).forEach((l, k) => T(l, 270, y + 105 + (k - (Math.min(3, lines.length) - 1) / 2) * 54 + 15, { font: f, align: 'left', color: '#fff' }));
+      lines.slice(0, 3).forEach((l, k) => kinetic(l, 270, y + 105 + (k - (Math.min(3, lines.length) - 1) / 2) * 54 + 15, t, pl.p[i] + .05 + k * .15, { size: 44, align: 'left' }));
       ctx.restore();
     });
   },
@@ -233,7 +231,7 @@ SCENES.engage = {
     };
     btn(350, 640, pl.tLike, 'like'); btn(730, 640, pl.tShare, 'share');
     const lf = FM(800, 58), lines = wrap(P.line, 860, lf);
-    lines.forEach((l, i) => T(l, 540, 1010 + i * 72, { font: lf, color: '#fff', shadow: 14 }));
+    lines.forEach((l, i) => kinetic(l, 540, 1010 + i * 72, t, S.start + .3 + i * .2, { size: 58, shadow: 14 }));
     if (P.sub) T(P.sub, 540, 1010 + lines.length * 72 + 20, { font: FM(500, 36), color: C.warm });
     ctx.restore();
     const cl = (tc, x) => { const cu = clamp((t - (tc - .7)) / .6); if (t > tc - .8 && t < tc + 1.0) cursorAt(lerp(x + 260, x + 50, eo3(cu)), lerp(840, 690, eo3(cu)), t > tc && t < tc + .14 ? .8 : 1, clamp((t - (tc - .8)) / .2) * (1 - clamp((t - (tc + .7)) / .3))) };
@@ -251,10 +249,10 @@ SCENES.takeaways = {
     P.points.forEach((p, i) => {
       const a = A(t, pl.t[i], .5), y = 470 + i * 250; if (a <= 0) return;
       ctx.save(); ctx.globalAlpha *= a; ctx.translate((1 - a) * 90, 0);
-      glass(90, y, 900, 210, 36, .09);
+      glass(90, y, 900, 210, 36, .09, pl.t[i]);
       circ(180, y + 105, 48); ctx.fillStyle = PAL[(i + 3) % PAL.length]; ctx.fill(); T(String(i + 1), 180, y + 125, { size: 56, color: C.ink });
       const f = FM(800, 44), lines = wrap(p, 560, f);
-      lines.slice(0, 3).forEach((l, k) => T(l, 262, y + 105 + (k - (Math.min(3, lines.length) - 1) / 2) * 54 + 15, { font: f, align: 'left', color: '#fff' }));
+      lines.slice(0, 3).forEach((l, k) => kinetic(l, 262, y + 105 + (k - (Math.min(3, lines.length) - 1) / 2) * 54 + 15, t, pl.t[i] + .12 + k * .15, { size: 44, align: 'left' }));
       checkIcon(900, y + 105, 38, (t - pl.t[i] - .35) / .4, C.warm);
       ctx.restore();
     });
@@ -275,7 +273,7 @@ SCENES.sources_end = {
     const sa = A(t, pl.tSrc, .5);
     if (sa > 0 && src.length) {
       ctx.save(); ctx.globalAlpha *= sa; ctx.translate(0, (1 - sa) * 30);
-      const h = 90 + src.length * 66; glass(120, 940, 840, h, 36, .08); label('SOURCES', 540, 992, C.warm, 'center');
+      const h = 90 + src.length * 66; glass(120, 940, 840, h, 36, .08, pl.tSrc); label('SOURCES', 540, 992, C.warm, 'center');
       src.forEach((s, i) => { const a = A(t, pl.tSrc + .25 + i * .3, .4); ctx.save(); ctx.globalAlpha *= a; checkIcon(190, 1043 + i * 66, 18, a, C.tealL); T(s, 235, 1056 + i * 66, { font: FM(500, fitSize(s, 500, 38, 660)), align: 'left', color: '#fff' }); ctx.restore() });
       ctx.restore();
     }

@@ -5,43 +5,185 @@
   "voice": "af_heart",
   "speed": 1.04,
   "max_duration": 118,
-  "ticker": ["OpenAI posts 722 AI-written math papers", "Google halves Nano Banana image prices", "Sierra and Meta publish Personal Agent Protocol", "Wikimedia flags rogue AI agents"],
+  "ticker": [
+    "OpenAI posts 722 AI-written math papers",
+    "Google halves Nano Banana image prices",
+    "Sierra and Meta publish Personal Agent Protocol",
+    "Wikimedia flags rogue AI agents"
+  ],
   "sources": [
-    {"name": "OpenAI (github.com/openai/math)", "url": "https://github.com/openai/math"},
-    {"name": "Unite.AI", "url": "https://www.unite.ai/openai-releases-722-math-manuscripts-from-an-unreleased-ai-model/"},
-    {"name": "AI Weekly", "url": "https://aiweekly.co/alerts/openai-publishes-722-ai-generated-math-manuscripts-on-github"}
+    {
+      "name": "OpenAI (github.com/openai/math)",
+      "url": "https://github.com/openai/math"
+    },
+    {
+      "name": "Unite.AI",
+      "url": "https://www.unite.ai/openai-releases-722-math-manuscripts-from-an-unreleased-ai-model/"
+    },
+    {
+      "name": "AI Weekly",
+      "url": "https://aiweekly.co/alerts/openai-publishes-722-ai-generated-math-manuscripts-on-github"
+    }
   ],
   "scenes": [
-    {"type": "breaking", "narration": "Did you know that OpenAI just published seven hundred twenty-two math papers? And an AI wrote every single one.",
-     "lines": ["OpenAI just posted", "722 math papers", "all written by AI"], "accent": 1, "source": "OpenAI · Unite.AI · AI Weekly",
-     "cues": {"l1": "openai", "l2": "seven", "l3": "ai"}},
-    {"type": "story", "narration": "On October seventh, OpenAI posted them on GitHub, free for anyone to read. They're grouped into three hundred seventy-two families, and came from an unreleased model that was handed about four thousand problems.",
-     "source": "OpenAI · GitHub", "when": "OCT 7", "headline": "OpenAI publishes 722 AI-written math manuscripts, free on GitHub",
-     "facts": ["372 families of results", "~4,000 problems posed"], "cues": {"headline": "october", "f1": "three", "f2": "four"}},
-    {"type": "stat", "narration": "And on average, each paper took about three hours of AI thinking. That's one afternoon of compute per result.",
-     "value": 3, "suffix": " hrs", "label": "AI thinking per paper", "icon": "brain", "sub": "Average per result, from an unreleased OpenAI model.", "cues": {"reveal": "three", "sub": "afternoon"}},
-    {"type": "concept", "narration": "So how do you trust a paper no human wrote? That's where Lean comes in. Lean is a proof checker: software that verifies every logical step of a proof.",
-     "term": "LEAN", "definition": "Software that checks every logical step of a math proof.", "cues": {"term": "lean", "def": "software"}},
-    {"type": "compare", "narration": "Some of these papers come with Lean proofs, so a computer has checked them. Others don't yet, and the repository itself warns they could contain mistakes.",
-     "left": {"title": "Lean-checked", "icon": "check", "points": ["A computer verified each step", "Trust the proof, not the author"]},
-     "right": {"title": "Not formalized yet", "icon": "search", "points": ["README says it may have issues", "Needs expert human review"]},
-     "verdict": "Some are proven. Others still need checking.", "cues": {"left": "some", "right": "others", "verdict": "warns"}},
-    {"type": "engage", "narration": "Quick pause. If this is blowing your mind, hit like, and share it with a friend who thinks AI can't do math.",
-     "line": "Hit like. Share with a math-loving friend.", "sub": "A new AI story every morning.", "cues": {"like": "like", "share": "share"}},
-    {"type": "quote", "narration": "OpenAI's own readme is blunt: Not all have accompanying Lean formalizations. Some of the unformalized results could have issues.",
-     "text": "Not all have accompanying Lean formalizations. Some of the unformalized results could have issues.", "who": "OpenAI repository README", "role": "github.com/openai/math", "cues": {"quote": "not"}},
-    {"type": "why", "narration": "Why does this matter? Math is a test of real reasoning. If AI can write proofs, checking them becomes the hard part. And an advisory group at the Institute for Advanced Study is urging labs to disclose their models, prompts, and costs.",
-     "points": ["Math tests real reasoning", "Checking may now be harder than writing", "Experts want open, shared rules for releases"], "icons": ["brain", "search", "doc"],
-     "cues": {"p1": "math", "p2": "if", "p3": "and"}},
-    {"type": "takeaways", "narration": "Three takeaways. One: seven hundred twenty-two AI-written math papers are now public. Two: some are machine-checked, some are not. Three: when AI writes it, humans still need to verify it.",
-     "points": ["722 AI-written math papers are public", "Some are machine-checked, some are not", "AI writes it. Humans still verify it."], "cues": {"p1": "one", "p2": "two", "p3": "three#2"}},
-    {"type": "sources_end", "narration": "I checked this against the OpenAI repository, Unite AI, and AI Weekly. Follow FredsDesk for a new AI story every morning.",
-     "sources": ["OpenAI · github.com/openai/math", "Unite.AI", "AI Weekly"], "cues": {"sources": "checked", "follow": "follow"}}
+    {
+      "type": "breaking",
+      "narration": "Did you know that OpenAI just published seven hundred twenty-two math papers? And an AI wrote every single one.",
+      "lines": [
+        "OpenAI just posted",
+        "722 math papers",
+        "all written by AI"
+      ],
+      "accent": 1,
+      "source": "OpenAI · Unite.AI · AI Weekly",
+      "cues": {
+        "l1": "openai",
+        "l2": "seven",
+        "l3": "ai"
+      }
+    },
+    {
+      "type": "story",
+      "narration": "On October seventh, OpenAI posted them on GitHub, free for anyone to read. They're grouped into three hundred seventy-two families, and came from an unreleased model that was handed about four thousand problems.",
+      "source": "OpenAI · GitHub",
+      "headline": "OpenAI publishes 722 AI-written math manuscripts, free on GitHub",
+      "facts": [
+        "372 families of results",
+        "~4,000 problems posed"
+      ],
+      "cues": {
+        "headline": "october",
+        "f1": "three",
+        "f2": "four"
+      }
+    },
+    {
+      "type": "stat",
+      "narration": "And on average, each paper took about three hours of AI thinking. That's one afternoon of compute per result.",
+      "value": 3,
+      "suffix": " hrs",
+      "label": "AI thinking per paper",
+      "icon": "brain",
+      "sub": "Average per result, from an unreleased OpenAI model.",
+      "cues": {
+        "reveal": "three",
+        "sub": "afternoon"
+      }
+    },
+    {
+      "type": "concept",
+      "narration": "So how do you trust a paper no human wrote? That's where Lean comes in. Lean is a proof checker: software that verifies every logical step of a proof.",
+      "term": "LEAN",
+      "definition": "Software that checks every logical step of a math proof.",
+      "cues": {
+        "term": "lean",
+        "def": "software"
+      }
+    },
+    {
+      "type": "compare",
+      "narration": "Some of these papers come with Lean proofs, so a computer has checked them. Others don't yet, and the repository itself warns they could contain mistakes.",
+      "left": {
+        "title": "Lean-checked",
+        "icon": "check",
+        "points": [
+          "A computer verified each step",
+          "Trust the proof, not the author"
+        ]
+      },
+      "right": {
+        "title": "Not formalized yet",
+        "icon": "search",
+        "points": [
+          "README says it may have issues",
+          "Needs expert human review"
+        ]
+      },
+      "verdict": "Some are proven. Others still need checking.",
+      "cues": {
+        "left": "some",
+        "right": "others",
+        "verdict": "warns"
+      }
+    },
+    {
+      "type": "engage",
+      "narration": "Quick pause. If this is blowing your mind, hit like, and share it with a friend who thinks AI can't do math.",
+      "line": "Hit like. Share with a math-loving friend.",
+      "sub": "A new AI story every morning.",
+      "cues": {
+        "like": "like",
+        "share": "share"
+      }
+    },
+    {
+      "type": "quote",
+      "narration": "OpenAI's own readme is blunt: Not all have accompanying Lean formalizations. Some of the unformalized results could have issues.",
+      "text": "Not all have accompanying Lean formalizations. Some of the unformalized results could have issues.",
+      "who": "OpenAI repository README",
+      "role": "github.com/openai/math",
+      "cues": {
+        "quote": "not"
+      }
+    },
+    {
+      "type": "why",
+      "narration": "Why does this matter? Math is a test of real reasoning. If AI can write proofs, checking them becomes the hard part. And an advisory group at the Institute for Advanced Study is urging labs to disclose their models, prompts, and costs.",
+      "points": [
+        "Math tests real reasoning",
+        "Checking may now be harder than writing",
+        "Experts want open, shared rules for releases"
+      ],
+      "icons": [
+        "brain",
+        "search",
+        "doc"
+      ],
+      "cues": {
+        "p1": "math",
+        "p2": "if",
+        "p3": "and"
+      }
+    },
+    {
+      "type": "takeaways",
+      "narration": "Three takeaways. One: seven hundred twenty-two AI-written math papers are now public. Two: some are machine-checked, some are not. Three: when AI writes it, humans still need to verify it.",
+      "points": [
+        "722 AI-written math papers are public",
+        "Some are machine-checked, some are not",
+        "AI writes it. Humans still verify it."
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three#2"
+      }
+    },
+    {
+      "type": "sources_end",
+      "narration": "I checked this against the OpenAI repository, Unite AI, and AI Weekly. Follow FredsDesk for a new AI story every morning.",
+      "sources": [
+        "OpenAI · github.com/openai/math",
+        "Unite.AI",
+        "AI Weekly"
+      ],
+      "cues": {
+        "sources": "checked",
+        "follow": "follow"
+      }
+    }
   ],
   "post": {
     "title": "OpenAI just published 722 math papers written by an AI",
     "description": "OpenAI posted 722 AI-written math manuscripts on GitHub. Some are machine-checked with Lean, some are not. Here is what that means, and why checking AI work is the next big problem.",
-    "hashtags": ["#AI", "#AINews", "#OpenAI", "#Math", "#Tech", "#FredsDesk"],
+    "hashtags": [
+      "#AI",
+      "#AINews",
+      "#OpenAI",
+      "#Math",
+      "#Tech",
+      "#FredsDesk"
+    ],
     "pinned_comment": "Would you trust a math proof an AI wrote? Tell me below 👇"
   }
 }

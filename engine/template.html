@@ -14,25 +14,29 @@ canvas{display:block;width:100vw;max-height:100vh;aspect-ratio:9/16;margin:auto}
 <script src="scenes.js"></script>
 <script src="scenes2.js"></script>
 <script src="scenes_news.js"></script>
+<script src="motion.js"></script>
 <script>
 /* template.html?tl=<path to timeline.js>  -> window.renderFrame(n), window.getEvents() */
 let TL = null, CAPS = [];
 function frame(t) {
   ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.shadowBlur = 0;
+  const news = TL.kind === 'news', kind = news ? 'news' : 'lesson';
+  let i = TL.scenes.findIndex(s => t >= s.start && t < s.end); if (i < 0) i = TL.scenes.length - 1;
+  const cam = camera(TL.scenes[i], t);
   drawBackground(t);
-  if (TL.kind === 'news') drawNewsBackdrop(t);
-  const S = TL.scenes.find(s => t >= s.start && t < s.end) || TL.scenes[TL.scenes.length - 1];
-  const e = eo3((t - S.start) / .32);
-  ctx.save(); ctx.globalAlpha = e; ctx.translate(0, (1 - e) * 34);
-  SCENES[S.type].draw(S, t);
-  ctx.restore();
-  if (TL.kind === 'news') drawChromeNews(t, TL); else drawChrome(t, TL);
+  if (news) drawNewsBackdrop(t);
+  livingBackground(t, kind, cam);
+  FX = { t, t0: TL.scenes[i].start, accent: ACCENT[kind] };
+  const S = renderScenes(t, TL.scenes);
+  FX = null;
+  if (news) drawChromeNews(t, TL); else drawChrome(t, TL);
   if (S.type !== 'hook') drawCaptions(t, CAPS);
   const fin = TL.duration - .35; if (t > fin) { ctx.fillStyle = `rgba(7,23,42,${clamp((t - fin) / .35)})`; ctx.fillRect(0, 0, W, H) }
 }
 function getEvents() {
   const ev = [];
-  for (const S of TL.scenes) { ev.push({ t: S.start, kind: 'whoosh' }); for (const e of SCENES[S.type].events(S)) ev.push(e) }
+  ev.push({ t: 0, kind: 'whoosh' }); for (const e of transitionEvents(TL.scenes)) ev.push(e);
+  for (const S of TL.scenes) for (const e of SCENES[S.type].events(S)) ev.push(e);
   return ev.sort((a, b) => a.t - b.t);
 }
 window.getEvents = getEvents;

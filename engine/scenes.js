@@ -68,15 +68,15 @@ SCENES.hook = {
     const P = S.props, pl = this.plan(S);
     P.lines.forEach((ln, i) => {
       const a = A(t, pl.ts[i], .38), acc = i === P.accent;
-      const size = fitSize(ln, 800, acc ? 128 : 96, 940, false, 1), y = 590 + i * 150 + (1 - a) * 60;
+      const size = fitSize(ln, 800, acc ? 128 : 96, 940, false, 1), y = 590 + i * 150;
       if (a <= 0) return;
-      const col = acc ? lg(140, 0, 940, 0, [[0, C.blue], [.5, C.tealL], [1, C.tealL]]) : '#FFFFFF';
+      if (acc) { const mw = measure(ln, FM(800, size), 1); marker(540 - mw / 2, y, mw, size, t, pl.ts[i] + .3, C.blue, .2) }
       if (acc && t - pl.ts[i] < .4) {                    // glitch burst
         const g = 1 - (t - pl.ts[i]) / .4, j = Math.sin(t * 90) * 14 * g;
         T(ln, 540 + j, y, { size, color: 'rgba(255,122,107,.8)', alpha: a * .8 * g, ls: 1 });
         T(ln, 540 - j, y, { size, color: 'rgba(63,167,214,.8)', alpha: a * .8 * g, ls: 1 });
       }
-      T(ln, 540, y, { size, color: col, alpha: a, ls: 1, shadow: 20 });
+      kinetic(ln, 540, y, t, pl.ts[i], { size, ls: 1, shadow: 20, chars: acc, colors: acc ? sweepColors(C.blue, C.tealL) : undefined });
       if (acc) {                                          // underline sweep
         const u = eo3((t - pl.ts[i] - .25) / .45), w = measure(ln, FM(800, size), 1);
         if (u > 0) { rr(540 - w / 2, y + 26, w * u, 10, 5); ctx.fillStyle = C.warm; ctx.fill() }
@@ -109,23 +109,23 @@ SCENES.promise = {
     return { tLogo, tClick, tTitle: Math.max(tClick + .15, cue(S, 'title', 2.2)) };
   },
   draw(S, t) {
-    const pl = this.plan(S), cx = 540, cy = 560, sc = 1.38;
+    const pl = this.plan(S), cx = 540, cy = 520, sc = 1.38;
     const prog = clamp((t - pl.tLogo) / 1.3);
     const cu = clamp((t - (pl.tClick - .6)) / .5);                   // cursor flies in
     const press = t > pl.tClick && t < pl.tClick + .14 ? .78 : 1;
     const cur = { a: eo3((t - (pl.tClick - .75)) / .25), dx: (1 - eo3(cu)) * 130, dy: (1 - eo3(cu)) * 110, s: press };
     drawLogo(cx, cy, sc, prog, cur);
     const tip = logoCursorTip(cx, cy, sc); ripple(tip[0] + 8, tip[1] + 8, t, pl.tClick, .7, 130);
-    wordmark(540, 930, 100, clamp((t - (pl.tLogo + .9)) / .9));
+    wordmark(540, 885, 100, clamp((t - (pl.tLogo + .9)) / .9));
     const a = A(t, pl.tTitle, .45);
     if (a > 0) {
       ctx.save(); ctx.globalAlpha *= a; ctx.translate(0, (1 - a) * 40);
       const L = 'LESSON ' + String(S.lesson || 0).padStart(2, '0');
-      pill(540 - 190, 1010, 380, 78, 'rgba(52,176,138,.18)', 'rgba(92,224,181,.6)');
-      T(L, 540, 1063, { size: 38, ls: 5, color: C.tealL });
+      pill(540 - 190, 955, 380, 78, 'rgba(52,176,138,.18)', 'rgba(92,224,181,.6)');
+      T(L, 540, 1008, { size: 38, ls: 5, color: C.tealL });
       const title = S.titleText; let sz = 80, f = FM(800, sz), lines = wrap(title, 900, f);
       for (const z of [68, 58]) if (lines.length > 2) { sz = z; f = FM(800, sz); lines = wrap(title, 900, f) }
-      lines.forEach((l, i) => T(l, 540, 1190 + i * Math.round(sz * 1.15), { font: f, color: '#fff', shadow: 18 }));
+      lines.forEach((l, i) => kinetic(l, 540, 1125 + i * Math.round(sz * 1.15), t, pl.tTitle + .1 + i * .18, { size: sz, shadow: 18 }));
       ctx.restore();
     }
   },
@@ -327,10 +327,10 @@ SCENES.recap = {
     P.points.forEach((p, i) => {
       const a = A(t, pl.t[i], .5), y = 470 + i * 250; if (a <= 0) return;
       ctx.save(); ctx.globalAlpha *= a; ctx.translate((1 - a) * 90, 0);
-      glass(90, y, 900, 210, 36, .09);
+      glass(90, y, 900, 210, 36, .09, pl.t[i]);
       circ(180, y + 105, 48); ctx.fillStyle = PAL[i]; ctx.fill(); T(String(i + 1), 180, y + 125, { size: 56, color: C.ink });
       const f = FM(800, 46), lines = wrap(p, 560, f);
-      lines.forEach((l, k) => T(l, 262, y + 105 + (k - (lines.length - 1) / 2) * 56 + 16, { font: f, align: 'left', color: '#fff' }));
+      lines.forEach((l, k) => kinetic(l, 262, y + 105 + (k - (lines.length - 1) / 2) * 56 + 16, t, pl.t[i] + .12 + k * .15, { size: 46, align: 'left' }));
       checkIcon(900, y + 105, 38, (t - pl.t[i] - .35) / .4);
       ctx.restore();
     });
@@ -351,13 +351,13 @@ SCENES.quiz_end = {
       const qa = A(t, pl.tQuiz, .5);
       pill(540 - 150, 330, 300, 80, 'rgba(255,200,87,.16)', C.warm); T('QUIZ', 540, 387, { size: 46, ls: 10, color: C.warm, alpha: qa });
       const f = FM(800, 62), lines = wrap(P.question, 880, f);
-      lines.forEach((l, i) => T(l, 540, 520 + i * 74, { font: f, color: '#fff', alpha: qa, shadow: 18 }));
+      lines.forEach((l, i) => kinetic(l, 540, 520 + i * 74, t, pl.tQuiz + i * .18, { size: 62, shadow: 18 }));
       const base = 520 + lines.length * 74 + 30;
       P.options.forEach((o, i) => {
         const t0 = [pl.tA, pl.tB][i] - .1, e = eback((t - t0) / .4), y = base + i * 190; if (e <= 0) return;
         const hot = Math.max(0, 1 - Math.abs(t - t0 - .15) / .5);
         ctx.save(); ctx.translate(540, y + 80); ctx.scale(lerp(.9, 1, clamp(e)) + .03 * hot, lerp(.9, 1, clamp(e)) + .03 * hot); ctx.translate(-540, -(y + 80)); ctx.globalAlpha *= clamp(e);
-        glass(90, y, 900, 160, 36, .1 + .08 * hot);
+        glass(90, y, 900, 160, 36, .1 + .08 * hot, t0);
         circ(190, y + 80, 52); ctx.fillStyle = PAL[i === 0 ? 0 : 3]; ctx.fill(); T('AB'[i], 190, y + 100, { size: 60, color: C.ink });
         T(o, 275, y + 98, { font: mono(700, fitSize(o, 700, 54, 650, true)), align: 'left', color: '#fff' });
         ctx.restore();
@@ -373,7 +373,7 @@ SCENES.quiz_end = {
       const ta = A(t, pl.tEnd + .35, .5);
       if (ta > 0) {
         ctx.save(); ctx.globalAlpha *= ta; ctx.translate(0, (1 - ta) * 30);
-        glass(120, 950, 840, 170, 36, .08); label('TOMORROW', 540, 1005, C.warm, 'center');
+        glass(120, 950, 840, 170, 36, .08, pl.tEnd + .35); label('TOMORROW', 540, 1005, C.warm, 'center');
         const tf = FM(800, fitSize(P.teaser, 800, 54, 760)); T(P.teaser, 540, 1080, { font: tf, color: '#fff' });
         ctx.restore();
       }

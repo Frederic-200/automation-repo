@@ -52,7 +52,10 @@ SCENES.stat = {
     }
     const full = P.text !== undefined ? P.text : (P.prefix || '') + P.value.toLocaleString('en-US', { minimumFractionDigits: P.decimals || 0, maximumFractionDigits: P.decimals || 0 }) + (P.suffix || '');
     const size = fitSize(full, 800, 280, 800, false, 2), pop = eback((t - pl.tNum) / .45);
-    ctx.save(); ctx.translate(540, 730); ctx.scale(lerp(.8, 1, clamp(pop)), lerp(.8, 1, clamp(pop))); ctx.globalAlpha *= a;
+    const land = pl.tNum + (P.text !== undefined ? .3 : 1.8), lu = t - land, shk = lu > 0 ? 8 * Math.exp(-lu * 9) * Math.sin(t * 85) : 0;
+    if (lu > 0 && lu < 1) { ctx.save(); ctx.strokeStyle = `rgba(255,200,87,${.7 * (1 - lu)})`; ctx.lineWidth = 10 * (1 - lu) + 2; circ(540, 690, 160 + 320 * eo3(lu)); ctx.stroke();
+      ctx.fillStyle = `rgba(255,255,255,${.18 * Math.max(0, 1 - lu * 4)})`; ctx.fillRect(90, 360, 900, 720); ctx.restore() }
+    ctx.save(); ctx.translate(540 + shk, 730 + shk * .4); ctx.scale(lerp(.8, 1, clamp(pop)), lerp(.8, 1, clamp(pop))); ctx.globalAlpha *= a;
     const g = lg(-400, 0, 400, 0, [[0, C.blue], [1, C.tealL]]);
     T(txt, 0, 0, { font: FM(800, size), color: g, ls: 2, shadow: 30 }); ctx.restore();
     const la = A(t, pl.tNum + .5, .5);
@@ -184,10 +187,10 @@ SCENES.compare = {
     const panel = (side, y, t0, color, dir) => {
       const a = A(t, t0 - .2, .5); if (a <= 0) return;
       ctx.save(); ctx.globalAlpha *= a; ctx.translate(dir * (1 - a) * 80, 0);
-      glass(90, y, 900, 370, 40, .08);
+      glass(90, y, 900, 370, 40, .08, t0 - .2);
       rr(90, y, 14, 370, 7); ctx.fillStyle = color; ctx.fill();
       if (side.icon) icon(side.icon, 190, y + 70, 1.2, color);
-      T(side.title, side.icon ? 250 : 140, y + 92, { font: FM(800, fitSize(side.title, 800, 58, side.icon ? 680 : 740)), color, align: 'left' });
+      kinetic(side.title, side.icon ? 250 : 140, y + 92, t, t0 - .1, { size: fitSize(side.title, 800, 58, side.icon ? 680 : 740), color, align: 'left' });
       side.points.forEach((p, i) => {
         const pa = A(t, t0 + .5 + i * .85, .4); if (pa <= 0) return;
         ctx.save(); ctx.globalAlpha *= pa; ctx.translate((1 - pa) * 30, 0);
