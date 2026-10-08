@@ -4,7 +4,7 @@ Usage: python3 voice.py <script.json> <outdir> [--voice am_michael] [--speed 1.0
 import json, re, sys, subprocess, os
 import numpy as np, soundfile as sf
 
-LEAD, TAIL, MAXDUR = 0.15, 0.35, 88.0
+LEAD, TAIL, MAXDUR = 0.15, 0.35, 88.0   # MAXDUR can be raised per script via "max_duration" (news)
 PAUSE = {',': .12, ';': .20, ':': .20, '—': .15, '.': .30, '?': .34, '!': .30}
 SR = 24000
 
@@ -25,10 +25,10 @@ def fade(a, n=int(0.006 * SR)):
 def main():
     script_path, outdir = sys.argv[1], sys.argv[2]
     script = json.load(open(script_path))
-    voice = script.get('voice', 'auto'); speed = 1.0
+    voice = script.get('voice', 'auto'); speed = float(script.get('speed', 1.0)); maxdur = float(script.get('max_duration', MAXDUR))
     if voice == 'auto':   # daily rotation from voices.json
         cyc = json.load(open(os.path.join(os.path.dirname(__file__), 'voices.json')))['cycle']
-        voice = cyc[(int(script['lesson']) - 1) % len(cyc)]
+        voice = cyc[(int(script.get('lesson', 1)) - 1) % len(cyc)]
     if '--voice' in sys.argv: voice = sys.argv[sys.argv.index('--voice') + 1]
     if '--speed' in sys.argv: speed = float(sys.argv[sys.argv.index('--speed') + 1])
     # "AI" must stay "AI": the engine already says "ay-eye"; "A I" makes it read the article "uh" ("uh-eye")
@@ -71,8 +71,8 @@ def main():
     audio = np.concatenate(blocks)
     dur = len(audio) / SR
     stretch = 1.0
-    if dur > MAXDUR:
-        stretch = dur / MAXDUR + 0.002
+    if dur > maxdur:
+        stretch = dur / maxdur + 0.002
         print(f'too long ({dur:.1f}s) -> tempo x{stretch:.3f}')
     sf.write(os.path.join(outdir, 'voice_raw.wav'), audio, SR)
     if stretch > 1.0:
@@ -85,8 +85,9 @@ def main():
         dur /= stretch
     else:
         os.replace(os.path.join(outdir, 'voice_raw.wav'), os.path.join(outdir, 'voice.wav'))
-    tl = {'fps': 30, 'duration': round(dur, 3), 'lesson': script['lesson'], 'season': script['season'],
-          'title': script['title'], 'voice': voice, 'scenes': scenes_tl}
+    tl = {'fps': 30, 'duration': round(dur, 3), 'lesson': script.get('lesson', 0), 'season': script.get('season', ''),
+          'title': script['title'], 'voice': voice, 'scenes': scenes_tl,
+          'kind': script.get('kind', 'lesson'), 'date': script.get('date', ''), 'ticker': script.get('ticker', [])}
     json.dump(tl, open(os.path.join(outdir, 'timeline.json'), 'w'), indent=1)
     open(os.path.join(outdir, 'timeline.js'), 'w').write('window.TIMELINE=' + json.dumps(tl) + ';')
     print(f'voice done: {dur:.1f}s total, tempo {stretch:.3f}')

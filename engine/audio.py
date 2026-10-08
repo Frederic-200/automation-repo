@@ -74,6 +74,13 @@ def tick(n=0):
 def ding():
     t = tt(1.0); return (np.sin(2 * np.pi * 1568 * t) + .5 * np.sin(2 * np.pi * 2093 * t) + .25 * np.sin(2 * np.pi * 3136 * t)) * np.exp(-t / .22) * np.minimum(1, t / .002)
 
+def stinger():
+    t = tt(1.2); f = np.where(t < .11, 392., np.where(t < .22, 523.25, 784.))
+    s = np.sin(2 * np.pi * np.cumsum(f) / SR) + .45 * np.sin(2 * np.pi * np.cumsum(f * 2) / SR)
+    return s * np.exp(-t / .38) * np.minimum(1, t / .003) * .55 + bp(rng.standard_normal(len(t)), 500, 6500) * np.exp(-t / .1) * .35
+def thump():
+    t = tt(.35); return np.sin(2 * np.pi * np.cumsum(70 + 90 * np.exp(-t * 25)) / SR) * np.exp(-t / .1)
+
 tickn = 0
 for e in sorted(events, key=lambda e: e['t']):
     k, t = e['kind'], e['t']
@@ -90,6 +97,8 @@ for e in sorted(events, key=lambda e: e['t']):
     elif k == 'flip': add(X, flip(), t, .45)
     elif k == 'tick': add(X, tick(tickn % 3), t, .6); tickn += 1
     elif k == 'ding': add(X, ding(), t, .4)
+    elif k == 'stinger': add(X, stinger(), t, .6)
+    elif k == 'thump': add(X, thump(), t, .7)
 
 # ---------------- narration + ducking ----------------
 import soundfile as sf

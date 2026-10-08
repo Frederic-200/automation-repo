@@ -13,18 +13,20 @@ canvas{display:block;width:100vw;max-height:100vh;aspect-ratio:9/16;margin:auto}
 <script src="brand.js"></script>
 <script src="scenes.js"></script>
 <script src="scenes2.js"></script>
+<script src="scenes_news.js"></script>
 <script>
 /* template.html?tl=<path to timeline.js>  -> window.renderFrame(n), window.getEvents() */
 let TL = null, CAPS = [];
 function frame(t) {
   ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.shadowBlur = 0;
   drawBackground(t);
+  if (TL.kind === 'news') drawNewsBackdrop(t);
   const S = TL.scenes.find(s => t >= s.start && t < s.end) || TL.scenes[TL.scenes.length - 1];
   const e = eo3((t - S.start) / .32);
   ctx.save(); ctx.globalAlpha = e; ctx.translate(0, (1 - e) * 34);
   SCENES[S.type].draw(S, t);
   ctx.restore();
-  drawChrome(t, TL);
+  if (TL.kind === 'news') drawChromeNews(t, TL); else drawChrome(t, TL);
   if (S.type !== 'hook') drawCaptions(t, CAPS);
   const fin = TL.duration - .35; if (t > fin) { ctx.fillStyle = `rgba(7,23,42,${clamp((t - fin) / .35)})`; ctx.fillRect(0, 0, W, H) }
 }
