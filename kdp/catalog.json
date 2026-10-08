@@ -1,1 +1,12 @@
-{"books": []}
+{
+  "books": [
+    {
+      "date": "2026-10-09",
+      "slug": "farm-friends",
+      "title": "Farm Friends Coloring & Activity Book",
+      "pages": 64,
+      "drive": "https://drive.google.com/drive/folders/1-Truw26lB7KxS9Et4fauQfR8abxycFk1",
+      "status": "ready to upload"
+    }
+  ]
+}
