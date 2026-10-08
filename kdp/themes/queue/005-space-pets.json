@@ -1,0 +1,79 @@
+{
+  "slug": "space-pets",
+  "title": "Space Pets",
+  "cover_line": "Coloring & Activity Book",
+  "kdp_subtitle": "Puppies, Kittens and Robots in Outer Space to Color, with Mazes, Counting and Dot-to-Dot for Kids Ages 4-8",
+  "scene": "space",
+  "place": "outer space",
+  "characters": [
+    "dog",
+    "cat",
+    "bunny",
+    "robot",
+    "bear",
+    "dragon"
+  ],
+  "cover_characters": [
+    "dog",
+    "robot",
+    "cat"
+  ],
+  "props": [
+    "rocket",
+    "planet",
+    "star",
+    "moon",
+    "sun",
+    "balloon"
+  ],
+  "cover_props": [
+    "rocket",
+    "planet"
+  ],
+  "maze_goals": [
+    "rocket",
+    "planet",
+    "moon"
+  ],
+  "dot_shapes": [
+    "rocket",
+    "star",
+    "heart",
+    "balloon"
+  ],
+  "words": [
+    "DOG",
+    "CAT",
+    "BUNNY",
+    "ROBOT",
+    "ROCKET",
+    "PLANET",
+    "STAR",
+    "MOON",
+    "SPACE",
+    "SUN"
+  ],
+  "sky_colour": "purple",
+  "back_headline": "Blast Off With Your Crayons!",
+  "back_lines": [
+    "Puppies, kittens and robots are zooming past planets",
+    "and stars. Where will they fly next?"
+  ],
+  "description": "<b>Puppies and kittens are blasting off to space!</b><br><br>Space Pets is a big 8.5 x 11 coloring and activity book made for kids ages 4-8. Every page has bold, easy-to-color outlines and a fun job to do.<br><br><b>Inside you will find:</b><ul><li>Space puppies, kittens, bunnies, robots and a friendly dragon</li><li>Rockets, planets, moons and shining stars</li><li>Color-by-number pages with an easy color key</li><li>Mazes, counting, dot-to-dot, matching and spot-the-difference puzzles</li><li>Word tracing and a word search for early readers</li><li>Single-sided pages, so markers will not bleed through</li></ul>A fun gift for kids who love pets, rockets and the stars.",
+  "keywords": [
+    "space coloring book for kids ages 4-8",
+    "outer space activity book for kids",
+    "puppy coloring book for kids",
+    "rocket planet coloring pages",
+    "robot coloring book for boys",
+    "kids activity book mazes dot to dot",
+    "space gifts for kids"
+  ],
+  "categories": [
+    "Children's Books > Activities, Crafts & Games > Coloring Books",
+    "Children's Books > Science, Nature & How It Works > Astronomy & Space",
+    "Children's Books > Activities, Crafts & Games > Activity Books"
+  ],
+  "price": "$7.99",
+  "spine_colour": "#3d2f7d"
+}

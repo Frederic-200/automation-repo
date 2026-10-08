@@ -1,0 +1,33 @@
+{
+  "slug": "farm-friends",
+  "title": "Farm Friends",
+  "cover_line": "Coloring & Activity Book",
+  "kdp_subtitle": "Color by Number, Mazes, Counting, Dot-to-Dot and Cute Farm Animal Coloring Pages for Kids Ages 4-8",
+  "scene": "farm",
+  "characters": ["cow", "pig", "chick", "sheep", "duck", "bunny"],
+  "cover_characters": ["cow", "pig", "chick"],
+  "props": ["barn", "apple", "carrot", "fence", "flower", "tree"],
+  "cover_props": ["flower", "flower"],
+  "maze_goals": ["apple", "carrot", "barn"],
+  "dot_shapes": ["apple", "house", "egg", "heart"],
+  "words": ["COW", "PIG", "CHICK", "SHEEP", "DUCK", "BUNNY", "BARN", "APPLE", "CARROT", "FENCE", "FARM", "TREE"],
+  "back_headline": "Welcome to the Farm!",
+  "back_lines": ["Moo, oink, cluck! The happiest animals on the farm", "are waiting for your colors."],
+  "description": "<b>Meet the happiest animals on the farm!</b><br><br>Farm Friends is a big 8.5 x 11 coloring and activity book made for kids ages 4-8. Every page has bold, easy-to-color outlines and a fun job to do.<br><br><b>Inside you will find:</b><ul><li>Cute cows, pigs, chicks, sheep, ducks and bunnies to color</li><li>Color-by-number pages with an easy color key</li><li>Mazes, counting, dot-to-dot, matching and spot-the-difference puzzles</li><li>Word tracing and a farm word search for early readers</li><li>Single-sided pages, so markers will not bleed through</li></ul>A great gift for birthdays, rainy days, car trips and quiet time.",
+  "keywords": [
+    "farm animals coloring book for kids ages 4-8",
+    "color by number book for kids",
+    "kids activity book mazes counting dot to dot",
+    "preschool kindergarten activity workbook",
+    "cow pig chicken coloring pages for toddlers",
+    "farm gift for kids who love animals",
+    "big coloring book for boys and girls"
+  ],
+  "categories": [
+    "Children's Books > Activities, Crafts & Games > Coloring Books",
+    "Children's Books > Animals > Farm Animals",
+    "Children's Books > Activities, Crafts & Games > Activity Books"
+  ],
+  "price": "$7.99",
+  "spine_colour": "#2b3a8f"
+}
