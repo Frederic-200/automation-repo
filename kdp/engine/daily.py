@@ -91,6 +91,32 @@ def update_tracker(drive, sheet_id, row):
     drive.files().update(fileId=sheet_id, media_body=media).execute()
 
 
+def upload_book(theme, today, out, facts, full_title):
+    drive = drive_service()
+    parent = os.environ.get("KDP_DAILY_FOLDER_ID") or DEFAULT_DAILY_FOLDER
+    top = mkfolder(drive, f"{today} - {theme['title']}", parent)
+    folder_url = top["webViewLink"]
+    sub = {k: mkfolder(drive, k, top["id"])["id"] for k in
+           ("1 Interior Pages", "2 Cover", "3 Final KDP Files", "4 Listing Kit")}
+    for png in sorted(glob.glob(os.path.join(out, "pages", "*.png"))):
+        upload(drive, png, sub["1 Interior Pages"])
+    upload(drive, os.path.join(out, "contact_sheet.png"), sub["2 Cover"], "All pages - preview.png")
+    upload(drive, os.path.join(out, "cover_front.png"), sub["2 Cover"], f"{theme['title']} - front cover preview.png")
+    upload(drive, os.path.join(out, "interior.pdf"), sub["3 Final KDP Files"], f"{theme['title']} - interior.pdf")
+    upload(drive, os.path.join(out, "cover.pdf"), sub["3 Final KDP Files"], f"{theme['title']} - cover.pdf")
+    upload(drive, os.path.join(out, "listing.md"), sub["4 Listing Kit"], f"Listing Kit - {theme['title']}",
+           convert_to="application/vnd.google-apps.document", mime="text/plain")
+    tracker = os.environ.get("KDP_TRACKER_ID") or DEFAULT_TRACKER
+    if tracker:
+        try:
+            update_tracker(drive, tracker, [today, full_title, "KDP paperback", "Ready to upload",
+                                            str(facts["interior_pages"]), theme.get("price", "$7.99"), folder_url, ""])
+        except Exception as e:   # tracker problems must not lose the book
+            print("::warning::Tracker not updated: " + str(e))
+    print("Uploaded to Drive:", folder_url)
+    return folder_url
+
+
 def main():
     args = sys.argv[1:]
     log = json.load(open(LOG)) if os.path.exists(LOG) else {"books": []}
@@ -123,28 +149,12 @@ def main():
     full_title = f"{theme['title']} {theme.get('cover_line', 'Coloring & Activity Book')}"
     folder_url = ""
     if "--no-upload" not in args:
-        drive = drive_service()
-        parent = os.environ.get("KDP_DAILY_FOLDER_ID") or DEFAULT_DAILY_FOLDER
-        top = mkfolder(drive, f"{today} - {theme['title']}", parent)
-        folder_url = top["webViewLink"]
-        sub = {k: mkfolder(drive, k, top["id"])["id"] for k in
-               ("1 Interior Pages", "2 Cover", "3 Final KDP Files", "4 Listing Kit")}
-        for png in sorted(glob.glob(os.path.join(out, "pages", "*.png"))):
-            upload(drive, png, sub["1 Interior Pages"])
-        upload(drive, os.path.join(out, "contact_sheet.png"), sub["2 Cover"], "All pages - preview.png")
-        upload(drive, os.path.join(out, "cover_front.png"), sub["2 Cover"], f"{theme['title']} - front cover preview.png")
-        upload(drive, os.path.join(out, "interior.pdf"), sub["3 Final KDP Files"], f"{theme['title']} - interior.pdf")
-        upload(drive, os.path.join(out, "cover.pdf"), sub["3 Final KDP Files"], f"{theme['title']} - cover.pdf")
-        upload(drive, os.path.join(out, "listing.md"), sub["4 Listing Kit"], f"Listing Kit - {theme['title']}",
-               convert_to="application/vnd.google-apps.document", mime="text/plain")
-        tracker = os.environ.get("KDP_TRACKER_ID") or DEFAULT_TRACKER
-        if tracker:
-            try:
-                update_tracker(drive, tracker, [today, full_title, "KDP paperback", "Ready to upload",
-                                                str(facts["interior_pages"]), theme.get("price", "$7.99"), folder_url, ""])
-            except Exception as e:   # tracker problems must not lose the book
-                print("::warning::Tracker not updated: " + str(e))
-        print("Uploaded to Drive:", folder_url)
+        try:
+            folder_url = upload_book(theme, today, out, facts, full_title)
+        except Exception as e:
+            msg = f"Drive upload failed: {type(e).__name__}: {str(e)[:600]}"
+            print("::error::" + msg.replace("\n", " "))
+            fail(msg + "\nThe book was built; download it from the run's kdp-book artifact.")
 
     if "--no-log" not in args:
         log["books"].append({"date": today, "slug": theme["slug"], "title": full_title,
