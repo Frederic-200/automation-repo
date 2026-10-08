@@ -31,7 +31,8 @@ def main():
         voice = cyc[(int(script['lesson']) - 1) % len(cyc)]
     if '--voice' in sys.argv: voice = sys.argv[sys.argv.index('--voice') + 1]
     if '--speed' in sys.argv: speed = float(sys.argv[sys.argv.index('--speed') + 1])
-    say = script.get('say', {})
+    # "AI" must stay "AI": the engine already says "ay-eye"; "A I" makes it read the article "uh" ("uh-eye")
+    say = {k: v for k, v in script.get('say', {}).items() if not re.fullmatch(r'A\s+I[.,;:!?]*', v.strip())}
     os.makedirs(outdir, exist_ok=True)
     from kokoro_onnx import Kokoro
     k = Kokoro(os.path.join(os.path.dirname(__file__), '..', 'models', 'kokoro-v1.0.int8.onnx'),

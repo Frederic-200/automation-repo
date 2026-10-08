@@ -5,8 +5,7 @@
   "voice": "auto",
   "say": {
     "ChatGPT": "Chat G P T",
-    "FredsDesk": "Freds Desk",
-    "AI": "A I"
+    "FredsDesk": "Freds Desk"
   },
   "scenes": [
     {

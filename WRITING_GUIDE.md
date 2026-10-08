@@ -13,7 +13,7 @@ Scenes may be added between 3 and 6 (up to 9 scenes total) but order of the beat
 - `title` and `season` must equal the curriculum entry. Last scene `teaser` = next lesson's title, and its narration says "Tomorrow: ...".
 - Hook narration must be new: never reuse a hook, analogy or example listed in `covered.json`. Make each lesson's analogy and example fresh and concrete (cooking, sport, cities, music, travel, school...), not always LEGO.
 - Facts must be accurate and not time-sensitive. No hype, no medical/financial claims. If unsure of a number, leave it out.
-- Spoken-word fixes go in `say` (e.g. "ChatGPT": "Chat G P T", "AI": "A I"). Spell numbers as words in narration when they should be read aloud.
+- Spoken-word fixes go in `say` (e.g. "ChatGPT": "Chat G P T"). Never add "AI": the voice already says it right, and "A I" is read as "uh-eye". Spell numbers as words in narration when they should be read aloud.
 - `post`: title (<=90 chars, ends "| AI Lesson #N"), description (1-2 sentences + "Quiz inside!"), 6 hashtags (#AI #LearnAI ... #Shorts), pinned_comment with the quiz answer + a question.
 
 ## Top-level shape
