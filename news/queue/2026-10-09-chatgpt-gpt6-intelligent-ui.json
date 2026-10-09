@@ -1,0 +1,220 @@
+{
+  "kind": "news",
+  "date": "2026-10-09",
+  "title": "ChatGPT now answers with buttons, charts and mini apps",
+  "voice": "af_heart",
+  "speed": 1.04,
+  "max_duration": 118,
+  "say": {
+    "FredsDesk": "Freds Desk",
+    "ChatGPT": "Chat G P T",
+    "GPT-6": "G P T six"
+  },
+  "ticker": [
+    "OpenAI rolls GPT-6 out to all ChatGPT users",
+    "Anthropic cuts Claude Haiku 5.5 prices",
+    "Pwn2Own hackers break OpenAI Codex, LiteLLM",
+    "StepFun opens Step 5 Preview model",
+    "Google Cloud debuts a universal Gemini agent"
+  ],
+  "sources": [
+    {
+      "name": "OpenAI",
+      "url": "https://openai.com/index/gpt-6-for-everyone/"
+    },
+    {
+      "name": "MacRumors",
+      "url": "https://www.macrumors.com/2026/10/07/chatgpt-intelligent-ui/"
+    },
+    {
+      "name": "Search Engine Journal",
+      "url": "https://www.searchenginejournal.com/chatgpt-gpt-6-intelligent-ui/592249/"
+    }
+  ],
+  "scenes": [
+    {
+      "type": "breaking",
+      "narration": "Did you know ChatGPT can now answer you with buttons, charts, and little apps it builds on the spot? It's called Intelligent UI, and it arrived with GPT-6.",
+      "lines": [
+        "ChatGPT now answers",
+        "with buttons and apps",
+        "built on the spot"
+      ],
+      "accent": 1,
+      "source": "OpenAI · MacRumors · SEJ",
+      "cues": {
+        "l1": "chatgpt",
+        "l2": "buttons",
+        "l3": "spot"
+      }
+    },
+    {
+      "type": "story",
+      "narration": "This week, OpenAI rolled out GPT-6 in ChatGPT worldwide. Paying users got it first, on a model called Sol. A day later, free users got it on a lighter model, Luna.",
+      "source": "OpenAI · MacRumors",
+      "headline": "OpenAI rolls out GPT-6 with Intelligent UI to every ChatGPT tier",
+      "facts": [
+        "Paid plans: GPT-6 Sol",
+        "Free and Go: GPT-6 Luna"
+      ],
+      "cues": {
+        "headline": "openai",
+        "f1": "paying",
+        "f2": "free"
+      }
+    },
+    {
+      "type": "concept",
+      "narration": "So what is Intelligent UI? UI means user interface: the buttons and screens you tap. Now the AI designs the screen for your answer, not just the words.",
+      "term": "INTELLIGENT UI",
+      "definition": "The AI designs the screen for your answer, not just the words.",
+      "cues": {
+        "term": "intelligent",
+        "def": "designs"
+      }
+    },
+    {
+      "type": "compare",
+      "narration": "Ask it to split a dinner bill. Before, you got a paragraph of math. Now you get a tiny bill splitter you can tap. Simple questions get text.",
+      "left": {
+        "title": "Before: just text",
+        "icon": "doc",
+        "points": [
+          "A paragraph of math",
+          "Numbers written out",
+          "You redo it yourself"
+        ]
+      },
+      "right": {
+        "title": "Now: a live screen",
+        "icon": "gear",
+        "points": [
+          "A bill splitter you tap",
+          "Charts, maps, checklists",
+          "Plain text when that fits"
+        ]
+      },
+      "verdict": "The answer becomes a tool.",
+      "cues": {
+        "left": "before",
+        "right": "now",
+        "verdict": "simple"
+      }
+    },
+    {
+      "type": "flow",
+      "narration": "How does it work? You ask. The model decides the layout, then picks ready-made building blocks. A compiler turns them into a live screen while the answer streams in.",
+      "steps": [
+        {
+          "label": "You ask",
+          "sub": "Any everyday question",
+          "icon": "chat"
+        },
+        {
+          "label": "Pick a layout",
+          "sub": "Text, chart, form or tool",
+          "icon": "brain"
+        },
+        {
+          "label": "Grab blocks",
+          "sub": "Ready-made components",
+          "icon": "gear"
+        },
+        {
+          "label": "Render live",
+          "sub": "Drawn while it streams",
+          "icon": "bolt"
+        }
+      ],
+      "note": "Parts appear before the answer is finished.",
+      "cues": {
+        "s1": "ask",
+        "s2": "decides",
+        "s3": "picks",
+        "s4": "compiler"
+      }
+    },
+    {
+      "type": "engage",
+      "narration": "Quick pause. Rather tap an answer than read one? Hit like, and share this with the friend who always splits the bill.",
+      "line": "Like it. Share it with your bill-splitting friend.",
+      "sub": "A new AI story every morning.",
+      "cues": {
+        "like": "like",
+        "share": "share"
+      }
+    },
+    {
+      "type": "stat",
+      "narration": "It's quicker, too. OpenAI says on web search questions, the Instant version starts answering forty-four percent sooner, because it can reply while still thinking.",
+      "value": 44,
+      "suffix": "%",
+      "label": "Sooner to start answering",
+      "icon": "bolt",
+      "sub": "Web search questions, GPT-6 Instant vs the previous version. OpenAI's own test.",
+      "cues": {
+        "reveal": "forty",
+        "sub": "thinking"
+      }
+    },
+    {
+      "type": "why",
+      "narration": "Why does it matter? Chatbots are becoming app builders, and calculator websites get a new rival. But a pretty chart can still be wrong, so check where the numbers came from.",
+      "points": [
+        "Chatbots are becoming app builders",
+        "Calculator sites get a new rival",
+        "Pretty charts still need checking"
+      ],
+      "icons": [
+        "spark",
+        "target",
+        "search"
+      ],
+      "cues": {
+        "p1": "chatbots",
+        "p2": "calculator",
+        "p3": "pretty"
+      }
+    },
+    {
+      "type": "takeaways",
+      "narration": "Three takeaways. One: GPT-6 is rolling out to everyone in ChatGPT. Two: answers can be buttons, charts, and mini apps. Three: a smarter look doesn't mean smarter facts.",
+      "points": [
+        "GPT-6 is rolling out to all ChatGPT users",
+        "Answers can be buttons, charts and mini apps",
+        "A smarter look is not smarter facts"
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three#2"
+      }
+    },
+    {
+      "type": "sources_end",
+      "narration": "I checked this against OpenAI's announcement, MacRumors, and Search Engine Journal. Follow FredsDesk for a new AI story every morning.",
+      "sources": [
+        "OpenAI · GPT-6 for everyone",
+        "MacRumors",
+        "Search Engine Journal"
+      ],
+      "cues": {
+        "sources": "checked",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "ChatGPT now answers with buttons, charts and mini apps",
+    "description": "OpenAI is rolling out GPT-6 to every ChatGPT user, with Intelligent UI: answers that come as buttons, charts, forms and small tools built on the spot. Here's how it works and why you should still check the numbers.",
+    "hashtags": [
+      "#AI",
+      "#AINews",
+      "#ChatGPT",
+      "#OpenAI",
+      "#GPT6",
+      "#FredsDesk"
+    ],
+    "pinned_comment": "Would you rather read an answer or tap one? Tell me below 👇"
+  }
+}
