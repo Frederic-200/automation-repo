@@ -8,6 +8,11 @@ A daily educational AI short (1080x1920, max 90s) generated entirely in code: an
 - **Watchdog 06:20 PH (Claude scheduled task):** if no lesson run happened today (GitHub sometimes skips scheduled runs), it starts one. `daily.py` refuses to publish twice on the same Manila date, so this is safe.
 - A red run (invalid or missing script) means nothing was published that day; fix the script and re-run via Actions > Run workflow (optionally enter a lesson number).
 
+## FredsDesk News (second daily video)
+- **Daily 04:35 PH (Claude scheduled task "FredsDesk News script"):** finds one fresh AI story, checks it against 2+ sources, writes `news/queue/<date>-slug.json` per `news/WRITING_GUIDE.md`, validates it and pushes.
+- **The push triggers `news.yml`** (backup cron 05:37 PH): `engine/news_daily.py` validates, renders (voice `af_heart`, 70-115 s), uploads `News YYYY-MM-DD - Title.*` to the same Drive folder, logs it in `news/covered.json` and moves the script to `news/archive/`. One news video per Manila day.
+- No dates appear on screen (validator enforces it).
+
 ## Layout
 `engine/` renderer, voice, audio, validator · `curriculum/lessons.json` the 100 lessons · `curriculum/covered.json` what's done · `queue/` scripts waiting · `archive/` used scripts · `samples/` extra example scripts.
 
