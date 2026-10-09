@@ -5,18 +5,21 @@ from crv import *
 
 
 def mane(ctx, T, seed=3):
-    rng = random.Random(seed); n = 12; pts = []
-    for i in range(n * 2):
-        a = (i / (n * 2)) * 2 * math.pi - math.pi / 2
-        outer = i % 2 == 0
-        r = (360 + rng.uniform(-12, 22)) if outer else (258 + rng.uniform(-6, 6))
-        a += rng.uniform(-0.015, 0.015)
-        pts.append((math.cos(a) * r * 1.02, math.sin(a) * r * 0.97 - 5))
-    poly_shape(ctx, T(pts), OUT, 'white', seed=seed, smooth=3)
-    # a few inner hair strokes
+    """Ring of leaf-shaped lobes around the head: clean, scalloped, a bit uneven."""
+    rng = random.Random(seed); n = 13
+    s = T.s
+    fs = [E(*T((0, -5)), 292 * s, 285 * s)]
+    for i in range(n):
+        if i in (2, n - 2):      # leave room for the ears
+            continue
+        a = -math.pi / 2 + i * 2 * math.pi / n + rng.uniform(-0.02, 0.02)
+        r = 300 + rng.uniform(-8, 22)
+        c = T((math.cos(a) * r, math.sin(a) * r * 0.97 - 5))
+        fs.append(E(c[0], c[1], 92 * s, 62 * s, math.degrees(a) + math.degrees(T.r), 2.0))
+    shape(ctx, U(*fs, k=10 * s), OUT * s ** 0.5, 'white', seed=seed)
     for ang in (-150, -110, -70, -30, 20, 160, 200):
         a = math.radians(ang)
-        stroke(ctx, T, [(math.cos(a) * 215, math.sin(a) * 215), (math.cos(a + 0.05) * 265, math.sin(a + 0.05) * 265), (math.cos(a) * 305, math.sin(a) * 305)], THIN, (0.1, 0.8))
+        stroke(ctx, T, [(math.cos(a) * 222, math.sin(a) * 222), (math.cos(a + 0.05) * 268, math.sin(a + 0.05) * 268), (math.cos(a) * 310, math.sin(a) * 310)], THIN, (0.1, 0.8))
 
 
 def lion_head(ctx, T):
@@ -53,19 +56,22 @@ def lion_body(ctx, T):
         blob(ctx, F, [(-55, 215), (-185, 205), (-255, 255), (-250, 325), (-140, 350), (-50, 325)], OUT, seed=sd)
         for x in (-215, -170, -125):
             stroke(ctx, F, [(x, 288), (x + 4, 335)], MID - 2, (0.05, 0.4))
-    blob(ctx, T, [(-170, -130), (-205, 20), (-175, 175), (-80, 265), (80, 265), (175, 175), (205, 20), (170, -130), (80, -190), (-80, -190)], OUT, seed=24)
-    # chest fluff
-    for k, x in enumerate((-60, 0, 60)):
-        stroke(ctx, T, [(x - 20, -90), (x, -40), (x + 20, -90)], MID, (0.3, 0.3))
+    blob(ctx, T, [(-170, -130), (-205, 20), (-178, 175), (-85, 268), (85, 268), (178, 175), (205, 20), (170, -130), (80, -190), (-80, -190)], OUT, seed=24)
+    stroke(ctx, T, [(-95, 10), (-110, 110), (-70, 200), (0, 232), (70, 200), (110, 110), (95, 10)], MID, (0.2, 0.2))
+
+
+def paw(ctx, T, ex, ey, flip=False, seed=0):
+    sg = -1 if flip else 1
+    blob(ctx, T, [(ex - 20 * sg, ey - 48), (ex + 36 * sg, ey - 50), (ex + 62 * sg, ey - 8), (ex + 50 * sg, ey + 38), (ex + 5 * sg, ey + 54), (ex - 36 * sg, ey + 28), (ex - 38 * sg, ey - 16)], OUT - 2, seed=seed, n=120)
+    for k in (-1, 0):
+        stroke(ctx, T, [(ex + 14 * sg + k * 24 * sg, ey - 38), (ex + 20 * sg + k * 24 * sg, ey - 4)], 5, (0.1, 0.3))
 
 
 def lion_arms(ctx, T):
-    limb(ctx, T, [(-165, -90), (-230, -190), (-300, -260), (-335, -320)], 88, 72, OUT, seed=25)   # raised paw
-    for k in (-1, 0, 1):
-        stroke(ctx, T, [(-335 + k * 24, -352), (-335 + k * 24 + 2, -326)], 5, (0.1, 0.1))
-    limb(ctx, T, [(165, -95), (225, 20), (215, 120)], 88, 76, OUT, seed=26)
-    for k in (-1, 0, 1):
-        stroke(ctx, T, [(215 + k * 24, 140), (215 + k * 24, 114)], 5, (0.1, 0.1))
+    limb(ctx, T, [(-110, -105), (-195, -150), (-275, -205), (-330, -255)], 100, 84, OUT, seed=25)   # raised arm
+    paw(ctx, T, -345, -285, True, seed=27)
+    limb(ctx, T, [(125, -105), (190, -20), (205, 70)], 100, 84, OUT, seed=26)
+    paw(ctx, T, 205, 112, False, seed=28)
 
 
 def butterfly(ctx, T):
@@ -89,14 +95,14 @@ def page(out):
     ctx.save(); frame_clip(ctx)
     ground(ctx, 1930)
     tilt = 4
-    TB = Xf(860, 1580, 0.95, tilt)
-    TH = Xf(900, 1010, 1.22, tilt * 2.2)
+    TB = Xf(975, 1580, 0.95, tilt)
+    TH = Xf(1015, 1020, 1.14, tilt * 2.2)
     lion_body(ctx, TB)
     lion_head(ctx, TH)
     lion_arms(ctx, TB)
-    butterfly(ctx, Xf(360, 470, 0.95, -18))
-    sparkle(ctx, 160, 700, 22); sparkle(ctx, 560, 250, 18)
-    for (x, y, r, a) in ((1370, 350, 38, 12), (1470, 820, 28, -10), (200, 1180, 30, 18), (1430, 1500, 40, 14)):
+    butterfly(ctx, Xf(330, 1090, 0.7, -20))
+    sparkle(ctx, 560, 420, 20); sparkle(ctx, 190, 760, 16); sparkle(ctx, 300, 1380, 14)
+    for (x, y, r, a) in ((1370, 350, 38, 12), (1470, 820, 28, -10), (190, 1560, 32, 18), (1530, 1330, 36, 14)):
         hearts(ctx, x, y, r, a)
     flower(ctx, 280, 1985, 58, 10); flower(ctx, 1320, 2000, 64, 30); flower(ctx, 1570, 1790, 42, 0)
     for (x, y, s) in ((140, 1960, 1.0), (600, 2050, 0.9), (1130, 2060, 1.1), (1570, 2050, 0.8), (110, 1740, 0.8)):

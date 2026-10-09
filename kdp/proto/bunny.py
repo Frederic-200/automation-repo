@@ -13,8 +13,9 @@ def carrot(ctx, T):
         stroke(ctx, L, [(0, -20), (2, -L_ * 0.5), (0, -L_ * 0.82)], THIN, (0.1, 0.8))
     body = blob(ctx, T, [(-85, -102), (0, -114), (85, -102), (108, 0), (74, 140), (38, 270), (0, 420), (-38, 270), (-74, 140), (-108, 0)], OUT - 2, seed=41)
     with clip(ctx, body):
-        for (a, b, c, d) in ((-112, -30, -30, -14), (30, 20, 112, 4), (-80, 100, -10, 116), (20, 170, 80, 158), (-34, 250, 14, 262), (-8, 330, 22, 340)):
-            stroke(ctx, T, [(a, b), ((a + c) / 2, (b + d) / 2 - 8), (c, d)], THIN + 1, (0.15, 0.5))
+        for (y, side) in ((20, -1), (75, 1), (130, -1), (185, 1), (240, -1)):
+            hw = 104 - y * 0.24
+            stroke(ctx, T, [(side * (hw + 6), y), (side * (hw - 28), y + 10), (side * (hw - 52), y + 6)], THIN + 1, (0.05, 0.6))
 
 
 def bunny_head(ctx, T):
@@ -36,7 +37,7 @@ def bunny_head(ctx, T):
     blob(ctx, T, [(-26, 158), (26, 158), (28, 215), (0, 222), (-28, 215)], THIN + 1, seed=7, n=60)  # buck teeth
     line(ctx, [T((0, 160)), T((0, 218))], 4)
     for sg in (-1, 1):
-        p = T((sg * 170, 118)); cheeks(ctx, p[0], p[0], p[1], 20 * T.s)
+        p = T((sg * 150, 122)); cheeks(ctx, p[0], p[0], p[1], 20 * T.s)
         for dy in (-18, 24):
             stroke(ctx, T, [(sg * 262, 70 + dy * 0.3), (sg * 320, 65 + dy), (sg * 385, 68 + dy * 1.8)], THIN, (0.05, 0.9))
 
@@ -53,11 +54,17 @@ def bunny_body(ctx, T):
     stroke(ctx, T, [(-130, 190), (-95, 290), (0, 322), (95, 290), (130, 190)], MID, (0.3, 0.3))
 
 
-def arm(ctx, T, ctrl, seed):
-    limb(ctx, T, ctrl, 112, 84, OUT, seed=seed)
-    end = ctrl[-1]
-    for k in (-1, 0, 1):
-        stroke(ctx, T, [(end[0] + k * 22 - 4, end[1] - 34), (end[0] + k * 22, end[1] - 8)], 5, (0.1, 0.1))
+def arm_limb(ctx, T, ctrl, seed):
+    limb(ctx, T, ctrl, 96, 82, OUT, seed=seed)
+
+
+def arm_paw(ctx, T, ctrl, seed, flip=False):
+    """Rounded mitten paw with finger lines, drawn on top of the carrot."""
+    ex, ey = ctrl[-1]
+    sg = -1 if flip else 1
+    blob(ctx, T, [(ex - 20 * sg, ey - 50), (ex + 38 * sg, ey - 52), (ex + 66 * sg, ey - 8), (ex + 52 * sg, ey + 40), (ex + 5 * sg, ey + 56), (ex - 38 * sg, ey + 30), (ex - 40 * sg, ey - 18)], OUT - 2, seed=seed + 5, n=120)
+    for k in (-1, 0):
+        stroke(ctx, T, [(ex + 14 * sg + k * 24 * sg, ey - 40), (ex + 20 * sg + k * 24 * sg, ey - 4)], 5, (0.1, 0.3))
 
 
 def page(out):
@@ -70,10 +77,12 @@ def page(out):
     bunny_body(ctx, TB)
     bunny_head(ctx, TH)
     # carrot lying across the tummy, leaves up-right
-    TC = Xf(1020, 1470, 1.2, 62)
+    TC = Xf(1032, 1425, 1.08, 28)
+    AL = [(-215, -70), (-130, -45), (-40, -20)]
+    AR = [(215, -75), (170, -55), (125, -35)]
+    arm_limb(ctx, TB, AL, 8); arm_limb(ctx, TB, AR, 9)
     carrot(ctx, TC)
-    arm(ctx, TB, [(-230, -120), (-255, 40), (-170, 135), (-70, 150)], 8)
-    arm(ctx, TB, [(230, -120), (262, 20), (195, 80), (120, 70)], 9)
+    arm_paw(ctx, TB, AL, 8, False); arm_paw(ctx, TB, AR, 9, True)
     # fillers: hearts, flowers, sparkles, none in rows
     for (x, y, r, a) in ((250, 500, 48, -15), (1400, 380, 38, 12), (1470, 980, 30, -10), (200, 1180, 32, 18), (1440, 1480, 42, 14)):
         hearts(ctx, x, y, r, a)
