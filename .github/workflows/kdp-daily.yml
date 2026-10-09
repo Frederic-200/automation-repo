@@ -1,8 +1,9 @@
 name: Daily KDP book
 
+# PAUSED 2026-10-09 (art-quality upgrade in progress). To resume, un-comment the schedule below.
 on:
-  schedule:
-    - cron: "43 17 * * *"   # 17:43 UTC = 01:43 Philippine time (off the hour: GitHub drops on-the-hour jobs under load)
+  # schedule:
+  #   - cron: "43 17 * * *"   # 17:43 UTC = 01:43 Philippine time (off the hour: GitHub drops on-the-hour jobs under load)
   workflow_dispatch:
     inputs:
       upload:
