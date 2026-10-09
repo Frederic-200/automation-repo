@@ -17,6 +17,15 @@
    "analogy": "Think of cooking. AI is cooking in general, any way a machine can act smart. Machine learning is learning recipes by tasting thousands of di",
    "example": "ChatGPT is deep learning, which makes it machine learning, which makes it AI. All three labels fit.",
    "status": "rendered"
+  },
+  {
+   "lesson": 3,
+   "title": "What is a neural network?",
+   "date": "2026-10-09",
+   "hook": "AI doesn't think. It does math. Billions of times.",
+   "analogy": "",
+   "example": "GPT-3, released in twenty twenty, has a hundred and seventy-five billion of these weights. Training nudges every one of them until the guess",
+   "status": "rendered"
   }
  ]
 }
