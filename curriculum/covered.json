@@ -26,6 +26,15 @@
    "analogy": "",
    "example": "GPT-3, released in twenty twenty, has a hundred and seventy-five billion of these weights. Training nudges every one of them until the guess",
    "status": "rendered"
+  },
+  {
+   "lesson": 4,
+   "title": "What is a token?",
+   "date": "2026-10-10",
+   "hook": "ChatGPT has never read a single word you typed.",
+   "analogy": "Think of LEGO. The model can't swallow a whole sentence at once, so your text gets snapped into bricks, and every brick is one token.",
+   "example": "That's why AI can struggle to count the R's in strawberry. It never sees letters. It only sees tokens.",
+   "status": "rendered"
   }
  ]
 }
