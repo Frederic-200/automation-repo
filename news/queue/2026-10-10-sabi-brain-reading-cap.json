@@ -1,0 +1,228 @@
+{
+  "kind": "news",
+  "date": "2026-10-10",
+  "title": "A startup raised $50M for a cap that turns thoughts into text",
+  "voice": "af_heart",
+  "speed": 1.04,
+  "max_duration": 118,
+  "say": {
+    "FredsDesk": "Freds Desk",
+    "EEG": "E E G",
+    "TestingCatalog": "Testing Catalog"
+  },
+  "ticker": [
+    "USA Today owner sues OpenAI over news content",
+    "Tesla renames Full Self-Driving in Europe",
+    "Anthropic launches free OSS Scanner",
+    "Gemini agents get their own Gmail and Drive",
+    "Manus raises over $500M after Meta exit"
+  ],
+  "sources": [
+    {
+      "name": "Sabi (press release via GlobeNewswire)",
+      "url": "https://www.manilatimes.net/2026/10/10/tmt-newswire/globenewswire/sabi-raises-50-million-seed-round-led-by-khosla-ventures-to-put-a-brain-ai-interface-inside-a-baseball-cap/2442864"
+    },
+    {
+      "name": "Crypto Briefing",
+      "url": "https://cryptobriefing.com/sabi-raises-50m-brain-ai-interface/"
+    },
+    {
+      "name": "TestingCatalog",
+      "url": "https://www.testingcatalog.com/how-sabis-brain-reading-cap-turns-thoughts-into-text/"
+    }
+  ],
+  "scenes": [
+    {
+      "type": "breaking",
+      "narration": "Did you know a startup wants you to talk to AI just by thinking, in a baseball cap? It's called Sabi, and investors just bet fifty million dollars on it.",
+      "lines": [
+        "Talk to AI",
+        "just by thinking",
+        "in a baseball cap"
+      ],
+      "accent": 1,
+      "source": "Sabi · Crypto Briefing · TestingCatalog",
+      "cues": {
+        "l1": "talk",
+        "l2": "thinking",
+        "l3": "baseball",
+        "source": "sabi"
+      }
+    },
+    {
+      "type": "story",
+      "narration": "This week, Sabi announced a fifty million dollar seed round led by Khosla Ventures. The goal: a cap that turns words you imagine into text.",
+      "source": "Sabi · Crypto Briefing",
+      "headline": "Sabi raises $50M to build a cap that turns imagined words into text",
+      "facts": [
+        "$50M seed round",
+        "Led by Khosla Ventures",
+        "Imagined words → text"
+      ],
+      "cues": {
+        "headline": "announced",
+        "f1": "fifty",
+        "f2": "khosla",
+        "f3": "imagine"
+      }
+    },
+    {
+      "type": "concept",
+      "narration": "The idea behind it is called EEG. Your brain fires tiny electrical signals, and sensors outside your head can pick them up. No surgery.",
+      "term": "EEG",
+      "definition": "Reading the brain's tiny electrical signals from outside the head.",
+      "cues": {
+        "term": "idea",
+        "def": "brain"
+      }
+    },
+    {
+      "type": "compare",
+      "narration": "The catch? Brain implants sit inside the skull and get the clearest signals. A cap is easy to wear, but signals arrive weak and blurry through bone and hair.",
+      "left": {
+        "title": "Brain implant",
+        "icon": "bolt",
+        "points": [
+          "Electrodes inside the skull",
+          "Clearest signals so far",
+          "Needs surgery"
+        ]
+      },
+      "right": {
+        "title": "Sabi's cap",
+        "icon": "user",
+        "points": [
+          "Sensors outside the head",
+          "Weaker, blurrier signals",
+          "Wear it like a hat"
+        ]
+      },
+      "verdict": "Easier to wear. Harder to read.",
+      "cues": {
+        "left": "implants",
+        "right": "cap",
+        "verdict": "weak"
+      }
+    },
+    {
+      "type": "flow",
+      "narration": "So Sabi's trick is scale. Tens of thousands of tiny sensors feed an AI model trained on over one hundred thousand hours of recordings, to turn blurry signals into words.",
+      "steps": [
+        {
+          "label": "Tiny sensors",
+          "sub": "Tens of thousands in one cap",
+          "icon": "spark"
+        },
+        {
+          "label": "AI model",
+          "sub": "Trained on 100,000+ hours",
+          "icon": "brain"
+        },
+        {
+          "label": "Text on screen",
+          "sub": "Imagined words, typed out",
+          "icon": "doc"
+        }
+      ],
+      "note": "Company claims, not yet independently tested.",
+      "cues": {
+        "s1": "sensors",
+        "s2": "model",
+        "s3": "words"
+      }
+    },
+    {
+      "type": "engage",
+      "narration": "Quick pause. If you'd wear a mind-reading cap, hit like. If not, share this with a friend and argue about it.",
+      "line": "Like if you'd wear it. Share if you wouldn't.",
+      "sub": "A new AI story every morning.",
+      "cues": {
+        "like": "like",
+        "share": "share"
+      }
+    },
+    {
+      "type": "stat",
+      "narration": "Reports say Sabi is aiming for about thirty words per minute. Slower than typing, but with zero hands.",
+      "value": 30,
+      "suffix": " wpm",
+      "label": "Target speed, by thought alone",
+      "icon": "target",
+      "sub": "A company target, not a tested result.",
+      "cues": {
+        "reveal": "thirty",
+        "sub": "hands"
+      }
+    },
+    {
+      "type": "quote",
+      "narration": "Lead investor Vinod Khosla put it this way: You cannot perform a billion brain surgeries to replace a billion keyboards.",
+      "text": "You cannot perform a billion brain surgeries to replace a billion keyboards.",
+      "who": "Vinod Khosla",
+      "role": "Founder, Khosla Ventures",
+      "cues": {
+        "quote": "cannot",
+        "who": "keyboards"
+      }
+    },
+    {
+      "type": "why",
+      "narration": "Why does it matter? A new way to talk to computers could change how we use AI. But brain data is deeply private. And no independent tests back the claims yet.",
+      "points": [
+        "A new way to talk to computers",
+        "Brain data is deeply private",
+        "Claims still need independent tests"
+      ],
+      "icons": [
+        "spark",
+        "user",
+        "search"
+      ],
+      "cues": {
+        "p1": "new",
+        "p2": "but",
+        "p3": "independent"
+      }
+    },
+    {
+      "type": "takeaways",
+      "narration": "Three takeaways. One: fifty million dollars for a thought-reading cap. Two: it reads brain signals with no surgery. Three: wait for independent tests.",
+      "points": [
+        "$50M for a thought-reading cap",
+        "Reads brain signals, no surgery",
+        "Wait for independent tests"
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three#2"
+      }
+    },
+    {
+      "type": "sources_end",
+      "narration": "I checked this against Sabi's announcement, Crypto Briefing, and TestingCatalog. Follow FredsDesk for a new AI story every morning.",
+      "sources": [
+        "Sabi announcement",
+        "Crypto Briefing",
+        "TestingCatalog"
+      ],
+      "cues": {
+        "sources": "checked",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "A startup raised $50M for a baseball cap that turns thoughts into text",
+    "description": "Sabi raised a $50M seed round led by Khosla Ventures to build a non-invasive EEG cap that turns imagined words into text. Here is how reading the brain from outside the head works, why it is hard, and why the claims still need independent testing.",
+    "hashtags": [
+      "#AI",
+      "#AINews",
+      "#BrainComputerInterface",
+      "#EEG",
+      "#Tech",
+      "#FredsDesk"
+    ],
+    "pinned_comment": "Would you wear a cap that reads your thoughts to talk to AI? Yes or no 👇"
+  }
+}
