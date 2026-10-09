@@ -1,1 +1,21 @@
-{"covered": []}
+{
+ "covered": [
+  {
+   "date": "2026-10-09",
+   "script_date": "2026-10-09",
+   "title": "ChatGPT now answers with buttons, charts and mini apps",
+   "hook": "Did you know ChatGPT can now answer you with buttons, charts, and little apps it builds on the spot? It's called Intelligent UI, and it arrived with GPT-6.",
+   "sources": [
+    "OpenAI",
+    "MacRumors",
+    "Search Engine Journal"
+   ],
+   "urls": [
+    "https://openai.com/index/gpt-6-for-everyone/",
+    "https://www.macrumors.com/2026/10/07/chatgpt-intelligent-ui/",
+    "https://www.searchenginejournal.com/chatgpt-gpt-6-intelligent-ui/592249/"
+   ],
+   "status": "rendered"
+  }
+ ]
+}
