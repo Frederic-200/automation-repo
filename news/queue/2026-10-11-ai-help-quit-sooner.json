@@ -1,0 +1,198 @@
+{
+  "kind": "news",
+  "date": "2026-10-11",
+  "title": "Ten minutes of AI help made people quit hard problems sooner",
+  "voice": "af_heart",
+  "speed": 1.04,
+  "max_duration": 118,
+  "say": {
+    "FredsDesk": "Freds Desk",
+    "ChatGPT": "Chat G P T"
+  },
+  "ticker": [
+    "Anthropic pulls internet from agent evals",
+    "Cloudflare buys Deno",
+    "Apple puts AppleCare AI plan on hold",
+    "Alibaba ships 8-step Qwen image model",
+    "Google Cloud launches Gemini Agent"
+  ],
+  "sources": [
+    {
+      "name": "UC Berkeley News",
+      "url": "https://news.berkeley.edu/2026/10/09/using-ai-for-just-10-minutes-erodes-your-ability-to-persist-at-hard-things/"
+    },
+    {
+      "name": "Liu, Christian, Dumbalska, Bakker, Dubey (arXiv paper)",
+      "url": "https://arxiv.org/abs/2604.04721"
+    },
+    {
+      "name": "AI Weekly",
+      "url": "https://aiweekly.co/alerts/berkeley-study-10-minutes-of-ai-use-erodes-persistence"
+    }
+  ],
+  "scenes": [
+    {
+      "type": "breaking",
+      "narration": "Did you know just ten minutes of leaning on an AI chatbot can make you give up faster on hard problems? That's what a new study shared by UC Berkeley found.",
+      "lines": [
+        "10 minutes of AI help",
+        "and people quit sooner",
+        "on hard problems"
+      ],
+      "accent": 1,
+      "source": "UC Berkeley · arXiv · AI Weekly",
+      "cues": {
+        "l1": "ten",
+        "l2": "give",
+        "l3": "hard"
+      }
+    },
+    {
+      "type": "story",
+      "narration": "Researchers ran three experiments with one thousand two hundred twenty-two people. Some solved fraction or reading problems with ChatGPT open. Then the AI was taken away.",
+      "source": "UC Berkeley · peer-reviewed paper",
+      "headline": "Brief AI help made people do worse, and give up more, once it was taken away",
+      "facts": [
+        "1,222 people, 3 experiments",
+        "Math and reading tasks",
+        "AI removed mid-task"
+      ],
+      "cues": {
+        "headline": "researchers",
+        "f1": "one",
+        "f2": "fraction",
+        "f3": "then"
+      }
+    },
+    {
+      "type": "stat",
+      "narration": "In the first experiment, the AI group then solved fifty-seven percent of problems. People who never had AI solved seventy-three percent.",
+      "value": 57,
+      "suffix": "%",
+      "label": "Solved after the AI was removed",
+      "icon": "target",
+      "sub": "vs 73% for people who never had AI",
+      "cues": {
+        "reveal": "fifty",
+        "sub": "seventy"
+      }
+    },
+    {
+      "type": "concept",
+      "narration": "Why? Researchers point to productive struggle: the effort of wrestling with a problem yourself. When a chatbot answers in seconds, slow thinking starts to feel like wasted time.",
+      "term": "PRODUCTIVE STRUGGLE",
+      "definition": "The useful effort of working through a hard problem yourself.",
+      "cues": {
+        "term": "productive",
+        "def": "effort"
+      }
+    },
+    {
+      "type": "engage",
+      "narration": "If you've ever asked AI for the answer instead of a hint, hit like, and share it with someone studying.",
+      "line": "Hit like. Share with someone studying.",
+      "sub": "A new AI story every morning.",
+      "cues": {
+        "like": "like",
+        "share": "share"
+      }
+    },
+    {
+      "type": "compare",
+      "narration": "Here's the twist. Most AI users mainly asked for direct answers, and they took the biggest hit. People who asked for hints showed no significant drop. The authors say that part shows a link, not proof.",
+      "left": {
+        "title": "Asked for answers",
+        "icon": "bolt",
+        "points": [
+          "Most AI users did this",
+          "Solved fewer problems later",
+          "Skipped more often"
+        ]
+      },
+      "right": {
+        "title": "Asked for hints",
+        "icon": "brain",
+        "points": [
+          "Used AI like a tutor",
+          "No significant drop",
+          "Skipped less"
+        ]
+      },
+      "verdict": "How you use AI matters.",
+      "cues": {
+        "left": "most",
+        "right": "people",
+        "verdict": "link"
+      }
+    },
+    {
+      "type": "quote",
+      "narration": "Co-author Brian Christian asks: We've built these systems to be helpful, but are they being helpful to us in a way that's actually helping us?",
+      "text": "We've built these systems to be helpful, but are they being helpful to us in a way that's actually helping us?",
+      "who": "Brian Christian",
+      "role": "Co-author, UC Berkeley Center for Human-Compatible AI",
+      "cues": {
+        "quote": "we've"
+      }
+    },
+    {
+      "type": "why",
+      "narration": "Why does it matter? AI is spreading through schools and offices. If quick answers make people quit sooner, design matters as much as smarts. Christian wants tutor-style AI by default.",
+      "points": [
+        "AI is spreading into school and work",
+        "Design matters, not just smarts",
+        "Researchers want tutor-style AI by default"
+      ],
+      "icons": [
+        "user",
+        "gear",
+        "brain"
+      ],
+      "cues": {
+        "p1": "ai",
+        "p2": "if",
+        "p3": "christian"
+      }
+    },
+    {
+      "type": "takeaways",
+      "narration": "Three takeaways. One: brief AI help can leave you weaker once it's gone. Two: answers hurt more than hints. Three: let AI coach you, and do the thinking yourself.",
+      "points": [
+        "Brief AI help can leave you weaker without it",
+        "Answers hurt more than hints",
+        "Let AI coach. You do the thinking."
+      ],
+      "cues": {
+        "p1": "one",
+        "p2": "two",
+        "p3": "three#2"
+      }
+    },
+    {
+      "type": "sources_end",
+      "narration": "I checked this against Berkeley News, the researchers' paper, and AI Weekly. Follow FredsDesk for a new AI story every morning.",
+      "sources": [
+        "UC Berkeley News",
+        "Liu et al. · arXiv paper",
+        "AI Weekly"
+      ],
+      "cues": {
+        "sources": "checked",
+        "follow": "follow"
+      }
+    }
+  ],
+  "post": {
+    "title": "Ten minutes of AI help made people quit hard problems sooner",
+    "description": "A study of 1,222 people found that brief help from ChatGPT boosted scores while it was there, then left people solving fewer problems and giving up more once it was taken away. People who used AI for hints instead of answers held up better. Here's what productive struggle is, and why it matters.",
+    "hashtags": [
+      "#AI",
+      "#AINews",
+      "#ChatGPT",
+      "#Learning",
+      "#Study",
+      "#FredsDesk"
+    ],
+    "pinned_comment": "Be honest: do you ask AI for the answer, or for a hint? 👇"
+  }
+}
