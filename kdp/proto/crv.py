@@ -79,3 +79,41 @@ def grass(ctx, x, y, s=1.0):
 def ground(ctx, y0, amp=14, w=8):
     pts = [(x, y0 + amp * math.sin(x / 190.0)) for x in range(70, 1640, 40)]
     tapered(ctx, pts, w, (0.08, 0.12))
+
+
+def ground_y(y0, x, amp=14):
+    """Page y of the ground line at x (same curve as ground())."""
+    return y0 + amp * math.sin(x / 190.0)
+
+
+def paw_at(ctx, T, p, d, size=1.0, seed=0, w=OUT - 2):
+    """Mitten paw centred at local point p, fingers pointing along local direction d."""
+    ang = math.degrees(math.atan2(d[0], -d[1]))
+    c = T(p)
+    P = Xf(c[0], c[1], T.s * size, math.degrees(T.r) + ang)
+    blob(ctx, P, [(-38, -12), (-32, -48), (0, -60), (32, -48), (38, -12), (32, 34), (0, 46), (-32, 34)], w, seed=seed, n=100)
+    for x in (-13, 13):
+        stroke(ctx, P, [(x, -57), (x, -28)], 5, (0.1, 0.3))
+
+
+def arm(ctx, T, ctrl, w0=88, w1=76, seed=0, size=1.0):
+    """Tapered arm along ctrl, with a paw at the end pointing along the arm."""
+    limb(ctx, T, ctrl, w0, w1, OUT, seed=seed)
+    (x0, y0), (x1, y1) = ctrl[-2], ctrl[-1]
+    n = math.hypot(x1 - x0, y1 - y0)
+    d = ((x1 - x0) / n, (y1 - y0) / n)
+    paw_at(ctx, T, (x1 + d[0] * 14, y1 + d[1] * 14), d, size, seed + 5)
+
+
+def flower_stem(ctx, x, gy, h, r, lean=0, rot=0, w=7):
+    """Flower on a stem growing up from the ground point (x, gy)."""
+    tapered(ctx, [(x, gy + 6), (x + lean * 0.4, gy - h * 0.5), (x + lean, gy - h)], 9, (0.02, 0.2))
+    side = 1 if lean >= 0 else -1
+    L = Xf(x + lean * 0.4 - side * 4, gy - h * 0.45, 1.0, 60 * side)
+    blob(ctx, L, [(0, 0), (22, -14), (46, -4), (24, 10)], 6, seed=5, n=50)
+    flower(ctx, x + lean, gy - h - r * 0.7, r, rot, w=w)
+
+
+def tuft(ctx, x, gy, s=1.0):
+    """Grass tuft whose base sits on the ground point (x, gy)."""
+    grass(ctx, x, gy + 4, s)

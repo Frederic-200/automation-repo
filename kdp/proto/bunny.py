@@ -22,8 +22,11 @@ def bunny_head(ctx, T):
     # ears (behind the head). origin = head center
     blob(ctx, T, [(-85, -90), (-165, -215), (-190, -370), (-150, -500), (-90, -490), (-50, -340), (-20, -190)], OUT, seed=1)
     stroke(ctx, T, [(-105, -150), (-125, -300), (-112, -420)], MID, (0.1, 0.5))
-    blob(ctx, T, [(40, -90), (125, -190), (240, -235), (335, -205), (340, -140), (260, -105), (150, -70)], OUT, seed=2)
-    stroke(ctx, T, [(130, -135), (225, -165), (290, -165)], MID, (0.1, 0.5))
+    # folded ear: upright stem, crease, tip flopping down over the side
+    blob(ctx, T, [(85, -90), (165, -215), (190, -330), (172, -405), (100, -410), (55, -340), (20, -190)], OUT, seed=2)
+    stroke(ctx, T, [(105, -150), (122, -240), (118, -320)], MID, (0.1, 0.5))
+    blob(ctx, T, [(62, -392), (110, -450), (185, -445), (245, -385), (290, -300), (292, -235), (255, -218), (205, -262), (150, -310), (95, -335)], OUT, seed=3, n=160)
+    stroke(ctx, T, [(165, -395), (230, -340), (262, -272)], MID, (0.1, 0.5))
     # head: cheeks lower and wider
     blob(ctx, T, [(-255, -30), (-235, -140), (-120, -205), (0, -215), (120, -205), (235, -140), (255, -30), (292, 60), (225, 150), (110, 190), (0, 198), (-110, 190), (-225, 150), (-292, 60)], OUT, seed=6)
     # face
@@ -51,7 +54,7 @@ def bunny_body(ctx, T):
             stroke(ctx, F, [(x - 38, y - 8), (x - 4, y + 2), (x + 8, y + 28)] if False else [(x - 8, y + 18), (x - 14, y + 62)], MID - 2, (0.05, 0.5))
     # body: soft pear
     blob(ctx, T, [(-215, -190), (-270, -20), (-245, 190), (-120, 335), (0, 360), (120, 335), (245, 190), (270, -20), (215, -190), (100, -250), (-100, -250)], OUT, seed=5)
-    stroke(ctx, T, [(-130, 190), (-95, 290), (0, 322), (95, 290), (130, 190)], MID, (0.3, 0.3))
+    blob(ctx, T, [(-110, 70), (-160, 160), (-115, 258), (0, 307), (115, 258), (160, 160), (110, 70), (0, 40)], MID + 1, seed=9, n=200)
 
 
 def arm_limb(ctx, T, ctrl, seed):
@@ -70,25 +73,25 @@ def arm_paw(ctx, T, ctrl, seed, flip=False):
 def page(out):
     surf, ctx = new_page()
     ctx.save(); frame_clip(ctx)
-    ground(ctx, 1925)
+    G = 1925
+    ground(ctx, G)
     tilt = -5
     TB = Xf(840, 1490, 0.86, tilt)
     TH = Xf(855, 1050, 1.28, tilt * 1.4)
     bunny_body(ctx, TB)
     bunny_head(ctx, TH)
-    # carrot lying across the tummy, leaves up-right
-    TC = Xf(1032, 1425, 1.08, 28)
-    AL = [(-215, -70), (-130, -45), (-40, -20)]
-    AR = [(215, -75), (170, -55), (125, -35)]
-    arm_limb(ctx, TB, AL, 8); arm_limb(ctx, TB, AR, 9)
+    # carrot diagonal across the chest, both arms wrap over it
+    TC = Xf(1002, 1420, 0.98, 52)
     carrot(ctx, TC)
-    arm_paw(ctx, TB, AL, 8, False); arm_paw(ctx, TB, AR, 9, True)
-    # fillers: hearts, flowers, sparkles, none in rows
-    for (x, y, r, a) in ((250, 500, 48, -15), (1400, 380, 38, 12), (1470, 980, 30, -10), (200, 1180, 32, 18), (1440, 1480, 42, 14)):
+    I0 = Xf(0, 0, 1, 0)
+    arm(ctx, I0, [(1058, 1440), (1040, 1488), (975, 1500)], 84, 72, seed=8)
+    arm(ctx, I0, [(645, 1400), (700, 1445), (775, 1480)], 84, 72, seed=18)
+    for (x, y, r, a) in ((250, 500, 48, -15), (1400, 380, 38, 12), (1470, 980, 30, -10), (200, 1180, 32, 18), (1480, 1480, 42, 14)):
         hearts(ctx, x, y, r, a)
-    flower(ctx, 300, 1985, 56, 10); flower(ctx, 1330, 1995, 66, 30); flower(ctx, 1570, 1760, 42, 0)
-    for (x, y, s) in ((150, 1960, 1.0), (580, 2050, 0.9), (1150, 2060, 1.1), (1560, 2040, 0.8), (130, 1740, 0.8)):
-        grass(ctx, x, y, s)
+    gy = lambda x: ground_y(G, x)
+    flower_stem(ctx, 300, gy(300), 130, 50, 10, 10); flower_stem(ctx, 1330, gy(1330), 160, 58, -14, 30)
+    for x, s_ in ((130, 1.0), (400, 0.8), (1460, 0.9), (1580, 0.8)):
+        tuft(ctx, x, gy(x), s_)
     for (x, y, r) in ((470, 300, 26), (1150, 240, 20), (1290, 560, 18), (330, 800, 16), (1520, 1250, 22), (120, 1480, 20)):
         sparkle(ctx, x, y, r)
     for (x, y) in ((600, 190), (1500, 690), (250, 960), (1520, 1640), (300, 1700)):

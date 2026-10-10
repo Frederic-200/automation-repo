@@ -46,10 +46,10 @@ def lion_head(ctx, T):
 
 def lion_body(ctx, T):
     # tail with tuft (behind body)
-    limb(ctx, T, [(170, 150), (320, 170), (400, 80), (392, -40)], 50, 30, OUT, seed=20)
-    blob(ctx, T, [(392, -50), (338, -120), (350, -200), (400, -255), (452, -205), (458, -120)], OUT, seed=21, n=140)
+    limb(ctx, T, [(170, 150), (320, 175), (410, 110), (400, 30)], 50, 30, OUT, seed=20)
+    blob(ctx, T, [(398, 40), (345, -30), (355, -105), (405, -160), (455, -110), (462, -30)], OUT, seed=21, n=140)
     for dx in (-30, 6, 34):
-        stroke(ctx, T, [(398 + dx, -100), (398 + dx * 1.2, -170), (398 + dx * 1.3, -215)], THIN, (0.1, 0.7))
+        stroke(ctx, T, [(402 + dx, -20), (402 + dx * 1.2, -80), (402 + dx * 1.3, -122)], THIN, (0.1, 0.7))
     # back paws
     for flip, sd in ((False, 22), (True, 23)):
         F = Xf(T.x, T.y, T.s, math.degrees(T.r), flip)
@@ -68,10 +68,9 @@ def paw(ctx, T, ex, ey, flip=False, seed=0):
 
 
 def lion_arms(ctx, T):
-    limb(ctx, T, [(-110, -105), (-195, -150), (-275, -205), (-330, -255)], 100, 84, OUT, seed=25)   # raised arm
-    paw(ctx, T, -345, -285, True, seed=27)
-    limb(ctx, T, [(125, -105), (190, -20), (205, 70)], 100, 84, OUT, seed=26)
-    paw(ctx, T, 205, 112, False, seed=28)
+    """Both arms hang down the sides, starting under the mane; paws rest near the hips."""
+    arm(ctx, T, [(-185, -120), (-225, -10), (-218, 95), (-208, 150)], 104, 92, seed=25)
+    arm(ctx, T, [(185, -120), (225, -10), (218, 95), (208, 150)], 104, 92, seed=26)
 
 
 def butterfly(ctx, T):
@@ -93,21 +92,23 @@ def butterfly(ctx, T):
 def page(out):
     surf, ctx = new_page()
     ctx.save(); frame_clip(ctx)
-    ground(ctx, 1930)
-    tilt = 4
-    TB = Xf(975, 1580, 0.95, tilt)
-    TH = Xf(1015, 1020, 1.14, tilt * 2.2)
+    G = 1930
+    ground(ctx, G)
+    tilt = 3
+    TB = Xf(975, 1528, 1.12, tilt)
+    TH = Xf(990, 1015, 1.34, tilt)
     lion_body(ctx, TB)
-    lion_head(ctx, TH)
     lion_arms(ctx, TB)
-    butterfly(ctx, Xf(330, 1090, 0.7, -20))
+    lion_head(ctx, TH)          # mane drawn last: it covers the shoulders, so head and body are one piece
+    butterfly(ctx, Xf(300, 560, 0.66, -20))
     sparkle(ctx, 560, 420, 20); sparkle(ctx, 190, 760, 16); sparkle(ctx, 300, 1380, 14)
-    for (x, y, r, a) in ((1370, 350, 38, 12), (1470, 820, 28, -10), (190, 1560, 32, 18), (1530, 1330, 36, 14)):
+    for (x, y, r, a) in ((1370, 350, 38, 12), (1530, 700, 28, -10), (190, 1560, 32, 18), (1545, 1480, 30, 14)):
         hearts(ctx, x, y, r, a)
-    flower(ctx, 280, 1985, 58, 10); flower(ctx, 1320, 2000, 64, 30); flower(ctx, 1570, 1790, 42, 0)
-    for (x, y, s) in ((140, 1960, 1.0), (600, 2050, 0.9), (1130, 2060, 1.1), (1570, 2050, 0.8), (110, 1740, 0.8)):
-        grass(ctx, x, y, s)
-    for (x, y, r) in ((1150, 250, 24), (1300, 540, 20), (230, 1480, 22), (170, 840, 16), (1510, 1180, 22), (700, 200, 18)):
+    gy = lambda x: ground_y(G, x)
+    flower_stem(ctx, 260, gy(260), 130, 52, 12, 10); flower_stem(ctx, 470, gy(470), 165, 58, -14, 30)
+    for x, s_ in ((140, 1.0), (640, 0.8), (1330, 0.9), (1500, 0.9), (1590, 0.8)):
+        tuft(ctx, x, gy(x), s_)
+    for (x, y, r) in ((1150, 250, 24), (1250, 430, 20), (230, 1480, 22), (170, 840, 16), (700, 200, 18)):
         sparkle(ctx, x, y, r)
     for (x, y) in ((560, 150), (1480, 640), (150, 1020), (1530, 1650), (320, 1750)):
         dot(ctx, x, y, 8)
