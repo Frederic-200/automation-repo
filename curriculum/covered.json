@@ -35,6 +35,15 @@
    "analogy": "Think of LEGO. The model can't swallow a whole sentence at once, so your text gets snapped into bricks, and every brick is one token.",
    "example": "That's why AI can struggle to count the R's in strawberry. It never sees letters. It only sees tokens.",
    "status": "rendered"
+  },
+  {
+   "lesson": 5,
+   "title": "How does an AI learn?",
+   "date": "2026-10-11",
+   "hook": "Every AI starts out terrible. Practice fixes that.",
+   "analogy": "Think of a basketball player at the free-throw line. She shoots, sees how far she missed, and adjusts her aim. A thousand shots later, the b",
+   "example": "No one hands it the rule. After millions of tiny nudges, the pattern simply emerges.",
+   "status": "rendered"
   }
  ]
 }
