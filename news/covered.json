@@ -33,6 +33,23 @@
     "https://www.testingcatalog.com/how-sabis-brain-reading-cap-turns-thoughts-into-text/"
    ],
    "status": "rendered"
+  },
+  {
+   "date": "2026-10-11",
+   "script_date": "2026-10-11",
+   "title": "Ten minutes of AI help made people quit hard problems sooner",
+   "hook": "Did you know just ten minutes of leaning on an AI chatbot can make you give up faster on hard problems? That's what a new study shared by UC Berkeley found.",
+   "sources": [
+    "UC Berkeley News",
+    "Liu, Christian, Dumbalska, Bakker, Dubey (arXiv paper)",
+    "AI Weekly"
+   ],
+   "urls": [
+    "https://news.berkeley.edu/2026/10/09/using-ai-for-just-10-minutes-erodes-your-ability-to-persist-at-hard-things/",
+    "https://arxiv.org/abs/2604.04721",
+    "https://aiweekly.co/alerts/berkeley-study-10-minutes-of-ai-use-erodes-persistence"
+   ],
+   "status": "rendered"
   }
  ]
 }
