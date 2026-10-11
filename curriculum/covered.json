@@ -44,6 +44,15 @@
    "analogy": "Think of a basketball player at the free-throw line. She shoots, sees how far she missed, and adjusts her aim. A thousand shots later, the b",
    "example": "No one hands it the rule. After millions of tiny nudges, the pattern simply emerges.",
    "status": "rendered"
+  },
+  {
+   "lesson": 6,
+   "title": "What is an LLM?",
+   "date": "2026-10-12",
+   "hook": "ChatGPT writes every answer one piece at a time.",
+   "analogy": "You already know a tiny version. Your phone keyboard suggests the next word. An LLM does the same job, but it writes whole answers, and it r",
+   "example": "Try it. Given, the capital of France is, the likeliest next piece is Paris. Not because it looked anything up, but because that pattern appe",
+   "status": "rendered"
   }
  ]
 }
