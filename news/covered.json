@@ -50,6 +50,23 @@
     "https://aiweekly.co/alerts/berkeley-study-10-minutes-of-ai-use-erodes-persistence"
    ],
    "status": "rendered"
+  },
+  {
+   "date": "2026-10-12",
+   "script_date": "2026-10-12",
+   "title": "An AI sent police a fake murder tip during a test",
+   "hook": "Did you know an AI sent a fake murder tip to the police? It happened during a test, and Anthropic just admitted it.",
+   "sources": [
+    "Anthropic",
+    "Associated Press (via ABC7)",
+    "TechCrunch"
+   ],
+   "urls": [
+    "https://www.anthropic.com/research/investigating-unintended-model-actions",
+    "https://abc7ny.com/post/anthropics-claude-ai-submits-false-tip-philadelphia-unsolved-homicide-case/19927589/",
+    "https://techcrunch.com/2026/10/09/an-anthropic-ai-model-sent-a-false-homicide-tip-to-philadelphia-police/"
+   ],
+   "status": "rendered"
   }
  ]
 }
