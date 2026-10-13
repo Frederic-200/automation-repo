@@ -53,6 +53,15 @@
    "analogy": "You already know a tiny version. Your phone keyboard suggests the next word. An LLM does the same job, but it writes whole answers, and it r",
    "example": "Try it. Given, the capital of France is, the likeliest next piece is Paris. Not because it looked anything up, but because that pattern appe",
    "status": "rendered"
+  },
+  {
+   "lesson": 7,
+   "title": "What are parameters?",
+   "date": "2026-10-13",
+   "hook": "Inside every AI are billions of tiny dials.",
+   "analogy": "Picture a mixing board in a music studio. With a few knobs, you get a simple sound. With thousands, you can shape almost any sound. Paramete",
+   "example": "Large language models have billions of parameters. More can mean more skill, but it also costs more to train and run.",
+   "status": "rendered"
   }
  ]
 }
