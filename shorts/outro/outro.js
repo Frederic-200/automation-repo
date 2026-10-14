@@ -16,8 +16,6 @@ SCENES.outro = (t, lt, sc, e) => {
   const cA = dark ? mixc(B.teal, '#ffffff', .62) : B.navy, cB = teal, wordA = dark ? '#ffffff' : B.navy, accent = S.accent;
   const IS = 1.9, ix = CX - B.icon.w * IS / 2, iy = 470, iw = B.icon.w * IS, ih = B.icon.h * IS;
   const g = lt < 0 ? 0 : lt, ss = (a, b) => smooth((g - a) / (b - a));
-  // soft stage glow behind the logo
-  glowDot(CX, iy + ih * .45, 620, accent, .05 + .08 * ss(1.3, 1.9) * (1 - ss(2.4, 3.0) * .5));
 
   /* ---- icon: desk draws on (0.3-1.0 s), monitor boots (1.0-1.3 s) ---- */
   const [ic, ig] = ocan('icon', Math.ceil(iw), Math.ceil(ih));
@@ -30,11 +28,14 @@ SCENES.outro = (t, lt, sc, e) => {
   const flick = monP > 0 && monP < 1 ? (.55 + .45 * Math.abs(Math.sin(g * 70))) : 1;
   ig.globalCompositeOperation = 'source-in'; const gr = ig.createLinearGradient(0, 0, iw, 0); gr.addColorStop(0, cA); gr.addColorStop(1, cB); ig.fillStyle = gr; ig.fillRect(0, 0, iw, ih);
   x.globalAlpha = flick; x.drawImage(ic, ix, iy); x.globalAlpha = 1;
-  // pen glow riding the desk wipe
-  if (deskP > 0 && deskP < 1) { const px = ix + iw * deskP, py = iy + 175 * IS; glowDot(px, py, 90, '#ffffff', .85); glowDot(px, py, 200, accent, .35); }
-  // screen glow after the click
+  // pen: a small solid dot riding the desk wipe
+  if (deskP > 0 && deskP < 1) circle(ix + iw * deskP, iy + 175 * IS, 11, cB);
   const clickT = 1.55, since = g - clickT;
-  if (since > 0) { const a = Math.min(1, since / .15) * (.28 - .12 * ss(1.8, 3.0)); x.save(); x.beginPath(); x.rect(ix + 96 * IS, iy + 12 * IS, 170 * IS, 108 * IS); x.clip(); glowDot(ix + 180 * IS, iy + 66 * IS, 300, accent, a * 1.6); x.restore(); }
+
+  const cw0 = B.cursor.w * IS, ch0 = B.cursor.h * IS, rx0 = ix + B.cursor.x * IS, ry0 = iy + B.cursor.y * IS;
+  /* ---- click wave: three rings grow out of the cursor tip like a ripple (brand teal, same on every video) ---- */
+  { const tipx = rx0 + cw0 * .12, tipy = ry0 + ch0 * .06; for (let k = 0; k < 3; k++) { const d = since - k * .12; if (d <= 0 || d >= .95) continue; const f = d / .95;
+      ring(tipx, tipy, easeOutQuart(f) * 400, 11 * (1 - f) + 1.5, cB, .9 * (1 - f)); } }
 
   /* ---- cursor: curves in (1.3-1.55 s), presses on the click, ripple ---- */
   const cw = B.cursor.w * IS, ch = B.cursor.h * IS, rx = ix + B.cursor.x * IS, ry = iy + B.cursor.y * IS;
@@ -45,7 +46,6 @@ SCENES.outro = (t, lt, sc, e) => {
   if (g > 1.2) { x.save(); x.translate(cxp + cw * .12, cyp + ch * .06); x.scale(press, press); x.translate(-cw * .12, -ch * .06);
     const [cc, cg] = ocan('cur', Math.ceil(cw), Math.ceil(ch)); cg.drawImage(cur, 0, 0, cw, ch); cg.globalCompositeOperation = 'source-in'; cg.fillStyle = dark ? '#ffffff' : cA; cg.fillRect(0, 0, cw, ch);
     x.shadowColor = 'rgba(0,0,0,.35)'; x.shadowBlur = 14; x.shadowOffsetY = 6; x.drawImage(cc, 0, 0); x.restore(); }
-  if (since > 0) { const tx = rx + cw * .12, ty = ry + ch * .06; ring(tx, ty, easeOutExpo(since / .6) * 150, 8 * (1 - since / .6) + 1, accent, clamp(1 - since / .6)); if (since < .25) glowDot(tx, ty, 90 * (1 - since / .25) + 20, '#ffffff', .9 * (1 - since / .25)); }
 
   /* ---- wordmark: letters rise in (1.7-2.3 s), "Freds" / "Desk" colors ---- */
   const WS = 1.1, wy = iy + ih + 60, wxl = CX - B.word.w * WS / 2, [wc, wg] = ocan('word', Math.ceil(B.word.w * WS) + 40, Math.ceil(B.word.h * WS) + 80);
@@ -65,6 +65,6 @@ SCENES.outro = (t, lt, sc, e) => {
     const tw = x.measureText(txt).width, cx0 = CX - (tw + 36) / 2, cyy = wy + B.word.h * WS + 105, n = Math.floor(clamp((g - 2.3) / .4) * txt.length);
     x.save(); x.globalAlpha = easeOutExpo(ck); x.translate(0, (1 - easeOutExpo(ck)) * 18);
     x.fillStyle = dark ? 'rgba(255,255,255,.88)' : e.ink === '#ffffff' ? B.navy : e.ink; x.fillText(txt.slice(0, n), cx0, cyy);
-    if (Math.floor(g * 2.4) % 2 === 0 || g < 2.8) { x.fillStyle = accent; x.fillRect(cx0 + x.measureText(txt.slice(0, n)).width + 8, cyy - size * .42, size * .36, size * .84); }
+    if (Math.floor(g * 2.4) % 2 === 0 || g < 2.8) { x.fillStyle = cB; x.fillRect(cx0 + x.measureText(txt.slice(0, n)).width + 8, cyy - size * .42, size * .36, size * .84); }
     x.restore(); }
 };

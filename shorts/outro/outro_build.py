@@ -40,6 +40,8 @@ def sfx(dur, mood, seed=7):
         t = tt(.06); n1 = rng.standard_normal(len(t)); b, a = signal.butter(2, 1800 / (SR / 2), "high"); c = signal.lfilter(b, a, n1) * np.exp(-t * 160)
         return c * g + sine(160, .06, 70, g * .9)
     add(1.52, click(.55)); add(1.585, click(.28))
+    for k, g in enumerate((.26, .20, .15)):                       # ripple "bloops", one per ring
+        t = tt(.30); f = (380 + 70 * k) + 260 * (t / .30); add(1.57 + k * .12, np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 11), g)
     # 1.70-2.24 letter ticks (rising pitch)
     for i in range(9): add(1.7 + i * .065, sine(1500 + i * 140, .05, 70), .30)
     # 2.30 logo chime (bell partials in the music's key) + soft tail
@@ -68,7 +70,7 @@ def main():
     frames = int(round(secs * 30))
     tl = {"title": "FredsDesk outro", "fps": 30, "W": 1080, "H": 1920, "duration": secs, "frames": frames, "seed": 7, "music": {},
           "scenes": [{"i": 0, "type": "outro", "act": "payoff", "start": 0.0, "end": secs, "bright": False, "params": {}, "keys": [], "lines": [], "transition": "none"}],
-          "hits": [{"t": 1.55, "s": 0.14, "impact": 0}, {"t": 2.30, "s": 0.08, "impact": 0}]}
+          "hits": [{"t": 1.55, "s": 0.06, "impact": 0}, {"t": 2.30, "s": 0.04, "impact": 0}]}
     json.dump(tl, open(os.path.join(work, "timeline.json"), "w"))
     if "--preview" in a:
         r = subprocess.run(["node", os.path.join(KIT, "render.js"), work, "preview", opt("--preview")], capture_output=True, text=True); print(r.stdout[-400:], r.stderr[-800:]); return

@@ -194,6 +194,12 @@ function transition(kind, p, A, B, out, t, sc) {   // A = outgoing canvas, B = i
     const w = Math.max(2, Math.round(W / cell)), h = Math.max(2, Math.round(H / cell));
     const tx = TMP.getContext('2d'); tx.setTransform(1, 0, 0, 1, 0, 0); tx.imageSmoothingEnabled = true; tx.clearRect(0, 0, W, H); tx.drawImage(src, 0, 0, w, h);
     o.imageSmoothingEnabled = false; o.drawImage(TMP, 0, 0, w, h, 0, 0, W, H); o.imageSmoothingEnabled = true;
+  } else if (kind === 'card') {   // outgoing frame shrinks into a tilted floating card, then drops away to reveal the next scene
+    const bz = 1.08 - .08 * easeOutQuart(p); o.save(); o.translate(CX, H / 2); o.scale(bz, bz); o.translate(-CX, -H / 2); o.drawImage(B, 0, 0); o.restore();
+    const s1 = easeInOutCubic(clamp(p / .62)), q = p > .62 ? easeInQuad((p - .62) / .38) : 0, cs = lerp(1, .58, s1) * lerp(1, .8, q), rot = -.07 * s1 - .12 * q, ty = -280 * q;
+    o.save(); o.globalAlpha = 1 - q; o.translate(CX, H / 2 + ty); o.rotate(rot); o.scale(cs, cs);
+    o.shadowColor = 'rgba(0,0,0,.45)'; o.shadowBlur = 70; o.shadowOffsetY = 34; o.fillStyle = '#000'; o.beginPath(); o.roundRect(-CX, -H / 2, W, H, 60); o.fill();
+    o.shadowColor = 'transparent'; o.clip(); o.drawImage(A, -CX, -H / 2); o.restore();
   } else { // flash (default)
     o.drawImage(p < .5 ? A : B, 0, 0); o.globalAlpha = Math.pow(Math.sin(Math.PI * p), 2) * .9; o.fillStyle = mixc('#ffffff', acc, .25); o.fillRect(0, 0, W, H); o.globalAlpha = 1;
   }
@@ -268,7 +274,7 @@ function buildChunks() {
   TL.scenes.forEach(sc => sc.lines.forEach(ln => {
     let cur = null; const ws = ln.words;
     const mode = S.caption.mode;
-    if (mode === 'stack') { // phrase-sized blocks: break at punctuation (>=3 words) or after 7 words; merge a tiny tail into the previous block
+    if (mode === 'stack' || mode === 'typeon') { // phrase-sized blocks: break at punctuation (>=3 words) or after 7 words; merge a tiny tail into the previous block
       let g = [], first = CHUNKS.length;
       const flush = () => { if (!g.length) return; if (g.length < 3 && CHUNKS.length > first) { const pv = CHUNKS[CHUNKS.length - 1]; pv.words = pv.words.concat(g); pv.lineEnd = g[g.length - 1].e; }
         else CHUNKS.push({ words: g, key: 0, s: g[0].s, lineEnd: g[g.length - 1].e, scene: sc.i, line: 1 }); g = []; };
@@ -294,7 +300,10 @@ function captions(t, F) {
   x.translate(F.sx * .5, F.sy * .5);
   const out = clamp((c.end - t) / .1), Y = S.caption.y ?? 1390;
   x.globalAlpha = out;
-  if (mode === 'stack') captionStack(c, t, e); else if (mode === 'clean') captionClean(c, t, e, Y); else if (mode === 'type') captionType(c, t, e, Y);
+  if (mode === 'typeon') { const ci = CHUNKS.indexOf(c), pc = CHUNKS[ci - 1];
+    if (pc && pc.scene === c.scene && t - c.s < 3 / FPS) { x.save(); captionTypeOn(pc, t, e, .28, pc.end); x.restore(); }   // word swap: old phrase ghosts for 2-3 frames
+    captionTypeOn(c, t, e, 1, t); }
+  else if (mode === 'stack') captionStack(c, t, e); else if (mode === 'clean') captionClean(c, t, e, Y); else if (mode === 'type') captionType(c, t, e, Y);
   else if (c.key) captionSlam(c, t, e, Y); else captionPop(c, t, e, Y);
   x.restore();
 }
@@ -408,6 +417,47 @@ function captionStack(c, t, e) {
     x.font = `${it.wt} ${it.size}px "${it.fam}"`;
     x.fillStyle = e.bright ? 'rgba(0,0,0,.16)' : 'rgba(0,0,0,.62)'; x.fillText(it.t, 5, 7);
     x.fillStyle = col; x.fillText(it.t, 0, 0); x.restore(); }
+}
+
+
+/* ---- typeon mode: heavy condensed capitals typed letter by letter on the spoken word; *keywords* sit on an accent label box that grows with
+   the letters; scene param "scramble": true makes keywords decode from random letters; a trailing "..." types on like any letters. */
+function typeonLayout(c) {
+  if (c._tl) return c._tl;
+  const fam = S.fonts.display, wt = S.fonts.display_weight, maxW = S.caption.typeon_w || 900, pad = 24; let size = S.caption.typeon_size || 168, lines = [], sp = 0;
+  const items = c.words.map(w => ({ w, t: (w.k ? w.w.replace(/[,.;:!?]+$/, '') : w.w).toUpperCase().replace(/[“”"]/g, ''), key: !!w.k }));
+  x = octx;
+  for (let pass = 0; pass < 10; pass++) {
+    x.font = `${wt} ${size}px "${fam}"`; sp = x.measureText(' ').width * .9; lines = [[]]; let w0 = 0;
+    for (const it of items) { it.ww = x.measureText(it.t).width; it.bw = it.ww + (it.key ? pad * 2 : 0);
+      if (lines[lines.length - 1].length && w0 + sp + it.bw > maxW) { lines.push([]); w0 = 0; } lines[lines.length - 1].push(it); w0 += (w0 ? sp : 0) + it.bw; }
+    const fits = lines.length <= 4 && lines.every(l => l.reduce((a, i) => a + i.bw, 0) + sp * (l.length - 1) <= maxW + 1);
+    if (fits) break; size *= .9;
+  }
+  const lh = size * 1.04; let y = -(lines.length * lh) / 2 + lh * .84;
+  lines.forEach(ln => { ln.forEach((it, k) => { it.pk = it.key && k > 0 && ln[k - 1].key; it.nk = it.key && k < ln.length - 1 && ln[k + 1].key;   // keyword run = one box
+      it.bw = it.ww + (it.key ? (it.pk ? 0 : pad) + (it.nk ? 0 : pad) : 0); });
+    const lw = ln.reduce((a, i) => a + i.bw, 0) + sp * (ln.length - 1); let px = -lw / 2;
+    ln.forEach(it => { it.bx = px - (it.pk ? sp : 0); it.bwd = it.bw + (it.pk ? sp : 0); it.x = px + (it.key && !it.pk ? pad : 0); it.y = y; px += it.bw + sp; }); y += lh; });
+  return (c._tl = { items, size, fam, wt, pad });
+}
+const SCR = 'ABCDEFGHKLMNPRSTUWXYZ';
+function captionTypeOn(c, t, e, alpha, tEff) {
+  const L = typeonLayout(c), cy = S.caption.typeon_y ?? 1180, scr = !!(TL.scenes[c.scene].params || {}).scramble;
+  x.save(); x.globalAlpha *= alpha; x.translate(CX, cy); x.textBaseline = 'alphabetic'; x.textAlign = 'left'; x.font = `${L.wt} ${L.size}px "${L.fam}"`;
+  const dark = lum(e.bg[0]) < .5, shCol = dark ? 'rgba(0,0,0,.55)' : 'rgba(0,0,0,.14)';
+  for (const it of L.items) { const w = it.w, n = it.t.length, dur = Math.max(.14, (w.e || w.s + .3) - w.s) * .85, age0 = tEff - w.s; if (age0 < -.02) continue;
+    const doScr = scr && it.key, shown = doScr ? n : Math.min(n, Math.max(1, Math.ceil(clamp((age0 + .02) / dur) * n)));
+    // label box (keywords): grows with the letters, or eases open while scrambling
+    if (it.key) { const target = it.bwd, cur = doScr ? target * easeOutExpo(clamp(age0 / .22)) : Math.min(target, x.measureText(it.t.slice(0, shown)).width + (it.pk ? 0 : L.pad) + (it.nk || shown < n ? 0 : L.pad) + (it.pk ? 0 : 0) + (it.pk ? (it.bwd - it.bw) : 0));
+      const bx = it.bx + (doScr ? (target - cur) / 2 : 0); x.fillStyle = S.accent; x.fillRect(bx, it.y - L.size * .80, cur, L.size * .98); }
+    for (let j = 0; j < shown; j++) { const born = w.s + j * dur / n, age = Math.max(0, tEff - born); let ch = it.t[j];
+      if (doScr) { const lock = w.s + dur * (j + 1) / n + .28; if (tEff < lock) ch = SCR[Math.floor(hash(TL.seed, 'scr', c.scene, j, Math.floor(tEff * 15)) * SCR.length)]; else if (tEff - lock < .1) ch = it.t[j]; }
+      const px = it.x + x.measureText(it.t.slice(0, j)).width, cw = x.measureText(ch).width, k = 1 + .34 * Math.exp(-18 * age) * Math.cos(24 * age), rise = (1 - easeOutExpo(age / .1)) * 20;
+      x.save(); x.translate(px + cw / 2, it.y + rise); x.scale(k, k);
+      x.fillStyle = it.key ? 'rgba(0,0,0,0)' : shCol; if (!it.key) x.fillText(ch, -cw / 2 + 4, 6);
+      x.fillStyle = it.key ? S.on_accent : e.ink; x.fillText(ch, -cw / 2, 0); x.restore(); } }
+  x.restore();
 }
 
 /* ------------------------------------------------------------------ frame */
