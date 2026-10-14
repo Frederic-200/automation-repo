@@ -62,6 +62,15 @@
    "analogy": "Picture a mixing board in a music studio. With a few knobs, you get a simple sound. With thousands, you can shape almost any sound. Paramete",
    "example": "Large language models have billions of parameters. More can mean more skill, but it also costs more to train and run.",
    "status": "rendered"
+  },
+  {
+   "lesson": 8,
+   "title": "What is a context window?",
+   "date": "2026-10-14",
+   "hook": "AI forgets the start of very long chats.",
+   "analogy": "Think of a whiteboard on your desk. It only fits so much. Keep writing, and the oldest lines have to be erased to make room.",
+   "example": "Here's how it looks. Early on, you mention your dog's name. Much later, after the window fills up, the AI no longer sees it, and can't answe",
+   "status": "rendered"
   }
  ]
 }
