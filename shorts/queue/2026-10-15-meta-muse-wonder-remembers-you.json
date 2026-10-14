@@ -1,0 +1,76 @@
+{
+ "title": "Meta Muse Wonder remembers you",
+ "style": "aurora dark midnight green, lime accent, sleek fast news",
+ "voice": "am_fenrir",
+ "music": true,
+ "music_mood": "upbeat",
+ "seed": 67,
+ "max_seconds": 38,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "neural",
+   "params": {"layers": [3, 5, 6, 5, 3], "transition": "whip"},
+   "lines": ["Meta just launched an AI built to *remember you*."]
+  },
+  {
+   "act": "build",
+   "type": "tokens",
+   "params": {"tokens": ["memory", "chat", "context", "you", "agent", "recall", "task", "notes"], "transition": "glitch"},
+   "lines": ["It is called *Muse Wonder*. Meta says its *Active Memory* carries what matters across your chats, so you stop *starting from scratch*."]
+  },
+  {
+   "act": "build",
+   "type": "fleet",
+   "params": {"count": 9, "transition": "whip"},
+   "lines": ["Then there is *Active Focus*. When it hits a wall, it tries *another approach*, and checks in before *important actions*."]
+  },
+  {
+   "act": "turn",
+   "type": "grid",
+   "params": {"transition": "card"},
+   "lines": ["Meta says it can *compete* with the latest models from *OpenAI* and *Anthropic* on some benchmarks."]
+  },
+  {
+   "act": "payoff",
+   "type": "echo",
+   "params": {"word": "PROOF", "scramble": true, "transition": "glitch"},
+   "lines": ["Those are Meta's own numbers, so independent tests are *still to come*."]
+  },
+  {
+   "act": "button",
+   "type": "aurora",
+   "params": {"transition": "liquid"},
+   "lines": ["Would you want an AI that *remembers you*? Follow for more."]
+  }
+ ],
+ "meta": {
+  "format": "B",
+  "slug": "meta-muse-wonder-remembers-you",
+  "topic": "Meta Muse Wonder launch with Active Memory and Active Focus",
+  "caption_preset": "stack",
+  "facts": [
+   {"claim": "Meta launched new models called Muse Wonder and Muse Wonder Full", "sources": [0, 1, 2]},
+   {"claim": "Meta says Active Memory carries important information across conversations and retrieves it when relevant, so users do not start from scratch", "sources": [0, 1, 2, 3]},
+   {"claim": "Meta says Active Focus keeps working on hard tasks, tries alternative approaches and checks in before important actions", "sources": [0, 2, 3]},
+   {"claim": "Meta says the models compete with the latest OpenAI and Anthropic models on some benchmarks", "sources": [1, 2]},
+   {"claim": "The benchmark results are Meta's own; independent testing has not confirmed them yet", "sources": [1, 3]}
+  ],
+  "post": {
+   "title": "Meta's new AI is built to remember you: Muse Wonder explained",
+   "tiktok_caption": "Meta launched Muse Wonder: an AI with Active Memory (it carries context across chats) and Active Focus (it keeps trying on hard tasks). Would you want that? #AI #Meta #MuseWonder #AInews #FredsDesk #fyp",
+   "yt_caption": "Meta launched Muse Wonder and Muse Wonder Full. Meta says Active Memory carries context across your chats and Active Focus keeps working through hard tasks, checking in before important actions. Meta says it competes with the latest OpenAI and Anthropic models on some benchmarks; independent tests are still to come. Follow FredsDesk for daily AI",
+   "pinned_comment": "All benchmark claims are Meta's own evaluations and have not been independently confirmed yet; outlets describe them as competitive on certain benchmarks, not across the board. Muse Wonder is available through Meta's Model API and Muse Code; Muse Wonder Full is for Muse Code subscribers. Sources: Meta's announcement, Axios, Yahoo Finance, Android Authority.",
+   "hashtags": ["#AI", "#Meta", "#MuseWonder", "#AInews", "#AIagents", "#TechNews", "#FredsDesk", "#fyp"],
+   "sources": [
+    {"name": "Meta AI, Muse Wonder: A Frontier Model For Personal and Professional AI Agents", "url": "https://research.meta.ai/blog/muse-wonder"},
+    {"name": "Axios, Meta unveils new frontier-class AI models to compete with OpenAI, Anthropic", "url": "https://axios.com/2026/10/12/meta-new-ai-models-anthropic-openai"},
+    {"name": "Yahoo Finance, Meta launches Muse Wonder AI model family with frontier-level performance", "url": "https://finance.yahoo.com/technology/article/meta-launches-muse-wonder-ai-model-family-with-frontier-level-performance-180839235.html"},
+    {"name": "Android Authority, Meta wants Muse to keep up with ChatGPT and Gemini, and Wonder is how", "url": "https://www.androidauthority.com/meta-muse-wonder-ai-models-3722247/"}
+   ]
+  }
+ }
+}
