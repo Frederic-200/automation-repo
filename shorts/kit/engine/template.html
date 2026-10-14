@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>video-kit</title>
+<style>html,body{margin:0;background:#000}canvas#c{display:block;width:1080px;height:1920px}</style></head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<svg width="0" height="0" style="position:absolute"><filter id="goo" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+<feGaussianBlur in="SourceGraphic" stdDeviation="9"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"/></filter></svg>
+<script src="kit.js"></script>
+<script src="scenes.js"></script>
+<script>
+/* Boot: load style, timeline and fonts from the work dir (?w=/w/), plus optional per-video
+   scenes_custom.js (adds or overrides SCENES.*). Sets window.ready when frame 0 can render. */
+window.ready = false; window.bootError = null;
+(async () => {
+  try {
+    const W0 = new URLSearchParams(location.search).get('w') || '/w/';
+    const j = p => fetch(W0 + p).then(r => { if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); });
+    S = await j('style.json'); TL = await j('timeline.json'); const fonts = await j('fonts.json');
+    for (const f of fonts) { const ff = new FontFace(f.family, `url(${W0}${f.file})`, { weight: String(f.weight) }); await ff.load(); document.fonts.add(ff); }
+    await Promise.all(fonts.map(f => document.fonts.load(`${f.weight} 40px "${f.family}"`)));
+    if (new URLSearchParams(location.search).get('c')) { const cust = await fetch(W0 + 'scenes_custom.js'); const s = document.createElement('script'); s.textContent = await cust.text(); document.body.appendChild(s); }
+    initLayers(); buildChunks(); renderFrame(0); window.ready = true;
+  } catch (e) { window.bootError = String(e && e.stack || e); }
+})();
+window.frameJPEG = (f, q = .92) => { renderFrame(f); return document.getElementById('c').toDataURL('image/jpeg', q); };
+window.framePNG = f => { renderFrame(f); return document.getElementById('c').toDataURL('image/png'); };
+window.onerror = (m, s, l, c, e) => { window.bootError = window.bootError || (m + ' @' + l + ':' + c); };
+</script>
+</body></html>

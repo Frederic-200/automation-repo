@@ -1,0 +1,77 @@
+{
+ "title": "Spooky season for AI",
+ "style": "storm dark purple, orange accent, spooky playful",
+ "voice": "am_fenrir",
+ "music": true,
+ "music_mood": "trap",
+ "seed": 55,
+ "silent": true,
+ "max_seconds": 22,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "lead": 0.2,
+ "end_tail": 1.2,
+ "style_overrides": {
+  "caption": {
+   "mode": "stack",
+   "stack_y": 1420,
+   "stack_h": 520
+  },
+  "fonts": {
+   "display": "Archivo Black",
+   "display_weight": 400,
+   "text": "Share Tech Mono",
+   "text_weight": 400
+  }
+ },
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "neural",
+   "params": {
+    "layers": [
+     3,
+     5,
+     5,
+     3
+    ]
+   },
+   "speed": 1.1,
+   "lines": [
+    "Something is *waking up* in the machine."
+   ]
+  },
+  {
+   "act": "build",
+   "type": "haunt",
+   "params": {
+    "ghosts": 2
+   },
+   "speed": 1.1,
+   "lines": [
+    "Neurons *glow*. Ghosts *appear*."
+   ]
+  },
+  {
+   "act": "turn",
+   "type": "haunt",
+   "params": {
+    "ghosts": 3
+   },
+   "speed": 1.1,
+   "lines": [
+    "*Boo.* pumpkin.exe has loaded."
+   ]
+  },
+  {
+   "act": "button",
+   "type": "burst",
+   "speed": 1.1,
+   "lines": [
+    "Happy *Halloween* from FredsDesk."
+   ]
+  }
+ ],
+ "say": {
+  "pumpkin.exe": "pumpkin dot exe"
+ }
+}

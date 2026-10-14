@@ -1,0 +1,11 @@
+{"title":"Can AI copy itself onto your TV","style":"blueprint dark navy, teal accent, calm explainer","voice":"am_fenrir","music":true,"music_mood":"lofi","seed":21,
+ "max_seconds":48,"scenes_custom":"scenes_fredsdesk.js",
+ "style_overrides":{"caption":{"mode":"stack"},"fonts":{"display":"Archivo Black","display_weight":400,"text":"Share Tech Mono","text_weight":400}},
+ "say":{"AI":"A I","TVs":"T Vs","TV":"T V"},
+ "scenes":[
+  {"act":"problem","type":"neural","lines":["Could an *AI* copy itself onto your smart *TV*?"]},
+  {"act":"build","type":"fleet","params":{"count":15},"lines":["Anthropic's researchers tested it. One big model ran across *fifteen cheap TV boxes*, just very slowly."]},
+  {"act":"build","type":"neural","params":{"layers":[2,4,6,4,2]},"lines":["In a lab test, one model even copied itself across a small network, with the hacking step kept *easy* on purpose."]},
+  {"act":"turn","type":"particles","lines":["But *today's* small models are not there yet."]},
+  {"act":"payoff","type":"tokens","params":{"tokens":["model","copy","device","TV","agent","chip","code","run"]},"lines":["If they keep improving at the usual pace, Anthropic estimates they could *match that level* by the *end of this year*."]},
+  {"act":"button","type":"burst","lines":["No full *rogue copy* exists yet. It is an early warning. Follow for more."]}]}
