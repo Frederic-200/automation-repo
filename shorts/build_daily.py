@@ -55,8 +55,9 @@ def safe(s): return re.sub(r"[^A-Za-z0-9 ._()-]+", "", s).strip()[:80] or "video
 
 def post_text(meta, date, fmt_name):
     p = meta["post"]; srcs = "\n".join(f"- {s['name']}: {s['url']}" for s in p.get("sources", [])) or "- none (no factual claims)"
-    return (f"# {p['title']}\n\n{date} | format {fmt_name}\n\n"
-            "Use the normal video for YouTube Shorts and FB Reels. Use the -nomusic video for TikTok when you want to add a trending sound.\n\n"
+    return (f"# {p['title']}\n\n{date} | format {fmt_name}\n\n" +
+            ("Files: '- YT+Reels.mp4' (voice + music) for YouTube Shorts and FB Reels; '- TikTok (add sound).mp4' (same picture, no music) for TikTok, add a trending sound there.\n\n"
+             if fmt_name != "C" else "File: '- all platforms.mp4' (music + sound effects, no voice) for TikTok, YouTube Shorts and FB Reels.\n\n") +
             f"**TikTok caption:** {p['tiktok_caption']}\n\n**YouTube Shorts / Reels caption:** {p['yt_caption']}\n\n"
             f"**Pinned comment:** {p['pinned_comment']}\n\n**Hashtags:** {' '.join(p['hashtags'])}\n\n**Sources:**\n{srcs}\n")
 
@@ -120,7 +121,8 @@ def main():
     odir = os.path.join(out, "outro")
     sh([sys.executable, os.path.join(HERE, "outro", "outro_build.py"), "--style-work", work, "--out", odir, "--mood", mood])
     title = safe(meta["post"]["title"].split(":")[0] if len(meta["post"]["title"]) > 60 else meta["post"]["title"]); pre = f"{date} {title}"
-    fin_main = os.path.join(out, f"{pre}.mp4"); fin_nom = os.path.join(out, f"{pre}-nomusic.mp4")
+    # clear platform names: the music version is for YouTube Shorts + FB Reels, the no-music one for TikTok (add a trending sound there)
+    fin_main = os.path.join(out, f"{pre} - YT+Reels.mp4" if voiced else f"{pre} - all platforms.mp4"); fin_nom = os.path.join(out, f"{pre} - TikTok (add sound).mp4")
     sh([sys.executable, os.path.join(HERE, "outro", "append_outro.py"), main_mp4, os.path.join(odir, "outro.mp4"), fin_main])
     if nom_mp4: sh([sys.executable, os.path.join(HERE, "outro", "append_outro.py"), nom_mp4, os.path.join(odir, "outro.mp4"), fin_nom])
     if not shutil.which("ffmpeg"): raise RuntimeError("ffmpeg missing")
@@ -140,7 +142,7 @@ def main():
 
     # 5. post text + preview
     pt = os.path.join(out, f"{pre} - post text.md"); open(pt, "w").write(post_text(meta, date, fmt))
-    prev = os.path.join(out, f"{pre}.jpg"); sh(["ffmpeg", "-v", "error", "-y", "-ss", "3", "-i", fin_main, "-frames:v", "1", "-q:v", "3", prev])
+    prev = os.path.join(out, f"{pre} - preview.jpg"); sh(["ffmpeg", "-v", "error", "-y", "-ss", "3", "-i", fin_main, "-frames:v", "1", "-q:v", "3", prev])
     shutil.copyfile(os.path.join(mdir, "contact.png"), os.path.join(out, "contact.png"))
     files = [fin_main] + ([fin_nom] if nom_mp4 else []) + [pt, prev]
 
