@@ -102,3 +102,15 @@ SCENES.stat = (t, lt, sc, e) => {
   x.font = `${S.fonts.display_weight} 230px "${S.fonts.display}"`; x.textAlign = 'center'; x.textBaseline = 'alphabetic';
   const sc2 = 1 + .12 * K.pulse; x.save(); x.translate(CX, 400); x.scale(sc2, sc2); x.fillStyle = e.ink; x.fillText((sc.params.prefix || '') + v.toFixed(d) + (sc.params.suffix ?? '%'), 0, 0); x.restore();
 };
+
+/* ---- echo: giant outlined keyword sliding diagonally behind the text (params.word, else the first keyword) */
+SCENES.echo = (t, lt, sc, e) => {
+  bgFill(e); const K = keyInfo(sc, t), fam = S.fonts.display, wt = S.fonts.display_weight;
+  const word = ((sc.params.word || (sc.keys[0] ? sc.keys[0].w : 'AI')) + '').replace(/[.,!?;:*]+/g, '').toUpperCase();
+  x.font = `${wt} 400px "${fam}"`; const w0 = x.measureText(word).width, sz = 400 * Math.min(1, 760 / w0); x.font = `${wt} ${sz}px "${fam}"`;
+  x.save(); x.translate(CX, HY); x.rotate(-.2); x.textAlign = 'center'; x.textBaseline = 'middle'; x.lineWidth = 5; x.lineJoin = 'round';
+  for (let r = -3; r <= 3; r++) { const slide = (r % 2 ? -1 : 1) * lt * 120 + r * 90, yy = r * sz * .95;
+    if (r === 0 && K.count > 0) { x.fillStyle = rgba(S.accent, .22 + .5 * Math.min(1, K.pulse)); x.fillText(word, slide, yy); }
+    x.strokeStyle = rgba(e.ink, r === 0 ? .55 : .26); x.strokeText(word, slide, yy); }
+  x.restore(); sc.keys.forEach(k => shockwave(CX, HY, t - k.s, S.accent, 1000, 12));
+};

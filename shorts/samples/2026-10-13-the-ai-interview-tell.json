@@ -1,5 +1,5 @@
 {
- "title": "The AI interview tell v3",
+ "title": "The AI interview tell",
  "style": "swiss playful light, yellow accent, funny",
  "voice": "am_fenrir",
  "music": true,
@@ -7,20 +7,6 @@
  "seed": 44,
  "max_seconds": 34,
  "scenes_custom": "scenes_fredsdesk.js",
- "style_overrides": {
-  "caption": {
-   "mode": "typeon",
-   "typeon_y": 1330,
-   "typeon_size": 150,
-   "typeon_w": 900
-  },
-  "fonts": {
-   "display": "Anton",
-   "display_weight": 400,
-   "text": "Share Tech Mono",
-   "text_weight": 400
-  }
- },
  "say": {},
  "scenes": [
   {
@@ -127,5 +113,46 @@
    }
   }
  ],
- "end_tail": 0.5
+ "end_tail": 0.5,
+ "meta": {
+  "format": "D",
+  "slug": "the-ai-interview-tell",
+  "topic": "AI interview tell",
+  "caption_preset": "typeon",
+  "example_only": true,
+  "facts": [
+   {
+    "claim": "92% of graduate employers suspected or confirmed applicant misconduct",
+    "sources": [
+     0,
+     1
+    ]
+   }
+  ],
+  "post": {
+   "title": "The AI interview tell (recruiters notice)",
+   "tiktok_caption": "POV: the interview where the answers sound like a robot wrote them. Recruiters say they notice. #jobinterview #AI #fyp",
+   "yt_caption": "Skit based on a real UK survey: 92% of graduate employers suspected or confirmed applicant misconduct. Use AI to practice, not to answer.",
+   "pinned_comment": "The dialogue is a skit. The 92% figure is from the Institute of Student Employers survey (suspected or confirmed misconduct of all kinds, not only AI). The tells are from one recruiter quoted by the Guardian.",
+   "hashtags": [
+    "#JobInterview",
+    "#AI",
+    "#CareerTips",
+    "#Recruiting",
+    "#GradJobs",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": [
+    {
+     "name": "The Guardian, Dan Milmo",
+     "url": "https://www.theguardian.com/"
+    },
+    {
+     "name": "HR Review, ISE Student Recruitment Survey 2026",
+     "url": "https://www.hrreview.co.uk/"
+    }
+   ]
+  }
+ }
 }

@@ -11,7 +11,7 @@ import numpy as np, soundfile as sf
 from scipy import signal
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-KIT = "/root/.cache/video-kit/kit/scripts"
+KIT = os.path.join(HERE, "..", "kit", "scripts")
 SR = 48000
 KEY = {"lofi": 880.0, "gentle": 1046.5, "upbeat": 1046.5, "synthwave": 880.0, "epic": 1174.7, "trap": 1568.0}   # chime root (A5 / C6 / D6 / G6)
 
@@ -63,8 +63,8 @@ def main():
     work = os.path.join(out, "work"); shutil.rmtree(work, ignore_errors=True); os.makedirs(work)
     shutil.copy(os.path.join(style_work, "style.json"), work); shutil.copy(os.path.join(style_work, "fonts.json"), work)
     shutil.copytree(os.path.join(style_work, "fonts"), os.path.join(work, "fonts"))
-    brand = json.load(open(os.path.join(HERE, "brand", "brand.json")))
-    for src, dst in (("icon_nocursor.png", "brand_icon.png"), ("cursor.png", "brand_cursor.png"), ("word.png", "brand_word.png")): shutil.copy(os.path.join(HERE, "brand", src), os.path.join(work, dst))
+    brand = json.load(open(os.path.join(HERE, "..", "brand", "brand.json")))
+    for src, dst in (("icon_nocursor.png", "brand_icon.png"), ("cursor.png", "brand_cursor.png"), ("word.png", "brand_word.png")): shutil.copy(os.path.join(HERE, "..", "brand", src), os.path.join(work, dst))
     js = open(os.path.join(HERE, "outro.js")).read(); open(os.path.join(work, "scenes_custom.js"), "w").write("const BRAND = " + json.dumps(brand) + ";\n" + js)
     st = json.load(open(os.path.join(work, "style.json"))); st["caption"] = dict(st.get("caption", {}), mode="off"); json.dump(st, open(os.path.join(work, "style.json"), "w"))
     frames = int(round(secs * 30))

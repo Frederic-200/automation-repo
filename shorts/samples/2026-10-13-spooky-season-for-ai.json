@@ -9,20 +9,7 @@
  "max_seconds": 22,
  "scenes_custom": "scenes_fredsdesk.js",
  "lead": 0.2,
- "end_tail": 1.2,
- "style_overrides": {
-  "caption": {
-   "mode": "stack",
-   "stack_y": 1420,
-   "stack_h": 520
-  },
-  "fonts": {
-   "display": "Archivo Black",
-   "display_weight": 400,
-   "text": "Share Tech Mono",
-   "text_weight": 400
-  }
- },
+ "end_tail": 0.5,
  "scenes": [
   {
    "act": "problem",
@@ -59,19 +46,41 @@
    },
    "speed": 1.1,
    "lines": [
-    "*Boo.* pumpkin.exe has loaded."
+    "*Boo.* pumpkin dot exe has loaded."
    ]
   },
   {
    "act": "button",
-   "type": "burst",
+   "type": "type",
    "speed": 1.1,
    "lines": [
     "Happy *Halloween* from FredsDesk."
    ]
   }
  ],
- "say": {
-  "pumpkin.exe": "pumpkin dot exe"
+ "say": {},
+ "meta": {
+  "format": "C",
+  "slug": "spooky-season-for-ai",
+  "topic": "Halloween neural net animation",
+  "caption_preset": "stack",
+  "example_only": true,
+  "facts": [],
+  "post": {
+   "title": "When the neural net gets spooky",
+   "tiktok_caption": "Something is waking up in the machine. Happy Halloween from FredsDesk. #Halloween #AIart #fyp",
+   "yt_caption": "Something is waking up in the machine. Happy Halloween from FredsDesk.",
+   "pinned_comment": "Pure animation, no factual claims. Original code-made visuals and music.",
+   "hashtags": [
+    "#Halloween",
+    "#AIart",
+    "#neuralnetwork",
+    "#spookyseason",
+    "#motiongraphics",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": []
+  }
  }
 }

@@ -1,0 +1,109 @@
+name: Daily FredsDesk Shorts
+
+# The daily Claude task (02:35 PHT) pushes shorts/queue/<date>-<slug>.json -> this workflow renders it (plain code, no model)
+# and uploads the videos + post text to the Google Drive folder "FredsDesk Shorts".
+on:
+  push:
+    branches: [main]
+    paths: ["shorts/queue/*.json"]
+  schedule:
+    - cron: "20 19 * * *"   # backup: 19:20 UTC = 03:20 Philippine time. Builds today's script only if it exists and is not published yet.
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "Script to build, e.g. shorts/queue/2026-10-16-slug.json (default: today's script, Manila date)"
+        required: false
+      upload:
+        description: "Upload to Google Drive"
+        type: boolean
+        default: true
+      force:
+        description: "Build even if the slug is already in shorts/covered.json"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-shorts
+  cancel-in-progress: false
+
+jobs:
+  shorts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      VIDEO_KIT_CACHE: /home/runner/.cache/video-kit
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install system tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fluidsynth fluid-soundfont-gm
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt "sherpa-onnx==1.13.8" mido
+
+      - name: Cache models (voice + speech recognition for exact word timing)
+        id: models
+        uses: actions/cache@v4
+        with:
+          path: /home/runner/.cache/video-kit/models
+          key: shorts-models-kokoro-1.0-int8-zipformer-2023-06-26
+
+      - name: Download speech recognition model (first run only)
+        if: steps.models.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p "$VIDEO_KIT_CACHE/models"
+          curl -fL -o /tmp/asr.tar.bz2 https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-streaming-zipformer-en-2023-06-26.tar.bz2
+          tar -xjf /tmp/asr.tar.bz2 -C "$VIDEO_KIT_CACHE/models" --wildcards '*chunk-16-left-128.int8.onnx' '*tokens.txt'
+          rm /tmp/asr.tar.bz2
+          ls "$VIDEO_KIT_CACHE/models/sherpa-onnx-streaming-zipformer-en-2023-06-26"
+
+      - name: Set up video kit (voice model, Node packages, Chromium, soundfont)
+        run: bash shorts/kit/scripts/setup.sh
+
+      - name: Build the Short (and upload to Drive)
+        env:
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID_SHORTS: ${{ secrets.GDRIVE_FOLDER_ID_SHORTS }}
+          IN_FILE: ${{ github.event.inputs.file }}
+          IN_UPLOAD: ${{ github.event.inputs.upload }}
+          IN_FORCE: ${{ github.event.inputs.force }}
+        run: |
+          args=""
+          if [ -n "$IN_FILE" ]; then args="$args --file $IN_FILE"; fi
+          if [ "$IN_UPLOAD" = "false" ]; then args="$args --no-upload --no-log"; fi
+          if [ "$IN_FORCE" = "true" ]; then args="$args --force"; fi
+          python3 shorts/build_daily.py $args
+
+      - name: Keep a 7-day backup copy
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shorts-output
+          path: |
+            output/shorts/*.mp4
+            output/shorts/*.md
+            output/shorts/*.jpg
+            output/shorts/contact.png
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Log as covered
+        run: |
+          git config user.name "fredsdesk-bot"
+          git config user.email "fredsdesk-bot@users.noreply.github.com"
+          git add shorts/covered.json
+          git diff --cached --quiet || (git commit -m "Shorts published: update covered log" && git pull --rebase --autostash origin main && git push)

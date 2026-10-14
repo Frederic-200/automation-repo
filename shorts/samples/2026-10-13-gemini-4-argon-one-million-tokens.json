@@ -1,0 +1,109 @@
+{
+ "title": "Gemini four Argon one million tokens",
+ "style": "neon dark, cyan accent, hype energetic",
+ "voice": "am_fenrir",
+ "music": true,
+ "music_mood": "synthwave",
+ "seed": 33,
+ "max_seconds": 38,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "matrix",
+   "lines": [
+    "Google just unveiled *Gemini four Argon*, and one number stands out."
+   ]
+  },
+  {
+   "act": "build",
+   "type": "tokens",
+   "lines": [
+    "Its output limit jumped from *sixty four thousand* tokens to *one million*."
+   ]
+  },
+  {
+   "act": "turn",
+   "type": "neural",
+   "lines": [
+    "That is hundreds of thousands of words, in a *single answer*."
+   ]
+  },
+  {
+   "act": "payoff",
+   "type": "stat",
+   "params": {
+    "values": [
+     0.3,
+     0.5,
+     0.7,
+     1
+    ],
+    "number": 2.7,
+    "suffix": "x",
+    "decimals": 1
+   },
+   "lines": [
+    "Google says its agents rewrote *thirty two thousand* lines of a video decoder in Rust, and it runs *two point seven times* faster than the earlier Rust version."
+   ]
+  },
+  {
+   "act": "button",
+   "type": "type",
+   "lines": [
+    "It is rolling out in stages, starting with *cyber defenders*. Follow for more."
+   ]
+  }
+ ],
+ "end_tail": 0.5,
+ "meta": {
+  "format": "B",
+  "slug": "gemini-4-argon-one-million-tokens",
+  "topic": "Gemini four Argon output limit",
+  "caption_preset": "stack",
+  "example_only": true,
+  "facts": [
+   {
+    "claim": "Output limit rose from 64,000 to 1,000,000 tokens",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Google says the Rust rewrite runs 2.7 times faster than the earlier Rust version",
+    "sources": [
+     0,
+     1
+    ]
+   }
+  ],
+  "post": {
+   "title": "Gemini four Argon: one million tokens in one answer",
+   "tiktok_caption": "Google's new model jumped its output limit from 64,000 to 1,000,000 tokens. Here is why that matters. #Gemini #Google #AI #fyp",
+   "yt_caption": "Google unveiled Gemini four Argon. The output limit just went from 64K to 1M tokens. Follow FredsDesk for daily AI news.",
+   "pinned_comment": "The 2.7x speed-up is Google's own example (rewriting a video decoder in Rust) and is compared to the earlier Rust version, not the original C/C++ code. Rollout is staged, starting with trusted cyber defenders.",
+   "hashtags": [
+    "#Gemini",
+    "#GoogleAI",
+    "#AInews",
+    "#LLM",
+    "#TechNews",
+    "#FredsDesk",
+    "#AI",
+    "#fyp"
+   ],
+   "sources": [
+    {
+     "name": "RTTNews, Gemini four Argon announcement",
+     "url": "https://www.rttnews.com/"
+    },
+    {
+     "name": "T2 Online, Google launches Gemini four Argon for cyber defenders first",
+     "url": "https://www.t2online.in/"
+    }
+   ]
+  }
+ }
+}
