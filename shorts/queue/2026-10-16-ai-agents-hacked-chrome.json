@@ -1,0 +1,84 @@
+{
+ "title": "AI agents hacked Chrome",
+ "style": "terminal dark black, red accent, hacker thriller, fast",
+ "voice": "am_fenrir",
+ "music": true,
+ "music_mood": "trap",
+ "seed": 71,
+ "max_seconds": 46,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "matrix",
+   "params": {"transition": "glitch"},
+   "lines": ["AI agents just broke into *Chrome*, and Google *paid* for it."]
+  },
+  {
+   "act": "build",
+   "type": "tokens",
+   "params": {"tokens": ["bug", "agent", "browser", "sandbox", "exploit", "patch", "code", "test"], "transition": "whip"},
+   "lines": ["A *security firm* pointed agents running OpenAI's *GPT five point six Sol* at the browser."]
+  },
+  {
+   "act": "build",
+   "type": "neural",
+   "params": {"layers": [2, 4, 6, 4, 2], "transition": "glitch"},
+   "lines": ["They found *three bugs* and chained them into one *full chain exploit*, the kind that escapes Chrome's *sandbox*."]
+  },
+  {
+   "act": "turn",
+   "type": "stat",
+   "params": {"values": [0.2, 0.45, 0.7, 1], "number": 250, "prefix": "$", "suffix": "K", "transition": "card"},
+   "lines": ["It took *six days* and about *forty thousand dollars* in API fees. Google's reward? *Two hundred fifty thousand dollars*."]
+  },
+  {
+   "act": "payoff",
+   "type": "fleet",
+   "params": {"count": 4, "transition": "whip"},
+   "lines": ["But humans *picked the targets*, checked the work, and *assembled* the final exploit."]
+  },
+  {
+   "act": "payoff",
+   "type": "echo",
+   "params": {"word": "PATCHED", "scramble": true, "transition": "glitch"},
+   "lines": ["All three bugs are now *fixed*, so keep your browser *updated*."]
+  },
+  {
+   "act": "button",
+   "type": "particles",
+   "params": {"transition": "liquid"},
+   "lines": ["The same AI that can *break* software can help *fix* it. Follow for more."]
+  }
+ ],
+ "meta": {
+  "format": "A",
+  "slug": "ai-agents-hacked-chrome",
+  "topic": "XBOW AI agents build a Chrome full-chain exploit and win Google's 250,000 dollar bounty",
+  "caption_preset": "typeon",
+  "facts": [
+   {"claim": "Security firm XBOW used AI agents running OpenAI's GPT-5.6 Sol to build a Chrome exploit", "sources": [0, 1, 2, 3]},
+   {"claim": "The exploit chained three Chrome bugs into one full-chain exploit with code execution outside Chrome's sandbox", "sources": [0, 2, 3]},
+   {"claim": "The campaign took six days", "sources": [0, 1, 2, 3]},
+   {"claim": "XBOW estimated about 40,000 dollars in API charges", "sources": [0, 1, 2]},
+   {"claim": "Google paid XBOW a 250,000 dollar bounty", "sources": [0, 1, 2, 3]},
+   {"claim": "Human researchers chose targets, reviewed the agents' work and assembled the exploit", "sources": [0, 2, 3]},
+   {"claim": "All three bugs have been fixed", "sources": [0, 1, 2]}
+  ],
+  "post": {
+   "title": "AI agents hacked Chrome in six days and Google paid $250,000",
+   "tiktok_caption": "AI agents found three Chrome bugs, chained them into one exploit in six days, and Google paid a $250,000 bounty. All fixed now. #AI #Chrome #CyberSecurity #BugBounty #FredsDesk #fyp",
+   "yt_caption": "Security firm XBOW used AI agents running OpenAI's GPT-5.6 Sol to chain three Chrome bugs into a full-chain exploit in six days, for about $40,000 in API costs. Google paid a $250,000 bounty and the bugs are fixed. Humans still picked the targets and assembled the exploit. Follow FredsDesk for daily AI",
+   "pinned_comment": "This was responsible disclosure: the bugs were reported to Google through its bug bounty program and have been fixed, so keep Chrome updated. The AI did not work alone: XBOW's researchers chose the targets, reviewed results and assembled the final exploit, building on earlier research. The $40,000 is XBOW's own estimate of API costs. Sources: GBHackers, PiunikaWeb, Startup Fortune, Runtime Wire.",
+   "hashtags": ["#AI", "#Chrome", "#CyberSecurity", "#BugBounty", "#AIagents", "#TechNews", "#FredsDesk", "#fyp"],
+   "sources": [
+    {"name": "GBHackers, Google Pays $250,000 for AI-Assisted Chrome Exploit Enabling Windows Code Execution", "url": "https://gbhackers.com/google-pays-250000-for-ai-assisted-chrome-exploit/"},
+    {"name": "PiunikaWeb, Google pays record $250,000 bounty for AI-assisted Chrome exploit", "url": "https://piunikaweb.com/2026/10/15/google-250k-bounty-ai-chrome-exploit-xbow/"},
+    {"name": "Startup Fortune, XBOW researchers used AI agents to win a $250,000 Chrome exploit bounty", "url": "https://startupfortune.com/xbow-researchers-used-ai-agents-to-win-a-250000-chrome-exploit-bounty/"},
+    {"name": "Runtime Wire, XBOW earns Google's $250,000 bounty with a six-day Chrome exploit", "url": "https://runtimewire.com/article/xbow-six-day-chrome-exploit-google-bounty"}
+   ]
+  }
+ }
+}
