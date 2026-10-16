@@ -92,7 +92,8 @@ function initLayers() {
 }
 
 /* ------------------------------------------------------------------ drawing helpers (use global x) */
-function bgFill(e, t = 0, shift = 0) { const g = x.createLinearGradient(0, 0, 0, H);
+let CURSC = null, CURT = 0;
+function bgFill(e, t = 0, shift = 0) { if (CURSC && CURSC.bg && CURSC.type !== 'story' && typeof BG !== 'undefined' && BG.under(CURSC, e, CURT, CURT - CURSC.start)) return; const g = x.createLinearGradient(0, 0, 0, H);
   g.addColorStop(0, e.bg[0]); g.addColorStop(1, e.bg[1]); x.fillStyle = g; x.fillRect(-60, -60, W + 120, H + 120); }
 function circle(cx, cy, r, fill, a = 1) { if (r <= 0) return; x.globalAlpha = a; x.fillStyle = fill; x.beginPath(); x.arc(cx, cy, r, 0, TAU); x.fill(); x.globalAlpha = 1; }
 function ring(cx, cy, r, w, col, a = 1) { if (r <= 0) return; x.globalAlpha = a; x.strokeStyle = col; x.lineWidth = w; x.beginPath(); x.arc(cx, cy, r, 0, TAU); x.stroke(); x.globalAlpha = 1; }
@@ -163,7 +164,7 @@ function drawScene(i, t, ctx) {
   x = ctx; const sc = TL.scenes[i];
   const tq = S.motion.on_twos ? Math.floor(t * 12) / 12 : t;
   x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; x.globalCompositeOperation = 'source-over'; x.filter = 'none';
-  const fn = SCENES[sc.type] || SCENES.shapes;
+  const fn = SCENES[sc.type] || SCENES.shapes; CURSC = sc; CURT = tq;
   x.save(); fn(tq, tq - sc.start, sc, env(sc)); x.restore();
 }
 

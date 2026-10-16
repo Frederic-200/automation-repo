@@ -1,0 +1,13 @@
+# FredsDesk Shorts v4: story-made backgrounds (approved by the user 2026-10-16)
+
+Goal: every scene's background comes from what that scene says; no two videos share a background; the writer decides what the background shows, the engine draws and animates it. No fixed background templates.
+
+## Pieces
+- **Drawings** (`meta.art`, 2-6 per video, <=40 shapes each, 0..200 grid, colour roles ink/accent/accent2/accent3/paper/dark/dim/bg/gold/white/red/green/blue, `meta.art_style` flat|line|sticker|blueprint|paper). Original objects only: no logos or logo look-alikes, no real app interfaces, no real people. A company or product name appears only as text (<=14 chars) on our own drawing.
+- **Scene direction** (`bg` per scene): intent, subject (drawing ids), arrangement (hero, scatter, grid, orbit, stream, stack, split, path, explode, ring, tunnel, wall, none; combine with +), motion per subject (enter: pop slide drop crawl draw assemble fade zoom; living: float pulse wobble drift breathe blink swarm spin scan; leave: fall dissolve shrink wipe), beats tied to spoken keywords (`{"on":"sandbox","do":"lock.crack"}`; actions pop grow shake spin flash glow glitch shatter open part remove crack morph), backdrop (mesh flow contour grid iso rays paper halftone scan ribbon rings stars tile with speed/scale/density/angle), texture_words (<=4, faint), data (ring, coins, bars, gauge, line, compare, number; `fact` = index in meta.facts), focus/density/energy.
+- **Engine** `kit/engine/bg.js`: layers backdrop > texture > arrangement instances (motion + beats) > beat particles shaped like the subject > data shape. Scene type `story`; `chat`, `stat`, `echo` scenes can carry `bg` for backdrop + texture behind them. Seeded by the video seed.
+- **Validator** `bgcheck.py` (required from 2026-10-17): every scene has a bg block; old fixed worlds retired as scene types; >=2 arrangements, >=3 motion words, >=3 backdrops, no arrangement+backdrop combination repeated inside the video or used in the last 7 videos; opening scene differs from yesterday's on arrangement and backdrop; drawings repeating more than half of the last 3 videos warn.
+- **Tools**: `bg_preview.py <script>` renders a contact sheet of stills (the writer opens it with Read and fixes weak or unreadable scenes); build step logs `bg_sigs` and `art_ids` to covered.json and warns on blank or frozen scenes (BG QA WARN lines in the run report).
+
+## Honest limits
+Drawn by code (flat/line/sticker/paper illustrations), no photos or AI images. Quality depends on the writer's drawings; checks catch broken, frozen or blank scenes, not "boring" ones. Caption-area contrast and automatic simplify-and-rerender are not automated yet: the writer checks the preview stills.

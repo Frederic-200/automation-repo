@@ -75,7 +75,7 @@ def main():
 
     # ---- known scene types
     known = set()
-    for f in (os.path.join(HERE, "kit", "engine", "scenes.js"), os.path.join(HERE, "kit", "scenes_fredsdesk.js")):
+    for f in (os.path.join(HERE, "kit", "engine", "scenes.js"), os.path.join(HERE, "kit", "scenes_fredsdesk.js"), os.path.join(HERE, "kit", "engine", "bg.js")):
         if os.path.exists(f): known |= set(re.findall(r"SCENES\.(\w+)\s*=", open(f).read()))
     for i, sc in enumerate(scenes):
         if sc.get("type") not in known: E(f"scene {i}: unknown type '{sc.get('type')}'")
@@ -146,7 +146,7 @@ def main():
     if tpl in ("chat_drop", "meme_skit") and not re.search(r"\b(skit|demo|mock)", post.get("pinned_comment", ""), re.I): E("fake chats/skits: pinned_comment must say it is a skit/demo")
     pv = [e for e in cov if date and e.get("date", "") < date]
     p3 = pv[-3:]; y = pv[-1] if pv else {}
-    types = [sc.get("type") for sc in scenes]
+    types = [sc.get("type") for sc in scenes if sc.get("type") != "story"]   # story scenes are checked by bgcheck.py
     if tpl and tpl != "classic" and any(e.get("template") == tpl for e in p3): E(f"template '{tpl}' used in the last 3 videos")
     if tpl == "classic" and any(e.get("template") in (None, "classic") for e in p3): W("classic template already used recently: switch to a v2 template")
     if y.get("hook_type") and y.get("hook_type") == meta.get("hook_type"): E("same hook type as yesterday")
@@ -157,7 +157,7 @@ def main():
     for e in p3:
         old = e.get("scene_types") or []
         if old and types and sum(1 for t in types if t in old) > len(types) / 2: E("more than half of the scene types repeat a recent video: change the visuals")
-    if y.get("scene_types") and types and y["scene_types"][0] == types[0]: E("same opening scene type as yesterday")
+    if y.get("scene_types") and types and scenes and scenes[0].get("type") != "story" and y["scene_types"][0] == types[0]: E("same opening scene type as yesterday")
 
     # ---- pronunciation
     say = S.get("say") or {}
@@ -212,6 +212,10 @@ def main():
     if slug and any(e.get("slug") == slug for e in cov): E("slug already published")
     topic = (meta.get("topic") or "").lower()
     if topic and any(topic == (e.get("topic") or "").lower() for e in prev): E("topic already covered in the last 7 videos")
+
+    # ---- story-made backgrounds (PLAN_V4)
+    import bgcheck
+    bgcheck.check(S, date, prev, E, W)
 
     # ---- visual recipe (12 axes, see pick_recipe.py): required from 2026-10-17
     rec = meta.get("recipe")

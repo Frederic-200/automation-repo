@@ -62,7 +62,7 @@ def build(script, style, voice, fps=30):
         end = starts[i + 1] if i + 1 < n else dur
         out.append({"i": i, "type": typ, "act": act, "start": starts[i], "end": round(end, 3),
                     "bright": act in ACT_BRIGHT, "params": sc.get("params", {}),
-                    "keys": merged, "lines": vs["lines"]})
+                    "keys": merged, "lines": vs["lines"], "bg": sc.get("bg")})
     # single biggest hit gets the impact frame
     allk = [k for s in out for k in s["keys"]]
     if allk:
@@ -80,7 +80,7 @@ def build(script, style, voice, fps=30):
     return {"title": script.get("title", ""), "fps": fps, "W": 1080, "H": 1920, "duration": round(dur, 3),
             "frames": int(round(dur * fps)), "seed": script.get("seed", style.get("seed", 7)),
             "scenes": out, "hits": hits, "music": {"bpm": 0, "beat0": 0}, "hook": script.get("hook"),
-            "chip": script.get("chip"), "ticker": script.get("ticker"), "tag": script.get("tag")}
+            "chip": script.get("chip"), "art": (script.get("meta") or {}).get("art"), "meta_art_style": (script.get("meta") or {}).get("art_style", "flat"), "ticker": script.get("ticker"), "tag": script.get("tag")}
 
 
 if __name__ == "__main__":

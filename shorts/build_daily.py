@@ -164,6 +164,20 @@ def main():
         if "--no-log" not in a: fps["entries"] = [e for e in fps["entries"] if e.get("date") != date] + [{"date": date, "slug": slug, "fp": mine}]; json.dump(fps, open(fpp, "w"))
     except Exception as ex: print("fingerprint check skipped:", ex)
 
+    # 4c. background QA on the rendered frames: not blank, something moves in every scene (warns in the run report)
+    try:
+        import numpy as np
+        from PIL import Image
+        fr = sorted(glob.glob(os.path.join(work, "frames", "*.jpg"))); fps_ = 30
+        def g(i): return np.asarray(Image.open(fr[min(len(fr) - 1, max(0, i))]).convert("L").resize((108, 192)), dtype=float)
+        for sc_ in tl["scenes"]:
+            a_, b_ = int((sc_["start"] + .5) * fps_), int((sc_["end"] - .4) * fps_)
+            if b_ - a_ < 20: continue
+            mid = (a_ + b_) // 2; sd_ = g(mid).std(); mv = np.mean([np.abs(g(i) - g(i + 15)).mean() for i in range(a_, b_ - 15, 15)] or [0])
+            if sd_ < 8: print(f"BG QA WARN: scene {sc_['i']} looks blank (std {sd_:.1f})")
+            if mv < 1.0: print(f"BG QA WARN: scene {sc_['i']} is nearly frozen (motion {mv:.2f})")
+    except Exception as ex: print("bg qa skipped:", ex)
+
     # 5. post text + preview
     pt = os.path.join(out, f"{pre} - post text.md"); open(pt, "w").write(post_text(meta, date, fmt))
     prev = os.path.join(out, f"{pre} - preview.jpg"); sh(["ffmpeg", "-v", "error", "-y", "-ss", "3", "-i", fin_main, "-frames:v", "1", "-q:v", "3", prev])
@@ -183,7 +197,7 @@ def main():
 
     # 7. log as covered (the workflow commits it)
     if "--no-log" not in a:
-        cov["entries"].append({"date": date, "slug": slug, "format": fmt, "topic": meta["topic"], "caption_preset": meta["caption_preset"], "recipe": meta.get("recipe"), "title": meta["post"]["title"],
+        cov["entries"].append({"date": date, "slug": slug, "format": fmt, "topic": meta["topic"], "caption_preset": meta["caption_preset"], "recipe": meta.get("recipe"), "bg_sigs": __import__("bgcheck").signatures(S), "art_ids": sorted((meta.get("art") or {}).keys()), "title": meta["post"]["title"],
                                "template": meta.get("template"), "hook_type": meta.get("hook_type"), "hook": (S.get("hook") or {}).get("text"), "voice": S.get("voice") if voiced else None,
                                "music": S.get("music_mood"), "sound_kit": ((S.get("style_overrides") or {}).get("sfx") or {}).get("kit"), "look": meta.get("look"),
                                "length": round(info[os.path.basename(fin_main)]["dur"], 1), "scene_types": [sc.get("type") for sc in S["scenes"]]})
