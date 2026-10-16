@@ -17,7 +17,7 @@ FORMATS = {  # estimated spoken seconds (before the 3 s outro) allowed range; re
     "C": {"voiced": False, "est": (7, 24), "max_seconds": (9, 30), "min_sources": 0},
     "D": {"voiced": True, "est": (14, 32), "max_seconds": (18, 35), "min_sources": 2},
 }
-CAPTION_PRESETS = ("stack", "typeon", "off")
+CAPTION_PRESETS = ("stack", "typeon", "slam", "clean", "off")
 TRANSITIONS = {"liquid", "iris", "whip", "glitch", "pixel", "flash", "card", "none"}
 VOICES = ("am_fenrir", "af_heart")
 TEMPLATES = ("classic", "chat_drop", "headline_drop", "split_screen", "countdown_list", "terminal", "guess_quiz", "meme_skit", "kinetic_type")
@@ -213,6 +213,28 @@ def main():
     topic = (meta.get("topic") or "").lower()
     if topic and any(topic == (e.get("topic") or "").lower() for e in prev): E("topic already covered in the last 7 videos")
 
+    # ---- visual recipe (12 axes, see pick_recipe.py): required from 2026-10-17
+    rec = meta.get("recipe")
+    if not rec:
+        (E if date and date >= "2026-10-17" else W)("meta.recipe missing: run python3 shorts/pick_recipe.py <script>")
+    else:
+        import pick_recipe as PR
+        chk = {"layout": PR.LAYOUTS, "caption_style": PR.CAPTION_STYLES + ["off"], "caption_pos": PR.CAPTION_POS, "hook_style": PR.HOOK_STYLES,
+               "hook_pos": list(PR.HOOK_POS), "fonts": list(PR.FONTS), "camera": list(PR.CAMERAS), "finish": list(PR.FINISHES),
+               "transitions": list(PR.TRANSITIONS), "anim": list(PR.ANIMS)}
+        for k, allowed in chk.items():
+            if rec.get(k) not in allowed: E(f"recipe.{k} must be one of {allowed}")
+        for k in ("family", "sound"):
+            if not rec.get(k): E(f"recipe.{k} missing")
+        if rec.get("caption_style") and cp and rec["caption_style"] != cp: E("meta.caption_preset must equal recipe.caption_style")
+        rprev = [e for e in prev if isinstance(e.get("recipe"), dict)]
+        if rprev:
+            y = rprev[-1]["recipe"]
+            if rec.get("layout") == y.get("layout"): E(f"frame layout '{rec.get('layout')}' same as yesterday")
+            if rec.get("caption_style") == y.get("caption_style"): E(f"caption style '{rec.get('caption_style')}' same as yesterday")
+            for e in rprev:
+                d = PR.distance(rec, e["recipe"])
+                if d < PR.MIN_DIFF: E(f"recipe differs from {e['date']} on only {d} of 12 axes (need {PR.MIN_DIFF}+): re-run pick_recipe.py")
     if not quiet or errs or warns:
         print(f"{base}: format {fmt} preset {cp} scenes {len(scenes)} words {words} est {est:.0f}s sources {len(srcs)}")
         for w in warns: print("WARN:", w)

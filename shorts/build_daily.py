@@ -13,7 +13,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
-KIT = os.path.join(HERE, "kit", "scripts"); sys.path.insert(0, KIT)
+KIT = os.path.join(HERE, "kit", "scripts"); sys.path.insert(0, KIT); sys.path.insert(0, HERE)
 
 CAPTION_PRESETS = {
     # bold phrase blocks (the "v2" look): size by importance, accent word
@@ -96,7 +96,13 @@ def main():
     S = json.load(open(f)); meta = S["meta"]; fmt = meta["format"]; voiced = fmt != "C"
     out = os.path.abspath(opt("--out", os.path.join(ROOT, "output", "shorts"))); shutil.rmtree(out, ignore_errors=True); os.makedirs(out)
     # resolve preset + absolute scenes_custom into the script handed to the kit
-    R = dict(S); R["style_overrides"] = deep_merge(CAPTION_PRESETS[meta["caption_preset"]], S.get("style_overrides") or {})
+    R = dict(S)
+    if meta.get("recipe"):
+        import pick_recipe
+        base_ov = pick_recipe.overrides(meta["recipe"])
+        if meta["recipe"].get("layout") == "text_first" and meta["recipe"].get("hook_pos") == "top": base_ov["hook"]["y"] = 330
+    else: base_ov = CAPTION_PRESETS[meta["caption_preset"]]
+    R["style_overrides"] = deep_merge(base_ov, S.get("style_overrides") or {})
     R["scenes_custom"] = os.path.join(HERE, "kit", "scenes_fredsdesk.js"); R["say"] = S.get("say") or {}; R["silent"] = not voiced
     rs = os.path.join(out, "script_resolved.json"); json.dump(R, open(rs, "w"), indent=1)
     mdir = os.path.join(out, "main"); work = os.path.join(mdir, "work")
@@ -147,6 +153,17 @@ def main():
     print(json.dumps(info, indent=1)); [print("NOTE:", n) for n in notes]
     if problems: print("QA FAILED:\n" + "\n".join(problems)); return 1
 
+    # 4b. look-alike check against the last 7 videos (structure only, colour-independent); warns, never blocks the day
+    try:
+        import fingerprint
+        fpp = os.path.join(HERE, "fingerprints.json"); fps = json.load(open(fpp)) if os.path.exists(fpp) else {"entries": []}
+        mine = fingerprint.fp(os.path.join(work, "frames"))
+        close = [(e["date"], round(fingerprint.dist(mine, e["fp"]), 2)) for e in fps["entries"][-7:] if e.get("date") != date]
+        flagged = [c for c in close if c[1] < 0.35]
+        print("look-alike distances:", close or "none yet", "-> FLAGGED " + str(flagged) if flagged else "-> ok")
+        if "--no-log" not in a: fps["entries"] = [e for e in fps["entries"] if e.get("date") != date] + [{"date": date, "slug": slug, "fp": mine}]; json.dump(fps, open(fpp, "w"))
+    except Exception as ex: print("fingerprint check skipped:", ex)
+
     # 5. post text + preview
     pt = os.path.join(out, f"{pre} - post text.md"); open(pt, "w").write(post_text(meta, date, fmt))
     prev = os.path.join(out, f"{pre} - preview.jpg"); sh(["ffmpeg", "-v", "error", "-y", "-ss", "3", "-i", fin_main, "-frames:v", "1", "-q:v", "3", prev])
@@ -166,7 +183,7 @@ def main():
 
     # 7. log as covered (the workflow commits it)
     if "--no-log" not in a:
-        cov["entries"].append({"date": date, "slug": slug, "format": fmt, "topic": meta["topic"], "caption_preset": meta["caption_preset"], "title": meta["post"]["title"],
+        cov["entries"].append({"date": date, "slug": slug, "format": fmt, "topic": meta["topic"], "caption_preset": meta["caption_preset"], "recipe": meta.get("recipe"), "title": meta["post"]["title"],
                                "template": meta.get("template"), "hook_type": meta.get("hook_type"), "hook": (S.get("hook") or {}).get("text"), "voice": S.get("voice") if voiced else None,
                                "music": S.get("music_mood"), "sound_kit": ((S.get("style_overrides") or {}).get("sfx") or {}).get("kit"), "look": meta.get("look"),
                                "length": round(info[os.path.basename(fin_main)]["dur"], 1), "scene_types": [sc.get("type") for sc in S["scenes"]]})

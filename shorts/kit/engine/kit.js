@@ -299,9 +299,48 @@ function fitFont(text, fam, wt, maxW, start, min = 40) { let sz = start; x.font 
   while (x.measureText(text).width > maxW && sz > min) { sz -= 4; x.font = `${wt} ${sz}px "${fam}"`; } return sz; }
 const caseT = s => S.upper ? s.toUpperCase() : s;
 
+/* ------------------------------------------------------------------ frame layouts, header/ticker, progress bar, source chip */
+const LAYOUTS = {
+  card: { x: 70, y: 190, w: 940, h: 1000, r: 56, k: .9, shadow: 1 },
+  top_stage: { x: 0, y: 0, w: 1080, h: 1160, r: 0, k: 1 },
+  tilt_card: { x: 120, y: 240, w: 880, h: 980, r: 48, k: .88, rot: -.05, shadow: 1 },
+  letterbox: { x: 0, y: 250, w: 1080, h: 1230, r: 0, k: 1 },
+};
+function rrPath(o, x0, y0, w, h, r) { o.beginPath(); o.moveTo(x0 + r, y0); o.arcTo(x0 + w, y0, x0 + w, y0 + h, r); o.arcTo(x0 + w, y0 + h, x0, y0 + h, r); o.arcTo(x0, y0 + h, x0, y0, r); o.arcTo(x0, y0, x0 + w, y0, r); o.closePath(); }
+function drawStage(o, z, rot, F, sc) {
+  const name = (S.layout && S.layout.name) || 'full', R = LAYOUTS[name], e = env(sc);
+  const full = (a) => { o.save(); o.globalAlpha = a; o.translate(CX, HY); o.scale(z, z); o.rotate(rot); o.translate(-CX + F.sx, -HY + F.sy); o.drawImage(FR, 0, 0); o.restore(); };
+  if (name === 'text_first') { full(.42); return; }
+  if (!R) { full(1); return; }
+  o.fillStyle = mixc(e.bg[0], e.ink, .07); o.fillRect(0, 0, W, H);
+  o.save();
+  if (R.rot) { o.translate(R.x + R.w / 2, R.y + R.h / 2); o.rotate(R.rot); o.translate(-(R.x + R.w / 2), -(R.y + R.h / 2)); }
+  if (R.shadow) { o.save(); o.shadowColor = 'rgba(0,0,0,.38)'; o.shadowBlur = 46; o.shadowOffsetY = 20; o.fillStyle = e.bg[0]; rrPath(o, R.x, R.y, R.w, R.h, R.r); o.fill(); o.restore(); }
+  rrPath(o, R.x, R.y, R.w, R.h, R.r); o.clip();
+  o.translate(R.x + R.w / 2, R.y + R.h / 2); o.scale(z * R.k, z * R.k); o.rotate(rot); o.translate(-CX + F.sx, -HY + F.sy); o.drawImage(FR, 0, 0);
+  o.restore();
+}
+function decor(t, F, sc) {
+  const o = octx, e = env(sc), name = (S.layout && S.layout.name) || 'full', X = S.extras || {};
+  o.save(); o.setTransform(1, 0, 0, 1, 0, 0);
+  if (name === 'letterbox') {
+    o.fillStyle = S.accent; o.fillRect(0, 0, W, 250);
+    o.fillStyle = S.on_accent; o.font = `${S.fonts.display_weight} 84px "${S.fonts.display}"`; o.textBaseline = 'middle'; o.textAlign = 'left'; o.fillText('FREDSDESK', 60, 132);
+    o.font = `${S.fonts.text_weight} 40px "${S.fonts.text}"`; o.textAlign = 'right'; o.fillText(TL.tag || 'DAILY AI', W - 60, 132);
+    const tx = (TL.ticker || 'FREDSDESK  /  DAILY AI  /  ') , tw = (o.font = `${S.fonts.display_weight} 44px "${S.fonts.display}"`, o.measureText(tx).width);
+    o.fillStyle = e.ink; o.fillRect(0, 1480, W, 84); o.fillStyle = e.bg[0]; o.textAlign = 'left'; const off = (t * 140) % tw;
+    for (let q = -off; q < W; q += tw) o.fillText(tx, q, 1524);
+  }
+  if (X.progress) { o.fillStyle = 'rgba(0,0,0,.25)'; o.fillRect(0, 0, W, 16); o.fillStyle = S.accent; o.fillRect(0, 0, W * clamp(t / TL.duration), 16); }
+  if (TL.chip) { const c = TL.chip, a = clamp((t - c.at) / .18) * clamp((c.at + c.hold - t) / .18); if (a > 0) {
+      o.globalAlpha = a; o.font = `${S.fonts.text_weight} 38px "${S.fonts.text}"`; o.textBaseline = 'middle'; o.textAlign = 'left'; const txt = String(c.text).toUpperCase(), tw = o.measureText(txt).width + 56, cy = name === 'letterbox' ? 300 : 120;
+      o.fillStyle = e.ink; rrPath(o, 54, cy - 36 + (1 - a) * -14, tw, 72, 36); o.fill(); o.fillStyle = e.bg[0]; o.fillText(txt, 82, cy + (1 - a) * -14 + 2); o.globalAlpha = 1; } }
+  o.restore();
+}
+
 /* ------------------------------------------------------------------ hook overlay (frame 0) + loop echo */
 function hookOverlay(t, F) {
-  const H = TL.hook, hold = H.hold ?? 2.4, dur = TL.duration, echoT = Math.max(0, dur - (H.echo ?? .55));
+  const H = TL.hook, HY0 = H.y ?? ((S.hook && S.hook.y) || 560), hold = H.hold ?? 2.4, dur = TL.duration, echoT = Math.max(0, dur - (H.echo ?? .55));
   let a = 0, k = 1;
   if (t < hold) { a = 1; k = 1 + .14 * Math.exp(-t * 22) * Math.cos(t * 30); if (t > hold - .22) a = clamp((hold - t) / .22); }   // visible and popping from frame 0, no fade-in
   else if (H.loop !== false && t >= echoT) { a = easeOutQuart(clamp((t - echoT) / .4)); k = 1; }                                   // the end shows the hook again: seamless replay
@@ -312,15 +351,27 @@ function hookOverlay(t, F) {
   for (let tries = 0; tries < 8; tries++) { x = octx; x.font = `${wt} ${size}px "${fam}"`; lines = []; let cur = [];
     for (const w of words) { const t2 = cur.concat([w]).map(z => z.replace(/\*/g, '')).join(' '); if (x.measureText(t2).width > W0 && cur.length) { lines.push(cur); cur = [w]; } else cur.push(w); }
     if (cur.length) lines.push(cur); if (lines.length <= 3) break; size *= .9; }
-  const lh = size * .98, y0 = (H.y ?? 560) - (lines.length * lh) / 2 + lh * .8;
+  const lh = size * .98, y0 = (HY0) - (lines.length * lh) / 2 + lh * .8;
   x = octx; x.save(); x.setTransform(1, 0, 0, 1, 0, 0); x.translate(F.sx * .5, F.sy * .5); x.globalAlpha = a; x.textBaseline = 'alphabetic'; x.textAlign = 'center';
-  x.translate(CX, H.y ?? 560); x.scale(k, k); x.translate(-CX, -(H.y ?? 560)); x.font = `${wt} ${size}px "${fam}"`; x.lineJoin = 'round'; x.lineWidth = size * .09;
-  const dark = lum(e.bg[0]) < .5;
+  x.translate(CX, HY0); x.scale(k, k); x.translate(-CX, -(HY0)); x.font = `${wt} ${size}px "${fam}"`; x.lineJoin = 'round'; x.lineWidth = size * .09;
+  const dark = lum(e.bg[0]) < .5, hs = (S.hook && S.hook.style) || 'pop';
+  const blockW = Math.max(...lines.map(ln => x.measureText(ln.map(z => z.replace(/\*/g, '')).join(' ')).width)), blockH = lines.length * lh;
+  if (hs === 'sticker') { x.save(); x.translate(CX, (HY0)); x.rotate(-.045); x.fillStyle = 'rgba(0,0,0,.35)'; rrPath(x, -blockW / 2 - 40 + 10, -blockH / 2 - 26 + 14, blockW + 80, blockH + 60, 30); x.fill();
+    x.fillStyle = S.accent; rrPath(x, -blockW / 2 - 40, -blockH / 2 - 26, blockW + 80, blockH + 60, 30); x.fill(); x.restore(); x.translate(CX, HY0); x.rotate(-.045); x.translate(-CX, -(HY0)); }
+  if (hs === 'terminal') { x.save(); x.fillStyle = 'rgba(4,10,8,.88)'; rrPath(x, CX - blockW / 2 - 50, (HY0) - blockH / 2 - 60, blockW + 100, blockH + 120, 22); x.fill();
+    x.fillStyle = S.accent; x.fillRect(CX - blockW / 2 - 50, (HY0) - blockH / 2 - 60, blockW + 100, 8); x.restore(); }
+  const nChars = hs === 'terminal' ? Math.floor(t * 46) + 6 : 1e9; let used = 0;
   lines.forEach((ln, li) => { const txt = ln.map(z => z.replace(/\*/g, '')), full = txt.join(' '), tw = x.measureText(full).width; let px = CX - tw / 2;
-    ln.forEach((w, wi) => { const key = w.includes('*'), word = txt[wi], ww = x.measureText(word).width, yy = y0 + li * lh;
-      if (key) { x.fillStyle = S.accent; x.fillRect(px - 12, yy - size * .8, ww + 24, size * .98); }
-      x.textAlign = 'left'; x.strokeStyle = dark ? 'rgba(0,0,0,.75)' : 'rgba(255,255,255,.8)'; if (!key) x.strokeText(word, px, yy);
-      x.fillStyle = key ? S.on_accent : e.ink; x.fillText(word, px, yy); px += ww + x.measureText(' ').width; x.textAlign = 'center'; }); });
+    ln.forEach((w, wi) => { const key = w.includes('*'); let word = txt[wi]; const ww = x.measureText(word).width, yy = y0 + li * lh;
+      if (hs === 'terminal') { const left = Math.max(0, nChars - used); used += word.length + 1; word = word.slice(0, left); }
+      if (hs === 'pop' && key) { x.fillStyle = S.accent; x.fillRect(px - 12, yy - size * .8, ww + 24, size * .98); }
+      x.textAlign = 'left';
+      if (hs === 'outline') { x.strokeStyle = key ? S.accent : e.ink; x.lineWidth = size * .045; x.strokeText(word, px, yy); if (key) { x.fillStyle = S.accent; x.fillText(word, px, yy); } }
+      else if (hs === 'sticker') { x.fillStyle = S.on_accent; x.fillText(word, px, yy); }
+      else if (hs === 'terminal') { x.fillStyle = key ? S.accent : '#b6ffcc'; x.fillText(word, px, yy); }
+      else { x.strokeStyle = dark ? 'rgba(0,0,0,.75)' : 'rgba(255,255,255,.8)'; if (!key) x.strokeText(word, px, yy); x.fillStyle = key ? S.on_accent : e.ink; x.fillText(word, px, yy); }
+      px += ww + x.measureText(' ').width; x.textAlign = 'center'; }); });
+  if (hs === 'terminal' && Math.floor(t * 3) % 2 === 0) { x.fillStyle = S.accent; x.fillRect(CX + blockW / 2 + 8, y0 + (lines.length - 1) * lh - size * .8, size * .4, size * .85); }
   x.restore();
 }
 function captions(t, F) {
@@ -509,8 +560,10 @@ function renderFrame(f) {
   const rot = F.amp * .0006 * Math.sin(t * 53), z = 1.05 + push + F.zoom + F.amp / 900;
   const o = octx; o.setTransform(1, 0, 0, 1, 0, 0); o.globalAlpha = 1; o.globalCompositeOperation = 'source-over'; o.filter = 'none';
   o.fillStyle = env(sc).bg[0]; o.fillRect(0, 0, W, H);
-  o.save(); o.translate(CX, HY); o.scale(z, z); o.rotate(rot); o.translate(-CX + F.sx, -HY + F.sy); o.drawImage(FR, 0, 0); o.restore();
+  if (S.camera.drift) { F.sx += S.camera.drift * 26 * Math.sin(t * .8) + S.camera.drift * 12 * Math.sin(t * 1.9 + 1); F.sy += S.camera.drift * 20 * Math.cos(t * .7 + 2); }
+  drawStage(o, z, rot, F, sc);
   post(t, F, sc);
+  decor(t, F, sc);
   captions(t, F);
   if (TL.hook) hookOverlay(t, F);
   // fade in (max .3 s), no fade out (loop-ready); with a hook the first frame is already the hook

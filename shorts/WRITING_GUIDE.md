@@ -71,3 +71,10 @@ The workflow writes the post-text file from `meta.post`: TikTok caption (short, 
 - Every spoken sentence is 12 words or fewer. Length 15-35 s (format ranges in validate.py). First payoff by 5-8 s, a re-hook at about the middle ("But...", "Here is the catch"). A visual change every 1.5-2 s (the engine adds micro-motion automatically).
 - Music genre and sound kit must differ from yesterday; scene types must not repeat more than half of any of the last 3 videos, and the opening scene type must differ from yesterday's.
 - The outro is 1.5 s (`meta.outro_seconds` to override).
+
+## 10. Visual recipe (approved 2026-10-16: layouts must not repeat)
+After writing the script, run `python3 shorts/pick_recipe.py shorts/queue/<file>.json`. It writes `meta.recipe` (12 axes: layout, caption style/position, hook style/position, fonts, palette family, camera, finish, transitions, scene animation, sound) and sets `meta.caption_preset` to the recipe's caption style. Do not edit the recipe by hand and do not set style_overrides fonts/captions/camera/post. The validator requires a recipe that differs from each of the last 7 videos on 5+ of 12 axes, with a different frame layout and caption style than yesterday. Re-run the picker if validation fails.
+- You still choose the palette (free-text `style`, light/dark via `meta.look`), `music_mood` and the content. The recipe changes the frame, typography, motion and finish around it.
+- Optional script fields used by some layouts: `"chip": {"text": "Source: Google", "at": 3.0, "hold": 2.5}` (small source label), `"tag": "SECURITY"` and `"ticker": "FREDSDESK / DAILY AI / "` (letterbox bands). Chip text must match the sources.
+- `caption_preset` may now be stack | typeon | slam | clean | off.
+- After rendering, the build prints look-alike distances against the last 7 videos (shorts/fingerprints.json); a FLAGGED line means the structure is too close: mention it in the run report.

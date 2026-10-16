@@ -79,7 +79,8 @@ def build(script, style, voice, fps=30):
         s["transition"] = s.get("params", {}).get("transition") or (trans[(s["i"] - 1) % len(trans)] if s["i"] else "none")
     return {"title": script.get("title", ""), "fps": fps, "W": 1080, "H": 1920, "duration": round(dur, 3),
             "frames": int(round(dur * fps)), "seed": script.get("seed", style.get("seed", 7)),
-            "scenes": out, "hits": hits, "music": {"bpm": 0, "beat0": 0}, "hook": script.get("hook")}
+            "scenes": out, "hits": hits, "music": {"bpm": 0, "beat0": 0}, "hook": script.get("hook"),
+            "chip": script.get("chip"), "ticker": script.get("ticker"), "tag": script.get("tag")}
 
 
 if __name__ == "__main__":
