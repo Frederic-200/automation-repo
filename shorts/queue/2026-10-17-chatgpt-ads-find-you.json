@@ -1,0 +1,935 @@
+{
+ "title": "ChatGPT ads can find you by email",
+ "style": "paper warm light cream, coral accent, teal second accent, curious consumer explainer",
+ "voice": "af_heart",
+ "music": true,
+ "music_mood": "lofi",
+ "seed": 171,
+ "max_seconds": 36,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "hook": {
+  "text": "ChatGPT ads can find you by *email*",
+  "hold": 2.4
+ },
+ "chip": {
+  "text": "Source: 404 Media",
+  "at": 3.4,
+  "hold": 2.6
+ },
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "Advertisers can now aim ChatGPT ads at your *email*.",
+    "Or your *phone number*."
+   ],
+   "bg": {
+    "intent": "your email and phone become an ad target",
+    "subject": [
+     "adcard",
+     "envelope",
+     "phone"
+    ],
+    "arrangement": "hero+scatter+orbit",
+    "count": 6,
+    "motion": {
+     "adcard": "drop wobble",
+     "envelope": "pop drift",
+     "phone": "pop drift"
+    },
+    "beats": [
+     {
+      "on": "email",
+      "do": "envelope.pop"
+     },
+     {
+      "on": "phone number",
+      "do": "phone.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "TARGET"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "lines": [
+    "Four oh four Media dug into how.",
+    "Brands upload *lists* of emails and phone numbers.",
+    "ChatGPT checks which ones *match* real users."
+   ],
+   "bg": {
+    "intent": "contact lists poured into a matching machine",
+    "subject": [
+     "clipboard",
+     "envelope"
+    ],
+    "arrangement": "hero+stream",
+    "count": 7,
+    "motion": {
+     "clipboard": "zoom breathe",
+     "envelope": "slide from left fast"
+    },
+    "beats": [
+     {
+      "on": "lists",
+      "do": "clipboard.pop"
+     },
+     {
+      "on": "match",
+      "do": "clipboard.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "tile",
+     "speed": 0.4
+    },
+    "texture_words": [
+     "MATCH",
+     "LIST"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "card"
+   },
+   "lines": [
+    "OpenAI says lists need about *twenty five thousand* matches."
+   ],
+   "bg": {
+    "intent": "only big lists count: about twenty five thousand people",
+    "subject": [
+     "clipboard"
+    ],
+    "arrangement": "none",
+    "data": {
+     "kind": "ring",
+     "value": 25,
+     "unit": "K",
+     "label": "~25K",
+     "fact": 1
+    },
+    "motion": {},
+    "backdrop": {
+     "kind": "rings",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "MINIMUM"
+    ]
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "lines": [
+    "But here is the catch.",
+    "Turn ad personalization *off*.",
+    "Your *current chat* can still pick the ads."
+   ],
+   "bg": {
+    "intent": "even switched off, the open chat still steers the ads",
+    "subject": [
+     "chatwin",
+     "adcard"
+    ],
+    "arrangement": "hero+orbit",
+    "count": 4,
+    "motion": {
+     "chatwin": "pop float",
+     "adcard": "fade spin"
+    },
+    "beats": [
+     {
+      "on": "off",
+      "do": "chatwin.flash"
+     },
+     {
+      "on": "current chat",
+      "do": "adcard.grow"
+     }
+    ],
+    "backdrop": {
+     "kind": "flow",
+     "speed": 0.6,
+     "angle": 15
+    },
+    "texture_words": [
+     "CONTEXT"
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "iris"
+   },
+   "lines": [
+    "OpenAI says advertisers never see your *chats*.",
+    "And paid plans like *Plus* show *no ads*."
+   ],
+   "bg": {
+    "intent": "your chat stays on one side, the ads on the other",
+    "subject": [
+     "chatwin",
+     "adcard"
+    ],
+    "arrangement": "split",
+    "count": 2,
+    "motion": {
+     "chatwin": "slide from left breathe",
+     "adcard": "slide from right"
+    },
+    "beats": [
+     {
+      "on": "chats",
+      "do": "chatwin.glow"
+     },
+     {
+      "on": "no ads",
+      "do": "adcard.remove"
+     }
+    ],
+    "backdrop": {
+     "kind": "contour",
+     "speed": 0.4
+    }
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "lines": [
+    "OpenAI says *Temporary Chats* skip ads.",
+    "Would you pay to skip them?"
+   ],
+   "bg": {
+    "intent": "a chat that disappears also leaves the ads out",
+    "subject": [
+     "hourglass",
+     "adcard"
+    ],
+    "arrangement": "hero+ring",
+    "count": 6,
+    "motion": {
+     "hourglass": "drop pulse",
+     "adcard": "fade dissolve"
+    },
+    "beats": [
+     {
+      "on": "Temporary Chats",
+      "do": "hourglass.spin"
+     }
+    ],
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.5,
+     "density": 0.4
+    }
+   }
+  }
+ ],
+ "meta": {
+  "format": "A",
+  "slug": "chatgpt-ads-find-you",
+  "topic": "How ChatGPT ad targeting uses email and phone lists, the current chat, and how to see fewer ads",
+  "caption_preset": "slam",
+  "hook_type": "callout",
+  "template": "classic",
+  "look": "light",
+  "art_style": "flat",
+  "art": {
+   "envelope": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 22,
+      "y": 52,
+      "w": 156,
+      "h": 104,
+      "r": 12,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 22,
+      "y": 52,
+      "w": 156,
+      "h": 104,
+      "r": 12,
+      "c": "ink",
+      "fill": false,
+      "sw": 6
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        26,
+        58
+       ],
+       [
+        100,
+        114
+       ],
+       [
+        174,
+        58
+       ]
+      ],
+      "c": "accent"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        26,
+        58
+       ],
+       [
+        100,
+        114
+       ],
+       [
+        174,
+        58
+       ]
+      ],
+      "c": "ink",
+      "w": 6
+     },
+     {
+      "t": "circle",
+      "x": 150,
+      "y": 140,
+      "r": 18,
+      "c": "red"
+     },
+     {
+      "t": "text",
+      "s": "@",
+      "x": 150,
+      "y": 147,
+      "size": 24,
+      "c": "white"
+     }
+    ]
+   },
+   "phone": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 58,
+      "y": 14,
+      "w": 84,
+      "h": 172,
+      "r": 18,
+      "c": "ink"
+     },
+     {
+      "t": "rect",
+      "x": 66,
+      "y": 30,
+      "w": 68,
+      "h": 134,
+      "r": 8,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 175,
+      "r": 6,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 74,
+      "y": 44,
+      "w": 52,
+      "h": 10,
+      "r": 5,
+      "c": "accent2"
+     },
+     {
+      "t": "rect",
+      "x": 74,
+      "y": 62,
+      "w": 40,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 74,
+      "y": 80,
+      "w": 48,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     },
+     {
+      "t": "text",
+      "s": "+1",
+      "x": 100,
+      "y": 130,
+      "size": 26,
+      "c": "accent"
+     }
+    ]
+   },
+   "adcard": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 18,
+      "y": 40,
+      "w": 164,
+      "h": 120,
+      "r": 16,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 30,
+      "y": 54,
+      "w": 64,
+      "h": 64,
+      "r": 10,
+      "c": "paper"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        38,
+        110
+       ],
+       [
+        56,
+        80
+       ],
+       [
+        70,
+        98
+       ],
+       [
+        78,
+        88
+       ],
+       [
+        88,
+        110
+       ]
+      ],
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 78,
+      "y": 70,
+      "r": 8,
+      "c": "gold"
+     },
+     {
+      "t": "rect",
+      "x": 104,
+      "y": 58,
+      "w": 62,
+      "h": 12,
+      "r": 6,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 104,
+      "y": 80,
+      "w": 48,
+      "h": 12,
+      "r": 6,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 104,
+      "y": 124,
+      "w": 62,
+      "h": 24,
+      "r": 12,
+      "c": "dark"
+     },
+     {
+      "t": "text",
+      "s": "AD",
+      "x": 72,
+      "y": 146,
+      "size": 26,
+      "c": "dark"
+     },
+     {
+      "t": "text",
+      "s": "BUY",
+      "x": 135,
+      "y": 141,
+      "size": 14,
+      "c": "white"
+     }
+    ]
+   },
+   "clipboard": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 36,
+      "y": 26,
+      "w": 128,
+      "h": 164,
+      "r": 12,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 46,
+      "y": 40,
+      "w": 108,
+      "h": 140,
+      "r": 6,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 74,
+      "y": 16,
+      "w": 52,
+      "h": 22,
+      "r": 8,
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 62,
+      "y": 66,
+      "r": 7,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 76,
+      "y": 60,
+      "w": 64,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     },
+     {
+      "t": "circle",
+      "x": 62,
+      "y": 94,
+      "r": 7,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 76,
+      "y": 88,
+      "w": 52,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     },
+     {
+      "t": "circle",
+      "x": 62,
+      "y": 122,
+      "r": 7,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 76,
+      "y": 116,
+      "w": 60,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     },
+     {
+      "t": "circle",
+      "x": 62,
+      "y": 150,
+      "r": 7,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 76,
+      "y": 144,
+      "w": 44,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     }
+    ]
+   },
+   "chatwin": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 16,
+      "y": 28,
+      "w": 168,
+      "h": 144,
+      "r": 18,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 16,
+      "y": 28,
+      "w": 168,
+      "h": 144,
+      "r": 18,
+      "c": "ink",
+      "fill": false,
+      "sw": 6
+     },
+     {
+      "t": "rect",
+      "x": 16,
+      "y": 28,
+      "w": 168,
+      "h": 28,
+      "r": 18,
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 34,
+      "y": 42,
+      "r": 5,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 50,
+      "y": 42,
+      "r": 5,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 66,
+      "y": 42,
+      "r": 5,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 30,
+      "y": 70,
+      "w": 96,
+      "h": 26,
+      "r": 13,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 74,
+      "y": 106,
+      "w": 96,
+      "h": 26,
+      "r": 13,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 30,
+      "y": 142,
+      "w": 70,
+      "h": 20,
+      "r": 10,
+      "c": "dim"
+     }
+    ]
+   },
+   "hourglass": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 44,
+      "y": 16,
+      "w": 112,
+      "h": 16,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 44,
+      "y": 168,
+      "w": 112,
+      "h": 16,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        56,
+        32
+       ],
+       [
+        144,
+        32
+       ],
+       [
+        108,
+        100
+       ],
+       [
+        144,
+        168
+       ],
+       [
+        56,
+        168
+       ],
+       [
+        92,
+        100
+       ]
+      ],
+      "c": "paper"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        56,
+        32
+       ],
+       [
+        144,
+        32
+       ],
+       [
+        108,
+        100
+       ],
+       [
+        144,
+        168
+       ],
+       [
+        56,
+        168
+       ],
+       [
+        92,
+        100
+       ]
+      ],
+      "c": "ink",
+      "fill": false,
+      "w": 5
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        70,
+        50
+       ],
+       [
+        130,
+        50
+       ],
+       [
+        100,
+        92
+       ]
+      ],
+      "c": "accent",
+      "part": "top"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        100,
+        128
+       ],
+       [
+        136,
+        164
+       ],
+       [
+        64,
+        164
+       ]
+      ],
+      "c": "accent"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        98
+       ],
+       [
+        100,
+        150
+       ]
+      ],
+      "c": "accent",
+      "w": 3
+     }
+    ]
+   }
+  },
+  "facts": [
+   {
+    "claim": "404 Media investigated how ChatGPT's ad targeting works",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Advertisers can upload lists of email addresses and phone numbers (also hashed versions and device advertising IDs); OpenAI checks which match ChatGPT users",
+    "sources": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "Per OpenAI, list-based audiences need about 25,000 matches (Gadget Review: at least 25,000 matched users; Gizmodo: 25,000 entries; MobileSyrup: more than 25,000)",
+    "sources": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "With ad personalization off, ads may still be based on the current chat",
+    "sources": [
+     4,
+     2,
+     1,
+     3
+    ]
+   },
+   {
+    "claim": "OpenAI says advertisers do not have access to your chats",
+    "sources": [
+     4,
+     2
+    ]
+   },
+   {
+    "claim": "Plus, Pro, Business, Enterprise and Edu plans have no ads; ads appear on Free and Go",
+    "sources": [
+     4,
+     2,
+     5
+    ]
+   },
+   {
+    "claim": "OpenAI says Temporary Chats show no ads",
+    "sources": [
+     4,
+     5
+    ]
+   }
+  ],
+  "post": {
+   "title": "ChatGPT ads can find you by email and phone number: here's how it works",
+   "tiktok_caption": "Brands can upload email and phone lists, and ChatGPT matches them to users for ads. Even with personalization off, your current chat can still pick the ad. OpenAI says advertisers never see your chats. #AI #ChatGPT #OpenAI #Privacy #AInews #FredsDesk",
+   "yt_caption": "404 Media looked at how ChatGPT ads are targeted. Advertisers can upload lists of emails and phone numbers that OpenAI matches to ChatGPT users (about 25,000 matches minimum, per OpenAI). Turning ad personalization off still allows ads based on your current chat. Plus and higher plans and Temporary Chats show no ads. Follow FredsDesk for daily AI",
+   "pinned_comment": "Ads appear only on the Free and Go plans; Plus, Pro, Business, Enterprise and Edu are ad-free, and OpenAI says Temporary Chats show no ads. OpenAI says advertisers do not get your chats or personal details, and that being on a list does not by itself mean you get an ad. The 25,000 figure is OpenAI's minimum audience size as reported by Gadget Review, Gizmodo and MobileSyrup. Sources: 404 Media, Gizmodo, Gadget Review, MobileSyrup, OpenAI Help Center.",
+   "hashtags": [
+    "#AI",
+    "#ChatGPT",
+    "#OpenAI",
+    "#Privacy",
+    "#AInews",
+    "#TechTips",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": [
+    {
+     "name": "404 Media, How ChatGPT Targets Ads To You Based On Your Prompts, Phone Number, and Email",
+     "url": "https://www.404media.co/how-chatgpt-targets-ads-to-you-based-on-your-prompts-phone-number-and-email/"
+    },
+    {
+     "name": "Gizmodo, Here's How ChatGPT Is Targeting You With Ads",
+     "url": "https://gizmodo.com/heres-how-chatgpt-is-targeting-you-with-ads-2000826457"
+    },
+    {
+     "name": "Gadget Review via Yahoo Tech, ChatGPT Can Target Ads With Your Prompts, Email, and Phone",
+     "url": "https://tech.yahoo.com/ai/chatgpt/articles/chatgpt-target-ads-prompts-email-170013093.html"
+    },
+    {
+     "name": "MobileSyrup, ChatGPT lets advertisers target you based on your personal info: report",
+     "url": "https://mobilesyrup.com/2026/10/16/chatgpt-openai-targeted-ads-personal-data"
+    },
+    {
+     "name": "OpenAI Help Center, Ads in ChatGPT",
+     "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt"
+    },
+    {
+     "name": "Fello AI, How to Use ChatGPT Without Ads",
+     "url": "https://felloai.com/how-to-use-chatgpt-without-ads/"
+    }
+   ]
+  },
+  "recipe": {
+   "layout": "top_stage",
+   "caption_style": "slam",
+   "caption_pos": "low",
+   "hook_style": "terminal",
+   "hook_pos": "low",
+   "fonts": "grotesk",
+   "camera": "drift",
+   "finish": "clean",
+   "transitions": "glitchy",
+   "anim": "springy",
+   "sfx": "cinematic",
+   "progress": false,
+   "family": "paper",
+   "sound": "cinematic|lofi"
+  }
+ }
+}
