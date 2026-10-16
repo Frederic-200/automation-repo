@@ -1,0 +1,704 @@
+{
+ "title": "Meta Muse Wonder remembers you",
+ "style": "aurora dark midnight green, lime accent, sleek fast news",
+ "voice": "am_fenrir",
+ "music": true,
+ "music_mood": "upbeat",
+ "seed": 67,
+ "max_seconds": 32,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "Meta just launched an AI built to *remember you*."
+   ],
+   "bg": {
+    "intent": "an AI that keeps notes on you",
+    "subject": [
+     "notebook",
+     "bubble"
+    ],
+    "arrangement": "hero+orbit",
+    "count": 6,
+    "motion": {
+     "notebook": "drop breathe",
+     "bubble": "pop float"
+    },
+    "beats": [
+     {
+      "on": "remember",
+      "do": "notebook.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "mesh",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "MEMORY"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "lines": [
+    "It is called *Muse Wonder*.",
+    "Meta says its *Active Memory* keeps what matters across your chats.",
+    "So you stop *starting from scratch*."
+   ],
+   "bg": {
+    "intent": "memory carried from chat to chat",
+    "subject": [
+     "bubble",
+     "notebook"
+    ],
+    "arrangement": "path",
+    "count": 6,
+    "motion": {
+     "bubble": "slide from left wobble",
+     "notebook": "pop"
+    },
+    "beats": [
+     {
+      "on": "Active Memory",
+      "do": "notebook.pop"
+     },
+     {
+      "on": "scratch",
+      "do": "bubble.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "ribbon",
+     "speed": 0.6,
+     "density": 0.5
+    }
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "Then there is *Active Focus*.",
+    "When it hits a wall, it tries *another approach*.",
+    "It checks in before *important actions*."
+   ],
+   "bg": {
+    "intent": "hits a wall, takes another route",
+    "subject": [
+     "wall",
+     "route"
+    ],
+    "arrangement": "split",
+    "count": 2,
+    "motion": {
+     "wall": "drop",
+     "route": "draw"
+    },
+    "beats": [
+     {
+      "on": "wall",
+      "do": "wall.shake"
+     },
+     {
+      "on": "another approach",
+      "do": "route.spin"
+     }
+    ],
+    "backdrop": {
+     "kind": "iso",
+     "speed": 0.4
+    },
+    "texture_words": [
+     "FOCUS"
+    ]
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {
+    "transition": "card"
+   },
+   "lines": [
+    "Meta says it can *compete* with the latest models.",
+    "That includes *OpenAI* and *Anthropic*, on some benchmarks."
+   ],
+   "bg": {
+    "intent": "competing on benchmarks, by Meta's own claim",
+    "subject": [
+     "podium"
+    ],
+    "arrangement": "hero",
+    "motion": {
+     "podium": "zoom float"
+    },
+    "beats": [
+     {
+      "on": "compete",
+      "do": "podium.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "rays",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "BENCHMARKS"
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "echo",
+   "params": {
+    "word": "PROOF",
+    "scramble": true,
+    "transition": "glitch"
+   },
+   "lines": [
+    "Those are Meta's own numbers.",
+    "So independent tests are *still to come*."
+   ],
+   "bg": {
+    "intent": "proof is still to come",
+    "subject": [
+     "question"
+    ],
+    "arrangement": "none",
+    "motion": {},
+    "backdrop": {
+     "kind": "contour",
+     "speed": 0.5
+    },
+    "texture_words": []
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "lines": [
+    "Would you want an AI that *remembers you*?",
+    "Follow for more."
+   ],
+   "bg": {
+    "intent": "would you want an AI that remembers you",
+    "subject": [
+     "question",
+     "notebook"
+    ],
+    "arrangement": "hero+ring",
+    "count": 8,
+    "motion": {
+     "question": "pop breathe",
+     "notebook": "fade float"
+    },
+    "beats": [
+     {
+      "on": "remembers",
+      "do": "question.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.6,
+     "density": 0.5
+    }
+   }
+  }
+ ],
+ "meta": {
+  "format": "A",
+  "slug": "a-meta-memory-story",
+  "topic": "EXAMPLE format A: Meta Muse Wonder memory (shows the format; never copy wording, drawings or structure)",
+  "caption_preset": "stack",
+  "facts": [
+   {
+    "claim": "Meta launched new models called Muse Wonder and Muse Wonder Full",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Meta says Active Memory carries important information across conversations and retrieves it when relevant, so users do not start from scratch",
+    "sources": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "Meta says Active Focus keeps working on hard tasks, tries alternative approaches and checks in before important actions",
+    "sources": [
+     0,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "Meta says the models compete with the latest OpenAI and Anthropic models on some benchmarks",
+    "sources": [
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "The benchmark results are Meta's own; independent testing has not confirmed them yet",
+    "sources": [
+     1,
+     3
+    ]
+   }
+  ],
+  "post": {
+   "title": "Meta's new AI is built to remember you: Muse Wonder explained",
+   "tiktok_caption": "Meta launched Muse Wonder: an AI with Active Memory (it carries context across chats) and Active Focus (it keeps trying on hard tasks). Would you want that? #AI #Meta #MuseWonder #AInews #FredsDesk #fyp",
+   "yt_caption": "Meta launched Muse Wonder and Muse Wonder Full. Meta says Active Memory carries context across your chats and Active Focus keeps working through hard tasks, checking in before important actions. Meta says it competes with the latest OpenAI and Anthropic models on some benchmarks; independent tests are still to come. Follow FredsDesk for daily AI",
+   "pinned_comment": "All benchmark claims are Meta's own evaluations and have not been independently confirmed yet; outlets describe them as competitive on certain benchmarks, not across the board. Muse Wonder is available through Meta's Model API and Muse Code; Muse Wonder Full is for Muse Code subscribers. Sources: Meta's announcement, Axios, Yahoo Finance, Android Authority.",
+   "hashtags": [
+    "#AI",
+    "#Meta",
+    "#MuseWonder",
+    "#AInews",
+    "#AIagents",
+    "#TechNews",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": [
+    {
+     "name": "Meta AI, Muse Wonder: A Frontier Model For Personal and Professional AI Agents",
+     "url": "https://research.meta.ai/blog/muse-wonder"
+    },
+    {
+     "name": "Axios, Meta unveils new frontier-class AI models to compete with OpenAI, Anthropic",
+     "url": "https://axios.com/2026/10/12/meta-new-ai-models-anthropic-openai"
+    },
+    {
+     "name": "Yahoo Finance, Meta launches Muse Wonder AI model family with frontier-level performance",
+     "url": "https://finance.yahoo.com/technology/article/meta-launches-muse-wonder-ai-model-family-with-frontier-level-performance-180839235.html"
+    },
+    {
+     "name": "Android Authority, Meta wants Muse to keep up with ChatGPT and Gemini, and Wonder is how",
+     "url": "https://www.androidauthority.com/meta-muse-wonder-ai-models-3722247/"
+    }
+   ]
+  },
+  "art": {
+   "notebook": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 38,
+      "y": 22,
+      "w": 124,
+      "h": 158,
+      "r": 14,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 50,
+      "y": 22,
+      "w": 112,
+      "h": 158,
+      "r": 10,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 38,
+      "y": 50,
+      "w": 26,
+      "h": 10,
+      "r": 5,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 38,
+      "y": 88,
+      "w": 26,
+      "h": 10,
+      "r": 5,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 38,
+      "y": 126,
+      "w": 26,
+      "h": 10,
+      "r": 5,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 76,
+      "y": 50,
+      "w": 70,
+      "h": 9,
+      "r": 4,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 76,
+      "y": 72,
+      "w": 56,
+      "h": 9,
+      "r": 4,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 76,
+      "y": 94,
+      "w": 66,
+      "h": 9,
+      "r": 4,
+      "c": "dim"
+     },
+     {
+      "t": "path",
+      "d": "M118 146 q8 -18 16 0 q8 -18 16 0 q-6 14 -16 22 q-10 -8 -16 -22 Z",
+      "c": "red"
+     }
+    ]
+   },
+   "bubble": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M30 40 Q30 24 46 24 H154 Q170 24 170 40 V112 Q170 128 154 128 H96 L62 166 V128 H46 Q30 128 30 112 Z",
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 72,
+      "y": 76,
+      "r": 9,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 76,
+      "r": 9,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 128,
+      "y": 76,
+      "r": 9,
+      "c": "paper"
+     }
+    ]
+   },
+   "wall": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 20,
+      "y": 30,
+      "w": 160,
+      "h": 140,
+      "r": 8,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 38,
+      "w": 68,
+      "h": 28,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 104,
+      "y": 38,
+      "w": 68,
+      "h": 28,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 72,
+      "w": 30,
+      "h": 28,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 66,
+      "y": 72,
+      "w": 68,
+      "h": 28,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 142,
+      "y": 72,
+      "w": 30,
+      "h": 28,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 106,
+      "w": 68,
+      "h": 28,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 104,
+      "y": 106,
+      "w": 68,
+      "h": 28,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 140,
+      "w": 30,
+      "h": 22,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 66,
+      "y": 140,
+      "w": 68,
+      "h": 22,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 142,
+      "y": 140,
+      "w": 30,
+      "h": 22,
+      "r": 4,
+      "c": "accent"
+     }
+    ]
+   },
+   "route": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M24 160 C24 60 120 150 120 70 C120 40 150 40 160 52",
+      "c": "accent2",
+      "fill": false,
+      "w": 14
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        142,
+        28
+       ],
+       [
+        184,
+        56
+       ],
+       [
+        142,
+        80
+       ]
+      ],
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 24,
+      "y": 160,
+      "r": 14,
+      "c": "paper"
+     }
+    ]
+   },
+   "podium": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 14,
+      "y": 96,
+      "w": 58,
+      "h": 84,
+      "r": 8,
+      "c": "accent2"
+     },
+     {
+      "t": "rect",
+      "x": 72,
+      "y": 58,
+      "w": 58,
+      "h": 122,
+      "r": 8,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 130,
+      "y": 116,
+      "w": 58,
+      "h": 64,
+      "r": 8,
+      "c": "accent3"
+     },
+     {
+      "t": "text",
+      "s": "2",
+      "x": 43,
+      "y": 138,
+      "size": 40,
+      "c": "dark"
+     },
+     {
+      "t": "text",
+      "s": "1",
+      "x": 101,
+      "y": 118,
+      "size": 48,
+      "c": "dark"
+     },
+     {
+      "t": "text",
+      "s": "3",
+      "x": 159,
+      "y": 148,
+      "size": 36,
+      "c": "dark"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        101,
+        14
+       ],
+       [
+        110,
+        36
+       ],
+       [
+        134,
+        38
+       ],
+       [
+        116,
+        52
+       ],
+       [
+        122,
+        76
+       ],
+       [
+        101,
+        64
+       ],
+       [
+        80,
+        76
+       ],
+       [
+        86,
+        52
+       ],
+       [
+        68,
+        38
+       ],
+       [
+        92,
+        36
+       ]
+      ],
+      "c": "gold"
+     }
+    ]
+   },
+   "question": {
+    "shapes": [
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 84,
+      "c": "accent2"
+     },
+     {
+      "t": "text",
+      "s": "?",
+      "x": 100,
+      "y": 108,
+      "size": 130,
+      "c": "paper"
+     }
+    ]
+   }
+  },
+  "art_style": "paper",
+  "hook_type": "question",
+  "template": "classic",
+  "look": "dark",
+  "recipe": {
+   "layout": "top_stage",
+   "caption_style": "stack",
+   "caption_pos": "low",
+   "hook_style": "sticker",
+   "hook_pos": "low",
+   "fonts": "archivo",
+   "camera": "snap",
+   "finish": "clean",
+   "transitions": "liquidy",
+   "anim": "smooth",
+   "sfx": "chip",
+   "progress": false,
+   "family": "aurora",
+   "sound": "chip|upbeat"
+  }
+ },
+ "hook": {
+  "text": "Want an AI that *remembers* you?",
+  "hold": 2.4
+ }
+}

@@ -1,0 +1,791 @@
+{
+ "title": "AI hacked Chrome (example)",
+ "style": "swiss clean light, orange accent, snappy newsy",
+ "voice": "af_heart",
+ "music": true,
+ "music_mood": "upbeat",
+ "seed": 88,
+ "max_seconds": 30,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "An AI just *hacked* Chrome.",
+    "And Google paid *two hundred fifty thousand dollars* for it."
+   ],
+   "bg": {
+    "intent": "the attack lands on the browser",
+    "subject": [
+     "browser",
+     "bug"
+    ],
+    "arrangement": "hero+stream",
+    "count": 8,
+    "motion": {
+     "browser": "pop float",
+     "bug": "crawl from left"
+    },
+    "beats": [
+     {
+      "on": "hacked",
+      "do": "browser.glitch"
+     },
+     {
+      "on": "two hundred",
+      "do": "browser.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "scan",
+     "speed": 0.8
+    },
+    "texture_words": [
+     "EXPLOIT"
+    ],
+    "energy": "tense"
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "A security firm pointed *AI agents* at the browser."
+   ],
+   "bg": {
+    "intent": "AI agents surround the browser",
+    "subject": [
+     "browser",
+     "agent"
+    ],
+    "arrangement": "hero+orbit",
+    "count": 5,
+    "motion": {
+     "browser": "zoom breathe",
+     "agent": "pop float"
+    },
+    "beats": [
+     {
+      "on": "agents",
+      "do": "agent.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "grid",
+     "speed": 0.6,
+     "angle": 12
+    },
+    "texture_words": [
+     "AGENTS"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "They found *three bugs* and chained them together."
+   ],
+   "bg": {
+    "intent": "three bugs chained together",
+    "subject": [
+     "bug"
+    ],
+    "arrangement": "path",
+    "count": 3,
+    "motion": {
+     "bug": "drop wobble"
+    },
+    "beats": [
+     {
+      "on": "three",
+      "do": "bug.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "flow",
+     "angle": 20,
+     "density": 0.5
+    },
+    "texture_words": [
+     "CHAIN"
+    ]
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Six days. About *forty thousand dollars* in AI fees."
+   ],
+   "bg": {
+    "intent": "the cost: forty thousand dollars of AI fees",
+    "subject": [
+     "coin"
+    ],
+    "arrangement": "none",
+    "data": {
+     "kind": "coins",
+     "value": 40,
+     "prefix": "$",
+     "unit": "K",
+     "art": "coin",
+     "fact": 0,
+     "count": 16,
+     "label": "$40K"
+    },
+    "backdrop": {
+     "kind": "rings",
+     "speed": 0.6
+    },
+    "texture_words": [
+     "FEES"
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "But humans *picked the targets* and checked the work."
+   ],
+   "bg": {
+    "intent": "agents find, humans decide",
+    "subject": [
+     "agent",
+     "human"
+    ],
+    "arrangement": "split",
+    "count": 2,
+    "motion": {
+     "agent": "slide from left float",
+     "human": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "picked",
+      "do": "human.pop"
+     },
+     {
+      "on": "checked",
+      "do": "human.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.4
+    }
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "All three bugs are *fixed*. Keep Chrome *updated*."
+   ],
+   "bg": {
+    "intent": "patched: the shield wins",
+    "subject": [
+     "shield",
+     "bug"
+    ],
+    "arrangement": "hero+explode",
+    "count": 10,
+    "motion": {
+     "shield": "pop breathe",
+     "bug": "fade"
+    },
+    "beats": [
+     {
+      "on": "fixed",
+      "do": "shield.pop"
+     },
+     {
+      "on": "updated",
+      "do": "shield.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "rays",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "PATCHED"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "format": "B",
+  "slug": "b-chrome-story",
+  "topic": "EXAMPLE format B: AI agents hacked Chrome (shows the format; never copy wording, drawings or structure)",
+  "caption_preset": "stack",
+  "facts": [
+   {
+    "claim": "Security firm XBOW used AI agents running OpenAI's GPT-5.6 Sol to build a Chrome exploit",
+    "sources": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "The exploit chained three Chrome bugs into one full-chain exploit with code execution outside Chrome's sandbox",
+    "sources": [
+     0,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "The campaign took six days",
+    "sources": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "XBOW estimated about 40,000 dollars in API charges",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Google paid XBOW a 250,000 dollar bounty",
+    "sources": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "Human researchers chose targets, reviewed the agents' work and assembled the exploit",
+    "sources": [
+     0,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "All three bugs have been fixed",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   }
+  ],
+  "post": {
+   "title": "AI hacked Chrome in six days and Google paid $250,000",
+   "tiktok_caption": "AI agents found three Chrome bugs, chained them into one exploit in six days, and Google paid a $250,000 bounty. All fixed now. #AI #Chrome #CyberSecurity #BugBounty #FredsDesk #fyp",
+   "yt_caption": "Security firm XBOW used AI agents running OpenAI's GPT-5.6 Sol to chain three Chrome bugs into a full-chain exploit in six days, for about $40,000 in API costs. Google paid a $250,000 bounty and the bugs are fixed. Humans still picked the targets and assembled the exploit. Follow FredsDesk for daily AI",
+   "pinned_comment": "This was responsible disclosure: the bugs were reported to Google through its bug bounty program and have been fixed, so keep Chrome updated. The AI did not work alone: XBOW's researchers chose the targets, reviewed results and assembled the final exploit, building on earlier research. The $40,000 is XBOW's own estimate of API costs. Sources: GBHackers, PiunikaWeb, Startup Fortune, Runtime Wire.",
+   "hashtags": [
+    "#AI",
+    "#Chrome",
+    "#CyberSecurity",
+    "#BugBounty",
+    "#AIagents",
+    "#TechNews",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": [
+    {
+     "name": "GBHackers, Google Pays $250,000 for AI-Assisted Chrome Exploit Enabling Windows Code Execution",
+     "url": "https://gbhackers.com/google-pays-250000-for-ai-assisted-chrome-exploit/"
+    },
+    {
+     "name": "PiunikaWeb, Google pays record $250,000 bounty for AI-assisted Chrome exploit",
+     "url": "https://piunikaweb.com/2026/10/15/google-250k-bounty-ai-chrome-exploit-xbow/"
+    },
+    {
+     "name": "Startup Fortune, XBOW researchers used AI agents to win a $250,000 Chrome exploit bounty",
+     "url": "https://startupfortune.com/xbow-researchers-used-ai-agents-to-win-a-250000-chrome-exploit-bounty/"
+    },
+    {
+     "name": "Runtime Wire, XBOW earns Google's $250,000 bounty with a six-day Chrome exploit",
+     "url": "https://runtimewire.com/article/xbow-six-day-chrome-exploit-google-bounty"
+    }
+   ]
+  },
+  "template": "classic",
+  "hook_type": "this_ai_just",
+  "look": "light",
+  "art": {
+   "browser": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 14,
+      "y": 34,
+      "w": 172,
+      "h": 132,
+      "r": 16,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 14,
+      "y": 34,
+      "w": 172,
+      "h": 30,
+      "r": 16,
+      "c": "accent"
+     },
+     {
+      "t": "circle",
+      "x": 34,
+      "y": 49,
+      "r": 5,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 50,
+      "y": 49,
+      "r": 5,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 66,
+      "y": 49,
+      "r": 5,
+      "c": "paper"
+     },
+     {
+      "t": "text",
+      "s": "CHROME",
+      "x": 128,
+      "y": 49,
+      "size": 17,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 76,
+      "w": 144,
+      "h": 16,
+      "r": 8,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 104,
+      "w": 90,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 124,
+      "w": 120,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 144,
+      "w": 70,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     }
+    ]
+   },
+   "bug": {
+    "shapes": [
+     {
+      "t": "line",
+      "pts": [
+       [
+        70,
+        96
+       ],
+       [
+        40,
+        84
+       ]
+      ],
+      "w": 6,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        70,
+        112
+       ],
+       [
+        36,
+        118
+       ]
+      ],
+      "w": 6,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        74,
+        128
+       ],
+       [
+        46,
+        152
+       ]
+      ],
+      "w": 6,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        130,
+        96
+       ],
+       [
+        160,
+        84
+       ]
+      ],
+      "w": 6,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        130,
+        112
+       ],
+       [
+        164,
+        118
+       ]
+      ],
+      "w": 6,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        126,
+        128
+       ],
+       [
+        154,
+        152
+       ]
+      ],
+      "w": 6,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        90,
+        50
+       ],
+       [
+        78,
+        28
+       ]
+      ],
+      "w": 5,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        110,
+        50
+       ],
+       [
+        122,
+        28
+       ]
+      ],
+      "w": 5,
+      "c": "dark"
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 112,
+      "rx": 38,
+      "ry": 50,
+      "c": "accent"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 62,
+      "r": 22,
+      "c": "accent"
+     },
+     {
+      "t": "circle",
+      "x": 91,
+      "y": 58,
+      "r": 5,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 109,
+      "y": 58,
+      "r": 5,
+      "c": "paper"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        80
+       ],
+       [
+        100,
+        160
+       ]
+      ],
+      "w": 4,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 82,
+      "y": 108,
+      "r": 7,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 118,
+      "y": 126,
+      "r": 7,
+      "c": "dark"
+     }
+    ]
+   },
+   "agent": {
+    "shapes": [
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        30
+       ],
+       [
+        100,
+        52
+       ]
+      ],
+      "w": 6,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 26,
+      "r": 9,
+      "c": "accent2"
+     },
+     {
+      "t": "rect",
+      "x": 38,
+      "y": 52,
+      "w": 124,
+      "h": 104,
+      "r": 26,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 20,
+      "y": 86,
+      "w": 18,
+      "h": 34,
+      "r": 8,
+      "c": "accent2"
+     },
+     {
+      "t": "rect",
+      "x": 162,
+      "y": 86,
+      "w": 18,
+      "h": 34,
+      "r": 8,
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 72,
+      "y": 98,
+      "r": 15,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 128,
+      "y": 98,
+      "r": 15,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 76,
+      "y": 94,
+      "r": 5,
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 132,
+      "y": 94,
+      "r": 5,
+      "c": "accent2"
+     },
+     {
+      "t": "rect",
+      "x": 70,
+      "y": 130,
+      "w": 60,
+      "h": 10,
+      "r": 5,
+      "c": "dark"
+     }
+    ]
+   },
+   "human": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M30 176 Q30 120 100 120 Q170 120 170 176 Z",
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 76,
+      "r": 36,
+      "c": "paper"
+     },
+     {
+      "t": "path",
+      "d": "M64 70 Q70 36 100 38 Q132 36 136 70 Q118 52 100 56 Q82 52 64 70 Z",
+      "c": "dark"
+     }
+    ]
+   },
+   "coin": {
+    "shapes": [
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 74,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 56,
+      "c": "gold",
+      "fill": false,
+      "w": 6
+     },
+     {
+      "t": "text",
+      "s": "$",
+      "x": 100,
+      "y": 104,
+      "size": 84,
+      "c": "dark"
+     }
+    ]
+   },
+   "shield": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M100 18 L172 44 V100 Q172 156 100 186 Q28 156 28 100 V44 Z",
+      "c": "accent2"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        64,
+        100
+       ],
+       [
+        90,
+        128
+       ],
+       [
+        142,
+        72
+       ]
+      ],
+      "c": "paper",
+      "fill": false,
+      "w": 16
+     }
+    ]
+   }
+  },
+  "art_style": "sticker",
+  "recipe": {
+   "layout": "top_stage",
+   "caption_style": "stack",
+   "caption_pos": "low",
+   "hook_style": "sticker",
+   "hook_pos": "low",
+   "fonts": "archivo",
+   "camera": "snap",
+   "finish": "clean",
+   "transitions": "liquidy",
+   "anim": "smooth",
+   "sfx": "chip",
+   "progress": false,
+   "family": "swiss",
+   "sound": "chip|upbeat"
+  }
+ },
+ "hook": {
+  "text": "An AI just *hacked* Chrome",
+  "hold": 2.4
+ }
+}

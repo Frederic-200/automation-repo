@@ -78,3 +78,33 @@ After writing the script, run `python3 shorts/pick_recipe.py shorts/queue/<file>
 - Optional script fields used by some layouts: `"chip": {"text": "Source: Google", "at": 3.0, "hold": 2.5}` (small source label), `"tag": "SECURITY"` and `"ticker": "FREDSDESK / DAILY AI / "` (letterbox bands). Chip text must match the sources.
 - `caption_preset` may now be stack | typeon | slam | clean | off.
 - After rendering, the build prints look-alike distances against the last 7 videos (shorts/fingerprints.json); a FLAGGED line means the structure is too close: mention it in the run report.
+
+## 11. Story-made backgrounds (approved 2026-10-16, PLAN_V4.md; the validator enforces it from 2026-10-17)
+Backgrounds are NOT picked from a list of worlds any more. Every scene's background comes from what that scene says. Scene `type` is `story` (or `chat`, `stat`, `echo` when you need those foregrounds; they can carry a `bg` block too and then get the story backdrop behind them). The old worlds (matrix, tokens, neural, fleet, grid, aurora, particles, ...) are retired as scene types, and sections 5 and 6 above are superseded where they mention them. Study `shorts/samples/B-chrome-story.json` and `A-meta-memory-story.json`: they show the format, never copy their wording, drawings or structure.
+
+**Workflow:** (1) after the script lines are final, sketch each scene in one line: "what would a designer show here?" (2) draw 2-6 objects from THIS story in `meta.art` (3) write a `bg` block for every scene (4) `python3 shorts/pick_recipe.py <file>` (5) `python3 shorts/bg_preview.py <file>` and open the printed contact.png with Read: fix anything weak, off-story, cluttered or hard to read (6) validate (7) commit and push.
+
+**Drawings (`meta.art`, `meta.art_style`):** `art_style` is one of flat | line | sticker | blueprint | paper, picked to suit the story's tone (sticker = playful/news, line or blueprint = technical, paper = warm/human, flat = bold/clean). Each drawing is `{"shapes": [...]}` on a 0..200 grid (centre 100,100), 1-40 shapes drawn in order. Shapes: `rect` (x,y,w,h,r), `circle` (x,y,r), `ellipse` (x,y,rx,ry), `line` (pts), `poly` (pts, closed), `path` (SVG path `d` with M L H V C S Q T A Z only), `text` (s <=14 chars, x,y,size). Colour `c` is a role: ink accent accent2 accent3 paper dark dim bg gold white red green blue (or #rrggbb). `fill:false` + `w` (stroke width; for rects use `sw`) makes an outline; `part` names a piece so a beat can move it (`"part":"shackle"` with pivot `pv`:[x,y]). Keep silhouettes simple and readable at 200 px. Draw things that carry the story: the product as OUR object (a browser window with a "CHROME" tab text), the threat (a bug), the thing at stake (coin, lock, shield, notebook, wall, podium), the people as simple busts.
+- NEVER draw a real logo or a look-alike of one (no colour wheels, knots, sparkles, apples, swooshes), a real app interface, a real person or a copyrighted character. A company or product name appears only as text in our font on our own drawing. The validator rejects drawing names containing "logo" and similar.
+- New objects for every video: do not reuse more than half of the last 3 videos' drawing ids.
+
+**Scene direction (`bg` per scene):**
+```
+"bg": {"intent": "one line: what the viewer should feel or understand",
+       "subject": ["browser", "bug"],                  // ids from meta.art
+       "arrangement": "hero+stream",                   // hero scatter grid orbit stream stack split path explode ring tunnel wall none; combine with +
+       "count": 8,                                     // instances for multi-item arrangements
+       "motion": {"browser": "pop float", "bug": "crawl from left"},
+       "beats": [{"on": "hacked", "do": "browser.glitch"}, {"on": "two hundred", "do": "browser.shake"}],
+       "backdrop": {"kind": "scan", "speed": 0.8},     // mesh flow contour grid iso rays paper halftone scan ribbon rings stars tile; options speed scale density angle
+       "texture_words": ["EXPLOIT"],                   // 0-4 faint story words
+       "data": null, "focus": "center"}
+```
+- `arrangement` with `+`: the first part uses the first subject, the rest use the remaining subjects (hero+stream = browser big in the middle, bugs streaming across). `split` puts subject 0 left and 1 right; `orbit`/`ring` circle around the focus; `path` follows an S-curve; `explode` bursts from the centre; `stack` builds a pile; `tunnel` flies toward the viewer; `wall` is a dense pattern; `none` for data-only or foreground-only scenes.
+- Motion words per subject (any mix): enter = pop slide drop crawl draw assemble fade zoom; living = float pulse wobble drift breathe blink swarm spin scan; leave = fall dissolve shrink wipe; add `from left|right|up|down`, `fast`, `slow`.
+- Beats land on a spoken keyword (`on` matches the scene's keywords, the `*starred*` words) or at `t` seconds into the scene. `do` = `<subject>.<action>`: pop grow shake spin flash glow glitch shatter open[:part] part:<name> remove crack morph:<other drawing id>. Use 1-3 per scene, on the words that matter; shatter/crack act on the single hero.
+- `data` (number scenes): `{"kind": "coins|bars|gauge|ring|line|compare|number", "value": 40, "prefix": "$", "unit": "K", "label": "$40K", "art": "coin", "fact": 2}`; `fact` is the index of the `meta.facts` entry that backs the number. The number must match the sources exactly. Never invent chart values: bars/line/compare only with real figures from the sources, otherwise use coins, ring or number.
+- Keep the caption area clear: backgrounds work inside the middle band of the frame; do not rely on text or objects outside it.
+
+**Variety rules the validator enforces:** every scene has a bg block with intent, subject, arrangement, motion and backdrop; at least 2 different arrangements, 3 different motion words and 3 different backdrops in a video; no arrangement+backdrop combination repeated inside the video or used in any of the last 7 videos; the opening scene differs from yesterday's opening on both arrangement and backdrop; a different recipe layout and caption style than yesterday (section 10). Format C (no voice): lean on drawings, beats at `t` times and story objects only; D (skit): `chat` scenes with `bg` backdrops behind them, people drawn as simple busts in the other scenes.
+**Review before pushing:** open the contact sheet. Would a stranger understand the scene without the captions? Is anything cut off, black, tiny, overlapping the caption, or the same look as yesterday? Fix the drawing or the `bg` block, not the engine.
