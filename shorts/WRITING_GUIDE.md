@@ -63,3 +63,11 @@ The workflow writes the post-text file from `meta.post`: TikTok caption (short, 
 1. `python3 shorts/validate.py shorts/queue/<file>.json` until `OK` (fix every ERROR; read WARN).
 2. `git add shorts/queue/<file>.json` only, commit "Shorts script <date> <slug>" (with the attribution lines), `git pull --rebase origin main`, `git push origin main`.
 3. The push triggers the render (about 12 min) and the Drive upload. If you are asked to wait, check the workflow run `Daily FredsDesk Shorts`.
+
+## 9. v2 retention rules (approved 2026-10-16, see PLAN_V2.md; the validator enforces them)
+- `hook`: {"text": "An AI just *hacked* Chrome", "hold": 2.4}: 8 words or fewer, shown big from frame 0 (no fade-in) with an opening sound hit, and shown again in the last half second (loop). `*word*` highlights a word.
+- Required meta: `hook_type` (number | callout | pov | question | this_ai_just | before_after | myth | countdown | guess | mid_action; not the same as yesterday), `template` (classic | chat_drop | headline_drop | split_screen | countdown_list | terminal | guess_quiz | meme_skit | kinetic_type; not used in the last 3 videos; "classic" only until the v2 templates are live), `look` (light | dark; not the same 3 videos in a row).
+- Voices: am_fenrir or af_heart (not the same voice 3 videos in a row). Allowed acronyms differ per voice (shorts/pronounce.json).
+- Every spoken sentence is 12 words or fewer. Length 15-35 s (format ranges in validate.py). First payoff by 5-8 s, a re-hook at about the middle ("But...", "Here is the catch"). A visual change every 1.5-2 s (the engine adds micro-motion automatically).
+- Music genre and sound kit must differ from yesterday; scene types must not repeat more than half of any of the last 3 videos, and the opening scene type must differ from yesterday's.
+- The outro is 1.5 s (`meta.outro_seconds` to override).

@@ -12,14 +12,17 @@ from urllib.parse import urlparse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FORMATS = {  # estimated spoken seconds (before the 3 s outro) allowed range; real length is re-checked after rendering
-    "A": {"voiced": True, "est": (33, 46), "max_seconds": (36, 57), "min_sources": 2},
-    "B": {"voiced": True, "est": (23, 38), "max_seconds": (28, 50), "min_sources": 2},
-    "C": {"voiced": False, "est": (13, 26), "max_seconds": (15, 30), "min_sources": 0},
-    "D": {"voiced": True, "est": (20, 38), "max_seconds": (28, 50), "min_sources": 2},
+    "A": {"voiced": True, "est": (18, 36), "max_seconds": (22, 36), "min_sources": 2},
+    "B": {"voiced": True, "est": (14, 31), "max_seconds": (18, 33), "min_sources": 2},
+    "C": {"voiced": False, "est": (7, 24), "max_seconds": (9, 30), "min_sources": 0},
+    "D": {"voiced": True, "est": (14, 32), "max_seconds": (18, 35), "min_sources": 2},
 }
 CAPTION_PRESETS = ("stack", "typeon", "off")
 TRANSITIONS = {"liquid", "iris", "whip", "glitch", "pixel", "flash", "card", "none"}
-VOICE = "am_fenrir"
+VOICES = ("am_fenrir", "af_heart")
+TEMPLATES = ("classic", "chat_drop", "headline_drop", "split_screen", "countdown_list", "terminal", "guess_quiz", "meme_skit", "kinetic_type")
+HOOK_TYPES = ("number", "callout", "pov", "question", "this_ai_just", "before_after", "myth", "countdown", "guess", "mid_action")
+MUSIC = ("lofi", "gentle", "upbeat", "synthwave", "epic", "trap")
 WORDS_PER_SEC = 2.75   # am_fenrir at speed 1.0, measured on the samples
 
 POLITICS = ["election", "elections", "vote", "voting", "voters", "ballot", "president", "presidential", "senate", "senator", "congress", "congressman",
@@ -58,7 +61,7 @@ def main():
     # ---- schema
     for k in ("title", "style", "scenes", "voice", "meta"):
         if k not in S: E(f"missing key '{k}'")
-    if S.get("voice") != VOICE: E(f"voice must be '{VOICE}'")
+    if S.get("voice") not in VOICES: E(f"voice must be one of {VOICES}")
     if fmt not in FORMATS: E("meta.format must be one of A B C D"); fmt = None
     for k in ("topic", "caption_preset", "post"):
         if not meta.get(k): E(f"meta.{k} missing")
@@ -124,6 +127,38 @@ def main():
         if re.search(rf"\b{re.escape(w)}\b", blob): E(f"disparaging word '{w}' (never mock or insult companies or people)")
     if re.search(r"\b(lyrics?|chorus)\b", blob): W("mentions lyrics: do not quote songs")
 
+    # ---- v2 retention rules (hook at frame 0, short sentences, variety)
+    hk = S.get("hook") or {}
+    htxt = str(hk.get("text", "")).replace("*", "")
+    if not htxt: E("hook.text missing: the hook must be on screen from frame 0")
+    elif len(htxt.split()) > 8: E(f"hook has {len(htxt.split())} words (max 8)")
+    if hk and hk.get("hold", 2.4) > 3.0: E("hook.hold max 3.0 s")
+    if meta.get("hook_type") not in HOOK_TYPES: E(f"meta.hook_type must be one of {HOOK_TYPES}")
+    tpl = meta.get("template")
+    if tpl not in TEMPLATES: E(f"meta.template must be one of {TEMPLATES}")
+    if meta.get("look") not in ("light", "dark"): E("meta.look must be 'light' or 'dark' (background of the main scenes)")
+    if S.get("music_mood") not in MUSIC and voiced is not None and S.get("music", True): E(f"music_mood must be one of {MUSIC}")
+    if voiced:
+        for l in spoken:
+            for sent in re.split(r"(?<=[.!?])\s+", l):
+                n = len(re.findall(r"[A-Za-z']+", sent))
+                if n > 12: E(f"sentence has {n} words (max 12): '{sent[:60]}'")
+    if tpl in ("chat_drop", "meme_skit") and not re.search(r"\b(skit|demo|mock)", post.get("pinned_comment", ""), re.I): E("fake chats/skits: pinned_comment must say it is a skit/demo")
+    pv = [e for e in cov if date and e.get("date", "") < date]
+    p3 = pv[-3:]; y = pv[-1] if pv else {}
+    types = [sc.get("type") for sc in scenes]
+    if tpl and tpl != "classic" and any(e.get("template") == tpl for e in p3): E(f"template '{tpl}' used in the last 3 videos")
+    if tpl == "classic" and any(e.get("template") in (None, "classic") for e in p3): W("classic template already used recently: switch to a v2 template")
+    if y.get("hook_type") and y.get("hook_type") == meta.get("hook_type"): E("same hook type as yesterday")
+    if y.get("music") and y.get("music") == S.get("music_mood") and voiced is not None: E("same music genre as yesterday")
+    if y.get("sound_kit") and y.get("sound_kit") == ((S.get("style_overrides") or {}).get("sfx") or {}).get("kit"): E("same sound-effect kit as yesterday")
+    if voiced and len(pv) >= 2 and all(e.get("voice") == S.get("voice") for e in pv[-2:]): E(f"voice '{S.get('voice')}' used the last 2 videos")
+    if len(pv) >= 2 and all(e.get("look") == meta.get("look") for e in pv[-2:]): E(f"look '{meta.get('look')}' used the last 2 videos")
+    for e in p3:
+        old = e.get("scene_types") or []
+        if old and types and sum(1 for t in types if t in old) > len(types) / 2: E("more than half of the scene types repeat a recent video: change the visuals")
+    if y.get("scene_types") and types and y["scene_types"][0] == types[0]: E("same opening scene type as yesterday")
+
     # ---- pronunciation
     say = S.get("say") or {}
     allowed_say = pr.get("allowed_say", {})
@@ -135,7 +170,7 @@ def main():
         b = a.rstrip("s") if a.endswith("s") and a[:-1].isupper() else a
         if b in say: continue
         if b in pr.get("avoid", {}): E(f"acronym {a} avoided: {pr['avoid'][b]}")
-        elif b not in pr.get("allowed_acronyms", []): E(f"acronym {a} not verified for the voice: write it as a normal word, or test it (TTS + ASR) and add to pronounce.json")
+        elif b not in pr.get("allowed_acronyms_by_voice", {}).get(S.get("voice"), pr.get("allowed_acronyms", [])): E(f"acronym {a} not verified for the voice: write it as a normal word, or test it (TTS + ASR) and add to pronounce.json")
 
     # ---- sources: every fact needs 2 independent sources
     srcs = post.get("sources") or []

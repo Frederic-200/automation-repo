@@ -182,6 +182,8 @@ def build(work):
         seg = a[:, j0:j0 + (n - i)]; bus[:, i:i + seg.shape[1]] += g * seg; events.append([round(t, 3), label])
 
     vid = tl.get("title", "") + str(tl["seed"])
+    if tl.get("hook"):   # opening hit at 0.0 s from the style's kit: the first sound stops the swipe
+        place(0.02, HIT.get(kit, hit_cinematic)((vid, "open"), 1.2), gain * .95, "open-hit")
     for s in tl["scenes"]:
         if s["i"] > 0 and s.get("transition") != "none":
             place(s["start"], whoosh((vid, "cut", s["i"]), .7 if kit != "soft" else 1.0), .8 * gain, "whoosh")

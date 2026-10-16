@@ -87,7 +87,7 @@ def word_times(line, start, dur, audio):
 def build(script, work):
     cache_dir = os.path.join(work, "cache"); os.makedirs(cache_dir, exist_ok=True)
     voice = script.get("voice", "am_michael"); say = script.get("say", {})
-    lead = script.get("lead", .45); end_tail = script.get("end_tail", 2.2)
+    lead = script.get("lead", .1 if script.get("hook") else .45); end_tail = script.get("end_tail", 2.2)
     scenes = script["scenes"]; last = len(scenes) - 1
 
     def render(speed_k=1.0, tail_k=1.0):

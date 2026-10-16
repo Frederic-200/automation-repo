@@ -15,7 +15,7 @@ SCENES.outro = (t, lt, sc, e) => {
   const dark = lum(e.bg[0]) < .5, teal = dark ? mixc(B.teal, '#ffffff', .12) : B.teal;
   const cA = dark ? mixc(B.teal, '#ffffff', .62) : B.navy, cB = teal, wordA = dark ? '#ffffff' : B.navy, accent = S.accent;
   const IS = 1.9, ix = CX - B.icon.w * IS / 2, iy = 470, iw = B.icon.w * IS, ih = B.icon.h * IS;
-  const g = lt < 0 ? 0 : lt, ss = (a, b) => smooth((g - a) / (b - a));
+  const g = (lt < 0 ? 0 : lt) * (B.speed || 1), ss = (a, b) => smooth((g - a) / (b - a));
 
   /* ---- icon: desk draws on (0.3-1.0 s), monitor boots (1.0-1.3 s) ---- */
   const [ic, ig] = ocan('icon', Math.ceil(iw), Math.ceil(ih));

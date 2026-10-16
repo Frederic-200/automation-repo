@@ -63,20 +63,22 @@ def main():
     work = os.path.join(out, "work"); shutil.rmtree(work, ignore_errors=True); os.makedirs(work)
     shutil.copy(os.path.join(style_work, "style.json"), work); shutil.copy(os.path.join(style_work, "fonts.json"), work)
     shutil.copytree(os.path.join(style_work, "fonts"), os.path.join(work, "fonts"))
-    brand = json.load(open(os.path.join(HERE, "..", "brand", "brand.json")))
+    brand = json.load(open(os.path.join(HERE, "..", "brand", "brand.json"))); brand["speed"] = 3.0 / secs   # 1.5 s version = same animation at 2x
     for src, dst in (("icon_nocursor.png", "brand_icon.png"), ("cursor.png", "brand_cursor.png"), ("word.png", "brand_word.png")): shutil.copy(os.path.join(HERE, "..", "brand", src), os.path.join(work, dst))
     js = open(os.path.join(HERE, "outro.js")).read(); open(os.path.join(work, "scenes_custom.js"), "w").write("const BRAND = " + json.dumps(brand) + ";\n" + js)
     st = json.load(open(os.path.join(work, "style.json"))); st["caption"] = dict(st.get("caption", {}), mode="off"); json.dump(st, open(os.path.join(work, "style.json"), "w"))
     frames = int(round(secs * 30))
     tl = {"title": "FredsDesk outro", "fps": 30, "W": 1080, "H": 1920, "duration": secs, "frames": frames, "seed": 7, "music": {},
           "scenes": [{"i": 0, "type": "outro", "act": "payoff", "start": 0.0, "end": secs, "bright": False, "params": {}, "keys": [], "lines": [], "transition": "none"}],
-          "hits": [{"t": 1.55, "s": 0.06, "impact": 0}, {"t": 2.30, "s": 0.04, "impact": 0}]}
+          "hits": [{"t": 1.55 / brand["speed"], "s": 0.06, "impact": 0}, {"t": 2.30 / brand["speed"], "s": 0.04, "impact": 0}]}
     json.dump(tl, open(os.path.join(work, "timeline.json"), "w"))
     if "--preview" in a:
         r = subprocess.run(["node", os.path.join(KIT, "render.js"), work, "preview", opt("--preview")], capture_output=True, text=True); print(r.stdout[-400:], r.stderr[-800:]); return
     r = subprocess.run(["node", os.path.join(KIT, "render.js"), work, "full", "--workers", "2"], capture_output=True, text=True); print(r.stdout[-300:]);
     if r.returncode: print(r.stderr[-1500:]); sys.exit(1)
-    wav = os.path.join(out, "outro.wav"); sf.write(wav, sfx(secs, mood), SR, subtype="PCM_24")
+    wav = os.path.join(out, "outro.wav"); sf.write(wav, sfx(3.0, mood), SR, subtype="PCM_24")
+    if secs < 2.99:   # same SFX sequence, played faster (pitch kept) to fit the short outro
+        w2 = os.path.join(out, "outro_fast.wav"); subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", wav, "-af", f"atempo={3.0 / secs:.4f}", "-t", f"{secs}", w2], check=True); wav = w2
     mp4 = os.path.join(out, "outro.mp4")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", "30", "-i", os.path.join(work, "frames", "%05d.jpg"), "-i", wav, "-c:v", "libx264", "-preset", "veryfast", "-crf", "19",
                     "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", mp4], check=True)

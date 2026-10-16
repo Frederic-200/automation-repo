@@ -72,13 +72,14 @@ def build(script, style, voice, fps=30):
     for s in out:
         if s["i"]: hits.append({"t": s["start"], "s": .5, "tr": 1})
         for k in s["keys"]: hits.append({"t": k["s"], "s": k["str"], "impact": k.get("impact", 0)})
+    if script.get("hook"): hits.append({"t": .04, "s": .8, "open": 1})   # opening punch at frame 0 (zoom + shake + rgb split)
     hits.sort(key=lambda h: h["t"])
     trans = style.get("transitions", ["flash"])
     for s in out:
         s["transition"] = s.get("params", {}).get("transition") or (trans[(s["i"] - 1) % len(trans)] if s["i"] else "none")
     return {"title": script.get("title", ""), "fps": fps, "W": 1080, "H": 1920, "duration": round(dur, 3),
             "frames": int(round(dur * fps)), "seed": script.get("seed", style.get("seed", 7)),
-            "scenes": out, "hits": hits, "music": {"bpm": 0, "beat0": 0}}
+            "scenes": out, "hits": hits, "music": {"bpm": 0, "beat0": 0}, "hook": script.get("hook")}
 
 
 if __name__ == "__main__":

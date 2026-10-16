@@ -119,7 +119,7 @@ def main():
 
     # 3. outro in this video's style, appended to both versions
     odir = os.path.join(out, "outro")
-    sh([sys.executable, os.path.join(HERE, "outro", "outro_build.py"), "--style-work", work, "--out", odir, "--mood", mood])
+    sh([sys.executable, os.path.join(HERE, "outro", "outro_build.py"), "--style-work", work, "--out", odir, "--mood", mood, "--seconds", str(meta.get("outro_seconds", 1.5))])
     title = safe(meta["post"]["title"].split(":")[0] if len(meta["post"]["title"]) > 60 else meta["post"]["title"]); pre = f"{date} {title}"
     # clear platform names: the music version is for YouTube Shorts + FB Reels, the no-music one for TikTok (add a trending sound there)
     fin_main = os.path.join(out, f"{pre} - YT+Reels.mp4" if voiced else f"{pre} - all platforms.mp4"); fin_nom = os.path.join(out, f"{pre} - TikTok (add sound).mp4")
@@ -133,10 +133,17 @@ def main():
         v = probe(p); lufs, tp = loudness(p); info[os.path.basename(p)] = dict(dur=round(v["dur"], 2), lufs=lufs, tp=tp)
         if (v["w"], v["h"]) != (1080, 1920): problems.append(f"{p}: size {v['w']}x{v['h']}")
         if abs(v["fps"] - 30) > .1: problems.append(f"{p}: fps {v['fps']}")
-        if not 26 <= v["dur"] <= 60: problems.append(f"{p}: duration {v['dur']:.1f}s")
+        if not 15 <= v["dur"] <= 40: problems.append(f"{p}: duration {v['dur']:.1f}s")
         if p == fin_main or voiced:
             if not -17.5 <= lufs <= -13.0: problems.append(f"{p}: loudness {lufs} LUFS")
             if tp > -1.5: problems.append(f"{p}: true peak {tp} dBTP")
+    # frame 0 must show the hook (not a blank or fading-in frame)
+    try:
+        from PIL import Image, ImageStat
+        f0 = os.path.join(out, "frame0.png"); sh(["ffmpeg", "-v", "error", "-y", "-i", fin_main, "-frames:v", "1", f0])
+        sd = max(ImageStat.Stat(Image.open(f0).convert("L")).stddev)
+        if sd < 25: problems.append(f"frame 0 looks blank/faded (contrast {sd:.0f}): the hook must be visible at 0.0 s")
+    except Exception as ex: notes.append(f"frame 0 check skipped: {ex}")
     print(json.dumps(info, indent=1)); [print("NOTE:", n) for n in notes]
     if problems: print("QA FAILED:\n" + "\n".join(problems)); return 1
 
@@ -159,7 +166,10 @@ def main():
 
     # 7. log as covered (the workflow commits it)
     if "--no-log" not in a:
-        cov["entries"].append({"date": date, "slug": slug, "format": fmt, "topic": meta["topic"], "caption_preset": meta["caption_preset"], "title": meta["post"]["title"]})
+        cov["entries"].append({"date": date, "slug": slug, "format": fmt, "topic": meta["topic"], "caption_preset": meta["caption_preset"], "title": meta["post"]["title"],
+                               "template": meta.get("template"), "hook_type": meta.get("hook_type"), "hook": (S.get("hook") or {}).get("text"), "voice": S.get("voice") if voiced else None,
+                               "music": S.get("music_mood"), "sound_kit": ((S.get("style_overrides") or {}).get("sfx") or {}).get("kit"), "look": meta.get("look"),
+                               "length": round(info[os.path.basename(fin_main)]["dur"], 1), "scene_types": [sc.get("type") for sc in S["scenes"]]})
         json.dump(cov, open(cov_p, "w"), indent=1, ensure_ascii=False); open(cov_p, "a").write("\n")
     print(f"DONE {date} {fmt} {slug}: {len(files)} files" + (" uploaded" if links else " (not uploaded)")); return 0
 

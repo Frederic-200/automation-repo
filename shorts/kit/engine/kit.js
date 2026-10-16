@@ -137,11 +137,18 @@ const gcirc = (g, cx, cy, r) => { if (r > 0) { g.beginPath(); g.arc(cx, cy, r, 0
 const gell = (g, cx, cy, rx, ry, rot = 0) => { if (rx > 0 && ry > 0) { g.beginPath(); g.ellipse(cx, cy, rx, ry, rot, 0, TAU); g.fill(); } };
 
 /* ------------------------------------------------------------------ hits -> camera / post amounts */
+let _HX = null;   // hits + synthetic micro-hits: never more than ~1.7 s without a visual event
+function allHits() {
+  if (_HX) return _HX; const base = TL.hits.slice().sort((a, b) => a.t - b.t), ex = []; let prev = 0;
+  for (const h of base.concat([{ t: TL.duration }])) { for (let q = prev + 1.7; q < h.t - .6; q += 1.7) ex.push({ t: q, s: .22, micro: 1 }); prev = h.t; }
+  return (_HX = base.concat(ex));
+}
 function fx(t) {
   let amp = 0, zoom = 0, flashW = 0, flashO = 0, rgbv = 0, glitch = 0, impact = 0;
   const sh = S.camera.shake, zh = S.camera.zoom_hit ?? 1;
-  for (const h of TL.hits) { const d = t - h.t; if (d < 0 || d > 2.5) continue;
+  for (const h of allHits()) { const d = t - h.t; if (d < 0 || d > 2.5) continue;
     amp += h.s * 46 * Math.exp(-d * 6) * sh; zoom += h.s * .085 * Math.exp(-d * 7) * Math.cos(d * 13) * zh;
+    if (h.micro) continue;
     if (h.s >= 1) flashW += (h.s - .6) * .75 * Math.exp(-d * 13); else flashO += h.s * .35 * Math.exp(-d * 12);
     if (h.s >= .8) rgbv += h.s * 24 * Math.exp(-d * 8);
     if ((h.s >= 1 && d < .22) || (h.tr && d < .12)) glitch = Math.max(glitch, h.s);
@@ -292,6 +299,30 @@ function fitFont(text, fam, wt, maxW, start, min = 40) { let sz = start; x.font 
   while (x.measureText(text).width > maxW && sz > min) { sz -= 4; x.font = `${wt} ${sz}px "${fam}"`; } return sz; }
 const caseT = s => S.upper ? s.toUpperCase() : s;
 
+/* ------------------------------------------------------------------ hook overlay (frame 0) + loop echo */
+function hookOverlay(t, F) {
+  const H = TL.hook, hold = H.hold ?? 2.4, dur = TL.duration, echoT = Math.max(0, dur - (H.echo ?? .55));
+  let a = 0, k = 1;
+  if (t < hold) { a = 1; k = 1 + .14 * Math.exp(-t * 22) * Math.cos(t * 30); if (t > hold - .22) a = clamp((hold - t) / .22); }   // visible and popping from frame 0, no fade-in
+  else if (H.loop !== false && t >= echoT) { a = easeOutQuart(clamp((t - echoT) / .4)); k = 1; }                                   // the end shows the hook again: seamless replay
+  if (a <= 0) return;
+  const words = String(H.text).toUpperCase().split(/\s+/).filter(Boolean), fam = S.fonts.display, wt = S.fonts.display_weight, W0 = H.w ?? 920, size0 = H.size ?? 150;
+  const sc = TL.scenes[sceneAt(t)], e = env(sc);
+  let size = size0, lines;
+  for (let tries = 0; tries < 8; tries++) { x = octx; x.font = `${wt} ${size}px "${fam}"`; lines = []; let cur = [];
+    for (const w of words) { const t2 = cur.concat([w]).map(z => z.replace(/\*/g, '')).join(' '); if (x.measureText(t2).width > W0 && cur.length) { lines.push(cur); cur = [w]; } else cur.push(w); }
+    if (cur.length) lines.push(cur); if (lines.length <= 3) break; size *= .9; }
+  const lh = size * .98, y0 = (H.y ?? 560) - (lines.length * lh) / 2 + lh * .8;
+  x = octx; x.save(); x.setTransform(1, 0, 0, 1, 0, 0); x.translate(F.sx * .5, F.sy * .5); x.globalAlpha = a; x.textBaseline = 'alphabetic'; x.textAlign = 'center';
+  x.translate(CX, H.y ?? 560); x.scale(k, k); x.translate(-CX, -(H.y ?? 560)); x.font = `${wt} ${size}px "${fam}"`; x.lineJoin = 'round'; x.lineWidth = size * .09;
+  const dark = lum(e.bg[0]) < .5;
+  lines.forEach((ln, li) => { const txt = ln.map(z => z.replace(/\*/g, '')), full = txt.join(' '), tw = x.measureText(full).width; let px = CX - tw / 2;
+    ln.forEach((w, wi) => { const key = w.includes('*'), word = txt[wi], ww = x.measureText(word).width, yy = y0 + li * lh;
+      if (key) { x.fillStyle = S.accent; x.fillRect(px - 12, yy - size * .8, ww + 24, size * .98); }
+      x.textAlign = 'left'; x.strokeStyle = dark ? 'rgba(0,0,0,.75)' : 'rgba(255,255,255,.8)'; if (!key) x.strokeText(word, px, yy);
+      x.fillStyle = key ? S.on_accent : e.ink; x.fillText(word, px, yy); px += ww + x.measureText(' ').width; x.textAlign = 'center'; }); });
+  x.restore();
+}
 function captions(t, F) {
   if (S.caption.mode === 'off') return;
   const c = CHUNKS.find(c => t >= c.s && t < c.end); if (!c) return;
@@ -481,6 +512,7 @@ function renderFrame(f) {
   o.save(); o.translate(CX, HY); o.scale(z, z); o.rotate(rot); o.translate(-CX + F.sx, -HY + F.sy); o.drawImage(FR, 0, 0); o.restore();
   post(t, F, sc);
   captions(t, F);
-  // fade in (max .3 s), no fade out (loop-ready)
-  if (t < .3) { o.globalAlpha = 1 - t / .3; o.fillStyle = S.bg[0]; o.fillRect(0, 0, W, H); o.globalAlpha = 1; }
+  if (TL.hook) hookOverlay(t, F);
+  // fade in (max .3 s), no fade out (loop-ready); with a hook the first frame is already the hook
+  if (!TL.hook && t < .3) { o.globalAlpha = 1 - t / .3; o.fillStyle = S.bg[0]; o.fillRect(0, 0, W, H); o.globalAlpha = 1; }
 }

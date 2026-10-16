@@ -1,7 +1,55 @@
 {
-  "_doc": "Voice am_fenrir (Kokoro). Narration uses plain English; NEVER respell AI as 'A I'. Acronyms below were tested with speech recognition (2026-10-15) and are spoken as letters or correctly. Any other ALL-CAPS word in narration fails validation until it is tested and added here.",
-  "allowed_acronyms": ["AI", "UK", "US", "TV", "API", "AGI", "GPT", "GPU", "CPU", "CEO"],
-  "allowed_say": {"EU": "E.U."},
-  "avoid": {"LLM": "write 'language model' (the voice says 'elem')", "NVIDIA": "write 'Nvidia'", "NASA": "write 'Nasa' only after testing"},
-  "spelled_check": {"AI": "a i", "US": "u s", "TV": "t v", "API": "a p i", "AGI": "a g i", "GPU": "g p", "CPU": "c p", "CEO": "c o"}
+ "_doc": "Voice am_fenrir (Kokoro). Narration uses plain English; NEVER respell AI as 'A I'. Acronyms below were tested with speech recognition (2026-10-15) and are spoken as letters or correctly. Any other ALL-CAPS word in narration fails validation until it is tested and added here. Per-voice lists in allowed_acronyms_by_voice (af_heart tested 2026-10-16; GPT/GPU/CPU/CEO were not clean for af_heart: write the full words).",
+ "allowed_acronyms": [
+  "AI",
+  "UK",
+  "US",
+  "TV",
+  "API",
+  "AGI",
+  "GPT",
+  "GPU",
+  "CPU",
+  "CEO"
+ ],
+ "allowed_say": {
+  "EU": "E.U."
+ },
+ "avoid": {
+  "LLM": "write 'language model' (the voice says 'elem')",
+  "NVIDIA": "write 'Nvidia'",
+  "NASA": "write 'Nasa' only after testing"
+ },
+ "spelled_check": {
+  "AI": "a i",
+  "US": "u s",
+  "TV": "t v",
+  "API": "a p i",
+  "AGI": "a g i",
+  "GPU": "g p",
+  "CPU": "c p",
+  "CEO": "c o"
+ },
+ "allowed_acronyms_by_voice": {
+  "am_fenrir": [
+   "AI",
+   "UK",
+   "US",
+   "TV",
+   "API",
+   "AGI",
+   "GPT",
+   "GPU",
+   "CPU",
+   "CEO"
+  ],
+  "af_heart": [
+   "AI",
+   "UK",
+   "US",
+   "TV",
+   "API",
+   "AGI"
+  ]
+ }
 }
