@@ -15,6 +15,62 @@
    "topic": "XBOW AI agents build a Chrome full-chain exploit and win Google's 250,000 dollar bounty",
    "caption_preset": "typeon",
    "title": "AI agents hacked Chrome in six days and Google paid $250,000"
+  },
+  {
+   "date": "2026-10-17",
+   "slug": "chatgpt-ads-find-you",
+   "format": "A",
+   "topic": "How ChatGPT ad targeting uses email and phone lists, the current chat, and how to see fewer ads",
+   "caption_preset": "slam",
+   "recipe": {
+    "layout": "top_stage",
+    "caption_style": "slam",
+    "caption_pos": "low",
+    "hook_style": "terminal",
+    "hook_pos": "low",
+    "fonts": "grotesk",
+    "camera": "drift",
+    "finish": "clean",
+    "transitions": "glitchy",
+    "anim": "springy",
+    "sfx": "cinematic",
+    "progress": false,
+    "family": "paper",
+    "sound": "cinematic|lofi"
+   },
+   "bg_sigs": [
+    "hero+scatter+orbit|halftone",
+    "hero+stream|tile",
+    "none|rings",
+    "hero+orbit|flow",
+    "split|contour",
+    "hero+ring|stars"
+   ],
+   "art_ids": [
+    "adcard",
+    "chatwin",
+    "clipboard",
+    "envelope",
+    "hourglass",
+    "phone"
+   ],
+   "title": "ChatGPT ads can find you by email and phone number: here's how it works",
+   "template": "classic",
+   "hook_type": "callout",
+   "hook": "ChatGPT ads can find you by *email*",
+   "voice": "af_heart",
+   "music": "lofi",
+   "sound_kit": null,
+   "look": "light",
+   "length": 36.1,
+   "scene_types": [
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story"
+   ]
   }
  ]
 }
