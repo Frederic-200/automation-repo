@@ -1,0 +1,803 @@
+{
+ "title": "ChatGPT can now drive your Chrome tabs",
+ "style": "midnight dark, electric lime accent, orange warning second accent, punchy news",
+ "voice": "am_fenrir",
+ "music": true,
+ "music_mood": "synthwave",
+ "seed": 71,
+ "max_seconds": 31,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "OpenAI just let ChatGPT *drive* your Chrome."
+   ],
+   "bg": {
+    "intent": "ChatGPT's hand takes the wheel of your browser tabs",
+    "subject": [
+     "tabwin",
+     "hand"
+    ],
+    "arrangement": "hero+scatter",
+    "motion": {
+     "tabwin": "pop float",
+     "hand": "slide from right float"
+    },
+    "backdrop": {
+     "kind": "mesh",
+     "speed": 0.7
+    },
+    "count": 3,
+    "beats": [
+     {
+      "on": "drive",
+      "do": "hand.pop"
+     }
+    ],
+    "texture_words": [
+     "CHROME"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Chat mode *reads* all your open tabs.",
+    "Compare prices without copy and paste."
+   ],
+   "bg": {
+    "intent": "many open tabs read at once",
+    "subject": [
+     "tabwin"
+    ],
+    "arrangement": "stack",
+    "motion": {
+     "tabwin": "drop wobble"
+    },
+    "backdrop": {
+     "kind": "grid",
+     "speed": 0.5,
+     "angle": 10
+    },
+    "count": 5,
+    "beats": [
+     {
+      "on": "reads",
+      "do": "tabwin.glow"
+     }
+    ],
+    "texture_words": [
+     "TABS"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Work mode goes *further*.",
+    "It fills forms, sends messages, and downloads files."
+   ],
+   "bg": {
+    "intent": "the hand fills forms and sends messages",
+    "subject": [
+     "hand",
+     "formpad",
+     "sendbubble"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "hand": "zoom breathe",
+     "formpad": "pop float",
+     "sendbubble": "slide from left float"
+    },
+    "backdrop": {
+     "kind": "ribbon",
+     "speed": 0.6
+    },
+    "count": 4,
+    "beats": [
+     {
+      "on": "further",
+      "do": "hand.grow"
+     }
+    ],
+    "texture_words": [
+     "WORK"
+    ]
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "But here is the *catch*.",
+    "By default, it asks before touching each new website."
+   ],
+   "bg": {
+    "intent": "a warning: permission gate before every site",
+    "subject": [
+     "warnsign"
+    ],
+    "arrangement": "tunnel",
+    "motion": {
+     "warnsign": "zoom pulse"
+    },
+    "backdrop": {
+     "kind": "rays",
+     "speed": 0.6
+    },
+    "count": 6,
+    "beats": [
+     {
+      "on": "catch",
+      "do": "warnsign.shake"
+     }
+    ],
+    "texture_words": [
+     "ASK FIRST"
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Allow once, allow one site, or allow *all sites*."
+   ],
+   "bg": {
+    "intent": "three permission choices on a card",
+    "subject": [
+     "permcard",
+     "hand"
+    ],
+    "arrangement": "hero+path",
+    "motion": {
+     "permcard": "pop breathe",
+     "hand": "slide from left"
+    },
+    "backdrop": {
+     "kind": "scan",
+     "speed": 0.6
+    },
+    "count": 3,
+    "beats": [
+     {
+      "on": "all sites",
+      "do": "permcard.flash"
+     }
+    ],
+    "texture_words": [
+     "ONCE"
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "echo",
+   "params": {
+    "word": "RISK",
+    "scramble": true
+   },
+   "lines": [
+    "OpenAI labels that last one *elevated risk*."
+   ],
+   "bg": {
+    "intent": "the all-sites option is flagged risky",
+    "subject": [
+     "warnsign",
+     "permcard"
+    ],
+    "arrangement": "split",
+    "motion": {
+     "warnsign": "pop pulse",
+     "permcard": "slide from right float"
+    },
+    "backdrop": {
+     "kind": "rings",
+     "speed": 0.5
+    },
+    "beats": [
+     {
+      "on": "elevated",
+      "do": "warnsign.glow"
+     }
+    ],
+    "texture_words": [
+     "RISK"
+    ]
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "So start with *allow once*.",
+    "Your tabs, your *rules*."
+   ],
+   "bg": {
+    "intent": "the user stays in control",
+    "subject": [
+     "permcard",
+     "tabwin"
+    ],
+    "arrangement": "hero+explode",
+    "motion": {
+     "permcard": "pop breathe",
+     "tabwin": "fade"
+    },
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.5
+    },
+    "count": 8,
+    "beats": [
+     {
+      "on": "allow once",
+      "do": "permcard.pop"
+     }
+    ],
+    "texture_words": [
+     "YOUR RULES"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "format": "B",
+  "slug": "chatgpt-drives-chrome",
+  "topic": "ChatGPT Chrome extension upgrade: Chat mode reads open tabs, Work mode controls them, per-site permissions",
+  "caption_preset": "typeon",
+  "facts": [
+   {
+    "claim": "OpenAI upgraded the ChatGPT Chrome extension so ChatGPT can read open tabs and act on them",
+    "sources": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   {
+    "claim": "Chat mode gathers information from several open tabs, e.g. to compare products and prices",
+    "sources": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   {
+    "claim": "Work mode can control tabs to fill out forms, send messages and download files",
+    "sources": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   {
+    "claim": "By default ChatGPT asks before interacting with each new website; options are allow once, allow for this site, allow for all sites, decline",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Allow for all sites is labelled Elevated Risk by OpenAI",
+    "sources": [
+     0,
+     1
+    ]
+   }
+  ],
+  "post": {
+   "title": "ChatGPT can now control your Chrome tabs: what to know first",
+   "tiktok_caption": "ChatGPT's Chrome extension can now read your open tabs and fill forms, send messages and download files for you. Start with Allow once. #ChatGPT #AI #Chrome #TechNews #FredsDesk #fyp",
+   "yt_caption": "OpenAI upgraded the ChatGPT Chrome extension: Chat mode reads your open tabs, Work mode can fill out forms, send messages and download files. By default it asks before using each new website, and OpenAI labels Allow for all sites as elevated risk. Follow FredsDesk for daily AI",
+   "pinned_comment": "Based on OpenAI's announcement and docs plus press coverage. Setup goes through the ChatGPT desktop app's Computer Use settings, and plan availability was reported differently by outlets, so check your own account. Permission prompts are the default; Allow for all sites removes them and OpenAI marks it Elevated Risk. Sources are in the post text.",
+   "hashtags": [
+    "#ChatGPT",
+    "#AI",
+    "#Chrome",
+    "#OpenAI",
+    "#AIagents",
+    "#TechNews",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": [
+    {
+     "name": "OpenAI, Chrome extension docs (permissions)",
+     "url": "https://learn.chatgpt.com/docs/chrome-extension"
+    },
+    {
+     "name": "Unite.AI, OpenAI Brings Computer Use to Chrome With ChatGPT Tab Controls",
+     "url": "https://www.unite.ai/openai-brings-computer-use-to-chrome-with-chatgpt-tab-controls/"
+    },
+    {
+     "name": "The Decoder, ChatGPT becomes a full Chrome browser assistant that reads and acts on your open tabs",
+     "url": "https://the-decoder.com/chatgpt-becomes-a-full-chrome-browser-assistant-that-reads-and-acts-on-your-open-tabs/"
+    },
+    {
+     "name": "Business Today, ChatGPT takes on Google Gemini in Chrome with new AI features",
+     "url": "https://www.businesstoday.in/technology/news/story/chatgpt-takes-on-google-gemini-in-chrome-with-new-ai-features-to-automate-everyday-tasks-heres-how-to-use-561972-2026-10-16"
+    },
+    {
+     "name": "PPC Land, ChatGPT gains control of Chrome tabs to fill forms and send messages",
+     "url": "https://ppc.land/chatgpt-gains-control-of-chrome-tabs-to-fill-forms-and-send-messages/"
+    }
+   ]
+  },
+  "template": "classic",
+  "hook_type": "this_ai_just",
+  "look": "dark",
+  "art": {
+   "tabwin": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 12,
+      "y": 40,
+      "w": 176,
+      "h": 128,
+      "r": 14,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 12,
+      "y": 40,
+      "w": 176,
+      "h": 28,
+      "r": 14,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 20,
+      "y": 46,
+      "w": 50,
+      "h": 22,
+      "r": 8,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 74,
+      "y": 46,
+      "w": 50,
+      "h": 22,
+      "r": 8,
+      "c": "accent2"
+     },
+     {
+      "t": "rect",
+      "x": 128,
+      "y": 46,
+      "w": 50,
+      "h": 22,
+      "r": 8,
+      "c": "accent3"
+     },
+     {
+      "t": "text",
+      "s": "TABS",
+      "x": 100,
+      "y": 102,
+      "size": 22,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 118,
+      "w": 144,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 138,
+      "w": 100,
+      "h": 10,
+      "r": 5,
+      "c": "dim"
+     }
+    ]
+   },
+   "hand": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 62,
+      "y": 96,
+      "w": 80,
+      "h": 70,
+      "r": 22,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 66,
+      "y": 40,
+      "w": 18,
+      "h": 70,
+      "r": 9,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 88,
+      "y": 60,
+      "w": 16,
+      "h": 52,
+      "r": 8,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 108,
+      "y": 64,
+      "w": 16,
+      "h": 48,
+      "r": 8,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 128,
+      "y": 74,
+      "w": 14,
+      "h": 40,
+      "r": 7,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 40,
+      "y": 104,
+      "w": 34,
+      "h": 16,
+      "r": 8,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 62,
+      "y": 146,
+      "w": 80,
+      "h": 14,
+      "r": 7,
+      "c": "accent"
+     },
+     {
+      "t": "circle",
+      "x": 75,
+      "y": 36,
+      "r": 6,
+      "c": "accent3"
+     }
+    ]
+   },
+   "formpad": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 36,
+      "y": 18,
+      "w": 128,
+      "h": 164,
+      "r": 12,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 52,
+      "y": 40,
+      "w": 96,
+      "h": 16,
+      "r": 6,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 52,
+      "y": 70,
+      "w": 96,
+      "h": 16,
+      "r": 6,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 52,
+      "y": 100,
+      "w": 96,
+      "h": 16,
+      "r": 6,
+      "c": "dim"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        58,
+        48
+       ],
+       [
+        64,
+        54
+       ],
+       [
+        76,
+        42
+       ]
+      ],
+      "c": "accent",
+      "fill": false,
+      "w": 5
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        58,
+        78
+       ],
+       [
+        64,
+        84
+       ],
+       [
+        76,
+        72
+       ]
+      ],
+      "c": "accent",
+      "fill": false,
+      "w": 5
+     },
+     {
+      "t": "rect",
+      "x": 64,
+      "y": 140,
+      "w": 72,
+      "h": 26,
+      "r": 13,
+      "c": "accent"
+     },
+     {
+      "t": "text",
+      "s": "FORM",
+      "x": 100,
+      "y": 154,
+      "size": 14,
+      "c": "dark"
+     }
+    ]
+   },
+   "sendbubble": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 20,
+      "y": 40,
+      "w": 160,
+      "h": 90,
+      "r": 26,
+      "c": "accent2"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        50,
+        128
+       ],
+       [
+        44,
+        168
+       ],
+       [
+        84,
+        130
+       ]
+      ],
+      "c": "accent2"
+     },
+     {
+      "t": "rect",
+      "x": 40,
+      "y": 60,
+      "w": 88,
+      "h": 10,
+      "r": 5,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 40,
+      "y": 80,
+      "w": 120,
+      "h": 10,
+      "r": 5,
+      "c": "paper"
+     },
+     {
+      "t": "text",
+      "s": "SEND",
+      "x": 130,
+      "y": 114,
+      "size": 16,
+      "c": "dark"
+     }
+    ]
+   },
+   "permcard": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 18,
+      "y": 24,
+      "w": 164,
+      "h": 152,
+      "r": 18,
+      "c": "paper"
+     },
+     {
+      "t": "text",
+      "s": "ALLOW?",
+      "x": 100,
+      "y": 56,
+      "size": 26,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 34,
+      "y": 76,
+      "w": 132,
+      "h": 26,
+      "r": 13,
+      "c": "accent"
+     },
+     {
+      "t": "text",
+      "s": "ONCE",
+      "x": 100,
+      "y": 90,
+      "size": 15,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 34,
+      "y": 108,
+      "w": 132,
+      "h": 26,
+      "r": 13,
+      "c": "accent2"
+     },
+     {
+      "t": "text",
+      "s": "THIS SITE",
+      "x": 100,
+      "y": 122,
+      "size": 15,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 34,
+      "y": 140,
+      "w": 132,
+      "h": 26,
+      "r": 13,
+      "c": "red"
+     },
+     {
+      "t": "text",
+      "s": "ALL SITES",
+      "x": 100,
+      "y": 154,
+      "size": 15,
+      "c": "paper"
+     }
+    ]
+   },
+   "warnsign": {
+    "shapes": [
+     {
+      "t": "poly",
+      "pts": [
+       [
+        100,
+        16
+       ],
+       [
+        186,
+        170
+       ],
+       [
+        14,
+        170
+       ]
+      ],
+      "c": "gold"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        100,
+        16
+       ],
+       [
+        186,
+        170
+       ],
+       [
+        14,
+        170
+       ]
+      ],
+      "c": "dark",
+      "fill": false,
+      "w": 8
+     },
+     {
+      "t": "rect",
+      "x": 92,
+      "y": 68,
+      "w": 16,
+      "h": 56,
+      "r": 8,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 144,
+      "r": 9,
+      "c": "dark"
+     }
+    ]
+   }
+  },
+  "art_style": "flat",
+  "recipe": {
+   "layout": "text_first",
+   "caption_style": "typeon",
+   "caption_pos": "mid",
+   "hook_style": "sticker",
+   "hook_pos": "low",
+   "fonts": "oswald",
+   "camera": "calm",
+   "finish": "crt",
+   "transitions": "clean",
+   "anim": "snappy",
+   "sfx": "glitch",
+   "progress": true,
+   "family": "storm+neon",
+   "sound": "glitch|synthwave"
+  }
+ },
+ "hook": {
+  "text": "ChatGPT can now *drive* your Chrome",
+  "hold": 2.4
+ }
+}
