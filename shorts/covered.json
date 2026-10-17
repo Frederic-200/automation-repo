@@ -71,6 +71,64 @@
     "story",
     "story"
    ]
+  },
+  {
+   "date": "2026-10-18",
+   "slug": "chatgpt-drives-chrome",
+   "format": "B",
+   "topic": "ChatGPT Chrome extension upgrade: Chat mode reads open tabs, Work mode controls them, per-site permissions",
+   "caption_preset": "typeon",
+   "recipe": {
+    "layout": "text_first",
+    "caption_style": "typeon",
+    "caption_pos": "mid",
+    "hook_style": "sticker",
+    "hook_pos": "low",
+    "fonts": "oswald",
+    "camera": "calm",
+    "finish": "crt",
+    "transitions": "clean",
+    "anim": "snappy",
+    "sfx": "glitch",
+    "progress": true,
+    "family": "storm+neon",
+    "sound": "glitch|synthwave"
+   },
+   "bg_sigs": [
+    "hero+scatter|mesh",
+    "stack|grid",
+    "hero+orbit|ribbon",
+    "tunnel|rays",
+    "hero+path|scan",
+    "split|rings",
+    "hero+explode|stars"
+   ],
+   "art_ids": [
+    "formpad",
+    "hand",
+    "permcard",
+    "sendbubble",
+    "tabwin",
+    "warnsign"
+   ],
+   "title": "ChatGPT can now control your Chrome tabs: what to know first",
+   "template": "classic",
+   "hook_type": "this_ai_just",
+   "hook": "ChatGPT can now *drive* your Chrome",
+   "voice": "am_fenrir",
+   "music": "synthwave",
+   "sound_kit": null,
+   "look": "dark",
+   "length": 30.6,
+   "scene_types": [
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "echo",
+    "story"
+   ]
   }
  ]
 }
