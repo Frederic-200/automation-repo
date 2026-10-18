@@ -129,6 +129,64 @@
     "echo",
     "story"
    ]
+  },
+  {
+   "date": "2026-10-19",
+   "slug": "banks-block-ai-agents",
+   "format": "B",
+   "topic": "Schwab and JPMorgan block outside AI agents from logging in and moving customer money",
+   "caption_preset": "stack",
+   "recipe": {
+    "layout": "full",
+    "caption_style": "stack",
+    "caption_pos": "low",
+    "hook_style": "pop",
+    "hook_pos": "top",
+    "fonts": "anton",
+    "camera": "drift",
+    "finish": "vhs",
+    "transitions": "liquidy",
+    "anim": "smooth",
+    "sfx": "cinematic",
+    "progress": true,
+    "family": "aurora",
+    "sound": "cinematic|gentle"
+   },
+   "bg_sigs": [
+    "hero+stream|iso",
+    "split|grid",
+    "hero+scatter|contour",
+    "tunnel|scan",
+    "hero+orbit|halftone",
+    "hero+ring|mesh",
+    "hero+orbit|rings"
+   ],
+   "art_ids": [
+    "bank",
+    "bill",
+    "bot",
+    "eye",
+    "gate",
+    "key"
+   ],
+   "title": "Banks are blocking AI agents from your money: here's why",
+   "template": "classic",
+   "hook_type": "question",
+   "hook": "Can AI agents *touch* your money?",
+   "voice": "af_heart",
+   "music": "gentle",
+   "sound_kit": null,
+   "look": "light",
+   "length": 29.4,
+   "scene_types": [
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story"
+   ]
   }
  ]
 }
