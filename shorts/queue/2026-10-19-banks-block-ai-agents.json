@@ -1,0 +1,820 @@
+{
+ "title": "Banks block AI agents",
+ "style": "cool light, pale sky-blue ground, deep navy ink, mint accent, yellow second accent, calm trustworthy news",
+ "voice": "af_heart",
+ "music": true,
+ "music_mood": "gentle",
+ "seed": 71,
+ "max_seconds": 32,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "hook": {
+  "text": "Can AI agents *touch* your money?",
+  "hold": 2.4
+ },
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Two big banks are *locking out* AI agents.",
+    "Schwab blocks them *tens of times* a week."
+   ],
+   "bg": {
+    "intent": "agents blocked at the gate",
+    "subject": [
+     "gate",
+     "bot"
+    ],
+    "arrangement": "hero+stream",
+    "count": 7,
+    "motion": {
+     "gate": "pop breathe",
+     "bot": "slide from left float"
+    },
+    "beats": [
+     {
+      "on": "locking out",
+      "do": "gate.shake"
+     },
+     {
+      "on": "tens of times",
+      "do": "bot.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "iso",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "BLOCKED"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "The agents use *your password* to act for you."
+   ],
+   "bg": {
+    "intent": "an agent holds your login",
+    "subject": [
+     "key",
+     "bot"
+    ],
+    "arrangement": "split",
+    "count": 2,
+    "motion": {
+     "key": "slide from left float",
+     "bot": "slide from right wobble"
+    },
+    "beats": [
+     {
+      "on": "your password",
+      "do": "key.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "grid",
+     "speed": 0.4,
+     "angle": 10
+    },
+    "texture_words": [
+     "LOGIN"
+    ]
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {
+    "transition": "card"
+   },
+   "lines": [
+    "But here is the *catch*.",
+    "Schwab's boss asks *who is liable* if it goes wrong?"
+   ],
+   "bg": {
+    "intent": "who pays if it goes wrong",
+    "subject": [
+     "bank",
+     "bill"
+    ],
+    "arrangement": "hero+scatter",
+    "count": 8,
+    "motion": {
+     "bank": "zoom breathe",
+     "bill": "drop float"
+    },
+    "beats": [
+     {
+      "on": "catch",
+      "do": "bank.shake"
+     },
+     {
+      "on": "who is liable",
+      "do": "bill.flash"
+     }
+    ],
+    "backdrop": {
+     "kind": "contour",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "LIABLE"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "lines": [
+    "JPMorgan's Jamie Dimon warned about *rogue agents*."
+   ],
+   "bg": {
+    "intent": "rogue agents swarm in",
+    "subject": [
+     "bot"
+    ],
+    "arrangement": "tunnel",
+    "count": 10,
+    "motion": {
+     "bot": "swarm fast"
+    },
+    "beats": [
+     {
+      "on": "rogue agents",
+      "do": "bot.glitch"
+     }
+    ],
+    "backdrop": {
+     "kind": "scan",
+     "speed": 0.9
+    },
+    "texture_words": [
+     "ROGUE"
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "lines": [
+    "Banks are not banning AI outright.",
+    "Schwab plans to let outside AI tools *check balances*."
+   ],
+   "bg": {
+    "intent": "AI watches from outside, view only",
+    "subject": [
+     "bank",
+     "eye"
+    ],
+    "arrangement": "hero+orbit",
+    "count": 6,
+    "motion": {
+     "bank": "pop breathe",
+     "eye": "blink float"
+    },
+    "beats": [
+     {
+      "on": "check balances",
+      "do": "eye.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.3
+    },
+    "texture_words": [
+     "VIEW"
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "lines": [
+    "But those tools *cannot move money*."
+   ],
+   "bg": {
+    "intent": "money stays behind the barrier",
+    "subject": [
+     "gate",
+     "bill"
+    ],
+    "arrangement": "hero+ring",
+    "count": 6,
+    "motion": {
+     "gate": "pop breathe",
+     "bill": "drop float"
+    },
+    "beats": [
+     {
+      "on": "cannot move money",
+      "do": "gate.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "mesh",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "VIEW ONLY"
+    ]
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "lines": [
+    "Would you let an AI near *your money*?"
+   ],
+   "bg": {
+    "intent": "an agent circled by your cash",
+    "subject": [
+     "bot",
+     "bill"
+    ],
+    "arrangement": "hero+orbit",
+    "count": 6,
+    "motion": {
+     "bot": "pop float",
+     "bill": "fade float"
+    },
+    "beats": [
+     {
+      "on": "your money",
+      "do": "bill.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "rings",
+     "speed": 0.6
+    }
+   }
+  }
+ ],
+ "meta": {
+  "format": "B",
+  "slug": "banks-block-ai-agents",
+  "topic": "Schwab and JPMorgan block outside AI agents from logging in and moving customer money",
+  "caption_preset": "stack",
+  "facts": [
+   {
+    "claim": "Charles Schwab says it blocks unauthorized outside AI agents that try to log in on behalf of clients",
+    "sources": [
+     0,
+     1,
+     3,
+     4
+    ]
+   },
+   {
+    "claim": "Schwab's chief executive Rick Wurster says large AI agents are blocked in the tens and twenties each week",
+    "sources": [
+     1,
+     2,
+     4
+    ]
+   },
+   {
+    "claim": "Wurster asked who is liable if something goes wrong with an agent acting for a client",
+    "sources": [
+     1,
+     2,
+     4
+    ]
+   },
+   {
+    "claim": "JPMorgan chief executive Jamie Dimon warned about rogue agents and said the bank will not let outside agents inside its systems",
+    "sources": [
+     0,
+     1,
+     3
+    ]
+   },
+   {
+    "claim": "Schwab plans controlled MCP access where outside AI tools can check balances and research but not move money",
+    "sources": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  ],
+  "post": {
+   "title": "Banks are blocking AI agents from your money: here's why",
+   "tiktok_caption": "Schwab says it blocks outside AI agents tens of times a week, and JPMorgan's Jamie Dimon warned of rogue agents. View-only is the plan, not moving your money. #AI #AIagents #Banking #Schwab #Money #FredsDesk #fyp",
+   "yt_caption": "Charles Schwab says it blocks unauthorized outside AI agents that log in for clients, and its chief executive asks who is liable if something goes wrong. JPMorgan's Jamie Dimon warned about rogue agents. Banks are building view-only paths for AI tools to check balances, not to move money. Follow FredsDesk for daily AI",
+   "pinned_comment": "What the banks said: Schwab's chief executive Rick Wurster told Bloomberg TV and analysts that Schwab blocks unauthorized agents that log in for clients and described blocked big agents as 'in the tens and twenties' each week; American Banker adds that such attempts are rare because most clients do not use AI this way. Jamie Dimon spoke of 'rogue agents' on JPMorgan's earnings call. The view-only access for AI tools is Schwab's plan and is controlled by the bank. Some analysts say the banks' cash-sweep income may also be a motive; the banks say security and liability. This is news, not financial advice.",
+   "hashtags": [
+    "#AI",
+    "#AIagents",
+    "#Banking",
+    "#Schwab",
+    "#JPMorgan",
+    "#Money",
+    "#TechNews",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": [
+    {
+     "name": "American Banker, Schwab blocks unauthorized AI agents, points clients to Charley",
+     "url": "https://www.americanbanker.com/news/schwab-blocks-unauthorized-ai-agents-points-clients-to-charley"
+    },
+    {
+     "name": "The Next Web, Schwab and JPMorgan are blocking AI agents from moving customer money",
+     "url": "https://thenextweb.com/news/schwab-blocks-ai-agents-meta-muse"
+    },
+    {
+     "name": "Techstrong.ai, U.S. Banking Giants Block AI Agents Over Security, Rate-Sweeping Threats",
+     "url": "https://techstrong.ai/agentic-ai/u-s-banking-giants-block-ai-agents-over-security-rate-sweeping-threats/"
+    },
+    {
+     "name": "The Epoch Times, Charles Schwab, JPMorgan Restrict Third-Party AI Agents Over Security Risks",
+     "url": "https://www.theepochtimes.com/business/charles-schwab-jpmorgan-restrict-third-party-ai-agents-over-security-risks-6105276"
+    },
+    {
+     "name": "Forkast, Schwab and JPMorgan Block Unauthorized AI Agents from Moving Money",
+     "url": "https://forkast.news/schwab-and-jpmorgan-block-unauthorized-ai-agents-from-moving-money-as-private-ordering-reaches-financial-core/"
+    }
+   ]
+  },
+  "template": "classic",
+  "hook_type": "question",
+  "look": "light",
+  "art_style": "sticker",
+  "art": {
+   "bot": {
+    "shapes": [
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        56
+       ],
+       [
+        100,
+        34
+       ]
+      ],
+      "w": 6,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 30,
+      "r": 9,
+      "c": "red"
+     },
+     {
+      "t": "rect",
+      "x": 24,
+      "y": 88,
+      "w": 14,
+      "h": 32,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 162,
+      "y": 88,
+      "w": 14,
+      "h": 32,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 36,
+      "y": 56,
+      "w": 128,
+      "h": 94,
+      "r": 24,
+      "c": "blue"
+     },
+     {
+      "t": "rect",
+      "x": 48,
+      "y": 70,
+      "w": 104,
+      "h": 54,
+      "r": 16,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 78,
+      "y": 96,
+      "r": 10,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 122,
+      "y": 96,
+      "r": 10,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 82,
+      "y": 134,
+      "w": 36,
+      "h": 7,
+      "r": 3,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 64,
+      "y": 152,
+      "w": 72,
+      "h": 28,
+      "r": 10,
+      "c": "blue"
+     }
+    ]
+   },
+   "key": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 84,
+      "y": 92,
+      "w": 100,
+      "h": 16,
+      "r": 6,
+      "c": "gold"
+     },
+     {
+      "t": "rect",
+      "x": 146,
+      "y": 106,
+      "w": 13,
+      "h": 26,
+      "r": 3,
+      "c": "gold"
+     },
+     {
+      "t": "rect",
+      "x": 168,
+      "y": 106,
+      "w": 13,
+      "h": 18,
+      "r": 3,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 58,
+      "y": 100,
+      "r": 34,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 58,
+      "y": 100,
+      "r": 14,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 58,
+      "y": 100,
+      "r": 34,
+      "fill": false,
+      "w": 5,
+      "c": "dark"
+     }
+    ]
+   },
+   "bill": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 12,
+      "y": 52,
+      "w": 176,
+      "h": 98,
+      "r": 10,
+      "c": "green"
+     },
+     {
+      "t": "rect",
+      "x": 22,
+      "y": 62,
+      "w": 156,
+      "h": 78,
+      "r": 6,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 101,
+      "r": 27,
+      "c": "green"
+     },
+     {
+      "t": "text",
+      "s": "$",
+      "x": 100,
+      "y": 102,
+      "size": 36,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 40,
+      "y": 82,
+      "r": 6,
+      "c": "green"
+     },
+     {
+      "t": "circle",
+      "x": 160,
+      "y": 120,
+      "r": 6,
+      "c": "green"
+     },
+     {
+      "t": "rect",
+      "x": 12,
+      "y": 52,
+      "w": 176,
+      "h": 98,
+      "r": 10,
+      "fill": false,
+      "sw": 4,
+      "c": "dark"
+     }
+    ]
+   },
+   "bank": {
+    "shapes": [
+     {
+      "t": "poly",
+      "pts": [
+       [
+        100,
+        20
+       ],
+       [
+        16,
+        70
+       ],
+       [
+        184,
+        70
+       ]
+      ],
+      "c": "accent"
+     },
+     {
+      "t": "text",
+      "s": "BANK",
+      "x": 100,
+      "y": 58,
+      "size": 16,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 16,
+      "y": 70,
+      "w": 168,
+      "h": 12,
+      "r": 3,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 32,
+      "y": 86,
+      "w": 24,
+      "h": 70,
+      "r": 4,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 68,
+      "y": 86,
+      "w": 24,
+      "h": 70,
+      "r": 4,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 108,
+      "y": 86,
+      "w": 24,
+      "h": 70,
+      "r": 4,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 144,
+      "y": 86,
+      "w": 24,
+      "h": 70,
+      "r": 4,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 12,
+      "y": 158,
+      "w": 176,
+      "h": 12,
+      "r": 3,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 24,
+      "y": 172,
+      "w": 152,
+      "h": 10,
+      "r": 3,
+      "c": "dim"
+     }
+    ]
+   },
+   "eye": {
+    "shapes": [
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 100,
+      "rx": 82,
+      "ry": 48,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 34,
+      "c": "blue"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 16,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 112,
+      "y": 88,
+      "r": 6,
+      "c": "white"
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 100,
+      "rx": 82,
+      "ry": 48,
+      "fill": false,
+      "w": 6,
+      "c": "dark"
+     }
+    ]
+   },
+   "gate": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 14,
+      "y": 164,
+      "w": 52,
+      "h": 14,
+      "r": 5,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 24,
+      "y": 70,
+      "w": 30,
+      "h": 96,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "text",
+      "s": "STOP",
+      "x": 39,
+      "y": 132,
+      "size": 11,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 44,
+      "y": 84,
+      "w": 146,
+      "h": 20,
+      "r": 7,
+      "c": "white"
+     },
+     {
+      "t": "rect",
+      "x": 70,
+      "y": 84,
+      "w": 18,
+      "h": 20,
+      "c": "red"
+     },
+     {
+      "t": "rect",
+      "x": 106,
+      "y": 84,
+      "w": 18,
+      "h": 20,
+      "c": "red"
+     },
+     {
+      "t": "rect",
+      "x": 142,
+      "y": 84,
+      "w": 18,
+      "h": 20,
+      "c": "red"
+     },
+     {
+      "t": "rect",
+      "x": 44,
+      "y": 84,
+      "w": 146,
+      "h": 20,
+      "r": 7,
+      "fill": false,
+      "sw": 4,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 39,
+      "y": 94,
+      "r": 9,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 39,
+      "y": 58,
+      "r": 9,
+      "c": "red"
+     }
+    ]
+   }
+  },
+  "recipe": {
+   "layout": "full",
+   "caption_style": "stack",
+   "caption_pos": "low",
+   "hook_style": "pop",
+   "hook_pos": "top",
+   "fonts": "anton",
+   "camera": "drift",
+   "finish": "vhs",
+   "transitions": "liquidy",
+   "anim": "smooth",
+   "sfx": "cinematic",
+   "progress": true,
+   "family": "aurora",
+   "sound": "cinematic|gentle"
+  }
+ }
+}
