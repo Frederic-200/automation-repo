@@ -187,6 +187,62 @@
     "story",
     "story"
    ]
+  },
+  {
+   "date": "2026-10-20",
+   "slug": "anthropic-junior-hiring-drop",
+   "format": "A",
+   "topic": "Anthropic employment report: junior technical hires fell from 27% to 9% as AI agents log six times staff hours",
+   "caption_preset": "clean",
+   "recipe": {
+    "layout": "letterbox",
+    "caption_style": "clean",
+    "caption_pos": "low",
+    "hook_style": "sticker",
+    "hook_pos": "mid",
+    "fonts": "anton",
+    "camera": "calm",
+    "finish": "halftone",
+    "transitions": "glitchy",
+    "anim": "steppy",
+    "sfx": "soft",
+    "progress": true,
+    "family": "blueprint+aurora",
+    "sound": "soft|epic"
+   },
+   "bg_sigs": [
+    "none|rays",
+    "hero+ring|tile",
+    "none|contour",
+    "split|ribbon",
+    "hero|mesh",
+    "hero+stream|flow"
+   ],
+   "art_ids": [
+    "badge",
+    "clock",
+    "helper",
+    "ladder",
+    "qmark",
+    "tower"
+   ],
+   "title": "Anthropic's junior tech hires fell from 27% to 9%: what its own report says",
+   "template": "classic",
+   "hook_type": "number",
+   "hook": "Anthropic's junior hires: *27% to 9%*",
+   "voice": "am_fenrir",
+   "music": "epic",
+   "sound_kit": null,
+   "look": "dark",
+   "length": 34.4,
+   "scene_types": [
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story"
+   ]
   }
  ]
 }
