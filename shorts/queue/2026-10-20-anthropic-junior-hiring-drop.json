@@ -1,0 +1,881 @@
+{
+ "title": "Anthropic's junior hires fell from 27% to 9%",
+ "style": "dusk dark navy, amber accent, calm serious explainer",
+ "voice": "am_fenrir",
+ "music": true,
+ "music_mood": "epic",
+ "seed": 91,
+ "max_seconds": 34,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "Anthropic checked its *own* hiring.",
+    "Junior technical hires fell from *twenty seven* to *nine percent*."
+   ],
+   "bg": {
+    "intent": "junior hires: only a sliver of the ring is left",
+    "subject": [
+     "badge"
+    ],
+    "arrangement": "none",
+    "motion": {},
+    "backdrop": {
+     "kind": "rays",
+     "speed": 0.6
+    },
+    "beats": [
+     {
+      "on": "fell",
+      "do": "badge.shake"
+     },
+     {
+      "on": "nine percent",
+      "do": "badge.pop"
+     }
+    ],
+    "texture_words": [
+     "HIRES"
+    ],
+    "data": {
+     "kind": "ring",
+     "value": 9,
+     "max": 100,
+     "label": "9%",
+     "art": "badge",
+     "fact": 0
+    }
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "lines": [
+    "Juniors also shrank from *twenty one* to *fourteen percent* of technical staff.",
+    "Since *early last year*."
+   ],
+   "bg": {
+    "intent": "the bottom rungs of the career ladder are thinning",
+    "subject": [
+     "ladder",
+     "badge"
+    ],
+    "arrangement": "hero+ring",
+    "motion": {
+     "ladder": "pop breathe",
+     "badge": "fade float"
+    },
+    "backdrop": {
+     "kind": "tile",
+     "speed": 0.5
+    },
+    "count": 5,
+    "beats": [
+     {
+      "on": "fourteen percent",
+      "do": "ladder.shake"
+     },
+     {
+      "on": "early last year",
+      "do": "badge.flash"
+     }
+    ],
+    "texture_words": [
+     "JUNIOR"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "Its AI agents logged *six times* the staff hours.",
+    "Agents passed human hours *earlier this year*."
+   ],
+   "bg": {
+    "intent": "agent hours dwarf staff hours: one clock against six",
+    "subject": [
+     "clock"
+    ],
+    "arrangement": "none",
+    "motion": {},
+    "backdrop": {
+     "kind": "contour",
+     "speed": 0.5
+    },
+    "beats": [
+     {
+      "on": "six times",
+      "do": "clock.pop"
+     }
+    ],
+    "texture_words": [
+     "HOURS"
+    ],
+    "data": {
+     "kind": "bars",
+     "values": [
+      0.1667,
+      1
+     ],
+     "label": "6x",
+     "art": "clock",
+     "fact": 2
+    }
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {
+    "transition": "card"
+   },
+   "lines": [
+    "But here is the *catch*.",
+    "Anthropic does not say AI *caused* it.",
+    "Part is plain *company growth*."
+   ],
+   "bg": {
+    "intent": "two possible reasons: helpers or a growing company",
+    "subject": [
+     "helper",
+     "tower"
+    ],
+    "arrangement": "split",
+    "motion": {
+     "helper": "slide from left float",
+     "tower": "slide from right breathe"
+    },
+    "backdrop": {
+     "kind": "ribbon",
+     "speed": 0.5,
+     "density": 0.5
+    },
+    "beats": [
+     {
+      "on": "catch",
+      "do": "helper.shake"
+     },
+     {
+      "on": "caused",
+      "do": "helper.glitch"
+     },
+     {
+      "on": "growth",
+      "do": "tower.pop"
+     }
+    ],
+    "texture_words": [
+     "WHY"
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "lines": [
+    "It is *one company* reporting on itself.",
+    "Not the *whole job market*."
+   ],
+   "bg": {
+    "intent": "a single company, not the whole market",
+    "subject": [
+     "tower"
+    ],
+    "arrangement": "hero",
+    "motion": {
+     "tower": "zoom breathe"
+    },
+    "backdrop": {
+     "kind": "mesh",
+     "speed": 0.5
+    },
+    "beats": [
+     {
+      "on": "one company",
+      "do": "tower.glow"
+     }
+    ],
+    "texture_words": [
+     "ONE"
+    ]
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "lines": [
+    "Worth watching if you are *starting out*.",
+    "Follow for more."
+   ],
+   "bg": {
+    "intent": "if you are starting out, watch this ladder",
+    "subject": [
+     "ladder",
+     "qmark"
+    ],
+    "arrangement": "hero+stream",
+    "motion": {
+     "ladder": "pop float",
+     "qmark": "fade drift"
+    },
+    "backdrop": {
+     "kind": "flow",
+     "speed": 0.5,
+     "density": 0.5
+    },
+    "count": 6,
+    "beats": [
+     {
+      "on": "starting out",
+      "do": "ladder.glow"
+     }
+    ],
+    "texture_words": [
+     "NEXT"
+    ]
+   }
+  }
+ ],
+ "hook": {
+  "text": "Anthropic's junior hires: *27% to 9%*",
+  "hold": 2.4
+ },
+ "meta": {
+  "format": "A",
+  "slug": "anthropic-junior-hiring-drop",
+  "topic": "Anthropic employment report: junior technical hires fell from 27% to 9% as AI agents log six times staff hours",
+  "caption_preset": "clean",
+  "facts": [
+   {
+    "claim": "Junior share of Anthropic's technical hires fell from 27% to 9%",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Junior share of Anthropic's technical departments fell from 21% to 14% since early 2025",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "By August 2026 interactive AI agent hours at Anthropic outnumbered employee hours six to one (human hours estimated from headcount)",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Combined agent hours passed human hours earlier in 2026 (March)",
+    "sources": [
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Anthropic describes the pattern and says part of it is business expansion; the report does not claim AI caused the decline",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "The data is one AI-heavy company reporting on itself and may not generalise to the wider job market",
+    "sources": [
+     1,
+     2
+    ]
+   }
+  ],
+  "hook_type": "number",
+  "template": "classic",
+  "look": "dark",
+  "art": {
+   "badge": {
+    "shapes": [
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        4
+       ],
+       [
+        100,
+        30
+       ]
+      ],
+      "w": 6,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 52,
+      "y": 28,
+      "w": 96,
+      "h": 148,
+      "r": 14,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 52,
+      "y": 28,
+      "w": 96,
+      "h": 34,
+      "r": 14,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 88,
+      "y": 20,
+      "w": 24,
+      "h": 12,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 92,
+      "r": 20,
+      "c": "dim"
+     },
+     {
+      "t": "path",
+      "d": "M64 150 Q64 118 100 118 Q136 118 136 150 Z",
+      "c": "dim"
+     },
+     {
+      "t": "text",
+      "s": "JUNIOR",
+      "x": 100,
+      "y": 158,
+      "size": 15,
+      "c": "dark"
+     }
+    ]
+   },
+   "ladder": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 52,
+      "y": 12,
+      "w": 12,
+      "h": 176,
+      "r": 5,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 136,
+      "y": 12,
+      "w": 12,
+      "h": 176,
+      "r": 5,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 58,
+      "y": 34,
+      "w": 84,
+      "h": 9,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 58,
+      "y": 64,
+      "w": 84,
+      "h": 9,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 58,
+      "y": 94,
+      "w": 84,
+      "h": 9,
+      "r": 4,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 58,
+      "y": 124,
+      "w": 84,
+      "h": 9,
+      "r": 4,
+      "c": "dim",
+      "fill": true
+     },
+     {
+      "t": "rect",
+      "x": 58,
+      "y": 154,
+      "w": 84,
+      "h": 9,
+      "r": 4,
+      "c": "dim"
+     }
+    ]
+   },
+   "clock": {
+    "shapes": [
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 76,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 76,
+      "c": "dark",
+      "fill": false,
+      "w": 8
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        100
+       ],
+       [
+        100,
+        52
+       ]
+      ],
+      "w": 8,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        100
+       ],
+       [
+        134,
+        116
+       ]
+      ],
+      "w": 8,
+      "c": "accent"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 8,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        30
+       ],
+       [
+        100,
+        40
+       ]
+      ],
+      "w": 5,
+      "c": "dim"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        160
+       ],
+       [
+        100,
+        170
+       ]
+      ],
+      "w": 5,
+      "c": "dim"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        30,
+        100
+       ],
+       [
+        40,
+        100
+       ]
+      ],
+      "w": 5,
+      "c": "dim"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        160,
+        100
+       ],
+       [
+        170,
+        100
+       ]
+      ],
+      "w": 5,
+      "c": "dim"
+     }
+    ]
+   },
+   "helper": {
+    "shapes": [
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        22
+       ],
+       [
+        100,
+        46
+       ]
+      ],
+      "w": 6,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 20,
+      "r": 8,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 40,
+      "y": 46,
+      "w": 120,
+      "h": 92,
+      "r": 24,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 22,
+      "y": 76,
+      "w": 18,
+      "h": 32,
+      "r": 8,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 160,
+      "y": 76,
+      "w": 18,
+      "h": 32,
+      "r": 8,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 58,
+      "y": 66,
+      "w": 84,
+      "h": 48,
+      "r": 16,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 82,
+      "y": 90,
+      "r": 9,
+      "c": "accent"
+     },
+     {
+      "t": "circle",
+      "x": 118,
+      "y": 90,
+      "r": 9,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 60,
+      "y": 146,
+      "w": 80,
+      "h": 34,
+      "r": 12,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 78,
+      "y": 156,
+      "w": 44,
+      "h": 8,
+      "r": 4,
+      "c": "paper"
+     }
+    ]
+   },
+   "tower": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 30,
+      "y": 60,
+      "w": 70,
+      "h": 124,
+      "r": 6,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 96,
+      "y": 22,
+      "w": 76,
+      "h": 162,
+      "r": 6,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 42,
+      "y": 74,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 66,
+      "y": 74,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 42,
+      "y": 102,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 66,
+      "y": 102,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 42,
+      "y": 130,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 66,
+      "y": 130,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 108,
+      "y": 36,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 134,
+      "y": 36,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 108,
+      "y": 64,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 134,
+      "y": 64,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 108,
+      "y": 92,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 134,
+      "y": 92,
+      "w": 14,
+      "h": 14,
+      "r": 3,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 122,
+      "y": 150,
+      "w": 26,
+      "h": 34,
+      "r": 4,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 20,
+      "y": 184,
+      "w": 160,
+      "h": 6,
+      "r": 3,
+      "c": "dark"
+     }
+    ]
+   },
+   "qmark": {
+    "shapes": [
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 80,
+      "c": "accent"
+     },
+     {
+      "t": "text",
+      "s": "?",
+      "x": 100,
+      "y": 106,
+      "size": 120,
+      "c": "paper"
+     }
+    ]
+   }
+  },
+  "art_style": "flat",
+  "post": {
+   "title": "Anthropic's junior tech hires fell from 27% to 9%: what its own report says",
+   "tiktok_caption": "Anthropic says junior technical hires fell from 27% to 9% and its AI agents log six times the staff hours. But it's one company, and part of it is growth. #AI #Jobs #Anthropic #EntryLevel #FredsDesk #fyp",
+   "yt_caption": "Anthropic's own employment report says the junior share of its technical hires fell from 27% to 9%, and juniors fell from 21% to 14% of technical staff. Its AI agents logged six times the staff hours. The report is descriptive and covers one company. Follow FredsDesk for daily AI",
+   "pinned_comment": "Caveats: this is Anthropic reporting on itself, an AI-heavy software company, so it may not match the wider job market. The report describes the pattern and says part of it is the company's rapid growth; it does not say AI alone caused it. The six-to-one agent hours figure compares agent runtime with staff hours estimated from headcount, so it is not a count of jobs replaced. Sources: Anthropic, The Decoder, AI Weekly.",
+   "hashtags": [
+    "#AI",
+    "#Jobs",
+    "#Anthropic",
+    "#EntryLevel",
+    "#Careers",
+    "#TechNews",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": [
+    {
+     "name": "Anthropic, How employment is changing at Anthropic",
+     "url": "https://www.anthropic.com/research/employment-at-anthropic"
+    },
+    {
+     "name": "The Decoder, Anthropic has nearly stopped hiring junior staff because AI agents now work six times as many hours",
+     "url": "https://the-decoder.com/anthropic-has-nearly-stopped-hiring-junior-staff-because-ai-agents-now-work-six-times-as-many-hours/"
+    },
+    {
+     "name": "AI Weekly, Anthropic report: junior technical hires fell from 27% to 9%",
+     "url": "https://aiweekly.co/alerts/anthropic-report-junior-technical-hires-fell-from-27-to-9"
+    }
+   ]
+  },
+  "recipe": {
+   "layout": "letterbox",
+   "caption_style": "clean",
+   "caption_pos": "low",
+   "hook_style": "sticker",
+   "hook_pos": "mid",
+   "fonts": "anton",
+   "camera": "calm",
+   "finish": "halftone",
+   "transitions": "glitchy",
+   "anim": "steppy",
+   "sfx": "soft",
+   "progress": true,
+   "family": "blueprint+aurora",
+   "sound": "soft|epic"
+  }
+ }
+}
