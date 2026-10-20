@@ -1,0 +1,746 @@
+{
+ "title": "Your AI picks your Halloween costume",
+ "style": "midnight purple, orange accent, spooky playful, fun",
+ "voice": "af_heart",
+ "music": true,
+ "music_mood": "synthwave",
+ "seed": 61,
+ "max_seconds": 22,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "silent": true,
+ "lead": 0.2,
+ "hook": {
+  "text": "POV: your AI picks your *costume*",
+  "hold": 2.4
+ },
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "You ask AI for a *costume* idea."
+   ],
+   "bg": {
+    "intent": "the question pops up amid floating treats",
+    "subject": [
+     "bubble",
+     "candy"
+    ],
+    "arrangement": "hero+scatter",
+    "motion": {
+     "bubble": "pop float",
+     "candy": "drop drift"
+    },
+    "beats": [
+     {
+      "on": "costume",
+      "do": "bubble.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.6
+    },
+    "texture_words": [
+     "TRICK",
+     "TREAT"
+    ],
+    "count": 7
+   }
+  },
+  {
+   "act": "build",
+   "type": "chat",
+   "params": {
+    "names": [
+     "You",
+     "AI"
+    ],
+    "bubbles": [
+     {
+      "who": "a",
+      "text": "Costume idea?",
+      "at": 0.2
+     },
+     {
+      "who": "b",
+      "text": "Be a ghost.",
+      "at": 1.1
+     }
+    ]
+   },
+   "lines": [
+    "It says: *be a ghost*."
+   ],
+   "bg": {
+    "intent": "the AI answers with a ghost wearing a witch hat",
+    "subject": [
+     "ghost",
+     "hat"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "ghost": "pop float",
+     "hat": "slide from left spin"
+    },
+    "beats": [
+     {
+      "on": "ghost",
+      "do": "ghost.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "contour",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "BOO"
+    ],
+    "count": 3
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Then: a *pumpkin* with Wi-Fi."
+   ],
+   "bg": {
+    "intent": "silly second idea, pumpkin versus chat",
+    "subject": [
+     "pumpkin",
+     "bubble"
+    ],
+    "arrangement": "split",
+    "motion": {
+     "pumpkin": "slide from left wobble",
+     "bubble": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "pumpkin",
+      "do": "pumpkin.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "mesh",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "PUMPKIN"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "It adds a *witch hat*. Naturally."
+   ],
+   "bg": {
+    "intent": "a big witch hat lands on the idea",
+    "subject": [
+     "hat"
+    ],
+    "arrangement": "hero",
+    "motion": {
+     "hat": "drop wobble"
+    },
+    "beats": [
+     {
+      "on": "witch",
+      "do": "hat.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "ribbon",
+     "speed": 0.6
+    },
+    "texture_words": [
+     "WITCH"
+    ]
+   }
+  },
+  {
+   "act": "turn",
+   "type": "chat",
+   "params": {
+    "transition": "card",
+    "names": [
+     "You",
+     "AI"
+    ],
+    "bubbles": [
+     {
+      "who": "a",
+      "text": "Who is in the chat?",
+      "at": 0.2
+     },
+     {
+      "who": "b",
+      "text": "Ghosts. Ghosts everywhere.",
+      "at": 1.2
+     }
+    ]
+   },
+   "lines": [
+    "Plot twist: it *haunts* the group chat."
+   ],
+   "bg": {
+    "intent": "ghosts flood the chat",
+    "subject": [
+     "ghost",
+     "bubble"
+    ],
+    "arrangement": "tunnel",
+    "motion": {
+     "ghost": "zoom drift",
+     "bubble": "fade pulse"
+    },
+    "beats": [
+     {
+      "on": "haunts",
+      "do": "ghost.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.7
+    },
+    "texture_words": [
+     "HAUNTED"
+    ],
+    "count": 7
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Everyone *votes* with a ghost."
+   ],
+   "bg": {
+    "intent": "a crowd of ghosts all voting for the same idea",
+    "subject": [
+     "ghost"
+    ],
+    "arrangement": "grid",
+    "motion": {
+     "ghost": "pop float"
+    },
+    "beats": [
+     {
+      "on": "votes",
+      "do": "ghost.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "tile",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "VOTE"
+    ],
+    "count": 9
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Best costume wins the *candy*."
+   ],
+   "bg": {
+    "intent": "treats pile up for the winner",
+    "subject": [
+     "candy",
+     "pumpkin"
+    ],
+    "arrangement": "stack",
+    "motion": {
+     "candy": "drop breathe",
+     "pumpkin": "pop breathe"
+    },
+    "beats": [
+     {
+      "on": "candy",
+      "do": "candy.grow"
+     }
+    ],
+    "backdrop": {
+     "kind": "rays",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "WINNER"
+    ],
+    "count": 9
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Happy *haunting*. Stay spooky."
+   ],
+   "bg": {
+    "intent": "friendly goodbye ring of spooky friends",
+    "subject": [
+     "pumpkin",
+     "ghost",
+     "hat"
+    ],
+    "arrangement": "hero+ring",
+    "motion": {
+     "pumpkin": "pop breathe",
+     "ghost": "float",
+     "hat": "spin"
+    },
+    "beats": [
+     {
+      "on": "haunting",
+      "do": "pumpkin.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "grid",
+     "speed": 0.4
+    },
+    "texture_words": [
+     "SPOOKY"
+    ],
+    "count": 6
+   }
+  }
+ ],
+ "meta": {
+  "format": "C",
+  "slug": "ai-picks-halloween-costume",
+  "topic": "Pure animation: POV your AI picks your Halloween costume",
+  "caption_preset": "off",
+  "hook_type": "pov",
+  "template": "classic",
+  "look": "dark",
+  "art_style": "sticker",
+  "art": {
+   "pumpkin": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 92,
+      "y": 22,
+      "w": 16,
+      "h": 30,
+      "r": 6,
+      "c": "green"
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 108,
+      "rx": 78,
+      "ry": 62,
+      "c": "accent"
+     },
+     {
+      "t": "ellipse",
+      "x": 62,
+      "y": 108,
+      "rx": 34,
+      "ry": 58,
+      "c": "accent",
+      "fill": false,
+      "w": 4
+     },
+     {
+      "t": "ellipse",
+      "x": 138,
+      "y": 108,
+      "rx": 34,
+      "ry": 58,
+      "c": "accent",
+      "fill": false,
+      "w": 4
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        60,
+        92
+       ],
+       [
+        84,
+        92
+       ],
+       [
+        72,
+        70
+       ]
+      ],
+      "c": "dark"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        116,
+        92
+       ],
+       [
+        140,
+        92
+       ],
+       [
+        128,
+        70
+       ]
+      ],
+      "c": "dark"
+     },
+     {
+      "t": "path",
+      "d": "M58 124 Q100 168 142 124 L130 128 L118 140 L100 128 L82 140 L70 128 Z",
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        22
+       ],
+       [
+        100,
+        6
+       ]
+      ],
+      "w": 4,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 4,
+      "r": 7,
+      "c": "accent2"
+     }
+    ]
+   },
+   "ghost": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M40 170 L40 90 Q40 30 100 30 Q160 30 160 90 L160 170 L140 150 L120 172 L100 150 L80 172 L60 150 Z",
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 78,
+      "y": 92,
+      "r": 12,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 122,
+      "y": 92,
+      "r": 12,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 82,
+      "y": 88,
+      "r": 4,
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 126,
+      "y": 88,
+      "r": 4,
+      "c": "accent2"
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 126,
+      "rx": 14,
+      "ry": 9,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        30
+       ],
+       [
+        100,
+        10
+       ]
+      ],
+      "w": 5,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 8,
+      "r": 8,
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 62,
+      "y": 114,
+      "r": 7,
+      "c": "accent3"
+     },
+     {
+      "t": "circle",
+      "x": 138,
+      "y": 114,
+      "r": 7,
+      "c": "accent3"
+     }
+    ]
+   },
+   "bubble": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 14,
+      "y": 40,
+      "w": 172,
+      "h": 100,
+      "r": 26,
+      "c": "paper"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        50,
+        138
+       ],
+       [
+        44,
+        176
+       ],
+       [
+        86,
+        138
+       ]
+      ],
+      "c": "paper"
+     },
+     {
+      "t": "text",
+      "s": "COSTUME?",
+      "x": 100,
+      "y": 98,
+      "size": 26,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 70,
+      "y": 62,
+      "r": 5,
+      "c": "accent"
+     },
+     {
+      "t": "circle",
+      "x": 90,
+      "y": 62,
+      "r": 5,
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 110,
+      "y": 62,
+      "r": 5,
+      "c": "accent3"
+     }
+    ]
+   },
+   "candy": {
+    "shapes": [
+     {
+      "t": "poly",
+      "pts": [
+       [
+        10,
+        70
+       ],
+       [
+        58,
+        96
+       ],
+       [
+        10,
+        130
+       ]
+      ],
+      "c": "accent2"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        190,
+        70
+       ],
+       [
+        142,
+        96
+       ],
+       [
+        190,
+        130
+       ]
+      ],
+      "c": "accent2"
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 100,
+      "rx": 54,
+      "ry": 40,
+      "c": "accent3"
+     },
+     {
+      "t": "path",
+      "d": "M72 66 Q96 100 72 134",
+      "c": "paper",
+      "fill": false,
+      "w": 8
+     },
+     {
+      "t": "path",
+      "d": "M104 62 Q128 100 104 138",
+      "c": "paper",
+      "fill": false,
+      "w": 8
+     }
+    ]
+   },
+   "hat": {
+    "shapes": [
+     {
+      "t": "poly",
+      "pts": [
+       [
+        100,
+        10
+       ],
+       [
+        148,
+        138
+       ],
+       [
+        52,
+        138
+       ]
+      ],
+      "c": "dark"
+     },
+     {
+      "t": "path",
+      "d": "M100 10 Q118 4 124 24",
+      "c": "dark",
+      "fill": false,
+      "w": 8
+     },
+     {
+      "t": "rect",
+      "x": 62,
+      "y": 108,
+      "w": 76,
+      "h": 16,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 90,
+      "y": 106,
+      "w": 20,
+      "h": 20,
+      "r": 3,
+      "c": "gold",
+      "fill": false,
+      "sw": 5
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 142,
+      "rx": 84,
+      "ry": 16,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 150,
+      "y": 44,
+      "r": 5,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 46,
+      "y": 62,
+      "r": 4,
+      "c": "gold"
+     }
+    ]
+   }
+  },
+  "facts": [],
+  "post": {
+   "title": "POV: your AI picks your Halloween costume",
+   "tiktok_caption": "POV: you ask AI for a costume idea and it goes full ghost. What did your chatbot pick? #AI #Halloween #chatbot #costume #FredsDesk #fyp",
+   "yt_caption": "A tiny Halloween animation: you ask AI for a costume idea and things get spooky and silly. Tell us the weirdest costume your chatbot ever suggested. Follow FredsDesk for daily AI",
+   "pinned_comment": "Just for fun: a pure animation, no facts or claims. Drawings and story are original. What costume did your AI suggest?",
+   "hashtags": [
+    "#AI",
+    "#Halloween",
+    "#chatbot",
+    "#costume",
+    "#spooky",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": []
+  },
+  "recipe": {
+   "layout": "text_first",
+   "caption_style": "off",
+   "caption_pos": "mid",
+   "hook_style": "sticker",
+   "hook_pos": "low",
+   "fonts": "bebas",
+   "camera": "calm",
+   "finish": "crt",
+   "transitions": "flashy",
+   "anim": "snappy",
+   "sfx": "cinematic",
+   "progress": false,
+   "family": "neon",
+   "sound": "cinematic|synthwave"
+  }
+ }
+}
