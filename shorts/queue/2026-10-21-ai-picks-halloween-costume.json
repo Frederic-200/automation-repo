@@ -53,25 +53,8 @@
   },
   {
    "act": "build",
-   "type": "chat",
-   "params": {
-    "names": [
-     "You",
-     "AI"
-    ],
-    "bubbles": [
-     {
-      "who": "a",
-      "text": "Costume idea?",
-      "at": 0.2
-     },
-     {
-      "who": "b",
-      "text": "Be a ghost.",
-      "at": 1.1
-     }
-    ]
-   },
+   "type": "story",
+   "params": {},
    "lines": [
     "It says: *be a ghost*."
    ],
@@ -79,11 +62,13 @@
     "intent": "the AI answers with a ghost wearing a witch hat",
     "subject": [
      "ghost",
+     "shout",
      "hat"
     ],
     "arrangement": "hero+orbit",
     "motion": {
      "ghost": "pop float",
+     "shout": "slide from right float",
      "hat": "slide from left spin"
     },
     "beats": [
@@ -99,7 +84,7 @@
     "texture_words": [
      "BOO"
     ],
-    "count": 3
+    "count": 4
    }
   },
   {
@@ -168,25 +153,9 @@
   },
   {
    "act": "turn",
-   "type": "chat",
+   "type": "story",
    "params": {
-    "transition": "card",
-    "names": [
-     "You",
-     "AI"
-    ],
-    "bubbles": [
-     {
-      "who": "a",
-      "text": "Who is in the chat?",
-      "at": 0.2
-     },
-     {
-      "who": "b",
-      "text": "Ghosts. Ghosts everywhere.",
-      "at": 1.2
-     }
-    ]
+    "transition": "card"
    },
    "lines": [
     "Plot twist: it *haunts* the group chat."
@@ -200,7 +169,7 @@
     "arrangement": "tunnel",
     "motion": {
      "ghost": "zoom drift",
-     "bubble": "fade pulse"
+     "bubble": "pop pulse"
     },
     "beats": [
      {
@@ -573,6 +542,45 @@
       "y": 62,
       "r": 5,
       "c": "accent3"
+     }
+    ]
+   },
+   "shout": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 10,
+      "y": 44,
+      "w": 180,
+      "h": 92,
+      "r": 28,
+      "c": "accent"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        140,
+        134
+       ],
+       [
+        150,
+        176
+       ],
+       [
+        110,
+        134
+       ]
+      ],
+      "c": "accent"
+     },
+     {
+      "t": "text",
+      "s": "BE A GHOST",
+      "x": 100,
+      "y": 98,
+      "size": 26,
+      "c": "paper"
      }
     ]
    },
