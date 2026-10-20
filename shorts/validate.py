@@ -209,7 +209,7 @@ def main():
     if fmt and len(prev) >= 2 and prev[-1].get("format") == fmt and prev[-2].get("format") == fmt: E(f"format {fmt} was used the last 2 days; rotate")
     if fmt and fmt != "C" and len(prev) >= 6 and all(e.get("format") != "C" for e in prev[-6:]): E("no format C in the last 6 videos: make a pure animation (C) today")
     if cp and len(prev) >= 2 and prev[-1].get("caption_preset") == cp and prev[-2].get("caption_preset") == cp: E(f"caption preset '{cp}' used the last 2 videos; mix the text styles")
-    if slug and any(e.get("slug") == slug for e in cov): E("slug already published")
+    if slug and any(e.get("slug") == slug for e in cov if date and e.get("date", "") < date): E("slug already published")
     topic = (meta.get("topic") or "").lower()
     if topic and any(topic == (e.get("topic") or "").lower() for e in prev): E("topic already covered in the last 7 videos")
 
@@ -230,6 +230,12 @@ def main():
             if rec.get(k) not in allowed: E(f"recipe.{k} must be one of {allowed}")
         for k in ("family", "sound"):
             if not rec.get(k): E(f"recipe.{k} missing")
+        try:
+            cap = PR.overrides(rec)["caption"]
+            if cap.get("mode") in ("slam", "clean") and cap.get("size", 0) < PR.CAPTION_MIN: E(f"caption size {cap.get('size')} below the readability floor {PR.CAPTION_MIN}")
+            if cap.get("mode") == "stack" and cap.get("stack_size", 1) < .7: E("stack caption scale below the readability floor (0.7)")
+            if cap.get("mode") == "typeon" and cap.get("typeon_size", 999) < 110: E("typeon caption size below the readability floor (110)")
+        except Exception as ex: E(f"recipe cannot be resolved: {ex}")
         if rec.get("caption_style") and cp and rec["caption_style"] != cp: E("meta.caption_preset must equal recipe.caption_style")
         rprev = [e for e in prev if isinstance(e.get("recipe"), dict)]
         if rprev:

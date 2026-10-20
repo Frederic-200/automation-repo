@@ -21,12 +21,14 @@
     "Junior technical hires fell from *twenty seven* to *nine percent*."
    ],
    "bg": {
-    "intent": "junior hires: only a sliver of the ring is left",
+    "intent": "junior hires: twenty seven percent down to nine",
     "subject": [
      "badge"
     ],
-    "arrangement": "none",
-    "motion": {},
+    "arrangement": "hero",
+    "motion": {
+     "badge": "drop breathe"
+    },
     "backdrop": {
      "kind": "rays",
      "speed": 0.6
@@ -35,23 +37,19 @@
      {
       "on": "fell",
       "do": "badge.shake"
-     },
-     {
-      "on": "nine percent",
-      "do": "badge.pop"
      }
     ],
     "texture_words": [
      "HIRES"
     ],
-    "data": {
-     "kind": "ring",
-     "value": 9,
-     "max": 100,
-     "label": "9%",
-     "art": "badge",
-     "fact": 0
-    }
+    "numbers": [
+     {
+      "text": "27% > 9%",
+      "fact": 0,
+      "on": "nine percent",
+      "accent": true
+     }
+    ]
    }
   },
   {
@@ -65,33 +63,34 @@
     "Since *early last year*."
    ],
    "bg": {
-    "intent": "the bottom rungs of the career ladder are thinning",
+    "intent": "the bottom rungs of the career ladder thin out",
     "subject": [
-     "ladder",
-     "badge"
+     "ladder"
     ],
-    "arrangement": "hero+ring",
+    "arrangement": "hero",
     "motion": {
-     "ladder": "pop breathe",
-     "badge": "fade float"
+     "ladder": "pop breathe"
     },
     "backdrop": {
      "kind": "tile",
      "speed": 0.5
     },
-    "count": 5,
+    "count": 1,
     "beats": [
      {
       "on": "fourteen percent",
       "do": "ladder.shake"
-     },
-     {
-      "on": "early last year",
-      "do": "badge.flash"
      }
     ],
     "texture_words": [
      "JUNIOR"
+    ],
+    "numbers": [
+     {
+      "text": "21% > 14%",
+      "fact": 1,
+      "on": "fourteen percent"
+     }
     ]
    }
   },
@@ -106,12 +105,14 @@
     "Agents passed human hours *earlier this year*."
    ],
    "bg": {
-    "intent": "agent hours dwarf staff hours: one clock against six",
+    "intent": "agent hours: six times the staff hours",
     "subject": [
      "clock"
     ],
-    "arrangement": "none",
-    "motion": {},
+    "arrangement": "hero",
+    "motion": {
+     "clock": "pop float"
+    },
     "backdrop": {
      "kind": "contour",
      "speed": 0.5
@@ -125,16 +126,14 @@
     "texture_words": [
      "HOURS"
     ],
-    "data": {
-     "kind": "bars",
-     "values": [
-      0.1667,
-      1
-     ],
-     "label": "6x",
-     "art": "clock",
-     "fact": 2
-    }
+    "numbers": [
+     {
+      "text": "6x",
+      "fact": 2,
+      "on": "six times",
+      "accent": true
+     }
+    ]
    }
   },
   {
@@ -243,7 +242,7 @@
      "speed": 0.5,
      "density": 0.5
     },
-    "count": 6,
+    "count": 5,
     "beats": [
      {
       "on": "starting out",
@@ -264,7 +263,7 @@
   "format": "A",
   "slug": "anthropic-junior-hiring-drop",
   "topic": "Anthropic employment report: junior technical hires fell from 27% to 9% as AI agents log six times staff hours",
-  "caption_preset": "clean",
+  "caption_preset": "typeon",
   "facts": [
    {
     "claim": "Junior share of Anthropic's technical hires fell from 27% to 9%",
@@ -862,20 +861,20 @@
    ]
   },
   "recipe": {
-   "layout": "letterbox",
-   "caption_style": "clean",
-   "caption_pos": "low",
+   "layout": "tilt_card",
+   "caption_style": "typeon",
+   "caption_pos": "mid",
    "hook_style": "sticker",
-   "hook_pos": "mid",
+   "hook_pos": "top",
    "fonts": "anton",
    "camera": "calm",
-   "finish": "halftone",
-   "transitions": "glitchy",
-   "anim": "steppy",
-   "sfx": "soft",
-   "progress": true,
+   "finish": "clean",
+   "transitions": "flashy",
+   "anim": "snappy",
+   "sfx": "chip",
+   "progress": false,
    "family": "blueprint+aurora",
-   "sound": "soft|epic"
+   "sound": "chip|epic"
   }
  }
 }

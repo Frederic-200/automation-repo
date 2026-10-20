@@ -126,7 +126,7 @@ def main():
     # 3. outro in this video's style, appended to both versions
     odir = os.path.join(out, "outro")
     sh([sys.executable, os.path.join(HERE, "outro", "outro_build.py"), "--style-work", work, "--out", odir, "--mood", mood, "--seconds", str(meta.get("outro_seconds", 1.5))])
-    title = safe(meta["post"]["title"].split(":")[0] if len(meta["post"]["title"]) > 60 else meta["post"]["title"]); pre = f"{date} {title}"
+    title = safe(meta["post"]["title"].split(":")[0] if len(meta["post"]["title"]) > 60 else meta["post"]["title"]); pre = f"{date} {title}{opt('--suffix', '')}"
     # clear platform names: the music version is for YouTube Shorts + FB Reels, the no-music one for TikTok (add a trending sound there)
     fin_main = os.path.join(out, f"{pre} - YT+Reels.mp4" if voiced else f"{pre} - all platforms.mp4"); fin_nom = os.path.join(out, f"{pre} - TikTok (add sound).mp4")
     sh([sys.executable, os.path.join(HERE, "outro", "append_outro.py"), main_mp4, os.path.join(odir, "outro.mp4"), fin_main])
@@ -164,19 +164,27 @@ def main():
         if "--no-log" not in a: fps["entries"] = [e for e in fps["entries"] if e.get("date") != date] + [{"date": date, "slug": slug, "fp": mine}]; json.dump(fps, open(fpp, "w"))
     except Exception as ex: print("fingerprint check skipped:", ex)
 
-    # 4c. background QA on the rendered frames: not blank, something moves in every scene (warns in the run report)
+    # 4c. readability QA on the rendered frames (v4.1): objects must be big and contrasty, nothing blank or frozen. Fails the run on unreadable scenes.
+    bgfail = []
     try:
         import numpy as np
         from PIL import Image
         fr = sorted(glob.glob(os.path.join(work, "frames", "*.jpg"))); fps_ = 30
         def g(i): return np.asarray(Image.open(fr[min(len(fr) - 1, max(0, i))]).convert("L").resize((108, 192)), dtype=float)
         for sc_ in tl["scenes"]:
-            a_, b_ = int((sc_["start"] + .5) * fps_), int((sc_["end"] - .4) * fps_)
+            a_, b_ = int((sc_["start"] + .4) * fps_), int((sc_["end"] - .4) * fps_)
             if b_ - a_ < 20: continue
-            mid = (a_ + b_) // 2; sd_ = g(mid).std(); mv = np.mean([np.abs(g(i) - g(i + 15)).mean() for i in range(a_, b_ - 15, 15)] or [0])
-            if sd_ < 8: print(f"BG QA WARN: scene {sc_['i']} looks blank (std {sd_:.1f})")
+            cv, rg = 0, 0
+            for q in (.35, .6, .85):
+                band = g(int(a_ + (b_ - a_) * q))[50:125]; m_ = np.median(band)
+                cv = max(cv, float((np.abs(band - m_) > 40).mean() * 100)); rg = max(rg, float(np.percentile(band, 95) - np.percentile(band, 5)))
+            mv = np.mean([np.abs(g(i) - g(i + 15)).mean() for i in range(a_, b_ - 15, 15)] or [0])
+            print(f"scene {sc_['i']}: object coverage {cv:.1f}%, contrast range {rg:.0f}, motion {mv:.2f}")
+            if cv < 7 or rg < 45: bgfail.append(f"scene {sc_['i']} is hard to read (objects cover {cv:.1f}% of the stage, contrast {rg:.0f}; need 7%+ and 45+): make the drawings bigger or the backdrop calmer")
+            elif cv < 10: print(f"BG QA WARN: scene {sc_['i']} objects are small ({cv:.1f}%)")
             if mv < 1.0: print(f"BG QA WARN: scene {sc_['i']} is nearly frozen (motion {mv:.2f})")
     except Exception as ex: print("bg qa skipped:", ex)
+    if bgfail and "--no-qa-fail" not in a: print("READABILITY QA FAILED:\n" + "\n".join(bgfail)); return 1
 
     # 5. post text + preview
     pt = os.path.join(out, f"{pre} - post text.md"); open(pt, "w").write(post_text(meta, date, fmt))
@@ -197,6 +205,7 @@ def main():
 
     # 7. log as covered (the workflow commits it)
     if "--no-log" not in a:
+        cov["entries"] = [e for e in cov["entries"] if e.get("slug") != slug]
         cov["entries"].append({"date": date, "slug": slug, "format": fmt, "topic": meta["topic"], "caption_preset": meta["caption_preset"], "recipe": meta.get("recipe"), "bg_sigs": __import__("bgcheck").signatures(S), "art_ids": sorted((meta.get("art") or {}).keys()), "title": meta["post"]["title"],
                                "template": meta.get("template"), "hook_type": meta.get("hook_type"), "hook": (S.get("hook") or {}).get("text"), "voice": S.get("voice") if voiced else None,
                                "music": S.get("music_mood"), "sound_kit": ((S.get("style_overrides") or {}).get("sfx") or {}).get("kit"), "look": meta.get("look"),

@@ -21,6 +21,9 @@ on:
         description: "Build even if the slug is already in shorts/covered.json"
         type: boolean
         default: false
+      suffix:
+        description: "Text added to the output file names, e.g. ' v2'"
+        required: false
 
 permissions:
   contents: write
@@ -81,11 +84,13 @@ jobs:
           IN_FILE: ${{ github.event.inputs.file }}
           IN_UPLOAD: ${{ github.event.inputs.upload }}
           IN_FORCE: ${{ github.event.inputs.force }}
+          IN_SUFFIX: ${{ github.event.inputs.suffix }}
         run: |
           args=""
           if [ -n "$IN_FILE" ]; then args="$args --file $IN_FILE"; fi
           if [ "$IN_UPLOAD" = "false" ]; then args="$args --no-upload --no-log"; fi
           if [ "$IN_FORCE" = "true" ]; then args="$args --force"; fi
+          if [ -n "$IN_SUFFIX" ]; then python3 shorts/build_daily.py $args --suffix "$IN_SUFFIX"; exit $?; fi
           python3 shorts/build_daily.py $args
 
       - name: Keep a 7-day backup copy

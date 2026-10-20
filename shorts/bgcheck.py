@@ -2,6 +2,8 @@
 import re
 
 REQUIRED_FROM = "2026-10-17"
+NUMBERS_FROM = "2026-10-20"
+NUM_WORDS = re.compile(r"\b(two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|trillion|percent|half|double|doubled|triple|tripled)\b", re.I)
 ART_STYLES = ("flat", "line", "sticker", "blueprint", "paper")
 SHAPES = {"rect", "circle", "ellipse", "line", "poly", "path", "text"}
 ROLES = {"ink", "accent", "accent2", "accent3", "paper", "dark", "dim", "bg", "gold", "white", "red", "green", "blue"}
@@ -77,6 +79,17 @@ def check(S, date, prev, E, W):
         if d:
             if d.get("kind") not in DATA_KINDS: E(f"scene {i}: data.kind must be one of {sorted(DATA_KINDS)}")
             if not isinstance(d.get("fact"), int) or not 0 <= d["fact"] < len(facts): E(f"scene {i}: data.fact must be the index of the meta.facts entry that backs the number")
+
+        # every spoken number must become a picture (giant number or data scene)
+        spoken = " ".join(sc.get("lines") or []) if isinstance(sc.get("lines"), list) else ""
+        spoken = " ".join(l if isinstance(l, str) else str(l.get("text", "")) for l in (sc.get("lines") or []))
+        nums = bg.get("numbers") or []
+        if date and date >= NUMBERS_FROM and NUM_WORDS.search(spoken) and not nums and not bg.get("data"):
+            E(f"scene {i}: the narration says a number ('{NUM_WORDS.search(spoken).group(0)}') but the scene shows none: add bg.numbers [{{\"text\": \"27% > 9%\", \"fact\": 0, \"on\": \"keyword\"}}] or a bg.data scene")
+        for k, nn in enumerate(nums):
+            if not isinstance(nn, dict) or not nn.get("text"): E(f"scene {i}: bg.numbers[{k}] must be an object with text and fact"); continue
+            if len(str(nn["text"])) > 18: E(f"scene {i}: bg.numbers[{k}].text max 18 chars so it can be shown huge")
+            if not isinstance(nn.get("fact"), int) or not 0 <= nn["fact"] < len(facts): E(f"scene {i}: bg.numbers[{k}].fact must be the index of the meta.facts entry that backs it")
         if BAD_ART.search(str(bg.get("intent", ""))) and "logo" in str(bg.get("intent", "")).lower(): E(f"scene {i}: no logos")
         sigs.append(f"{'+'.join(parts)}|{kind}"); arrs.append("+".join(parts)); combos.append(f"{'+'.join(parts)}|{kind}")
     if sigs:

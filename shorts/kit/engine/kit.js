@@ -305,7 +305,7 @@ const LAYOUTS = {
   card: { x: 70, y: 190, w: 940, h: 1000, r: 56, k: .9, shadow: 1 },
   top_stage: { x: 0, y: 0, w: 1080, h: 1160, r: 0, k: 1 },
   tilt_card: { x: 120, y: 240, w: 880, h: 980, r: 48, k: .88, rot: -.05, shadow: 1 },
-  letterbox: { x: 0, y: 250, w: 1080, h: 1230, r: 0, k: 1 },
+  letterbox: { x: 0, y: 150, w: 1080, h: 1180, r: 0, k: 1 },
 };
 function rrPath(o, x0, y0, w, h, r) { o.beginPath(); o.moveTo(x0 + r, y0); o.arcTo(x0 + w, y0, x0 + w, y0 + h, r); o.arcTo(x0 + w, y0 + h, x0, y0 + h, r); o.arcTo(x0, y0 + h, x0, y0, r); o.arcTo(x0, y0, x0 + w, y0, r); o.closePath(); }
 function drawStage(o, z, rot, F, sc) {
@@ -325,16 +325,16 @@ function decor(t, F, sc) {
   const o = octx, e = env(sc), name = (S.layout && S.layout.name) || 'full', X = S.extras || {};
   o.save(); o.setTransform(1, 0, 0, 1, 0, 0);
   if (name === 'letterbox') {
-    o.fillStyle = S.accent; o.fillRect(0, 0, W, 250);
-    o.fillStyle = S.on_accent; o.font = `${S.fonts.display_weight} 84px "${S.fonts.display}"`; o.textBaseline = 'middle'; o.textAlign = 'left'; o.fillText('FREDSDESK', 60, 132);
-    o.font = `${S.fonts.text_weight} 40px "${S.fonts.text}"`; o.textAlign = 'right'; o.fillText(TL.tag || 'DAILY AI', W - 60, 132);
-    const tx = (TL.ticker || 'FREDSDESK  /  DAILY AI  /  ') , tw = (o.font = `${S.fonts.display_weight} 44px "${S.fonts.display}"`, o.measureText(tx).width);
-    o.fillStyle = e.ink; o.fillRect(0, 1480, W, 84); o.fillStyle = e.bg[0]; o.textAlign = 'left'; const off = (t * 140) % tw;
-    for (let q = -off; q < W; q += tw) o.fillText(tx, q, 1524);
+    o.fillStyle = S.accent; o.fillRect(0, 0, W, 150);
+    o.fillStyle = S.on_accent; o.font = `${S.fonts.display_weight} 72px "${S.fonts.display}"`; o.textBaseline = 'middle'; o.textAlign = 'left'; o.fillText('FREDSDESK', 56, 78);
+    o.font = `${S.fonts.text_weight} 38px "${S.fonts.text}"`; o.textAlign = 'right'; o.fillText(TL.tag || 'DAILY AI', W - 56, 78);
+    const tx = (TL.ticker || 'FREDSDESK  /  DAILY AI  /  '); o.font = `${S.fonts.display_weight} 40px "${S.fonts.display}"`; const tw = o.measureText(tx).width;
+    o.fillStyle = e.ink; o.fillRect(0, 1330, W, 56); o.fillStyle = e.bg[0]; o.textAlign = 'left'; const off = (t * 120) % tw;
+    for (let q = -off; q < W; q += tw) o.fillText(tx, q, 1359);
   }
   if (X.progress) { o.fillStyle = 'rgba(0,0,0,.25)'; o.fillRect(0, 0, W, 16); o.fillStyle = S.accent; o.fillRect(0, 0, W * clamp(t / TL.duration), 16); }
   if (TL.chip) { const c = TL.chip, a = clamp((t - c.at) / .18) * clamp((c.at + c.hold - t) / .18); if (a > 0) {
-      o.globalAlpha = a; o.font = `${S.fonts.text_weight} 38px "${S.fonts.text}"`; o.textBaseline = 'middle'; o.textAlign = 'left'; const txt = String(c.text).toUpperCase(), tw = o.measureText(txt).width + 56, cy = name === 'letterbox' ? 300 : 120;
+      o.globalAlpha = a; o.font = `${S.fonts.text_weight} 38px "${S.fonts.text}"`; o.textBaseline = 'middle'; o.textAlign = 'left'; const txt = String(c.text).toUpperCase(), tw = o.measureText(txt).width + 56, cy = name === 'letterbox' ? 200 : 120;
       o.fillStyle = e.ink; rrPath(o, 54, cy - 36 + (1 - a) * -14, tw, 72, 36); o.fill(); o.fillStyle = e.bg[0]; o.fillText(txt, 82, cy + (1 - a) * -14 + 2); o.globalAlpha = 1; } }
   o.restore();
 }

@@ -44,10 +44,11 @@ BG.drawArt = (art, e, o = {}) => {
     if (fx) { const pv = s.pv || [100, 100]; x.translate(pv[0] + (fx.dx || 0), pv[1] + (fx.dy || 0)); x.rotate(fx.rot || 0); const k = fx.s ?? 1; x.scale(k, k); x.translate(-pv[0], -pv[1]); a *= fx.a ?? 1; }
     if (a <= 0.01) { x.restore(); return; }
     x.globalAlpha = clamp(a);
-    const colr = BG.col(s.c || 'ink', e), fillOn = s.fill !== undefined ? !!s.fill : (st !== 'line');
+    const bgL = lum(e.bg[0]), fixc = (c) => { const L = lum(c); return Math.abs(L - bgL) < .3 ? (bgL < .5 ? mixc(c, '#ffffff', .62) : mixc(c, '#000000', .6)) : c; };
+    const colr = fixc(BG.col(s.c || 'ink', e)), fillOn = s.fill !== undefined ? !!s.fill : (st !== 'line');
     let fillCol = colr; if (o.tint) fillCol = mixc(colr, '#ffffff', o.tint);
-    const lw = s.sw ?? (s.t === 'rect' ? undefined : s.w) ?? (st === 'line' ? 7 : st === 'blueprint' ? 3 : st === 'sticker' ? 9 : 0);
-    const strokeCol = st === 'sticker' ? (e.bright ? '#14141a' : '#0b0b10') : (st === 'blueprint' ? mixc(colr, '#ffffff', .25) : colr);
+    const lw = s.sw ?? (s.t === 'rect' ? undefined : s.w) ?? (st === 'line' ? 8 : st === 'blueprint' ? 4 : st === 'sticker' ? 9 : 7);
+    const strokeCol = (st === 'sticker' || st === 'flat' || st === 'paper') ? (bgL < .5 ? '#fbf8f0' : '#14141a') : (st === 'blueprint' ? mixc(colr, '#ffffff', .25) : colr);
     const P2 = () => {
       x.beginPath();
       if (s.t === 'rect') { x.roundRect(s.x, s.y, s.w, s.h, s.r || 0); }
@@ -101,18 +102,18 @@ BG.place = (kind, n, subs, bg, lt, sc) => {
   const add = (i, px, py, s, rot = 0, delay = 0, extra = {}) => out.push({ i, art: pick(i), x: px, y: clamp(py, BAND_Y0(), BAND_Y1()), s, rot, delay, ...extra });
   switch (kind) {
     case 'none': break;
-    case 'hero': add(0, cx, cy, 2.5, 0, 0, { hero: 1 }); break;
-    case 'scatter': for (let i = 0; i < n; i++) add(i, 130 + sd(i, 'x') * 820, BAND_Y0() + 40 + sd(i, 'y') * (BG_BAND * 2 - 80), .55 + sd(i, 's') * .9, (sd(i, 'r') - .5) * .8, i * .07); break;
+    case 'hero': add(0, cx, cy, bg._hs || 3.3, 0, 0, { hero: 1 }); break;
+    case 'scatter': for (let i = 0; i < n; i++) add(i, 200 + sd(i, 'x') * 680, BAND_Y0() + 120 + sd(i, 'y') * (BG_BAND * 2 - 240), 1.25 + sd(i, 's') * .6, (sd(i, 'r') - .5) * .8, i * .07); break;
     case 'grid': { const cols = Math.max(2, Math.ceil(Math.sqrt(n * .8))), rows = Math.ceil(n / cols), gx = 760 / cols, gy = Math.min(300, 800 / rows);
       for (let i = 0; i < n; i++) add(i, cx - 380 + gx * (i % cols + .5), cy - (rows - 1) * gy / 2 + Math.floor(i / cols) * gy, Math.min(gx, gy) / 230 * 1.1, 0, i * .06); break; }
-    case 'orbit': { const sp = .35 * (bg.speed || 1); for (let i = 0; i < n; i++) { const a = i / n * TAU + lt * sp; add(i, cx + Math.cos(a) * 360, cy + Math.sin(a) * 300, .9 + .25 * Math.sin(a + 1), 0, i * .08); } break; }
+    case 'orbit': { const sp = .35 * (bg.speed || 1); for (let i = 0; i < n; i++) { const a = i / n * TAU + lt * sp; add(i, cx + Math.cos(a) * 380, cy + Math.sin(a) * 330, 1.3 + .2 * Math.sin(a + 1), 0, i * .08); } break; }
     case 'stream': { const sp = .16 * (bg.speed || 1), dir = (bg.angle ?? -20) * Math.PI / 180;
-      for (let i = 0; i < n; i++) { const u = (((i / n) + lt * sp) % 1 + 1) % 1, px = -120 + u * 1320, py = cy + (u - .5) * Math.tan(dir) * 1000 + Math.sin(u * TAU * 1.5 + i) * 70; add(i, px, py, .75 + .3 * sd(i, 's'), Math.sin(u * 8 + i) * .15, 0); } break; }
-    case 'stack': { const w = 230; for (let i = 0; i < n; i++) add(i, cx + Math.sin(i * 1.7) * 26, cy + BG_BAND * .72 - i * (w * .58) , 1.05, Math.sin(i * 2.3) * .06, i * .22); break; }
-    case 'split': for (let i = 0; i < Math.max(2, n); i++) { const side = i % 2 ? 1 : -1; add(i, CX + side * 255, cy + (Math.floor(i / 2) - .5 * (Math.ceil(n / 2) - 1)) * 330, 1.7 - .15 * Math.floor(i / 2), 0, Math.floor(i / 2) * .2 + (side > 0 ? .15 : 0)); } break;
-    case 'path': for (let i = 0; i < n; i++) { const u = (i + .5) / n, px = 150 + u * 780, py = cy + Math.sin(u * Math.PI * 2) * 250; add(i, px, py, .9, Math.cos(u * Math.PI * 2) * .35, i * .16); } break;
-    case 'explode': for (let i = 0; i < n; i++) { const a = i / n * TAU + sd(i, 'a') * .6, d = 120 + sd(i, 'd') * 330; add(i, cx + Math.cos(a) * d, cy + Math.sin(a) * d * .85, .7 + sd(i, 's') * .8, a, 0, { burst: 1, ang: a, dist: d }); } break;
-    case 'ring': for (let i = 0; i < n; i++) { const a = i / n * TAU - Math.PI / 2; add(i, cx + Math.cos(a) * 330, cy + Math.sin(a) * 330, .8, a + Math.PI / 2, i * .1); } break;
+      for (let i = 0; i < n; i++) { const u = (((i / n) + lt * sp) % 1 + 1) % 1, px = -120 + u * 1320, py = cy + (u - .5) * Math.tan(dir) * 1000 + Math.sin(u * TAU * 1.5 + i) * 70; add(i, px, py, 1.25 + .35 * sd(i, 's'), Math.sin(u * 8 + i) * .15, 0); } break; }
+    case 'stack': { const w = 230; for (let i = 0; i < n; i++) add(i, cx + Math.sin(i * 1.7) * 26, cy + BG_BAND * .72 - i * (w * .6) , 1.45, Math.sin(i * 2.3) * .06, i * .22); break; }
+    case 'split': for (let i = 0; i < Math.max(2, n); i++) { const side = i % 2 ? 1 : -1; add(i, CX + side * 255, cy + (Math.floor(i / 2) - .5 * (Math.ceil(n / 2) - 1)) * 330, 2.1 - .15 * Math.floor(i / 2), 0, Math.floor(i / 2) * .2 + (side > 0 ? .15 : 0)); } break;
+    case 'path': for (let i = 0; i < n; i++) { const u = (i + .5) / n, px = 150 + u * 780, py = cy + Math.sin(u * Math.PI * 2) * 250; add(i, px, py, 1.4, Math.cos(u * Math.PI * 2) * .35, i * .16); } break;
+    case 'explode': for (let i = 0; i < n; i++) { const a = i / n * TAU + sd(i, 'a') * .6, d = 120 + sd(i, 'd') * 330; add(i, cx + Math.cos(a) * d, cy + Math.sin(a) * d * .85, 1.2 + sd(i, 's') * .7, a, 0, { burst: 1, ang: a, dist: d }); } break;
+    case 'ring': for (let i = 0; i < n; i++) { const a = i / n * TAU - Math.PI / 2; add(i, cx + Math.cos(a) * 340, cy + Math.sin(a) * 340, 1.3, a + Math.PI / 2, i * .1); } break;
     case 'tunnel': for (let i = 0; i < n; i++) { const z = (((i / n) + lt * .22 * (bg.speed || 1)) % 1 + 1) % 1, a = sd(i, 'a') * TAU, rr = z * z * 520; add(i, cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * .85, .15 + z * z * 2.3, a, 0, { alpha: clamp(z * 2.5) * (1 - clamp((z - .9) * 10)) }); } break;
     case 'wall': { const cols = Math.max(3, Math.round(Math.sqrt(n))), rows = Math.ceil(n / cols), cs = 900 / cols; for (let i = 0; i < n; i++) add(i, 90 + cs * (i % cols + .5) + ((Math.floor(i / cols) % 2) ? cs / 2 : 0), HY - 400 + Math.floor(i / cols) * (800 / rows) + 40, cs / 260, 0, i * .03, { alpha: .35 }); break; }
     default: add(0, cx, cy, 2.2, 0, 0, { hero: 1 });
@@ -215,9 +216,26 @@ BG.data = (d, bg, e, t, lt, sc, beats) => {
   else big(lab, CX, HY, 260);
 };
 
+
+/* giant on-screen numbers: every number the narrator says becomes a picture. bg.numbers = ["27%", "9%"] or [{"text":"27% > 9%","on":"nine"}] */
+BG.numbers = (list, e, t, lt, sc) => {
+  if (!list || !list.length) return;
+  const items = list.map(n => typeof n === 'string' ? { text: n } : n), n = items.length, beats = BG.beatTimes({ beats: items.map(i => ({ on: i.on, t: i.t, do: 'x.pop' })) }, sc);
+  const ink = e.ink, dark = lum(e.bg[0]) < .5, plate = dark ? 'rgba(0,0,0,.55)' : 'rgba(255,255,255,.7)';
+  items.forEach((it, i) => {
+    const t0 = (it.on || it.t !== undefined) ? beats[i].t : sc.start + .25 + i * .5, d = t - t0; if (d < 0) return;
+    const txt = String(it.text).replace(/>/g, '\u2192'), size0 = n === 1 ? 330 : 250, py = n === 1 ? HY - 250 : HY - 330 + i * 250;
+    x.save(); x.font = `${S.fonts.display_weight} ${size0}px "${S.fonts.display}"`; let w = x.measureText(txt).width, size = size0; if (w > 760) { size = size0 * 760 / w; x.font = `${S.fonts.display_weight} ${size}px "${S.fonts.display}"`; w = x.measureText(txt).width; }
+    const k = Math.max(.001, spring(d, { zeta: .5, w0: 15 })), a = clamp(d * 8);
+    x.translate(CX, py); x.scale(k, k); x.globalAlpha = a; x.textAlign = 'center'; x.textBaseline = 'middle';
+    x.fillStyle = plate; x.beginPath(); x.roundRect(-w / 2 - 34, -size * .62, w + 68, size * 1.18, 30); x.fill();
+    x.lineJoin = 'round'; x.lineWidth = size * .08; x.strokeStyle = dark ? '#000' : '#fff'; x.strokeText(txt, 0, 0);
+    x.fillStyle = it.accent ? S.accent : ink; x.fillText(txt, 0, 0); x.restore(); });
+};
+
 /* ---------------------------------------------------------------- scene entry */
 BG.scene = (t, lt, sc, e) => {
-  const bg = sc.bg || {}, tt = t;
+  let bg = sc.bg || {}; const tt = t; if ((bg.numbers || []).length && !bg.focus) bg = Object.assign({}, bg, { focus: 'bottom' });
   BG.backdrop(bg.backdrop || 'mesh', e, t, lt, sc);
   BG.texture(bg.texture_words, e, t, sc);
   const style = TL.meta_art_style || 'flat';
@@ -225,8 +243,8 @@ BG.scene = (t, lt, sc, e) => {
   const parts = String(bg.arrangement || 'hero').toLowerCase().split(/[+&]/).map(s => s.trim()).filter(Boolean);
   let placed = [];
   parts.forEach((kind, pi) => { const mine = parts.length > 1 ? (pi === 0 ? subs.slice(0, 1) : subs.slice(1)) : subs; if (!mine.length) return;
-    const n = (bg.counts && bg.counts[kind]) || bg.count || ({ hero: 1, split: 2, stack: 6, orbit: 7, ring: 8, grid: 9, path: 6, stream: 8, explode: 12, tunnel: 22, scatter: 9, wall: 30 }[kind] || 6);
-    BG.place(kind, n, mine, bg, lt, sc).forEach(p => { p.part = pi; placed.push(p); }); });
+    const n = (bg.counts && bg.counts[kind]) || bg.count || ({ hero: 1, split: 2, stack: 5, orbit: 5, ring: 6, grid: 6, path: 5, stream: 5, explode: 7, tunnel: 22, scatter: 6, wall: 30 }[kind] || 6);
+    BG.place(kind, n, mine, parts.length > 1 ? Object.assign({}, bg, { _hs: 2.6 }) : bg, lt, sc).forEach(p => { p.part = pi; placed.push(p); }); });
   const fxAll = [];
   // draw order: back to front (smaller first) so heroes sit on top
   placed.sort((a, b) => (a.hero ? 1 : 0) - (b.hero ? 1 : 0) || a.s - b.s);
@@ -262,6 +280,7 @@ BG.scene = (t, lt, sc, e) => {
   for (const b of beats) { const art = BG.art(b.subj); const d = tt - b.t; if (!art || d < 0 || d > .9 || ['remove', 'part'].includes(b.act)) continue;
     for (let k = 0; k < 9; k++) { const a = k / 9 * TAU + R('bp', sc.i, k), r = 380 * easeOutExpo(d * 1.4), px = CX + Math.cos(a) * r, py = HY + Math.sin(a) * r * .8; x.save(); x.translate(px, clamp(py, BAND_Y0(), BAND_Y1())); x.rotate(a * 2 + d * 3); x.scale(.2, .2); BG.drawArt(art, e, { style, alpha: clamp(1 - d * 1.2) * .9 }); x.restore(); } }
   if (bg.data) BG.data(bg.data, bg, e, t, lt, sc, beats);
+  BG.numbers(bg.numbers, e, t, lt, sc);
   // scan sweep
   if (Object.values(bg.motion || {}).some(m => /scan/.test(String(m)))) { const by = HY - BG_BAND + ((t * .5) % 1) * BG_BAND * 2; x.fillStyle = rgba(S.accent, .22); x.fillRect(0, by - 5, W, 10); }
   sc.keys.forEach(k => shockwave && shockwave(CX, HY, t - k.s, S.accent, 700, 10));
@@ -269,4 +288,4 @@ BG.scene = (t, lt, sc, e) => {
 SCENES.story = (t, lt, sc, e) => BG.scene(t, lt, sc, e);
 
 /* scenes of other types (chat, stat, echo...) that carry `bg` get the story backdrop + faint words behind them */
-BG.under = (sc, e, t, lt) => { if (!sc.bg || sc.type === 'story') return false; BG.backdrop(sc.bg.backdrop || 'mesh', e, t, lt, sc); BG.texture(sc.bg.texture_words, e, t, sc); return true; };
+BG.under = (sc, e, t, lt) => { if (!sc.bg || sc.type === 'story') return false; BG.backdrop(sc.bg.backdrop || 'mesh', e, t, lt, sc); BG.texture(sc.bg.texture_words, e, t, sc); BG.numbers(sc.bg.numbers, e, t, lt, sc); return true; };
