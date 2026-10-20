@@ -243,6 +243,66 @@
     "story",
     "story"
    ]
+  },
+  {
+   "date": "2026-10-21",
+   "slug": "ai-picks-halloween-costume",
+   "format": "C",
+   "topic": "Pure animation: POV your AI picks your Halloween costume",
+   "caption_preset": "off",
+   "recipe": {
+    "layout": "text_first",
+    "caption_style": "off",
+    "caption_pos": "mid",
+    "hook_style": "sticker",
+    "hook_pos": "low",
+    "fonts": "bebas",
+    "camera": "calm",
+    "finish": "crt",
+    "transitions": "flashy",
+    "anim": "snappy",
+    "sfx": "cinematic",
+    "progress": false,
+    "family": "neon",
+    "sound": "cinematic|synthwave"
+   },
+   "bg_sigs": [
+    "hero+scatter|stars",
+    "hero+orbit|contour",
+    "split|mesh",
+    "hero|ribbon",
+    "tunnel|halftone",
+    "grid|tile",
+    "stack|rays",
+    "hero+ring|grid"
+   ],
+   "art_ids": [
+    "bubble",
+    "candy",
+    "ghost",
+    "hat",
+    "pumpkin",
+    "shout"
+   ],
+   "title": "POV: your AI picks your Halloween costume",
+   "template": "classic",
+   "hook_type": "pov",
+   "hook": "POV: your AI picks your *costume*",
+   "voice": null,
+   "music": "synthwave",
+   "sound_kit": null,
+   "look": "dark",
+   "length": 19.9,
+   "scene_types": [
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story"
+   ]
   }
  ]
 }
