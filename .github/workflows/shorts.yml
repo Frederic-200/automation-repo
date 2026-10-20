@@ -90,8 +90,13 @@ jobs:
           if [ -n "$IN_FILE" ]; then args="$args --file $IN_FILE"; fi
           if [ "$IN_UPLOAD" = "false" ]; then args="$args --no-upload --no-log"; fi
           if [ "$IN_FORCE" = "true" ]; then args="$args --force"; fi
-          if [ -n "$IN_SUFFIX" ]; then python3 shorts/build_daily.py $args --suffix "$IN_SUFFIX"; exit $?; fi
-          python3 shorts/build_daily.py $args
+          sfx=()
+          if [ -n "$IN_SUFFIX" ]; then sfx=(--suffix "$IN_SUFFIX"); fi
+          set +e
+          python3 shorts/build_daily.py $args "${sfx[@]}" 2>&1 | tee /tmp/build.log
+          rc=${PIPESTATUS[0]}
+          if [ $rc -ne 0 ]; then echo "::error title=Build failed::$(tail -c 900 /tmp/build.log | tr '\n' '|' | sed 's/%/%25/g')"; fi
+          exit $rc
 
       - name: Keep a 7-day backup copy
         if: always()
