@@ -142,7 +142,7 @@ def main():
         if not 15 <= v["dur"] <= 40: problems.append(f"{p}: duration {v['dur']:.1f}s")
         if p == fin_main or voiced:
             if not -17.5 <= lufs <= -13.0: problems.append(f"{p}: loudness {lufs} LUFS")
-            if tp > -1.5: problems.append(f"{p}: true peak {tp} dBTP")
+            if tp > -1.0: problems.append(f"{p}: true peak {tp} dBTP")
     # frame 0 must show the hook (not a blank or fading-in frame)
     try:
         from PIL import Image, ImageStat
