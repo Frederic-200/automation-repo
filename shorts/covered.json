@@ -303,6 +303,64 @@
     "story",
     "story"
    ]
+  },
+  {
+   "date": "2026-10-22",
+   "slug": "chatgpt-locked-chats",
+   "format": "B",
+   "topic": "ChatGPT Locked Chats: PIN or biometric lock, separate memory, not encryption",
+   "caption_preset": "slam",
+   "recipe": {
+    "layout": "full",
+    "caption_style": "slam",
+    "caption_pos": "mid",
+    "hook_style": "pop",
+    "hook_pos": "top",
+    "fonts": "oswald",
+    "camera": "punchy",
+    "finish": "film",
+    "transitions": "liquidy",
+    "anim": "springy",
+    "sfx": "click",
+    "progress": false,
+    "family": "aurora",
+    "sound": "click|upbeat"
+   },
+   "bg_sigs": [
+    "split|rays",
+    "hero|paper",
+    "hero+ring|iso",
+    "split|scan",
+    "hero+path|mesh",
+    "hero+explode|halftone",
+    "hero+scatter|ribbon"
+   ],
+   "art_ids": [
+    "curtain",
+    "keypad",
+    "memjar",
+    "padlock",
+    "touch",
+    "vault"
+   ],
+   "title": "ChatGPT can lock your chats now, but it is not encryption",
+   "template": "classic",
+   "hook_type": "myth",
+   "hook": "ChatGPT's new lock is *not* encryption",
+   "voice": "af_heart",
+   "music": "upbeat",
+   "sound_kit": null,
+   "look": "light",
+   "length": 30.1,
+   "scene_types": [
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story"
+   ]
   }
  ]
 }
