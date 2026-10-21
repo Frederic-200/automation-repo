@@ -1,0 +1,900 @@
+{
+ "title": "ChatGPT's new lock is not encryption",
+ "style": "fresh mint light, teal accent, coral secondary, calm helpful",
+ "voice": "af_heart",
+ "music": true,
+ "music_mood": "upbeat",
+ "seed": 57,
+ "max_seconds": 31,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "ChatGPT can now *lock* private chats.",
+    "Open them with a four digit code."
+   ],
+   "bg": {
+    "intent": "a chat gets locked behind a four digit code",
+    "subject": [
+     "padlock",
+     "keypad"
+    ],
+    "arrangement": "split",
+    "count": 2,
+    "motion": {
+     "padlock": "pop float",
+     "keypad": "slide from right breathe"
+    },
+    "beats": [
+     {
+      "on": "lock",
+      "do": "padlock.pop"
+     },
+     {
+      "on": "four digit",
+      "do": "keypad.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "rays",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "LOCKED"
+    ],
+    "numbers": [
+     {
+      "text": "4 digits",
+      "fact": 0,
+      "on": "four digit",
+      "accent": true
+     }
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "Locked chats vanish from history and *search*."
+   ],
+   "bg": {
+    "intent": "a curtain hides the chats from onlookers",
+    "subject": [
+     "curtain"
+    ],
+    "arrangement": "hero",
+    "count": 1,
+    "motion": {
+     "curtain": "drop float"
+    },
+    "beats": [
+     {
+      "on": "search",
+      "do": "curtain.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "paper",
+     "speed": 0.4
+    },
+    "texture_words": [
+     "HIDDEN"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "On phones, your *face* or fingerprint works too."
+   ],
+   "bg": {
+    "intent": "fingerprint or face opens the lock on a phone",
+    "subject": [
+     "touch",
+     "padlock"
+    ],
+    "arrangement": "hero+ring",
+    "count": 4,
+    "motion": {
+     "touch": "zoom pulse",
+     "padlock": "spin slow"
+    },
+    "beats": [
+     {
+      "on": "face",
+      "do": "touch.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "iso",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "UNLOCK"
+    ]
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {
+    "transition": "card"
+   },
+   "lines": [
+    "But here is the *catch*.",
+    "A lock is *not* encryption.",
+    "OpenAI still stores your chats."
+   ],
+   "bg": {
+    "intent": "a curtain is not a vault: the data is still stored",
+    "subject": [
+     "curtain",
+     "vault"
+    ],
+    "arrangement": "split",
+    "count": 2,
+    "motion": {
+     "curtain": "slide from left float",
+     "vault": "slide from right breathe"
+    },
+    "beats": [
+     {
+      "on": "catch",
+      "do": "curtain.shake"
+     },
+     {
+      "on": "not",
+      "do": "vault.flash"
+     }
+    ],
+    "backdrop": {
+     "kind": "scan",
+     "speed": 0.7
+    },
+    "texture_words": [
+     "STORED"
+    ]
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Locked chats also get their *own memory*."
+   ],
+   "bg": {
+    "intent": "locked chats keep a separate memory jar",
+    "subject": [
+     "memjar",
+     "padlock"
+    ],
+    "arrangement": "hero+path",
+    "count": 3,
+    "motion": {
+     "memjar": "pop breathe",
+     "padlock": "slide from left drift"
+    },
+    "beats": [
+     {
+      "on": "own memory",
+      "do": "memjar.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "mesh",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "MEMORY"
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "lines": [
+    "Reset the code, and every locked chat is *deleted*.",
+    "Support cannot bring them back."
+   ],
+   "bg": {
+    "intent": "resetting the code destroys everything locked",
+    "subject": [
+     "vault",
+     "keypad"
+    ],
+    "arrangement": "hero+explode",
+    "count": 6,
+    "motion": {
+     "vault": "pop shake",
+     "keypad": "fade"
+    },
+    "beats": [
+     {
+      "on": "deleted",
+      "do": "vault.shatter"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "GONE"
+    ]
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "So treat the lock like a *curtain*, not a vault."
+   ],
+   "bg": {
+    "intent": "curtain beats nothing, but vault is the real thing",
+    "subject": [
+     "curtain",
+     "vault"
+    ],
+    "arrangement": "hero+scatter",
+    "count": 5,
+    "motion": {
+     "curtain": "pop breathe",
+     "vault": "fade float"
+    },
+    "beats": [
+     {
+      "on": "curtain",
+      "do": "curtain.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "ribbon",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "CURTAIN"
+    ]
+   }
+  }
+ ],
+ "hook": {
+  "text": "ChatGPT's new lock is *not* encryption",
+  "hold": 2.4
+ },
+ "meta": {
+  "format": "B",
+  "slug": "chatgpt-locked-chats",
+  "topic": "ChatGPT Locked Chats: PIN or biometric lock, separate memory, not encryption",
+  "caption_preset": "slam",
+  "facts": [
+   {
+    "claim": "ChatGPT Locked Chats lets users lock chats behind a four digit PIN",
+    "sources": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "Locked chats are hidden from regular history and search",
+    "sources": [
+     0,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "On supported phones Face ID, Touch ID or device unlock can open locked chats",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Locking is not end-to-end encryption and does not change OpenAI's data retention",
+    "sources": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "Locked chats have separate memory that does not carry into regular chats",
+    "sources": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "Resetting the PIN permanently deletes all locked chats; support cannot recover them",
+    "sources": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "The feature mainly guards against onlookers such as someone seeing your screen",
+    "sources": [
+     0,
+     2,
+     3
+    ]
+   }
+  ],
+  "post": {
+   "title": "ChatGPT can lock your chats now, but it is not encryption",
+   "tiktok_caption": "ChatGPT can now lock private chats behind a four digit code, but OpenAI says it is not encryption. Reset the code and locked chats are deleted. #ChatGPT #AI #Privacy #OpenAI #TechTips #FredsDesk #fyp",
+   "yt_caption": "ChatGPT's new Locked Chats hides chats from history and search behind a four digit code, or your face or fingerprint on supported phones. Locked chats get their own memory. But OpenAI says it is not end-to-end encryption and does not change data retention. Resetting the code deletes everything locked. Follow FredsDesk for daily AI",
+   "pinned_comment": "Locked Chats is rolling out gradually, so it may not be on your account yet. It hides chats from people looking at your screen or device; per OpenAI it is not end-to-end encryption, does not change how long OpenAI keeps chats and does not change your 'Improve the model for everyone' setting. Anything ChatGPT remembered before you locked a chat stays in regular memory. Sources: OpenAI Help Center, Beebom, WinCentral, AI Weekly.",
+   "hashtags": [
+    "#ChatGPT",
+    "#AI",
+    "#Privacy",
+    "#OpenAI",
+    "#TechTips",
+    "#TechNews",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": [
+    {
+     "name": "OpenAI Help Center, Using locked chats in ChatGPT",
+     "url": "https://help.openai.com/en/articles/20001411-using-locked-chats-in-chatgpt"
+    },
+    {
+     "name": "Beebom, ChatGPT Now Lets You Lock Chats Behind a PIN or Face ID",
+     "url": "https://gadgets.beebom.com/news/chatgpt-now-lets-you-lock-chats-behind-a-pin-or-face-id"
+    },
+    {
+     "name": "WinCentral, ChatGPT Locked Chats Feature: How It Works, PIN & Privacy Limits",
+     "url": "https://thewincentral.com/chatgpt-locked-chats-privacy-feature/"
+    },
+    {
+     "name": "AI Weekly, ChatGPT adds PIN-locked chats, not end-to-end encrypted",
+     "url": "https://aiweekly.co/alerts/chatgpt-adds-pin-locked-chats-not-end-to-end-encrypted"
+    }
+   ]
+  },
+  "template": "classic",
+  "hook_type": "myth",
+  "look": "light",
+  "art": {
+   "padlock": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M68 92 V66 A32 32 0 0 1 132 66 V92",
+      "c": "dark",
+      "fill": false,
+      "w": 14,
+      "part": "shackle",
+      "pv": [
+       100,
+       92
+      ]
+     },
+     {
+      "t": "rect",
+      "x": 46,
+      "y": 88,
+      "w": 108,
+      "h": 82,
+      "r": 16,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 46,
+      "y": 88,
+      "w": 108,
+      "h": 18,
+      "r": 16,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 46,
+      "y": 98,
+      "w": 108,
+      "h": 8,
+      "r": 0,
+      "c": "accent"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 126,
+      "r": 11,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 95,
+      "y": 128,
+      "w": 10,
+      "h": 24,
+      "r": 3,
+      "c": "dark"
+     }
+    ]
+   },
+   "keypad": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 38,
+      "y": 16,
+      "w": 124,
+      "h": 168,
+      "r": 18,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 52,
+      "y": 30,
+      "w": 96,
+      "h": 32,
+      "r": 8,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 72,
+      "y": 46,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 92,
+      "y": 46,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 112,
+      "y": 46,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 132,
+      "y": 46,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 70,
+      "y": 86,
+      "r": 11,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 86,
+      "r": 11,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 130,
+      "y": 86,
+      "r": 11,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 70,
+      "y": 114,
+      "r": 11,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 114,
+      "r": 11,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 130,
+      "y": 114,
+      "r": 11,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 70,
+      "y": 142,
+      "r": 11,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 142,
+      "r": 11,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 130,
+      "y": 142,
+      "r": 11,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 168,
+      "r": 11,
+      "c": "accent2"
+     }
+    ]
+   },
+   "curtain": {
+    "shapes": [
+     {
+      "t": "line",
+      "pts": [
+       [
+        16,
+        28
+       ],
+       [
+        184,
+        28
+       ]
+      ],
+      "w": 7,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 22,
+      "y": 28,
+      "r": 6,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 178,
+      "y": 28,
+      "r": 6,
+      "c": "gold"
+     },
+     {
+      "t": "path",
+      "d": "M24 34 H98 C90 80 108 130 96 178 H24 Z",
+      "c": "accent"
+     },
+     {
+      "t": "path",
+      "d": "M176 34 H102 C110 80 92 130 104 178 H176 Z",
+      "c": "accent2"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        50,
+        40
+       ],
+       [
+        46,
+        174
+       ]
+      ],
+      "w": 4,
+      "c": "dim"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        74,
+        40
+       ],
+       [
+        72,
+        174
+       ]
+      ],
+      "w": 4,
+      "c": "dim"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        126,
+        40
+       ],
+       [
+        128,
+        174
+       ]
+      ],
+      "w": 4,
+      "c": "dim"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        150,
+        40
+       ],
+       [
+        154,
+        174
+       ]
+      ],
+      "w": 4,
+      "c": "dim"
+     }
+    ]
+   },
+   "vault": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 22,
+      "y": 28,
+      "w": 156,
+      "h": 144,
+      "r": 16,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 36,
+      "y": 42,
+      "w": 128,
+      "h": 116,
+      "r": 10,
+      "c": "dim"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 32,
+      "c": "gold",
+      "fill": false,
+      "w": 9
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        66
+       ],
+       [
+        100,
+        134
+       ]
+      ],
+      "w": 7,
+      "c": "gold"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        66,
+        100
+       ],
+       [
+        134,
+        100
+       ]
+      ],
+      "w": 7,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 8,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 46,
+      "y": 52,
+      "r": 4,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 154,
+      "y": 52,
+      "r": 4,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 46,
+      "y": 148,
+      "r": 4,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 154,
+      "y": 148,
+      "r": 4,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 168,
+      "y": 86,
+      "w": 14,
+      "h": 28,
+      "r": 4,
+      "c": "accent"
+     }
+    ]
+   },
+   "memjar": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 46,
+      "y": 62,
+      "w": 108,
+      "h": 112,
+      "r": 20,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 40,
+      "y": 44,
+      "w": 120,
+      "h": 22,
+      "r": 9,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 62,
+      "y": 102,
+      "w": 76,
+      "h": 42,
+      "r": 8,
+      "c": "accent2"
+     },
+     {
+      "t": "text",
+      "s": "MEMORY",
+      "x": 100,
+      "y": 123,
+      "size": 15,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 80,
+      "y": 28,
+      "r": 6,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 104,
+      "y": 20,
+      "r": 5,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 126,
+      "y": 30,
+      "r": 6,
+      "c": "gold"
+     }
+    ]
+   },
+   "touch": {
+    "shapes": [
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 82,
+      "c": "accent",
+      "fill": false,
+      "w": 7
+     },
+     {
+      "t": "path",
+      "d": "M56 138 C56 70 144 70 144 138",
+      "c": "ink",
+      "fill": false,
+      "w": 7
+     },
+     {
+      "t": "path",
+      "d": "M70 140 C70 88 130 88 130 140",
+      "c": "ink",
+      "fill": false,
+      "w": 7
+     },
+     {
+      "t": "path",
+      "d": "M84 142 C84 106 116 106 116 142",
+      "c": "ink",
+      "fill": false,
+      "w": 7
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        122
+       ],
+       [
+        100,
+        152
+       ]
+      ],
+      "w": 7,
+      "c": "ink"
+     }
+    ]
+   }
+  },
+  "art_style": "paper",
+  "recipe": {
+   "layout": "full",
+   "caption_style": "slam",
+   "caption_pos": "mid",
+   "hook_style": "pop",
+   "hook_pos": "top",
+   "fonts": "oswald",
+   "camera": "punchy",
+   "finish": "film",
+   "transitions": "liquidy",
+   "anim": "springy",
+   "sfx": "click",
+   "progress": false,
+   "family": "aurora",
+   "sound": "click|upbeat"
+  }
+ }
+}
