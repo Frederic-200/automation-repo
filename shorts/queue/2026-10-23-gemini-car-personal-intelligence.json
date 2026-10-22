@@ -1,0 +1,827 @@
+{
+ "title": "Gemini in your car can use your Gmail",
+ "style": "night drive dark navy, amber accent, calm explainer",
+ "voice": "am_fenrir",
+ "music": true,
+ "music_mood": "lofi",
+ "seed": 51,
+ "max_seconds": 36,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Gemini in your car just got *personal*.",
+    "With *permission*, it can use your Gmail and Photos."
+   ],
+   "bg": {
+    "intent": "the car assistant connects to your own apps",
+    "subject": [
+     "car",
+     "mail",
+     "photo"
+    ],
+    "arrangement": "hero+orbit",
+    "count": 4,
+    "motion": {
+     "car": "slide from left breathe",
+     "mail": "pop float",
+     "photo": "pop float"
+    },
+    "beats": [
+     {
+      "on": "personal",
+      "do": "car.pop"
+     },
+     {
+      "on": "Gmail",
+      "do": "mail.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "scan",
+     "speed": 0.6
+    },
+    "texture_words": [
+     "GEMINI"
+    ],
+    "focus": "center"
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Ask for your *flight gate*.",
+    "It checks your *email*."
+   ],
+   "bg": {
+    "intent": "the answer comes out of an email",
+    "subject": [
+     "mail",
+     "ticket"
+    ],
+    "arrangement": "split",
+    "count": 2,
+    "motion": {
+     "mail": "slide from left float",
+     "ticket": "slide from right pop"
+    },
+    "beats": [
+     {
+      "on": "gate",
+      "do": "ticket.pop"
+     },
+     {
+      "on": "email",
+      "do": "mail.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "flow",
+     "speed": 0.7,
+     "angle": 18
+    },
+    "texture_words": [
+     "GATE"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Say *take me to my doctor's appointment*."
+   ],
+   "bg": {
+    "intent": "destination found without typing",
+    "subject": [
+     "pin"
+    ],
+    "arrangement": "path",
+    "count": 3,
+    "motion": {
+     "pin": "drop wobble"
+    },
+    "beats": [
+     {
+      "on": "appointment",
+      "do": "pin.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "iso",
+     "speed": 0.5
+    },
+    "texture_words": [
+     "ROUTE"
+    ]
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Or point it at a *photo* from last week.",
+    "It finds the car wash and *navigates*."
+   ],
+   "bg": {
+    "intent": "a photo becomes a destination",
+    "subject": [
+     "photo",
+     "pin"
+    ],
+    "arrangement": "split",
+    "count": 2,
+    "motion": {
+     "photo": "pop breathe",
+     "pin": "drop wobble"
+    },
+    "beats": [
+     {
+      "on": "photo",
+      "do": "photo.flash"
+     },
+     {
+      "on": "navigates",
+      "do": "pin.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "tile",
+     "speed": 0.4,
+     "scale": 1.1
+    },
+    "texture_words": [
+     "WASH"
+    ]
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "But here is the *catch*.",
+    "It is *off* until you turn it on."
+   ],
+   "bg": {
+    "intent": "the switch starts in the off position",
+    "subject": [
+     "toggle"
+    ],
+    "arrangement": "hero",
+    "count": 1,
+    "motion": {
+     "toggle": "zoom breathe"
+    },
+    "beats": [
+     {
+      "on": "catch",
+      "do": "toggle.shake"
+     },
+     {
+      "on": "off",
+      "do": "toggle.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.4
+    },
+    "texture_words": [
+     "OPT-IN"
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "You choose the apps.",
+    "You can switch it off *anytime*."
+   ],
+   "bg": {
+    "intent": "you stay in control of each app",
+    "subject": [
+     "toggle",
+     "mail",
+     "photo"
+    ],
+    "arrangement": "hero+orbit",
+    "count": 4,
+    "motion": {
+     "toggle": "pop float",
+     "mail": "fade drift",
+     "photo": "fade drift"
+    },
+    "beats": [
+     {
+      "on": "choose",
+      "do": "mail.pop"
+     },
+     {
+      "on": "anytime",
+      "do": "toggle.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "mesh",
+     "speed": 0.6
+    },
+    "texture_words": [
+     "YOUR CALL"
+    ]
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Not yet in the UK, Switzerland, Nigeria or the European Economic Area."
+   ],
+   "bg": {
+    "intent": "the rollout skips some regions for now",
+    "subject": [
+     "pin"
+    ],
+    "arrangement": "wall",
+    "count": 12,
+    "motion": {
+     "pin": "pop drift"
+    },
+    "beats": [
+     {
+      "on": "Nigeria",
+      "do": "pin.flash"
+     }
+    ],
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.4
+    },
+    "texture_words": [
+     "NOT YET"
+    ]
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {},
+   "lines": [
+    "Would you turn it *on*?"
+   ],
+   "bg": {
+    "intent": "the question for the viewer, car with a ring of pins",
+    "subject": [
+     "car",
+     "toggle"
+    ],
+    "arrangement": "hero+ring",
+    "count": 5,
+    "motion": {
+     "car": "slide from right breathe",
+     "toggle": "pop float"
+    },
+    "beats": [
+     {
+      "on": "on",
+      "do": "toggle.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "paper",
+     "speed": 0.3
+    },
+    "texture_words": [
+     "ON OR OFF?"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "format": "A",
+  "slug": "gemini-car-personal-intelligence",
+  "topic": "Gemini Personal Intelligence on Android Auto: with permission it uses Gmail, Photos, Maps in the car",
+  "caption_preset": "stack",
+  "facts": [
+   {
+    "claim": "Google began rolling out Personal Intelligence with Gemini on Android Auto on October 20; cars with Google built-in follow in the coming months",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "With permission it connects to Gmail, Calendar, Photos, Maps, YouTube and Search",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Example: ask for your flight gate and whether the flight is on time, answered from Gmail",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Example: 'Take me to my doctor's appointment' without an address",
+    "sources": [
+     0,
+     2
+    ]
+   },
+   {
+    "claim": "Example: find the car wash from a photo taken last week and navigate there",
+    "sources": [
+     0,
+     2
+    ]
+   },
+   {
+    "claim": "It is optional: apps are not connected until you turn it on, and you can turn it off anytime in Gemini settings",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Not available in the UK, Switzerland, Nigeria or the European Economic Area; personal accounts, age 18 and older",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   }
+  ],
+  "post": {
+   "title": "Gemini in your car can now use your Gmail and Photos (if you allow it)",
+   "tiktok_caption": "Google's Gemini on Android Auto can now use your Gmail, Photos and Maps while you drive. It's off until you turn it on. #AI #Gemini #AndroidAuto #Google #FredsDesk #fyp",
+   "yt_caption": "Google began rolling out Personal Intelligence for Gemini on Android Auto. With your permission it can pull from Gmail, Calendar, Photos, Maps, YouTube and Search, for example to find your flight gate or navigate to a place from a photo. It is optional and off by default. Follow FredsDesk for daily AI",
+   "pinned_comment": "Optional feature: your apps are not connected until you turn it on, and you can switch it off anytime in Gemini settings. Rolling out on Android Auto first; cars with Google built-in come later. Not available in the UK, Switzerland, Nigeria or the European Economic Area; personal Google accounts only, age 18 and older. Sources: Google blog, Android Authority, Digital Trends.",
+   "hashtags": [
+    "#AI",
+    "#Gemini",
+    "#AndroidAuto",
+    "#Google",
+    "#TechNews",
+    "#FredsDesk",
+    "#fyp"
+   ],
+   "sources": [
+    {
+     "name": "Google, Get hands-free personalized help on the road with Gemini",
+     "url": "https://blog.google/products-and-platforms/platforms/android/android-auto-cars-with-google-built-in-gemini-personal-intelligence/"
+    },
+    {
+     "name": "Android Authority, Google rolls out Gemini's Personal Intelligence on Android Auto",
+     "url": "https://www.androidauthority.com/gemini-personal-intelligence-on-android-auto-3725650/"
+    },
+    {
+     "name": "Digital Trends, Google is making Gemini smarter behind the wheel by connecting it to Gmail, Photos, and Maps",
+     "url": "https://www.digitaltrends.com/computing/google-is-making-gemini-smarter-behind-the-wheel-by-connecting-it-to-gmail-photos-and-maps/"
+    }
+   ]
+  },
+  "template": "classic",
+  "hook_type": "callout",
+  "look": "dark",
+  "art": {
+   "car": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M16 126 L28 96 Q34 84 50 84 L90 84 Q104 66 124 66 L152 66 Q168 66 174 84 L186 112 Q192 126 180 130 L20 130 Z",
+      "c": "accent"
+     },
+     {
+      "t": "path",
+      "d": "M96 88 L122 72 L150 72 Q158 72 162 84 L166 90 L96 90 Z",
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 14,
+      "y": 124,
+      "w": 172,
+      "h": 14,
+      "r": 7,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 54,
+      "y": 138,
+      "r": 20,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 54,
+      "y": 138,
+      "r": 9,
+      "c": "dim"
+     },
+     {
+      "t": "circle",
+      "x": 146,
+      "y": 138,
+      "r": 20,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 146,
+      "y": 138,
+      "r": 9,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 176,
+      "y": 106,
+      "w": 12,
+      "h": 8,
+      "r": 3,
+      "c": "gold"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        92
+       ],
+       [
+        100,
+        124
+       ]
+      ],
+      "w": 3,
+      "c": "dark"
+     }
+    ]
+   },
+   "mail": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 20,
+      "y": 50,
+      "w": 160,
+      "h": 104,
+      "r": 12,
+      "c": "paper"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        20,
+        58
+       ],
+       [
+        100,
+        116
+       ],
+       [
+        180,
+        58
+       ]
+      ],
+      "c": "accent2"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        20,
+        152
+       ],
+       [
+        78,
+        100
+       ]
+      ],
+      "w": 5,
+      "c": "dim"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        180,
+        152
+       ],
+       [
+        122,
+        100
+       ]
+      ],
+      "w": 5,
+      "c": "dim"
+     },
+     {
+      "t": "circle",
+      "x": 160,
+      "y": 56,
+      "r": 16,
+      "c": "red"
+     },
+     {
+      "t": "text",
+      "s": "1",
+      "x": 160,
+      "y": 62,
+      "size": 22,
+      "c": "white"
+     }
+    ]
+   },
+   "ticket": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 16,
+      "y": 52,
+      "w": 168,
+      "h": 96,
+      "r": 14,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 16,
+      "y": 52,
+      "w": 168,
+      "h": 26,
+      "r": 14,
+      "c": "accent3"
+     },
+     {
+      "t": "text",
+      "s": "BOARDING",
+      "x": 100,
+      "y": 66,
+      "size": 15,
+      "c": "white"
+     },
+     {
+      "t": "text",
+      "s": "GATE ?",
+      "x": 70,
+      "y": 110,
+      "size": 28,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        132,
+        84
+       ],
+       [
+        132,
+        148
+       ]
+      ],
+      "w": 3,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 142,
+      "y": 92,
+      "w": 30,
+      "h": 8,
+      "r": 4,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 142,
+      "y": 108,
+      "w": 22,
+      "h": 8,
+      "r": 4,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 142,
+      "y": 124,
+      "w": 28,
+      "h": 8,
+      "r": 4,
+      "c": "dim"
+     },
+     {
+      "t": "path",
+      "d": "M40 128 L74 128 L88 120 L74 132 L40 132 Z",
+      "c": "accent3"
+     }
+    ]
+   },
+   "photo": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 18,
+      "y": 34,
+      "w": 164,
+      "h": 132,
+      "r": 10,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 30,
+      "y": 46,
+      "w": 140,
+      "h": 108,
+      "r": 6,
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 142,
+      "y": 70,
+      "r": 12,
+      "c": "gold"
+     },
+     {
+      "t": "rect",
+      "x": 42,
+      "y": 96,
+      "w": 52,
+      "h": 46,
+      "r": 3,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 46,
+      "y": 100,
+      "w": 44,
+      "h": 12,
+      "r": 2,
+      "c": "paper"
+     },
+     {
+      "t": "text",
+      "s": "WASH",
+      "x": 68,
+      "y": 128,
+      "size": 13,
+      "c": "paper"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        100,
+        142
+       ],
+       [
+        128,
+        98
+       ],
+       [
+        158,
+        142
+       ]
+      ],
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 18,
+      "y": 34,
+      "w": 164,
+      "h": 132,
+      "r": 10,
+      "c": "paper",
+      "fill": false,
+      "sw": 6
+     }
+    ]
+   },
+   "pin": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M100 16 Q150 16 150 66 Q150 96 100 168 Q50 96 50 66 Q50 16 100 16 Z",
+      "c": "red"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 66,
+      "r": 20,
+      "c": "paper"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        40,
+        180
+       ],
+       [
+        160,
+        180
+       ]
+      ],
+      "w": 6,
+      "c": "dim"
+     }
+    ]
+   },
+   "toggle": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 22,
+      "y": 64,
+      "w": 156,
+      "h": 72,
+      "r": 36,
+      "c": "dim"
+     },
+     {
+      "t": "rect",
+      "x": 22,
+      "y": 64,
+      "w": 156,
+      "h": 72,
+      "r": 36,
+      "c": "paper",
+      "fill": false,
+      "sw": 6
+     },
+     {
+      "t": "circle",
+      "x": 58,
+      "y": 100,
+      "r": 28,
+      "c": "paper",
+      "part": "knob",
+      "pv": [
+       58,
+       100
+      ]
+     },
+     {
+      "t": "text",
+      "s": "OFF",
+      "x": 126,
+      "y": 106,
+      "size": 26,
+      "c": "paper"
+     }
+    ]
+   }
+  },
+  "art_style": "flat",
+  "recipe": {
+   "layout": "top_stage",
+   "caption_style": "stack",
+   "caption_pos": "mid",
+   "hook_style": "outline",
+   "hook_pos": "mid",
+   "fonts": "syne",
+   "camera": "drift",
+   "finish": "soft",
+   "transitions": "clean",
+   "anim": "snappy",
+   "sfx": "soft",
+   "progress": true,
+   "family": "blueprint+neon",
+   "sound": "soft|lofi"
+  }
+ },
+ "template": "classic",
+ "hook_type": "callout",
+ "look": "dark",
+ "hook": {
+  "text": "Your car's AI can read *your Gmail*",
+  "hold": 2.4
+ }
+}
