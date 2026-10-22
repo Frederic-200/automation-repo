@@ -361,6 +361,66 @@
     "story",
     "story"
    ]
+  },
+  {
+   "date": "2026-10-23",
+   "slug": "gemini-car-personal-intelligence",
+   "format": "A",
+   "topic": "Gemini Personal Intelligence on Android Auto: with permission it uses Gmail, Photos, Maps in the car",
+   "caption_preset": "typeon",
+   "recipe": {
+    "layout": "tilt_card",
+    "caption_style": "typeon",
+    "caption_pos": "low",
+    "hook_style": "sticker",
+    "hook_pos": "mid",
+    "fonts": "oswald",
+    "camera": "drift",
+    "finish": "soft",
+    "transitions": "flashy",
+    "anim": "smooth",
+    "sfx": "cinematic",
+    "progress": true,
+    "family": "blueprint+neon",
+    "sound": "cinematic|lofi"
+   },
+   "bg_sigs": [
+    "hero+orbit|scan",
+    "split|flow",
+    "path|iso",
+    "split|tile",
+    "hero|halftone",
+    "hero+orbit|mesh",
+    "wall|stars",
+    "hero+ring|paper"
+   ],
+   "art_ids": [
+    "car",
+    "mail",
+    "photo",
+    "pin",
+    "ticket",
+    "toggle"
+   ],
+   "title": "Gemini in your car can now use your Gmail and Photos (if you allow it)",
+   "template": "classic",
+   "hook_type": "callout",
+   "hook": "Your car's AI can read *your Gmail*",
+   "voice": "am_fenrir",
+   "music": "lofi",
+   "sound_kit": null,
+   "look": "dark",
+   "length": 32.1,
+   "scene_types": [
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story",
+    "story"
+   ]
   }
  ]
 }
