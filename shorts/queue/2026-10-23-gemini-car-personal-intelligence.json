@@ -313,7 +313,7 @@
   "format": "A",
   "slug": "gemini-car-personal-intelligence",
   "topic": "Gemini Personal Intelligence on Android Auto: with permission it uses Gmail, Photos, Maps in the car",
-  "caption_preset": "stack",
+  "caption_preset": "typeon",
   "facts": [
    {
     "claim": "Google began rolling out Personal Intelligence with Gemini on Android Auto on October 20; cars with Google built-in follow in the coming months",
@@ -801,20 +801,20 @@
   },
   "art_style": "flat",
   "recipe": {
-   "layout": "top_stage",
-   "caption_style": "stack",
-   "caption_pos": "mid",
-   "hook_style": "outline",
+   "layout": "tilt_card",
+   "caption_style": "typeon",
+   "caption_pos": "low",
+   "hook_style": "sticker",
    "hook_pos": "mid",
-   "fonts": "syne",
+   "fonts": "oswald",
    "camera": "drift",
    "finish": "soft",
-   "transitions": "clean",
-   "anim": "snappy",
-   "sfx": "soft",
+   "transitions": "flashy",
+   "anim": "smooth",
+   "sfx": "cinematic",
    "progress": true,
    "family": "blueprint+neon",
-   "sound": "soft|lofi"
+   "sound": "cinematic|lofi"
   }
  },
  "template": "classic",
