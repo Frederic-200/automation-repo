@@ -63,7 +63,7 @@ BG.drawArt = (art, e, o = {}) => {
       x.fillStyle = fillCol; x.globalAlpha = clamp(a) * clamp(draw * 1.6); x.fillText(String(s.s), s.x, s.y);
     } else {
       const isPath = s.t === 'path';
-      if (st === 'sticker') { x.save(); x.translate(5, 7); x.globalAlpha *= .32; x.fillStyle = '#000'; if (isPath) x.fill(_p2d[s.d] || (_p2d[s.d] = new Path2D(s.d))); else if (s.t !== 'line') { P2(); x.fill(); } x.restore(); }
+      if (st === 'sticker' && !s.noshadow) { x.save(); x.translate(5, 7); x.globalAlpha *= .32; x.fillStyle = '#000'; if (isPath) x.fill(_p2d[s.d] || (_p2d[s.d] = new Path2D(s.d))); else if (s.t !== 'line') { P2(); x.fill(); } x.restore(); }
       if (fillOn && s.t !== 'line') {
         x.globalAlpha = clamp(a) * (st === 'blueprint' ? .14 : 1) * (o.draw < 1 ? clamp((draw - .6) * 2.5) : 1); x.fillStyle = fillCol;
         if (isPath) x.fill(_p2d[s.d] || (_p2d[s.d] = new Path2D(s.d))); else { P2(); x.fill(); } x.globalAlpha = clamp(a);

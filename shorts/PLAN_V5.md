@@ -6,7 +6,8 @@ Goal: answer the questions AI lovers actually ask ("Can AI get sued?", "Will AI 
 - Niche: common questions of AI lovers ("Human wonder of AI"). Not tied to the news of the last 48 h; evergreen questions are allowed, current ones preferred.
 - One recurring character: **Jake**, invented, a simple friendly bust drawn by the engine (`shorts/jake.py`). Never a real person. Pinned comment always says he is fictional and the story is an illustration.
 - A narrator tells Jake's story (Jake never speaks). Voices am_fenrir or af_heart.
-- Length is decided by the question: about 30-115 s (format **E**).
+- Length is decided by the question and the story is explained in detail: about 60-190 s (format **E**; the first samples at 45-55 s felt narrow and rushed).
+- No punch sound effect on highlighted words (also no risers or braams) in format E; Jake has a single silhouette shadow.
 - Retention strategy applied to every video (validator enforces what can be checked):
   1. **Hook** in the first 1-3 s: the question or Jake mid-moment, on screen from frame 0 (8 words or fewer).
   2. **Open loop**: the hook promises an answer; a first fragment lands by 5-8 s, the full answer is held for the last third.

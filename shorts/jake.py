@@ -70,6 +70,13 @@ def build():
          S("circle", x=80, y=94, r=3, c=PUPIL, w=0), S("circle", x=120, y=94, r=3, c=PUPIL, w=0)] +
         brows([[68, 76], [92, 78]], [[108, 78], [132, 76]]) + [mouth_line("M88 122 L112 122"),
         S("text", s="...", x=100, y=8, size=30, c="accent3")]}
+    for a in A.values():
+        # ONE soft silhouette shadow under the whole bust (offset 5,7 like the sticker look) instead of a shadow per shape:
+        # per-shape shadows on eyes, brows, hair and cheeks looked misplaced (user review 2026-10-24)
+        sil = [S("path", d="M27 207 Q27 157 69 147 L141 147 Q183 157 183 207 Z", c="#000000", o=.30, w=0, keep=True, noshadow=True),
+               S("ellipse", x=105, y=95, rx=46, ry=50, c="#000000", o=.30, w=0, keep=True, noshadow=True)]
+        for sh in a["shapes"]: sh["noshadow"] = True
+        a["shapes"] = sil + a["shapes"]
     for a in A.values():                      # keep: the engine's automatic contrast fix must never recolour Jake (skin, eyes, hair stay identical in every video)
         for sh in a["shapes"]:
             if str(sh.get("c", "")).startswith("#"): sh["keep"] = True    # fixed colours only; theme-role pieces (shirt, ?, ...) still adapt to the palette

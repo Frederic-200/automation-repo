@@ -173,6 +173,7 @@ HIT = {"cinematic": hit_cinematic, "glitch": hit_glitch, "soft": hit_soft, "clic
 def build(work):
     tl = json.load(open(os.path.join(work, "timeline.json"))); st = json.load(open(os.path.join(work, "style.json")))
     kit = st.get("sfx", {}).get("kit", "cinematic"); gain = st.get("sfx", {}).get("gain", 1.0)
+    keyhits = st.get("sfx", {}).get("keyhits", True)
     n = int((tl["duration"] + 1) * SR); bus = np.zeros((2, n)); events = []
     cache = {}
 
@@ -187,7 +188,7 @@ def build(work):
     for s in tl["scenes"]:
         if s["i"] > 0 and s.get("transition") != "none":
             place(s["start"], whoosh((vid, "cut", s["i"]), .7 if kit != "soft" else 1.0), .8 * gain, "whoosh")
-        for j, k in enumerate(s["keys"]):
+        for j, k in enumerate(s["keys"] if keyhits else []):   # keyhits false (format E): no punch sound on highlighted words, risers or braams
             strength = k["str"]; gen = HIT.get(kit, hit_cinematic)((vid, s["i"], j), strength)
             place(k["s"], gen, gain * (.55 + .35 * min(strength, 1.5)), f"hit:{k['w']}")
             if k.get("impact"):

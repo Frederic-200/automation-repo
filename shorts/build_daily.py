@@ -103,6 +103,7 @@ def main():
         if meta["recipe"].get("layout") == "text_first" and meta["recipe"].get("hook_pos") == "top": base_ov["hook"]["y"] = 330
     else: base_ov = CAPTION_PRESETS[meta["caption_preset"]]
     R["style_overrides"] = deep_merge(base_ov, S.get("style_overrides") or {})
+    if fmt == "E": R["style_overrides"] = deep_merge(R["style_overrides"], {"sfx": {"keyhits": False}})   # user review 2026-10-24: no punch sound on highlighted words
     R["scenes_custom"] = os.path.join(HERE, "kit", "scenes_fredsdesk.js"); R["say"] = S.get("say") or {}; R["silent"] = not voiced
     rs = os.path.join(out, "script_resolved.json"); json.dump(R, open(rs, "w"), indent=1)
     mdir = os.path.join(out, "main"); work = os.path.join(mdir, "work")
@@ -139,7 +140,7 @@ def main():
         v = probe(p); lufs, tp = loudness(p); info[os.path.basename(p)] = dict(dur=round(v["dur"], 2), lufs=lufs, tp=tp)
         if (v["w"], v["h"]) != (1080, 1920): problems.append(f"{p}: size {v['w']}x{v['h']}")
         if abs(v["fps"] - 30) > .1: problems.append(f"{p}: fps {v['fps']}")
-        lo_d, hi_d = (25, 125) if fmt == "E" else (15, 40)       # format E (Jake stories) runs 30-115 s
+        lo_d, hi_d = (50, 205) if fmt == "E" else (15, 40)       # format E (Jake stories) runs 60-190 s
         if not lo_d <= v["dur"] <= hi_d: problems.append(f"{p}: duration {v['dur']:.1f}s")
         if p == fin_main or voiced:
             if not -17.5 <= lufs <= -13.0: problems.append(f"{p}: loudness {lufs} LUFS")

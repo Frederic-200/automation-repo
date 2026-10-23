@@ -16,10 +16,10 @@ FORMATS = {  # estimated spoken seconds (before the 3 s outro) allowed range; re
     "B": {"voiced": True, "est": (14, 31), "max_seconds": (18, 33), "min_sources": 2},
     "C": {"voiced": False, "est": (7, 24), "max_seconds": (9, 30), "min_sources": 0},
     "D": {"voiced": True, "est": (14, 32), "max_seconds": (18, 35), "min_sources": 2},
-    # E = "Human wonder of AI": a question answered through a short story about Jake (PLAN_V5.md). Length is set by the question, 30-115 s.
-    "E": {"voiced": True, "est": (24, 108), "max_seconds": (30, 115), "min_sources": 2},
+    # E = "Human wonder of AI": a question answered through a short story about Jake (PLAN_V5.md). Length is set by the question: 60-190 s, explained in detail (review 2026-10-24: 45-55 s felt rushed).
+    "E": {"voiced": True, "est": (50, 185), "max_seconds": (60, 190), "min_sources": 2},
 }
-SCENE_LIMITS = {"E": (4, 18)}          # scenes per video; everything else 3-9
+SCENE_LIMITS = {"E": (8, 40)}          # scenes per video; everything else 3-9
 REHOOK = re.compile(r"\b(but|however|except|catch|twist|wait|turns out|here is|here's|yet|and then|plot)\b", re.I)
 CAPTION_PRESETS = ("stack", "typeon", "slam", "clean", "off")
 TRANSITIONS = {"liquid", "iris", "whip", "glitch", "pixel", "flash", "card", "none"}
@@ -108,7 +108,7 @@ def main():
         ms = S.get("max_seconds")
         if not isinstance(ms, (int, float)) or not FORMATS[fmt]["max_seconds"][0] <= ms <= FORMATS[fmt]["max_seconds"][1]:
             E(f"max_seconds must be {FORMATS[fmt]['max_seconds']} for format {fmt}")
-        if ms and ms > (118 if fmt == "E" else 57): E("max_seconds must leave room for the outro (<= 57, format E <= 118)")
+        if ms and ms > (195 if fmt == "E" else 57): E("max_seconds must leave room for the outro (<= 57, format E <= 195)")
     first = (scenes[0].get("lines") or [""])[0] if scenes else ""
     if voiced and len(first.split()) > 18: W("hook line is long; the first sentence should land in about 3 seconds")
 
@@ -147,7 +147,7 @@ def main():
         for l in spoken:
             for sent in re.split(r"(?<=[.!?])\s+", l):
                 n = len(re.findall(r"[A-Za-z']+", sent))
-                if n > 12: E(f"sentence has {n} words (max 12): '{sent[:60]}'")
+                if n > (18 if fmt == "E" else 12): E(f"sentence has {n} words (max {18 if fmt == 'E' else 12}): '{sent[:60]}'")
     if tpl in ("chat_drop", "meme_skit") and not re.search(r"\b(skit|demo|mock)", post.get("pinned_comment", ""), re.I): E("fake chats/skits: pinned_comment must say it is a skit/demo")
     pv = [e for e in cov if date and e.get("date", "") < date]
     p3 = pv[-3:]; y = pv[-1] if pv else {}
