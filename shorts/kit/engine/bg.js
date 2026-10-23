@@ -45,7 +45,7 @@ BG.drawArt = (art, e, o = {}) => {
     if (a <= 0.01) { x.restore(); return; }
     x.globalAlpha = clamp(a);
     const bgL = lum(e.bg[0]), fixc = (c) => { const L = lum(c); return Math.abs(L - bgL) < .3 ? (bgL < .5 ? mixc(c, '#ffffff', .62) : mixc(c, '#000000', .6)) : c; };
-    const colr = fixc(BG.col(s.c || 'ink', e)), fillOn = s.fill !== undefined ? !!s.fill : (st !== 'line');
+    const colr = s.keep ? BG.col(s.c || 'ink', e) : fixc(BG.col(s.c || 'ink', e)), fillOn = s.fill !== undefined ? !!s.fill : (st !== 'line');
     let fillCol = colr; if (o.tint) fillCol = mixc(colr, '#ffffff', o.tint);
     const lw = s.sw ?? (s.t === 'rect' ? undefined : s.w) ?? (st === 'line' ? 8 : st === 'blueprint' ? 4 : st === 'sticker' ? 9 : 7);
     const strokeCol = (st === 'sticker' || st === 'flat' || st === 'paper') ? (bgL < .5 ? '#fbf8f0' : '#14141a') : (st === 'blueprint' ? mixc(colr, '#ffffff', .25) : colr);
@@ -102,7 +102,7 @@ BG.place = (kind, n, subs, bg, lt, sc) => {
   const add = (i, px, py, s, rot = 0, delay = 0, extra = {}) => out.push({ i, art: pick(i), x: px, y: clamp(py, BAND_Y0(), BAND_Y1()), s, rot, delay, ...extra });
   switch (kind) {
     case 'none': break;
-    case 'hero': add(0, cx, cy, bg._hs || 3.3, 0, 0, { hero: 1 }); break;
+    case 'hero': add(0, cx, cy, bg._hs || bg.hero_scale || 3.3, 0, 0, { hero: 1 }); break;
     case 'scatter': for (let i = 0; i < n; i++) add(i, 200 + sd(i, 'x') * 680, BAND_Y0() + 120 + sd(i, 'y') * (BG_BAND * 2 - 240), 1.25 + sd(i, 's') * .6, (sd(i, 'r') - .5) * .8, i * .07); break;
     case 'grid': { const cols = Math.max(2, Math.ceil(Math.sqrt(n * .8))), rows = Math.ceil(n / cols), gx = 760 / cols, gy = Math.min(300, 800 / rows);
       for (let i = 0; i < n; i++) add(i, cx - 380 + gx * (i % cols + .5), cy - (rows - 1) * gy / 2 + Math.floor(i / cols) * gy, Math.min(gx, gy) / 230 * 1.1, 0, i * .06); break; }

@@ -16,7 +16,11 @@ FORMATS = {  # estimated spoken seconds (before the 3 s outro) allowed range; re
     "B": {"voiced": True, "est": (14, 31), "max_seconds": (18, 33), "min_sources": 2},
     "C": {"voiced": False, "est": (7, 24), "max_seconds": (9, 30), "min_sources": 0},
     "D": {"voiced": True, "est": (14, 32), "max_seconds": (18, 35), "min_sources": 2},
+    # E = "Human wonder of AI": a question answered through a short story about Jake (PLAN_V5.md). Length is set by the question, 30-115 s.
+    "E": {"voiced": True, "est": (24, 108), "max_seconds": (30, 115), "min_sources": 2},
 }
+SCENE_LIMITS = {"E": (4, 18)}          # scenes per video; everything else 3-9
+REHOOK = re.compile(r"\b(but|however|except|catch|twist|wait|turns out|here is|here's|yet|and then|plot)\b", re.I)
 CAPTION_PRESETS = ("stack", "typeon", "slam", "clean", "off")
 TRANSITIONS = {"liquid", "iris", "whip", "glitch", "pixel", "flash", "card", "none"}
 VOICES = ("am_fenrir", "af_heart")
@@ -62,14 +66,15 @@ def main():
     for k in ("title", "style", "scenes", "voice", "meta"):
         if k not in S: E(f"missing key '{k}'")
     if S.get("voice") not in VOICES: E(f"voice must be one of {VOICES}")
-    if fmt not in FORMATS: E("meta.format must be one of A B C D"); fmt = None
+    if fmt not in FORMATS: E("meta.format must be one of A B C D E"); fmt = None
     for k in ("topic", "caption_preset", "post"):
         if not meta.get(k): E(f"meta.{k} missing")
     cp = meta.get("caption_preset")
     if cp and cp not in CAPTION_PRESETS: E(f"meta.caption_preset must be one of {CAPTION_PRESETS}")
     if S.get("scenes_custom") != "scenes_fredsdesk.js": E("scenes_custom must be \"scenes_fredsdesk.js\"")
     scenes = S.get("scenes") or []
-    if not 3 <= len(scenes) <= 9: E("3 to 9 scenes expected")
+    lo_s, hi_s = SCENE_LIMITS.get(fmt, (3, 9))
+    if not lo_s <= len(scenes) <= hi_s: E(f"{lo_s} to {hi_s} scenes expected for format {fmt}")
     if "style_overrides" in S and "fonts" in (S["style_overrides"] or {}): W("style_overrides.fonts is set by caption_preset; remove unless intended")
     if S.get("end_tail") != 0.5: E("end_tail must be 0.5 (the outro follows)")
 
@@ -103,7 +108,7 @@ def main():
         ms = S.get("max_seconds")
         if not isinstance(ms, (int, float)) or not FORMATS[fmt]["max_seconds"][0] <= ms <= FORMATS[fmt]["max_seconds"][1]:
             E(f"max_seconds must be {FORMATS[fmt]['max_seconds']} for format {fmt}")
-        if ms and ms > 57: E("max_seconds must leave room for the 3 s outro (<= 57)")
+        if ms and ms > (118 if fmt == "E" else 57): E("max_seconds must leave room for the outro (<= 57, format E <= 118)")
     first = (scenes[0].get("lines") or [""])[0] if scenes else ""
     if voiced and len(first.split()) > 18: W("hook line is long; the first sentence should land in about 3 seconds")
 
@@ -159,6 +164,66 @@ def main():
         if old and types and sum(1 for t in types if t in old) > len(types) / 2: E("more than half of the scene types repeat a recent video: change the visuals")
     if y.get("scene_types") and types and scenes and scenes[0].get("type") != "story" and y["scene_types"][0] == types[0]: E("same opening scene type as yesterday")
 
+    # ---- format E: Jake story + retention strategy (open loop, re-hook, pattern interrupts, loop or cliffhanger). See WRITING_GUIDE section 12.
+    if fmt == "E":
+        import jake as JK
+        lib = JK.build(); art_ = meta.get("art") or {}
+        if meta.get("character") != "Jake": E('format E: meta.character must be "Jake"')
+        q = str(meta.get("question", "")).strip()
+        if not q.endswith("?") or len(q.split()) < 3: E("format E: meta.question must be the viewer's question (ends with ?)")
+        pc = post.get("pinned_comment", "")
+        if not re.search(r"\bfictional\b", pc, re.I): E("format E: pinned_comment must say Jake is a fictional character and the story is an illustration")
+        # Jake in the pictures
+        def jids(sc):
+            bg = sc.get("bg") or {}
+            ids = {s for s in (bg.get("subject") or []) if str(s).startswith("jake_")}
+            ids |= set(re.findall(r"jake_[a-z]+", json.dumps(bg.get("beats") or [])))
+            return ids
+        js = [jids(sc) for sc in scenes]
+        used = set().union(*js) if js else set()
+        if scenes and sum(1 for x_ in js if x_) < len(scenes) / 2: E("format E: Jake must be on screen in at least half of the scenes")
+        if len(used) < 3: E(f"format E: use at least 3 different Jake expressions (uses {sorted(used)})")
+        for i_ in sorted(used):
+            if i_ not in lib: E(f"unknown Jake drawing '{i_}' (see python3 shorts/jake.py --list)")
+            elif art_.get(i_) != lib[i_]: E(f"'{i_}' in meta.art differs from the Jake library: run python3 shorts/jake.py <file>")
+        # retention plan (a checkable commitment): open loop at the hook, first payoff early, re-hook in the middle, full answer late
+        rt = meta.get("retention") or {}
+        n_ = len(scenes)
+        try:
+            fp, rh, fa = int(rt["first_payoff_scene"]), int(rt["rehook_scene"]), int(rt["final_answer_scene"])
+            if fp > 1: E("retention.first_payoff_scene must be 0 or 1 (a first answer fragment inside the first 2 scenes, about 5-8 s)")
+            if not .3 * n_ <= rh <= .7 * n_: E(f"retention.rehook_scene {rh} must sit in the middle third of {n_} scenes")
+            if fa < max(rh + 1, .6 * n_) or fa > n_ - 1: E(f"retention.final_answer_scene {fa} must come after the re-hook, in the last 40% of the video")
+            if 0 <= rh < n_ and not REHOOK.search(" ".join(scenes[rh].get("lines") or [])): E("the re-hook scene needs a turn word (but / however / here's the catch / turns out / wait ...)")
+        except (KeyError, TypeError, ValueError):
+            E("meta.retention needs first_payoff_scene, rehook_scene, final_answer_scene (scene indexes)")
+        # pattern interrupts: no long unchanged stretch, a beat or morph in most scenes
+        for i_, sc in enumerate(scenes):
+            w_ = len(re.findall(r"[A-Za-z0-9']+", strip_marks(" ".join(sc.get("lines") or []))))
+            secs = w_ / WORDS_PER_SEC + .35
+            if secs > 7.5: E(f"scene {i_} runs about {secs:.0f}s: split it (the picture must change every 2-6 s)")
+            elif secs > 5.5: W(f"scene {i_} runs about {secs:.0f}s: consider splitting")
+        with_beats = sum(1 for sc in scenes if (sc.get("bg") or {}).get("beats"))
+        if scenes and with_beats < .7 * len(scenes): E("format E: at least 70% of the scenes need bg.beats (a visible change on a spoken word)")
+        if len({(sc.get('params') or {}).get('transition') for sc in scenes} - {None}) < 3: E("format E: use at least 3 different scene transitions")
+        # ending: rotate loop / cliffhanger
+        en = meta.get("ending")
+        last_line = strip_marks((scenes[-1].get("lines") or [""])[-1]) if scenes else ""
+        hl = (S.get("hook") or {}).get("loop")
+        if en not in ("loop", "cliffhanger"): E('meta.ending must be "loop" or "cliffhanger"')
+        elif en == "cliffhanger":
+            nq = str(meta.get("next_question", "")).strip()
+            if not nq.endswith("?"): E("cliffhanger: meta.next_question (tomorrow's question, ends with ?) is required")
+            if hl is not False: E('cliffhanger: set hook.loop to false (the end must not replay the hook)')
+            if not re.search(r"(\?|tomorrow|next|part (two|2))", last_line, re.I): E("cliffhanger: the last spoken line must tease the next question")
+        else:
+            if hl is False: E("loop ending: hook.loop must not be false")
+            if len(last_line.split()) > 10: W("loop ending: keep the last line short so it flows back into the hook")
+        if y.get("ending") and y.get("ending") == en: E(f"same ending style ('{en}') as yesterday: alternate loop and cliffhanger")
+        # yesterday's cliffhanger sets today's question
+        if y.get("ending") == "cliffhanger" and y.get("next_question") and q and y["next_question"].strip().lower().rstrip("?") not in q.lower().rstrip("?") and q.lower().rstrip("?") not in y["next_question"].strip().lower():
+            W(f"yesterday promised: '{y['next_question']}'. Answer it today (or the cliffhanger breaks its promise)")
+
     # ---- pronunciation
     say = S.get("say") or {}
     allowed_say = pr.get("allowed_say", {})
@@ -206,8 +271,8 @@ def main():
 
     # ---- rotation vs covered.json (cov is oldest->newest; entries on/after this date are ignored)
     prev = [e for e in cov if date and e.get("date", "") < date][-7:]
-    if fmt and len(prev) >= 2 and prev[-1].get("format") == fmt and prev[-2].get("format") == fmt: E(f"format {fmt} was used the last 2 days; rotate")
-    if fmt and fmt != "C" and len(prev) >= 6 and all(e.get("format") != "C" for e in prev[-6:]): E("no format C in the last 6 videos: make a pure animation (C) today")
+    if fmt and fmt != "E" and len(prev) >= 2 and prev[-1].get("format") == fmt and prev[-2].get("format") == fmt: E(f"format {fmt} was used the last 2 days; rotate")
+    if fmt and fmt not in ("C", "E") and len(prev) >= 6 and all(e.get("format") != "C" for e in prev[-6:]): E("no format C in the last 6 videos: make a pure animation (C) today")
     if cp and len(prev) >= 2 and prev[-1].get("caption_preset") == cp and prev[-2].get("caption_preset") == cp: E(f"caption preset '{cp}' used the last 2 videos; mix the text styles")
     if slug and any(e.get("slug") == slug for e in cov if date and e.get("date", "") < date): E("slug already published")
     topic = (meta.get("topic") or "").lower()

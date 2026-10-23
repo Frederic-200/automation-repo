@@ -33,7 +33,8 @@ def check(S, date, prev, E, W):
         return []
     art = meta.get("art") or {}
     if meta.get("art_style") not in ART_STYLES: E(f"meta.art_style must be one of {ART_STYLES}")
-    if not 2 <= len(art) <= 6: E(f"meta.art needs 2-6 drawings (has {len(art)})")
+    own_art = [k for k in art if not str(k).startswith("jake_")]      # Jake (format E) is a fixed library character: not counted
+    if not 2 <= len(own_art) <= 6: E(f"meta.art needs 2-6 drawings besides Jake (has {len(own_art)})")
     for aid, a in art.items():
         sh = (a or {}).get("shapes") or []
         if not 1 <= len(sh) <= 40: E(f"art '{aid}': 1-40 shapes (has {len(sh)})")
@@ -106,7 +107,7 @@ def check(S, date, prev, E, W):
         if ys:
             y0 = ys[-1]["bg_sigs"][0].split("|"); m0 = sigs[0].split("|")
             if y0[0] == m0[0] or y0[1] == m0[1]: E("opening scene must differ from yesterday's opening on both arrangement and backdrop")
-        ids = set(art)
+        ids = {k for k in art if not str(k).startswith("jake_")}
         for e in prev[-3:]:
             old = set(e.get("art_ids") or [])
             if old and len(ids & old) > len(ids) / 2: W(f"more than half of the drawings repeat {e.get('date')}: draw new objects for this story")

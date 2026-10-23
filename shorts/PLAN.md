@@ -8,7 +8,7 @@ Repo: Frederic-200/automation-repo. Backup of the old setup: branch `legacy-v1` 
 One AI-related vertical short per day, built from what is trending now, fully automatic, posted manually by the user to TikTok, YouTube Shorts and FB Reels. Output may be wild and engaging as long as it is truthful, based on the current trend, and within the content rules.
 
 ## 2. Content rules (the validator must enforce what can be checked mechanically)
-- Topic must be AI-related and current (news or trend from the last ~48 h).
+- Topic must be AI-related and current (news or trend from the last ~48 h). Format E (PLAN_V5.md): a common, evergreen AI question is fine.
 - Every factual claim verified in at least 2 independent sources (the company's own post/paper + a reputable outlet, or two outlets). If sources disagree, use only the cautious common part or leave it out. Never invent facts, numbers or quotes. Attribute claims ("Google says", "Anthropic estimates").
 - Companies, products and public figures may be named in factual statements only. No insults, speculation about people, or anything we could not defend as true.
 - No politics, no election content, no mocking or disparaging companies, no private individuals, no logos or copyrighted characters, no lyrics.

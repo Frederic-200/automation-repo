@@ -1,0 +1,2255 @@
+{
+ "title": "Can an AI get sued? (sample)",
+ "style": "paper warm light, orange accent, friendly storybook explainer",
+ "voice": "am_fenrir",
+ "music": true,
+ "music_mood": "gentle",
+ "seed": 241,
+ "max_seconds": 80,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "hook": {
+  "text": "Can an AI get *sued*?",
+  "hold": 2.4
+ },
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "Jake's AI gave him *wrong* flight advice.",
+    "So Jake wants to *sue* the AI."
+   ],
+   "bg": {
+    "intent": "Jake is angry at his AI over a bad flight tip",
+    "subject": [
+     "jake_neutral",
+     "plane"
+    ],
+    "arrangement": "split",
+    "motion": {
+     "jake_neutral": "pop float",
+     "plane": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "wrong",
+      "do": "jake_neutral.morph:jake_worried"
+     },
+     {
+      "on": "sue",
+      "do": "plane.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "iso"
+    }
+   }
+  },
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "flash"
+   },
+   "lines": [
+    "Short answer: you *cannot* sue an AI."
+   ],
+   "bg": {
+    "intent": "the answer arrives early: not the AI",
+    "subject": [
+     "jake_confused",
+     "chat"
+    ],
+    "arrangement": "hero+scatter",
+    "motion": {
+     "jake_confused": "pop breathe",
+     "chat": "drop float"
+    },
+    "beats": [
+     {
+      "on": "cannot",
+      "do": "chat.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "rays",
+     "speed": 0.7
+    },
+    "count": 4,
+    "hero_scale": 3.4
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "lines": [
+    "In the US, an AI is not a legal *person*."
+   ],
+   "bg": {
+    "intent": "AI is not a legal person: the scales of justice circle Jake",
+    "subject": [
+     "jake_think",
+     "scales"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "jake_think": "zoom breathe",
+     "scales": "pop float"
+    },
+    "beats": [
+     {
+      "on": "person",
+      "do": "scales.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "grid",
+     "speed": 0.5,
+     "angle": 12
+    },
+    "count": 3
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "iris"
+   },
+   "lines": [
+    "So who *can* Jake sue?"
+   ],
+   "bg": {
+    "intent": "an open question hangs over Jake",
+    "subject": [
+     "jake_confused"
+    ],
+    "arrangement": "hero",
+    "motion": {
+     "jake_confused": "pop wobble"
+    },
+    "beats": [
+     {
+      "on": "can",
+      "do": "jake_confused.morph:jake_think"
+     }
+    ],
+    "backdrop": {
+     "kind": "scan",
+     "speed": 0.8
+    },
+    "texture_words": [
+     "WHO?"
+    ],
+    "hero_scale": 3.9
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "Usually, people sue the *company* behind the AI."
+   ],
+   "bg": {
+    "intent": "the company, not the AI, is the target",
+    "subject": [
+     "jake_think",
+     "company"
+    ],
+    "arrangement": "split",
+    "motion": {
+     "jake_think": "slide from left float",
+     "company": "pop float"
+    },
+    "beats": [
+     {
+      "on": "company",
+      "do": "company.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "paper"
+    }
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "lines": [
+    "But does that really *work*?",
+    "Jake finds a real *case*."
+   ],
+   "bg": {
+    "intent": "the twist: Jake discovers a real court-like case",
+    "subject": [
+     "jake_surprised",
+     "gavel"
+    ],
+    "arrangement": "hero+explode",
+    "motion": {
+     "jake_surprised": "pop float",
+     "gavel": "drop wobble"
+    },
+    "beats": [
+     {
+      "on": "work",
+      "do": "jake_surprised.pop"
+     },
+     {
+      "on": "case",
+      "do": "gavel.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "mesh",
+     "speed": 0.7
+    },
+    "count": 6
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "iris"
+   },
+   "lines": [
+    "A traveler asked an airline's chatbot about a special *fare*."
+   ],
+   "bg": {
+    "intent": "a traveler chats with an airline bot",
+    "subject": [
+     "chat",
+     "plane"
+    ],
+    "arrangement": "hero+stream",
+    "motion": {
+     "chat": "pop float",
+     "plane": "slide from left"
+    },
+    "beats": [
+     {
+      "on": "fare",
+      "do": "chat.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.5
+    },
+    "count": 6
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "flash"
+   },
+   "lines": [
+    "The chatbot was *wrong*, and the airline refused the refund."
+   ],
+   "bg": {
+    "intent": "wrong answer, refused refund",
+    "subject": [
+     "chat",
+     "plane"
+    ],
+    "arrangement": "stack",
+    "motion": {
+     "chat": "drop wobble",
+     "plane": "fall"
+    },
+    "beats": [
+     {
+      "on": "wrong",
+      "do": "chat.glitch"
+     },
+     {
+      "on": "refused",
+      "do": "plane.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "contour"
+    },
+    "count": 4
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "The airline said the chatbot was a *separate* entity."
+   ],
+   "bg": {
+    "intent": "the airline argues the bot stands apart",
+    "subject": [
+     "jake_confused",
+     "chat"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "jake_confused": "pop float",
+     "chat": "slide from right spin"
+    },
+    "beats": [
+     {
+      "on": "separate",
+      "do": "chat.spin"
+     }
+    ],
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.4
+    },
+    "count": 3
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {
+    "transition": "card"
+   },
+   "lines": [
+    "A Canadian tribunal *rejected* that.",
+    "It called the chatbot part of the *website*."
+   ],
+   "bg": {
+    "intent": "the tribunal says the chatbot is part of the site",
+    "subject": [
+     "gavel",
+     "chat"
+    ],
+    "arrangement": "hero+ring",
+    "motion": {
+     "gavel": "drop pop",
+     "chat": "pop float"
+    },
+    "beats": [
+     {
+      "on": "rejected",
+      "do": "gavel.shake"
+     },
+     {
+      "on": "website",
+      "do": "chat.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "flow",
+     "angle": 18
+    },
+    "count": 5
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "lines": [
+    "The airline owed about *six hundred fifty* Canadian dollars."
+   ],
+   "bg": {
+    "intent": "the amount the airline owed",
+    "subject": [
+     "jake_surprised",
+     "coin"
+    ],
+    "arrangement": "hero+path",
+    "motion": {
+     "jake_surprised": "pop float",
+     "coin": "slide from left float"
+    },
+    "beats": [
+     {
+      "on": "hundred",
+      "do": "coin.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "rings",
+     "speed": 0.6
+    },
+    "count": 4,
+    "numbers": [
+     {
+      "text": "$650 CAD",
+      "fact": 5,
+      "on": "hundred"
+     }
+    ]
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "iris"
+   },
+   "lines": [
+    "In that case, the *company* answered for its chatbot."
+   ],
+   "bg": {
+    "intent": "the company takes responsibility",
+    "subject": [
+     "company",
+     "jake_happy"
+    ],
+    "arrangement": "split",
+    "motion": {
+     "company": "pop breathe",
+     "jake_happy": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "company",
+      "do": "company.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.4
+    }
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "lines": [
+    "So Jake cannot sue his AI.",
+    "People like him usually go after the *company*."
+   ],
+   "bg": {
+    "intent": "the full answer lands, Jake relaxes",
+    "subject": [
+     "jake_happy",
+     "scales"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "jake_happy": "pop float",
+     "scales": "pop breathe"
+    },
+    "beats": [
+     {
+      "on": "company",
+      "do": "jake_happy.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "tile",
+     "speed": 0.5
+    },
+    "count": 3
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "pixel"
+   },
+   "lines": [
+    "Courts and experts are still working out the *rules*."
+   ],
+   "bg": {
+    "intent": "the caveat: the rules are still developing",
+    "subject": [
+     "jake_think",
+     "gavel"
+    ],
+    "arrangement": "split",
+    "motion": {
+     "jake_think": "drop float",
+     "gavel": "pop wobble"
+    },
+    "beats": [
+     {
+      "on": "rules",
+      "do": "gavel.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.5
+    },
+    "count": 4
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {
+    "transition": "flash"
+   },
+   "lines": [
+    "The AI cannot be sued.",
+    "The *company* can."
+   ],
+   "bg": {
+    "intent": "closing line, loops back to the hook",
+    "subject": [
+     "jake_neutral",
+     "gavel"
+    ],
+    "arrangement": "hero",
+    "motion": {
+     "jake_neutral": "pop breathe",
+     "gavel": "drop pop"
+    },
+    "beats": [
+     {
+      "on": "company",
+      "do": "jake_neutral.morph:jake_happy"
+     }
+    ],
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.6
+    },
+    "hero_scale": 3.7
+   }
+  }
+ ],
+ "meta": {
+  "format": "E",
+  "slug": "sample-can-ai-get-sued",
+  "topic": "SAMPLE: can an AI get sued (legal personhood and who is responsible)",
+  "character": "Jake",
+  "question": "Can an AI get sued?",
+  "ending": "loop",
+  "retention": {
+   "first_payoff_scene": 1,
+   "rehook_scene": 5,
+   "final_answer_scene": 12
+  },
+  "hook_type": "question",
+  "template": "classic",
+  "look": "light",
+  "caption_preset": "clean",
+  "art_style": "sticker",
+  "art": {
+   "gavel": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 30,
+      "y": 158,
+      "w": 120,
+      "h": 26,
+      "r": 8,
+      "c": "#8a5a2b"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        62,
+        150
+       ],
+       [
+        150,
+        62
+       ],
+       [
+        166,
+        78
+       ],
+       [
+        78,
+        166
+       ]
+      ],
+      "c": "#c58a4b"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        104,
+        22
+       ],
+       [
+        140,
+        12
+       ],
+       [
+        186,
+        62
+       ],
+       [
+        160,
+        96
+       ]
+      ],
+      "c": "dark"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        104,
+        22
+       ],
+       [
+        118,
+        18
+       ],
+       [
+        166,
+        80
+       ],
+       [
+        160,
+        96
+       ]
+      ],
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 30,
+      "y": 148,
+      "w": 120,
+      "h": 10,
+      "r": 4,
+      "c": "gold"
+     }
+    ]
+   },
+   "chat": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 20,
+      "y": 30,
+      "w": 160,
+      "h": 140,
+      "r": 16,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 28,
+      "y": 52,
+      "w": 144,
+      "h": 110,
+      "r": 10,
+      "c": "paper"
+     },
+     {
+      "t": "circle",
+      "x": 40,
+      "y": 41,
+      "r": 4,
+      "c": "paper",
+      "w": 0
+     },
+     {
+      "t": "circle",
+      "x": 52,
+      "y": 41,
+      "r": 4,
+      "c": "paper",
+      "w": 0
+     },
+     {
+      "t": "circle",
+      "x": 64,
+      "y": 41,
+      "r": 4,
+      "c": "paper",
+      "w": 0
+     },
+     {
+      "t": "rect",
+      "x": 38,
+      "y": 64,
+      "w": 84,
+      "h": 26,
+      "r": 10,
+      "c": "dim",
+      "sw": 0
+     },
+     {
+      "t": "rect",
+      "x": 78,
+      "y": 100,
+      "w": 84,
+      "h": 26,
+      "r": 10,
+      "c": "accent2",
+      "sw": 0
+     },
+     {
+      "t": "text",
+      "s": "AI",
+      "x": 48,
+      "y": 77,
+      "size": 18,
+      "c": "dark"
+     },
+     {
+      "t": "circle",
+      "x": 50,
+      "y": 144,
+      "r": 4,
+      "c": "dim",
+      "w": 0
+     },
+     {
+      "t": "circle",
+      "x": 64,
+      "y": 144,
+      "r": 4,
+      "c": "dim",
+      "w": 0
+     },
+     {
+      "t": "circle",
+      "x": 78,
+      "y": 144,
+      "r": 4,
+      "c": "dim",
+      "w": 0
+     }
+    ]
+   },
+   "plane": {
+    "shapes": [
+     {
+      "t": "poly",
+      "pts": [
+       [
+        28,
+        124
+       ],
+       [
+        60,
+        70
+       ],
+       [
+        84,
+        70
+       ],
+       [
+        66,
+        124
+       ]
+      ],
+      "c": "accent3"
+     },
+     {
+      "t": "ellipse",
+      "x": 102,
+      "y": 118,
+      "rx": 76,
+      "ry": 19,
+      "c": "white"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        96,
+        122
+       ],
+       [
+        138,
+        168
+       ],
+       [
+        162,
+        168
+       ],
+       [
+        140,
+        120
+       ]
+      ],
+      "c": "accent3"
+     },
+     {
+      "t": "poly",
+      "pts": [
+       [
+        24,
+        116
+       ],
+       [
+        14,
+        82
+       ],
+       [
+        36,
+        82
+       ],
+       [
+        54,
+        112
+       ]
+      ],
+      "c": "accent3"
+     },
+     {
+      "t": "circle",
+      "x": 70,
+      "y": 116,
+      "r": 4,
+      "c": "blue",
+      "w": 0
+     },
+     {
+      "t": "circle",
+      "x": 88,
+      "y": 116,
+      "r": 4,
+      "c": "blue",
+      "w": 0
+     },
+     {
+      "t": "circle",
+      "x": 106,
+      "y": 116,
+      "r": 4,
+      "c": "blue",
+      "w": 0
+     },
+     {
+      "t": "circle",
+      "x": 124,
+      "y": 116,
+      "r": 4,
+      "c": "blue",
+      "w": 0
+     },
+     {
+      "t": "path",
+      "d": "M166 108 Q184 114 176 128 Q164 132 150 126 Z",
+      "c": "blue"
+     }
+    ]
+   },
+   "company": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 44,
+      "y": 48,
+      "w": 112,
+      "h": 134,
+      "r": 6,
+      "c": "accent"
+     },
+     {
+      "t": "rect",
+      "x": 36,
+      "y": 34,
+      "w": 128,
+      "h": 24,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "text",
+      "s": "AIRLINE",
+      "x": 100,
+      "y": 47,
+      "size": 16,
+      "c": "paper"
+     },
+     {
+      "t": "rect",
+      "x": 58,
+      "y": 72,
+      "w": 22,
+      "h": 18,
+      "r": 3,
+      "c": "paper",
+      "sw": 0
+     },
+     {
+      "t": "rect",
+      "x": 89,
+      "y": 72,
+      "w": 22,
+      "h": 18,
+      "r": 3,
+      "c": "paper",
+      "sw": 0
+     },
+     {
+      "t": "rect",
+      "x": 120,
+      "y": 72,
+      "w": 22,
+      "h": 18,
+      "r": 3,
+      "c": "paper",
+      "sw": 0
+     },
+     {
+      "t": "rect",
+      "x": 58,
+      "y": 104,
+      "w": 22,
+      "h": 18,
+      "r": 3,
+      "c": "paper",
+      "sw": 0
+     },
+     {
+      "t": "rect",
+      "x": 89,
+      "y": 104,
+      "w": 22,
+      "h": 18,
+      "r": 3,
+      "c": "paper",
+      "sw": 0
+     },
+     {
+      "t": "rect",
+      "x": 120,
+      "y": 104,
+      "w": 22,
+      "h": 18,
+      "r": 3,
+      "c": "paper",
+      "sw": 0
+     },
+     {
+      "t": "rect",
+      "x": 84,
+      "y": 142,
+      "w": 32,
+      "h": 40,
+      "r": 4,
+      "c": "dark",
+      "sw": 0
+     }
+    ]
+   },
+   "scales": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 94,
+      "y": 36,
+      "w": 12,
+      "h": 132,
+      "r": 4,
+      "c": "dark"
+     },
+     {
+      "t": "rect",
+      "x": 56,
+      "y": 164,
+      "w": 88,
+      "h": 14,
+      "r": 6,
+      "c": "dark"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        34,
+        52
+       ],
+       [
+        166,
+        52
+       ]
+      ],
+      "c": "dark",
+      "w": 9
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 36,
+      "r": 9,
+      "c": "gold"
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        40,
+        54
+       ],
+       [
+        22,
+        108
+       ]
+      ],
+      "c": "dim",
+      "w": 4
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        40,
+        54
+       ],
+       [
+        58,
+        108
+       ]
+      ],
+      "c": "dim",
+      "w": 4
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        160,
+        54
+       ],
+       [
+        142,
+        108
+       ]
+      ],
+      "c": "dim",
+      "w": 4
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        160,
+        54
+       ],
+       [
+        178,
+        108
+       ]
+      ],
+      "c": "dim",
+      "w": 4
+     },
+     {
+      "t": "path",
+      "d": "M16 108 Q40 138 64 108 Z",
+      "c": "accent"
+     },
+     {
+      "t": "path",
+      "d": "M136 108 Q160 138 184 108 Z",
+      "c": "accent2"
+     }
+    ]
+   },
+   "coin": {
+    "shapes": [
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 72,
+      "c": "gold"
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 100,
+      "r": 56,
+      "c": "gold",
+      "fill": false,
+      "w": 5
+     },
+     {
+      "t": "text",
+      "s": "$",
+      "x": 100,
+      "y": 102,
+      "size": 84,
+      "c": "dark"
+     }
+    ]
+   },
+   "jake_confused": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 76,
+      "y": 93,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 116,
+      "y": 93,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        68,
+        66
+       ],
+       [
+        92,
+        72
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        74
+       ],
+       [
+        132,
+        66
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M84 122 q8 -8 16 0 t16 0",
+      "c": "#7a2e3a",
+      "fill": false,
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "text",
+      "s": "?",
+      "x": 164,
+      "y": 48,
+      "size": 40,
+      "c": "gold"
+     },
+     {
+      "t": "text",
+      "s": "?",
+      "x": 38,
+      "y": 40,
+      "size": 26,
+      "c": "accent"
+     }
+    ]
+   },
+   "jake_happy": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M69 94 Q80 80 91 94",
+      "c": "#1d1b26",
+      "fill": false,
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M109 94 Q120 80 131 94",
+      "c": "#1d1b26",
+      "fill": false,
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        68,
+        70
+       ],
+       [
+        92,
+        66
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        66
+       ],
+       [
+        132,
+        70
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M78 112 Q100 142 122 112 Z",
+      "c": "#7a2e3a",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M84 114 Q100 122 116 114 L114 118 Q100 126 86 118 Z",
+      "c": "#ffffff",
+      "w": 0,
+      "keep": true
+     }
+    ]
+   },
+   "jake_neutral": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 80,
+      "y": 91,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 120,
+      "y": 91,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        68,
+        72
+       ],
+       [
+        92,
+        70
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        70
+       ],
+       [
+        132,
+        72
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M84 117 Q100 126 116 117",
+      "c": "#7a2e3a",
+      "fill": false,
+      "w": 5,
+      "keep": true
+     }
+    ]
+   },
+   "jake_surprised": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 91,
+      "rx": 12,
+      "ry": 15,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 91,
+      "rx": 12,
+      "ry": 15,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 80,
+      "y": 91,
+      "r": 3,
+      "c": "#1d1b26",
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 120,
+      "y": 91,
+      "r": 3,
+      "c": "#1d1b26",
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        66,
+        64
+       ],
+       [
+        92,
+        57
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        57
+       ],
+       [
+        134,
+        64
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 122,
+      "rx": 8,
+      "ry": 11,
+      "c": "#7a2e3a",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        14
+       ],
+       [
+        100,
+        2
+       ]
+      ],
+      "c": "gold",
+      "w": 5
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        74,
+        20
+       ],
+       [
+        64,
+        8
+       ]
+      ],
+      "c": "gold",
+      "w": 5
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        126,
+        20
+       ],
+       [
+        136,
+        8
+       ]
+      ],
+      "c": "gold",
+      "w": 5
+     }
+    ]
+   },
+   "jake_think": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 85,
+      "y": 86,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 125,
+      "y": 86,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        68,
+        74
+       ],
+       [
+        92,
+        68
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        60
+       ],
+       [
+        132,
+        66
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 119 Q102 115 112 121",
+      "c": "#7a2e3a",
+      "fill": false,
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 150,
+      "y": 52,
+      "r": 4,
+      "c": "#ffffff",
+      "w": 2,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 162,
+      "y": 40,
+      "r": 6,
+      "c": "#ffffff",
+      "w": 2,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 176,
+      "y": 20,
+      "rx": 20,
+      "ry": 15,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "text",
+      "s": "?",
+      "x": 176,
+      "y": 22,
+      "size": 24,
+      "c": "#2b2433",
+      "keep": true
+     }
+    ]
+   },
+   "jake_worried": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2"
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 80,
+      "y": 94,
+      "r": 4,
+      "c": "#1d1b26",
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 120,
+      "y": 94,
+      "r": 4,
+      "c": "#1d1b26",
+      "w": 0,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        66,
+        80
+       ],
+       [
+        92,
+        68
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        68
+       ],
+       [
+        134,
+        80
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M84 124 Q92 115 100 121 Q108 127 116 118",
+      "c": "#7a2e3a",
+      "fill": false,
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M152 56 Q160 70 152 78 Q144 70 152 56 Z",
+      "c": "#7ec8ff",
+      "w": 2,
+      "keep": true
+     }
+    ]
+   }
+  },
+  "facts": [
+   {
+    "claim": "In the US an AI system is not a legal person; one legal explainer says no legal system worldwide grants AI that status",
+    "sources": [
+     0,
+     4
+    ]
+   },
+   {
+    "claim": "When AI causes harm, people generally sue the company behind it, not the AI",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "A traveler got wrong information about a bereavement fare from Air Canada's chatbot and the airline refused the refund",
+    "sources": [
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "Air Canada argued the chatbot was a separate legal entity responsible for its own actions",
+    "sources": [
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "A British Columbia tribunal rejected that and held the chatbot is part of the airline's website, so the airline was responsible",
+    "sources": [
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "The passenger was awarded about 650 Canadian dollars in damages",
+    "sources": [
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "Courts and experts are still working out how liability for AI works",
+    "sources": [
+     0,
+     1
+    ]
+   }
+  ],
+  "post": {
+   "title": "Can an AI get sued? Jake finds out",
+   "tiktok_caption": "Can an AI get sued? Jake wanted to find out. Short answer: the AI cannot, the company can. #AI #FredsDesk #AIexplained #ChatGPT #LearnOnTikTok",
+   "yt_caption": "Can an AI get sued? Jake's AI gave him bad flight advice, so he looked into who is responsible. A real tribunal case shows how companies answer for their chatbots. Follow FredsDesk for daily AI",
+   "pinned_comment": "Jake is a fictional character and his story is an illustration. The airline chatbot case is real (a British Columbia tribunal; reported by the American Bar Association and the Times Colonist). This is general information, not legal advice, and the rules differ by country and are still developing.",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#AIexplained",
+    "#ChatGPT",
+    "#AIlaw",
+    "#LearnOnTikTok"
+   ],
+   "sources": [
+    {
+     "name": "NPR via HPPR, Several states considering ban on legal personhood for AI",
+     "url": "https://www.hppr.org/2026-05-11/several-states-considering-ban-on-legal-personhood-for-ai"
+    },
+    {
+     "name": "Northeastern Global News, Can an AI chatbot be held liable in cases of death?",
+     "url": "https://news.northeastern.edu/2026/05/22/chatgpt-lawsuit-ai-ethics/"
+    },
+    {
+     "name": "American Bar Association, BC Tribunal Confirms Companies Remain Liable for Information Provided by AI Chatbot",
+     "url": "https://www.americanbar.org/groups/business_law/resources/business-law-today/2024-february/bc-tribunal-confirms-companies-remain-liable-information-provided-ai-chatbot/"
+    },
+    {
+     "name": "Times Colonist, Air Canada responsible for errors by chatbot, tribunal rules",
+     "url": "https://www.timescolonist.com/local-news/air-canada-responsible-for-errors-by-chatbot-civil-resolution-tribunal-rules-8320420"
+    },
+    {
+     "name": "Lawful Legal, The Legal Personality of AI: Can Machines Have Rights and Duties?",
+     "url": "https://lawfullegal.in/the-legal-personality-of-ai-can-machines-have-rights-and-duties/"
+    }
+   ]
+  },
+  "recipe": {
+   "layout": "full",
+   "caption_style": "clean",
+   "caption_pos": "low",
+   "hook_style": "terminal",
+   "hook_pos": "top",
+   "fonts": "bricolage",
+   "camera": "calm",
+   "finish": "soft",
+   "transitions": "whippy",
+   "anim": "snappy",
+   "sfx": "chip",
+   "progress": true,
+   "family": "paper",
+   "sound": "chip|gentle"
+  }
+ }
+}

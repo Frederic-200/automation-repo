@@ -24,6 +24,13 @@ on:
       suffix:
         description: "Text added to the output file names, e.g. ' v2'"
         required: false
+      log:
+        description: "Log as covered (set false for sample renders so rotation history stays clean)"
+        type: boolean
+        default: true
+      folder:
+        description: "Google Drive folder id to upload to instead of the daily folder (sample renders)"
+        required: false
 
 permissions:
   contents: write
@@ -85,10 +92,14 @@ jobs:
           IN_UPLOAD: ${{ github.event.inputs.upload }}
           IN_FORCE: ${{ github.event.inputs.force }}
           IN_SUFFIX: ${{ github.event.inputs.suffix }}
+          IN_LOG: ${{ github.event.inputs.log }}
+          IN_FOLDER: ${{ github.event.inputs.folder }}
         run: |
           args=""
           if [ -n "$IN_FILE" ]; then args="$args --file $IN_FILE"; fi
           if [ "$IN_UPLOAD" = "false" ]; then args="$args --no-upload --no-log"; fi
+          if [ "$IN_LOG" = "false" ]; then args="$args --no-log"; fi
+          if [ -n "$IN_FOLDER" ]; then export GDRIVE_FOLDER_ID_SHORTS="$IN_FOLDER"; fi
           if [ "$IN_FORCE" = "true" ]; then args="$args --force"; fi
           sfx=()
           if [ -n "$IN_SUFFIX" ]; then sfx=(--suffix "$IN_SUFFIX"); fi

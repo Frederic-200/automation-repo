@@ -139,7 +139,8 @@ def main():
         v = probe(p); lufs, tp = loudness(p); info[os.path.basename(p)] = dict(dur=round(v["dur"], 2), lufs=lufs, tp=tp)
         if (v["w"], v["h"]) != (1080, 1920): problems.append(f"{p}: size {v['w']}x{v['h']}")
         if abs(v["fps"] - 30) > .1: problems.append(f"{p}: fps {v['fps']}")
-        if not 15 <= v["dur"] <= 40: problems.append(f"{p}: duration {v['dur']:.1f}s")
+        lo_d, hi_d = (25, 125) if fmt == "E" else (15, 40)       # format E (Jake stories) runs 30-115 s
+        if not lo_d <= v["dur"] <= hi_d: problems.append(f"{p}: duration {v['dur']:.1f}s")
         if p == fin_main or voiced:
             if not -17.5 <= lufs <= -13.0: problems.append(f"{p}: loudness {lufs} LUFS")
             if tp > -1.0: problems.append(f"{p}: true peak {tp} dBTP")
@@ -206,7 +207,8 @@ def main():
     # 7. log as covered (the workflow commits it)
     if "--no-log" not in a:
         cov["entries"] = [e for e in cov["entries"] if e.get("slug") != slug]
-        cov["entries"].append({"date": date, "slug": slug, "format": fmt, "topic": meta["topic"], "caption_preset": meta["caption_preset"], "recipe": meta.get("recipe"), "bg_sigs": __import__("bgcheck").signatures(S), "art_ids": sorted((meta.get("art") or {}).keys()), "title": meta["post"]["title"],
+        cov["entries"].append({"date": date, "slug": slug, "format": fmt, "topic": meta["topic"], "caption_preset": meta["caption_preset"], "recipe": meta.get("recipe"), "bg_sigs": __import__("bgcheck").signatures(S), "art_ids": sorted(k for k in (meta.get("art") or {}) if not k.startswith("jake_")), "title": meta["post"]["title"],
+                               "question": meta.get("question"), "ending": meta.get("ending"), "next_question": meta.get("next_question"),
                                "template": meta.get("template"), "hook_type": meta.get("hook_type"), "hook": (S.get("hook") or {}).get("text"), "voice": S.get("voice") if voiced else None,
                                "music": S.get("music_mood"), "sound_kit": ((S.get("style_overrides") or {}).get("sfx") or {}).get("kit"), "look": meta.get("look"),
                                "length": round(info[os.path.basename(fin_main)]["dur"], 1), "scene_types": [sc.get("type") for sc in S["scenes"]]})
