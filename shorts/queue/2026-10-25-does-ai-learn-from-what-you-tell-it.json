@@ -1,0 +1,3629 @@
+{
+ "title": "Does AI learn from what you tell it?",
+ "style": "warm cream light, teal accent, calm curious storytelling",
+ "voice": "af_heart",
+ "music": true,
+ "music_mood": "gentle",
+ "seed": 525,
+ "max_seconds": 185,
+ "end_tail": 0.5,
+ "scenes_custom": "scenes_fredsdesk.js",
+ "say": {},
+ "hook": {
+  "text": "Your AI forgot your *dog* overnight",
+  "hold": 2.4,
+  "loop": false
+ },
+ "scenes": [
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "speed": 0.9,
+   "lines": [
+    "You open a chat with your *AI*.",
+    "You tell it your *name*, your *dog*, and your favorite *pizza*."
+   ],
+   "bg": {
+    "intent": "you open a chat and share a few personal details",
+    "subject": [
+     "jake_neutral",
+     "chat"
+    ],
+    "arrangement": "split",
+    "motion": {
+     "jake_neutral": "pop float",
+     "chat": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "AI",
+      "do": "chat.pop"
+     },
+     {
+      "on": "pizza",
+      "do": "jake_neutral.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "paper",
+     "speed": 0.6
+    }
+   }
+  },
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "flash"
+   },
+   "speed": 0.9,
+   "lines": [
+    "It replies warmly, and it feels like you just made a *friend*."
+   ],
+   "bg": {
+    "intent": "a warm reply, a new friend",
+    "subject": [
+     "jake_happy",
+     "chat"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "jake_happy": "pop float",
+     "chat": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "friend",
+      "do": "jake_happy.pop"
+     },
+     {
+      "on": "replies",
+      "do": "chat.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "rays",
+     "speed": 0.6
+    },
+    "count": 4
+   }
+  },
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "iris"
+   },
+   "speed": 0.9,
+   "lines": [
+    "The next day, you open a *new chat*."
+   ],
+   "bg": {
+    "intent": "a fresh, empty chat the next day",
+    "subject": [
+     "jake_neutral",
+     "chat"
+    ],
+    "arrangement": "hero+scatter",
+    "motion": {
+     "jake_neutral": "pop float",
+     "chat": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "new",
+      "do": "chat.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "rays",
+     "speed": 0.6
+    },
+    "count": 3
+   }
+  },
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "speed": 0.9,
+   "lines": [
+    "You ask, \"What is my *dog's* name?\""
+   ],
+   "bg": {
+    "intent": "you ask the AI about your dog",
+    "subject": [
+     "jake_think",
+     "chat"
+    ],
+    "arrangement": "hero+path",
+    "motion": {
+     "jake_think": "pop float",
+     "chat": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "dog's",
+      "do": "jake_think.morph:jake_confused"
+     }
+    ],
+    "backdrop": {
+     "kind": "grid",
+     "speed": 0.6
+    }
+   }
+  },
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Your AI has *no idea*.",
+    "It does not know you at *all*."
+   ],
+   "bg": {
+    "intent": "the AI knows nothing about you",
+    "subject": [
+     "jake_surprised",
+     "chat"
+    ],
+    "arrangement": "hero+explode",
+    "motion": {
+     "jake_surprised": "pop float",
+     "chat": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "idea",
+      "do": "chat.shake"
+     },
+     {
+      "on": "all",
+      "do": "jake_surprised.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "scan",
+     "speed": 0.6
+    },
+    "count": 5
+   }
+  },
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Ever wonder if AI *learns* from what you tell it?"
+   ],
+   "bg": {
+    "intent": "the question",
+    "subject": [
+     "jake_confused",
+     "chat"
+    ],
+    "arrangement": "hero+ring",
+    "motion": {
+     "jake_confused": "pop float",
+     "chat": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "learns",
+      "do": "jake_confused.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "contour",
+     "speed": 0.6
+    },
+    "count": 5
+   }
+  },
+  {
+   "act": "problem",
+   "type": "story",
+   "params": {
+    "transition": "flash"
+   },
+   "speed": 0.9,
+   "lines": [
+    "And the strange part?",
+    "Your AI did *not forget*. There was *nothing* to forget."
+   ],
+   "bg": {
+    "intent": "first clue: nothing was stored",
+    "subject": [
+     "jake_think"
+    ],
+    "arrangement": "hero",
+    "motion": {
+     "jake_think": "pop float"
+    },
+    "beats": [
+     {
+      "on": "forget",
+      "do": "jake_think.morph:jake_blank"
+     }
+    ],
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.6
+    },
+    "hero_scale": 3.7
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "iris"
+   },
+   "speed": 0.9,
+   "lines": [
+    "But that does not mean your chats go *nowhere*."
+   ],
+   "bg": {
+    "intent": "tease: chats may go somewhere",
+    "subject": [
+     "jake_worried",
+     "chat"
+    ],
+    "arrangement": "hero+tunnel",
+    "motion": {
+     "jake_worried": "pop float",
+     "chat": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "nowhere",
+      "do": "jake_worried.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.6
+    },
+    "count": 6
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Here is something *real*.",
+    "One AI company told personal users their chats may help *train* its models."
+   ],
+   "bg": {
+    "intent": "a real policy: chats may help train models",
+    "subject": [
+     "jake_neutral",
+     "model"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "jake_neutral": "pop float",
+     "model": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "train",
+      "do": "model.glow"
+     },
+     {
+      "on": "real",
+      "do": "jake_neutral.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "iso",
+     "speed": 0.6
+    },
+    "count": 4
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "pixel"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Unless they switch a *setting* off."
+   ],
+   "bg": {
+    "intent": "a settings switch",
+    "subject": [
+     "jake_happy",
+     "toggle"
+    ],
+    "arrangement": "hero+scatter",
+    "motion": {
+     "jake_happy": "pop float",
+     "toggle": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "setting",
+      "do": "toggle.pop"
+     },
+     {
+      "on": "off",
+      "do": "toggle.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "iso",
+     "speed": 0.6
+    },
+    "count": 3
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "speed": 0.9,
+   "lines": [
+    "ChatGPT has a similar switch, called *Improve the model for everyone*."
+   ],
+   "bg": {
+    "intent": "ChatGPT has a similar switch",
+    "subject": [
+     "jake_neutral",
+     "toggle"
+    ],
+    "arrangement": "hero+ring",
+    "motion": {
+     "jake_neutral": "pop float",
+     "toggle": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "Improve",
+      "do": "toggle.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "ribbon",
+     "speed": 0.6
+    },
+    "count": 4
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "speed": 0.9,
+   "lines": [
+    "So which is it? Does AI learn from you, or *not*?"
+   ],
+   "bg": {
+    "intent": "the real puzzle",
+    "subject": [
+     "jake_confused",
+     "model"
+    ],
+    "arrangement": "hero+path",
+    "motion": {
+     "jake_confused": "pop float",
+     "model": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "not",
+      "do": "jake_confused.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "rings",
+     "speed": 0.6
+    }
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "flash"
+   },
+   "speed": 0.9,
+   "lines": [
+    "To find out, you need to know the *difference* between *training* and *chatting*."
+   ],
+   "bg": {
+    "intent": "training versus chatting",
+    "subject": [
+     "jake_think",
+     "model",
+     "chat"
+    ],
+    "arrangement": "hero+stream",
+    "motion": {
+     "jake_think": "pop float",
+     "model": "slide from right float",
+     "chat": "drop float"
+    },
+    "beats": [
+     {
+      "on": "training",
+      "do": "model.pop"
+     },
+     {
+      "on": "chatting",
+      "do": "chat.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "paper",
+     "speed": 0.6
+    },
+    "count": 5
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "iris"
+   },
+   "speed": 0.9,
+   "lines": [
+    "*Training* is how the AI is *built*.",
+    "It reads huge amounts of text."
+   ],
+   "bg": {
+    "intent": "training builds the model from text",
+    "subject": [
+     "jake_neutral",
+     "model"
+    ],
+    "arrangement": "hero+explode",
+    "motion": {
+     "jake_neutral": "pop float",
+     "model": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "built",
+      "do": "jake_neutral.pop"
+     },
+     {
+      "on": "text",
+      "do": "model.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "grid",
+     "speed": 0.6
+    },
+    "count": 5,
+    "texture_words": [
+     "TRAINING"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "speed": 0.9,
+   "lines": [
+    "It ends up as a fixed set of *numbers*."
+   ],
+   "bg": {
+    "intent": "the result is a fixed set of numbers",
+    "subject": [
+     "jake_think",
+     "model"
+    ],
+    "arrangement": "hero+stack",
+    "motion": {
+     "jake_think": "pop float",
+     "model": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "numbers",
+      "do": "model.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "paper",
+     "speed": 0.6
+    },
+    "count": 3
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Think of a printed *cookbook*.",
+    "Once it is printed, the recipes inside do not *change*."
+   ],
+   "bg": {
+    "intent": "a printed cookbook is fixed",
+    "subject": [
+     "jake_think",
+     "cookbook"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "jake_think": "pop float",
+     "cookbook": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "cookbook",
+      "do": "cookbook.pop"
+     },
+     {
+      "on": "change",
+      "do": "cookbook.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "paper",
+     "speed": 0.6
+    },
+    "count": 4
+   }
+  },
+  {
+   "act": "turn",
+   "type": "story",
+   "params": {
+    "transition": "card"
+   },
+   "speed": 0.9,
+   "lines": [
+    "But here is the *catch*.",
+    "*Chatting* is just using the finished cookbook."
+   ],
+   "bg": {
+    "intent": "re-hook: chatting only uses the finished model",
+    "subject": [
+     "jake_happy",
+     "cookbook",
+     "chat"
+    ],
+    "arrangement": "hero+scatter",
+    "motion": {
+     "jake_happy": "pop float",
+     "cookbook": "slide from right float",
+     "chat": "drop float"
+    },
+    "beats": [
+     {
+      "on": "catch",
+      "do": "jake_happy.morph:jake_surprised"
+     },
+     {
+      "on": "Chatting",
+      "do": "chat.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "scan",
+     "speed": 0.6
+    },
+    "count": 4
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "speed": 0.9,
+   "lines": [
+    "When you chat, the AI *reads* and writes.",
+    "It does not *rewrite itself*."
+   ],
+   "bg": {
+    "intent": "the model reads but does not change",
+    "subject": [
+     "jake_neutral",
+     "model"
+    ],
+    "arrangement": "hero+ring",
+    "motion": {
+     "jake_neutral": "pop float",
+     "model": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "reads",
+      "do": "model.glow"
+     },
+     {
+      "on": "rewrite",
+      "do": "model.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.6
+    },
+    "count": 5
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "pixel"
+   },
+   "speed": 0.9,
+   "lines": [
+    "So telling it your dog's name changes *nothing* inside the model."
+   ],
+   "bg": {
+    "intent": "your details do not change the model",
+    "subject": [
+     "jake_blank",
+     "model"
+    ],
+    "arrangement": "hero+stack",
+    "motion": {
+     "jake_blank": "pop float",
+     "model": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "nothing",
+      "do": "jake_blank.morph:jake_think"
+     }
+    ],
+    "backdrop": {
+     "kind": "mesh",
+     "speed": 0.6
+    },
+    "count": 3
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "iris"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Then how does it answer you *in the same chat*?"
+   ],
+   "bg": {
+    "intent": "how does it keep track in one chat",
+    "subject": [
+     "jake_confused",
+     "chat"
+    ],
+    "arrangement": "hero+stream",
+    "motion": {
+     "jake_confused": "pop float",
+     "chat": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "same",
+      "do": "chat.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "contour",
+     "speed": 0.6
+    },
+    "count": 6
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "flash"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Every time you send a message, the app sends the *whole conversation* again."
+   ],
+   "bg": {
+    "intent": "the whole conversation is resent",
+    "subject": [
+     "jake_think",
+     "package"
+    ],
+    "arrangement": "hero+path",
+    "motion": {
+     "jake_think": "pop float",
+     "package": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "whole",
+      "do": "package.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "halftone",
+     "speed": 0.6
+    }
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Your first message, its reply, and your new question all travel in *one package*."
+   ],
+   "bg": {
+    "intent": "everything in one package",
+    "subject": [
+     "jake_neutral",
+     "package",
+     "chat"
+    ],
+    "arrangement": "hero+tunnel",
+    "motion": {
+     "jake_neutral": "pop float",
+     "package": "slide from right float",
+     "chat": "drop float"
+    },
+    "beats": [
+     {
+      "on": "package",
+      "do": "package.glow"
+     },
+     {
+      "on": "one",
+      "do": "package.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "iso",
+     "speed": 0.6
+    },
+    "count": 6
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "speed": 0.9,
+   "lines": [
+    "That package is its only *memory*.",
+    "Open a new chat, and the package is *empty*."
+   ],
+   "bg": {
+    "intent": "the package is the only memory",
+    "subject": [
+     "jake_worried",
+     "package"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "jake_worried": "pop float",
+     "package": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "memory",
+      "do": "package.glow"
+     },
+     {
+      "on": "empty",
+      "do": "package.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.6
+    },
+    "count": 3
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "flash"
+   },
+   "speed": 0.9,
+   "lines": [
+    "There is a limit too.",
+    "The AI can only read so much at once."
+   ],
+   "bg": {
+    "intent": "a reading limit",
+    "subject": [
+     "jake_worried",
+     "package"
+    ],
+    "arrangement": "hero+path",
+    "motion": {
+     "jake_worried": "pop float",
+     "package": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "limit",
+      "do": "package.shake"
+     }
+    ],
+    "backdrop": {
+     "kind": "tile",
+     "speed": 0.6
+    }
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "speed": 0.9,
+   "lines": [
+    "That limit is called the *context window*."
+   ],
+   "bg": {
+    "intent": "a context window limit",
+    "subject": [
+     "jake_think",
+     "package"
+    ],
+    "arrangement": "hero+ring",
+    "motion": {
+     "jake_think": "pop float",
+     "package": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "context",
+      "do": "package.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "tile",
+     "speed": 0.6
+    },
+    "count": 5,
+    "texture_words": [
+     "CONTEXT"
+    ]
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "pixel"
+   },
+   "speed": 0.9,
+   "lines": [
+    "In a very long chat, older parts can get *lost*."
+   ],
+   "bg": {
+    "intent": "older parts can get lost",
+    "subject": [
+     "jake_worried",
+     "chat"
+    ],
+    "arrangement": "hero+scatter",
+    "motion": {
+     "jake_worried": "pop float",
+     "chat": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "lost",
+      "do": "chat.shatter"
+     }
+    ],
+    "backdrop": {
+     "kind": "rings",
+     "speed": 0.6
+    },
+    "count": 5
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "iris"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Some apps add a *memory* feature.",
+    "Saved *notes* are added to the package for each new chat."
+   ],
+   "bg": {
+    "intent": "memory is saved notes added to the package",
+    "subject": [
+     "jake_happy",
+     "note",
+     "package"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "jake_happy": "pop float",
+     "note": "slide from right float",
+     "package": "drop float"
+    },
+    "beats": [
+     {
+      "on": "notes",
+      "do": "note.pop"
+     },
+     {
+      "on": "memory",
+      "do": "jake_happy.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "tile",
+     "speed": 0.6
+    },
+    "count": 4
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "flash"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Memory is its own *switch*, separate from training."
+   ],
+   "bg": {
+    "intent": "memory is separate from training",
+    "subject": [
+     "jake_neutral",
+     "note",
+     "toggle"
+    ],
+    "arrangement": "hero+path",
+    "motion": {
+     "jake_neutral": "pop float",
+     "note": "slide from right float",
+     "toggle": "drop float"
+    },
+    "beats": [
+     {
+      "on": "switch",
+      "do": "toggle.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "paper",
+     "speed": 0.6
+    }
+   }
+  },
+  {
+   "act": "build",
+   "type": "story",
+   "params": {
+    "transition": "liquid"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Real learning happens *later*, when a company builds a *new version*."
+   ],
+   "bg": {
+    "intent": "learning happens in a later model version",
+    "subject": [
+     "jake_think",
+     "model"
+    ],
+    "arrangement": "hero+explode",
+    "motion": {
+     "jake_think": "pop float",
+     "model": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "later",
+      "do": "jake_think.pop"
+     },
+     {
+      "on": "version",
+      "do": "model.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "rays",
+     "speed": 0.6
+    },
+    "count": 6
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "card"
+   },
+   "speed": 0.9,
+   "lines": [
+    "So the answer is: *not while you chat*.",
+    "Your chat does not change the model *you are talking to*."
+   ],
+   "bg": {
+    "intent": "the answer",
+    "subject": [
+     "jake_happy",
+     "model"
+    ],
+    "arrangement": "hero+ring",
+    "motion": {
+     "jake_happy": "pop float",
+     "model": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "chat",
+      "do": "jake_happy.pop"
+     },
+     {
+      "on": "talking",
+      "do": "model.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "scan",
+     "speed": 0.6
+    },
+    "count": 4
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "whip"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Your chats may still help train a *future version*, if that setting is *on*."
+   ],
+   "bg": {
+    "intent": "chats may still train a future version",
+    "subject": [
+     "jake_neutral",
+     "toggle",
+     "model"
+    ],
+    "arrangement": "hero+stream",
+    "motion": {
+     "jake_neutral": "pop float",
+     "toggle": "slide from right float",
+     "model": "drop float"
+    },
+    "beats": [
+     {
+      "on": "future",
+      "do": "model.glow"
+     },
+     {
+      "on": "on",
+      "do": "toggle.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "stars",
+     "speed": 0.6
+    },
+    "count": 5
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "glitch"
+   },
+   "speed": 0.9,
+   "lines": [
+    "If you switch it off, that covers *future chats*, not training already *done*."
+   ],
+   "bg": {
+    "intent": "turning it off is forward-looking",
+    "subject": [
+     "jake_worried",
+     "toggle"
+    ],
+    "arrangement": "hero+tunnel",
+    "motion": {
+     "jake_worried": "pop float",
+     "toggle": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "future",
+      "do": "toggle.shake"
+     },
+     {
+      "on": "done",
+      "do": "jake_worried.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "contour",
+     "speed": 0.6
+    },
+    "count": 6
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "pixel"
+   },
+   "speed": 0.9,
+   "lines": [
+    "So first, open your *settings* and find the *data controls*."
+   ],
+   "bg": {
+    "intent": "tip one: check data controls",
+    "subject": [
+     "jake_neutral",
+     "toggle"
+    ],
+    "arrangement": "hero+scatter",
+    "motion": {
+     "jake_neutral": "pop float",
+     "toggle": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "settings",
+      "do": "toggle.pop"
+     },
+     {
+      "on": "data",
+      "do": "toggle.glow"
+     }
+    ],
+    "backdrop": {
+     "kind": "tile",
+     "speed": 0.6
+    },
+    "count": 3
+   }
+  },
+  {
+   "act": "payoff",
+   "type": "story",
+   "params": {
+    "transition": "flash"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Second, use a *temporary chat* for private things. ChatGPT leaves those out of training."
+   ],
+   "bg": {
+    "intent": "tip two: temporary chat",
+    "subject": [
+     "jake_happy",
+     "chat",
+     "toggle"
+    ],
+    "arrangement": "hero+orbit",
+    "motion": {
+     "jake_happy": "pop float",
+     "chat": "slide from right float",
+     "toggle": "drop float"
+    },
+    "beats": [
+     {
+      "on": "temporary",
+      "do": "chat.glow"
+     },
+     {
+      "on": "private",
+      "do": "jake_happy.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "grid",
+     "speed": 0.6
+    },
+    "count": 4
+   }
+  },
+  {
+   "act": "button",
+   "type": "story",
+   "params": {
+    "transition": "iris"
+   },
+   "speed": 0.9,
+   "lines": [
+    "Tomorrow: why does AI *forget details* in a long chat?"
+   ],
+   "bg": {
+    "intent": "cliffhanger teaser",
+    "subject": [
+     "jake_confused",
+     "chat"
+    ],
+    "arrangement": "hero+path",
+    "motion": {
+     "jake_confused": "pop float",
+     "chat": "slide from right float"
+    },
+    "beats": [
+     {
+      "on": "forget",
+      "do": "jake_confused.pop"
+     }
+    ],
+    "backdrop": {
+     "kind": "flow",
+     "speed": 0.6
+    },
+    "hero_scale": 3.0
+   }
+  }
+ ],
+ "meta": {
+  "format": "E",
+  "slug": "does-ai-learn-from-what-you-tell-it",
+  "topic": "Does AI learn from what you tell it? Training vs chatting, context, memory, and the training opt-out setting",
+  "character": "You",
+  "question": "Does AI learn from what you tell it?",
+  "ending": "cliffhanger",
+  "next_question": "Why does AI forget details in a long chat?",
+  "retention": {
+   "first_payoff_scene": 6,
+   "rehook_scene": 16,
+   "final_answer_scene": 29
+  },
+  "hook_type": "pov",
+  "template": "classic",
+  "look": "light",
+  "art_style": "flat",
+  "art": {
+   "chat": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 22,
+      "y": 30,
+      "w": 156,
+      "h": 140,
+      "r": 16,
+      "c": "#1f7a8c",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 30,
+      "y": 50,
+      "w": 140,
+      "h": 112,
+      "r": 10,
+      "c": "#fffaf0",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 42,
+      "y": 40,
+      "r": 4,
+      "c": "#fffaf0",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 54,
+      "y": 40,
+      "r": 4,
+      "c": "#fffaf0",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 66,
+      "y": 40,
+      "r": 4,
+      "c": "#fffaf0",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 40,
+      "y": 60,
+      "w": 80,
+      "h": 20,
+      "r": 8,
+      "c": "#cfd8dc",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 80,
+      "y": 88,
+      "w": 80,
+      "h": 20,
+      "r": 8,
+      "c": "#1f7a8c",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 40,
+      "y": 116,
+      "w": 92,
+      "h": 20,
+      "r": 8,
+      "c": "#cfd8dc",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 70,
+      "y": 142,
+      "w": 90,
+      "h": 14,
+      "r": 7,
+      "c": "#1f7a8c",
+      "keep": true
+     }
+    ]
+   },
+   "model": {
+    "shapes": [
+     {
+      "t": "line",
+      "pts": [
+       [
+        70,
+        24
+       ],
+       [
+        70,
+        40
+       ]
+      ],
+      "c": "#9aa0c8",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        24
+       ],
+       [
+        100,
+        40
+       ]
+      ],
+      "c": "#9aa0c8",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        130,
+        24
+       ],
+       [
+        130,
+        40
+       ]
+      ],
+      "c": "#9aa0c8",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        70,
+        140
+       ],
+       [
+        70,
+        156
+       ]
+      ],
+      "c": "#9aa0c8",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        140
+       ],
+       [
+        100,
+        156
+       ]
+      ],
+      "c": "#9aa0c8",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        130,
+        140
+       ],
+       [
+        130,
+        156
+       ]
+      ],
+      "c": "#9aa0c8",
+      "w": 6,
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 40,
+      "y": 38,
+      "w": 120,
+      "h": 104,
+      "r": 18,
+      "c": "#3b3f5c",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 52,
+      "y": 50,
+      "w": 96,
+      "h": 80,
+      "r": 10,
+      "c": "#5a5f8a",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 76,
+      "y": 72,
+      "r": 6,
+      "c": "#ffd24a",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 72,
+      "r": 6,
+      "c": "#ffd24a",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 124,
+      "y": 72,
+      "r": 6,
+      "c": "#ffd24a",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 76,
+      "y": 92,
+      "r": 6,
+      "c": "#ffd24a",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 92,
+      "r": 6,
+      "c": "#ffd24a",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 124,
+      "y": 92,
+      "r": 6,
+      "c": "#ffd24a",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 76,
+      "y": 112,
+      "r": 6,
+      "c": "#ffd24a",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 112,
+      "r": 6,
+      "c": "#ffd24a",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 124,
+      "y": 112,
+      "r": 6,
+      "c": "#ffd24a",
+      "keep": true
+     },
+     {
+      "t": "text",
+      "s": "MODEL",
+      "x": 100,
+      "y": 182,
+      "size": 18,
+      "c": "#3b3f5c",
+      "keep": true
+     }
+    ]
+   },
+   "cookbook": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 44,
+      "y": 24,
+      "w": 112,
+      "h": 152,
+      "r": 8,
+      "c": "#c2452d",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 44,
+      "y": 24,
+      "w": 16,
+      "h": 152,
+      "r": 4,
+      "c": "#8f2d1c",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 70,
+      "y": 44,
+      "w": 76,
+      "h": 34,
+      "r": 6,
+      "c": "#fff1d6",
+      "keep": true
+     },
+     {
+      "t": "text",
+      "s": "RECIPES",
+      "x": 108,
+      "y": 67,
+      "size": 13,
+      "c": "#7a2a1a",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 108,
+      "y": 124,
+      "r": 28,
+      "c": "#fff1d6",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 108,
+      "y": 124,
+      "r": 18,
+      "c": "#e8c9a0",
+      "keep": true
+     }
+    ]
+   },
+   "note": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 40,
+      "y": 30,
+      "w": 120,
+      "h": 140,
+      "r": 6,
+      "c": "#ffe066",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 40,
+      "y": 30,
+      "w": 120,
+      "h": 24,
+      "r": 6,
+      "c": "#f2c94c",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 100,
+      "y": 38,
+      "r": 7,
+      "c": "#d64545",
+      "keep": true
+     },
+     {
+      "t": "text",
+      "s": "NOTES",
+      "x": 100,
+      "y": 82,
+      "size": 18,
+      "c": "#6b5a12",
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        58,
+        104
+       ],
+       [
+        142,
+        104
+       ]
+      ],
+      "c": "#8a7a2e",
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        58,
+        124
+       ],
+       [
+        142,
+        124
+       ]
+      ],
+      "c": "#8a7a2e",
+      "w": 5,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        58,
+        144
+       ],
+       [
+        112,
+        144
+       ]
+      ],
+      "c": "#8a7a2e",
+      "w": 5,
+      "keep": true
+     }
+    ]
+   },
+   "toggle": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 26,
+      "y": 66,
+      "w": 148,
+      "h": 72,
+      "r": 36,
+      "c": "#2e9e6b",
+      "keep": true
+     },
+     {
+      "t": "text",
+      "s": "ON",
+      "x": 76,
+      "y": 111,
+      "size": 22,
+      "c": "#ffffff",
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 138,
+      "y": 102,
+      "r": 26,
+      "c": "#ffffff",
+      "keep": true,
+      "part": "knob",
+      "pv": [
+       138,
+       102
+      ]
+     }
+    ]
+   },
+   "package": {
+    "shapes": [
+     {
+      "t": "rect",
+      "x": 36,
+      "y": 58,
+      "w": 128,
+      "h": 100,
+      "r": 6,
+      "c": "#c8934f",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 30,
+      "y": 44,
+      "w": 140,
+      "h": 26,
+      "r": 6,
+      "c": "#b07a3a",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 90,
+      "y": 44,
+      "w": 20,
+      "h": 114,
+      "r": 0,
+      "c": "#e8d3a8",
+      "keep": true
+     },
+     {
+      "t": "rect",
+      "x": 112,
+      "y": 100,
+      "w": 44,
+      "h": 34,
+      "r": 3,
+      "c": "#fffaf0",
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        118,
+        112
+       ],
+       [
+        150,
+        112
+       ]
+      ],
+      "c": "#8a7a6a",
+      "w": 4,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        118,
+        124
+       ],
+       [
+        142,
+        124
+       ]
+      ],
+      "c": "#8a7a6a",
+      "w": 4,
+      "keep": true
+     }
+    ]
+   },
+   "jake_blank": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M27 207 Q27 157 69 147 L141 147 Q183 157 183 207 Z",
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "ellipse",
+      "x": 105,
+      "y": 95,
+      "rx": 46,
+      "ry": 50,
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2",
+      "noshadow": true,
+      "edge": true
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 93,
+      "rx": 10,
+      "ry": 6,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 93,
+      "rx": 10,
+      "ry": 6,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 80,
+      "y": 94,
+      "r": 3,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 120,
+      "y": 94,
+      "r": 3,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        68,
+        76
+       ],
+       [
+        92,
+        78
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        78
+       ],
+       [
+        132,
+        76
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M88 122 L112 122",
+      "c": "#0b0b10",
+      "fill": false,
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "text",
+      "s": "...",
+      "x": 100,
+      "y": 8,
+      "size": 30,
+      "c": "accent3",
+      "noshadow": true,
+      "edge": true
+     }
+    ]
+   },
+   "jake_confused": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M27 207 Q27 157 69 147 L141 147 Q183 157 183 207 Z",
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "ellipse",
+      "x": 105,
+      "y": 95,
+      "rx": 46,
+      "ry": 50,
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2",
+      "noshadow": true,
+      "edge": true
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 76,
+      "y": 93,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 116,
+      "y": 93,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        68,
+        66
+       ],
+       [
+        92,
+        72
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        74
+       ],
+       [
+        132,
+        66
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M84 122 q8 -8 16 0 t16 0",
+      "c": "#0b0b10",
+      "fill": false,
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "text",
+      "s": "?",
+      "x": 164,
+      "y": 48,
+      "size": 40,
+      "c": "gold",
+      "noshadow": true,
+      "edge": true
+     },
+     {
+      "t": "text",
+      "s": "?",
+      "x": 38,
+      "y": 40,
+      "size": 26,
+      "c": "accent",
+      "noshadow": true,
+      "edge": true
+     }
+    ]
+   },
+   "jake_happy": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M27 207 Q27 157 69 147 L141 147 Q183 157 183 207 Z",
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "ellipse",
+      "x": 105,
+      "y": 95,
+      "rx": 46,
+      "ry": 50,
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2",
+      "noshadow": true,
+      "edge": true
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M69 94 Q80 80 91 94",
+      "c": "#1d1b26",
+      "fill": false,
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M109 94 Q120 80 131 94",
+      "c": "#1d1b26",
+      "fill": false,
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        68,
+        70
+       ],
+       [
+        92,
+        66
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        66
+       ],
+       [
+        132,
+        70
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M78 112 Q100 142 122 112 Z",
+      "c": "#0b0b10",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M84 114 Q100 122 116 114 L114 118 Q100 126 86 118 Z",
+      "c": "#ffffff",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     }
+    ]
+   },
+   "jake_neutral": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M27 207 Q27 157 69 147 L141 147 Q183 157 183 207 Z",
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "ellipse",
+      "x": 105,
+      "y": 95,
+      "rx": 46,
+      "ry": 50,
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2",
+      "noshadow": true,
+      "edge": true
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 80,
+      "y": 91,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 120,
+      "y": 91,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        68,
+        72
+       ],
+       [
+        92,
+        70
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        70
+       ],
+       [
+        132,
+        72
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M84 117 Q100 126 116 117",
+      "c": "#0b0b10",
+      "fill": false,
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     }
+    ]
+   },
+   "jake_surprised": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M27 207 Q27 157 69 147 L141 147 Q183 157 183 207 Z",
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "ellipse",
+      "x": 105,
+      "y": 95,
+      "rx": 46,
+      "ry": 50,
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2",
+      "noshadow": true,
+      "edge": true
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 91,
+      "rx": 12,
+      "ry": 15,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 91,
+      "rx": 12,
+      "ry": 15,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 80,
+      "y": 91,
+      "r": 3,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 120,
+      "y": 91,
+      "r": 3,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        66,
+        64
+       ],
+       [
+        92,
+        57
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        57
+       ],
+       [
+        134,
+        64
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 122,
+      "rx": 8,
+      "ry": 11,
+      "c": "#0b0b10",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        100,
+        14
+       ],
+       [
+        100,
+        2
+       ]
+      ],
+      "c": "gold",
+      "w": 5,
+      "noshadow": true,
+      "edge": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        74,
+        20
+       ],
+       [
+        64,
+        8
+       ]
+      ],
+      "c": "gold",
+      "w": 5,
+      "noshadow": true,
+      "edge": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        126,
+        20
+       ],
+       [
+        136,
+        8
+       ]
+      ],
+      "c": "gold",
+      "w": 5,
+      "noshadow": true,
+      "edge": true
+     }
+    ]
+   },
+   "jake_think": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M27 207 Q27 157 69 147 L141 147 Q183 157 183 207 Z",
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "ellipse",
+      "x": 105,
+      "y": 95,
+      "rx": 46,
+      "ry": 50,
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2",
+      "noshadow": true,
+      "edge": true
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 85,
+      "y": 86,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 125,
+      "y": 86,
+      "r": 5,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        68,
+        74
+       ],
+       [
+        92,
+        68
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        60
+       ],
+       [
+        132,
+        66
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 119 Q102 115 112 121",
+      "c": "#0b0b10",
+      "fill": false,
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 150,
+      "y": 52,
+      "r": 4,
+      "c": "#ffffff",
+      "w": 2,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 162,
+      "y": 40,
+      "r": 6,
+      "c": "#ffffff",
+      "w": 2,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 176,
+      "y": 20,
+      "rx": 20,
+      "ry": 15,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "text",
+      "s": "?",
+      "x": 176,
+      "y": 22,
+      "size": 24,
+      "c": "#2b2433",
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     }
+    ]
+   },
+   "jake_worried": {
+    "shapes": [
+     {
+      "t": "path",
+      "d": "M27 207 Q27 157 69 147 L141 147 Q183 157 183 207 Z",
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "ellipse",
+      "x": 105,
+      "y": 95,
+      "rx": 46,
+      "ry": 50,
+      "c": "#000000",
+      "o": 0.3,
+      "w": 0,
+      "keep": true,
+      "noshadow": true
+     },
+     {
+      "t": "rect",
+      "x": 86,
+      "y": 112,
+      "w": 28,
+      "h": 40,
+      "r": 8,
+      "c": "#e0a77c",
+      "sw": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M22 200 Q22 150 64 140 L90 138 L100 158 L110 138 L136 140 Q178 150 178 200 Z",
+      "c": "accent2",
+      "noshadow": true,
+      "edge": true
+     },
+     {
+      "t": "circle",
+      "x": 55,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 145,
+      "y": 90,
+      "r": 10,
+      "c": "#f2c29b",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 100,
+      "y": 88,
+      "rx": 46,
+      "ry": 50,
+      "c": "#f2c29b",
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M52 88 Q44 30 100 28 Q156 30 148 88 Q142 60 120 54 Q96 66 72 56 Q56 66 52 88 Z",
+      "c": "#2b2433",
+      "w": 4,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M90 32 Q104 10 128 22 Q112 26 108 40 Z",
+      "c": "#2b2433",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 71,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 129,
+      "y": 108,
+      "r": 8,
+      "c": "#ee9a8a",
+      "o": 0.5,
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 80,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "ellipse",
+      "x": 120,
+      "y": 91,
+      "rx": 10,
+      "ry": 12,
+      "c": "#ffffff",
+      "w": 3,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 80,
+      "y": 94,
+      "r": 4,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "circle",
+      "x": 120,
+      "y": 94,
+      "r": 4,
+      "c": "#1d1b26",
+      "w": 0,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        66,
+        80
+       ],
+       [
+        92,
+        68
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "line",
+      "pts": [
+       [
+        108,
+        68
+       ],
+       [
+        134,
+        80
+       ]
+      ],
+      "c": "#2b2433",
+      "w": 6,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M84 124 Q92 115 100 121 Q108 127 116 118",
+      "c": "#0b0b10",
+      "fill": false,
+      "w": 5,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     },
+     {
+      "t": "path",
+      "d": "M152 56 Q160 70 152 78 Q144 70 152 56 Z",
+      "c": "#7ec8ff",
+      "w": 2,
+      "noshadow": true,
+      "edge": true,
+      "keep": true
+     }
+    ]
+   }
+  },
+  "facts": [
+   {
+    "claim": "Training builds the model into a fixed set of numbers; chatting uses the finished model and does not change it",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "In a chat the model only sees the conversation so far, which the app sends again with each new message",
+    "sources": [
+     0,
+     2
+    ]
+   },
+   {
+    "claim": "A new chat starts fresh by default; nothing carries over unless an app adds it",
+    "sources": [
+     0,
+     2
+    ]
+   },
+   {
+    "claim": "A context window limits how much the model can read at once, and older parts of a very long chat can get lost",
+    "sources": [
+     0,
+     2
+    ]
+   },
+   {
+    "claim": "Memory is a separate feature from model training",
+    "sources": [
+     5,
+     6
+    ]
+   },
+   {
+    "claim": "Memory features work by adding saved notes to what the AI reads in new chats",
+    "sources": [
+     0,
+     2
+    ]
+   },
+   {
+    "claim": "Anthropic says personal Claude chats may be used to train future models unless the user switches the setting off",
+    "sources": [
+     3,
+     4
+    ]
+   },
+   {
+    "claim": "ChatGPT personal plans can use conversations to improve models by default; the Improve the model for everyone toggle turns it off",
+    "sources": [
+     5,
+     6
+    ]
+   },
+   {
+    "claim": "Turning the training setting off is forward-looking and does not remove data already used in past training",
+    "sources": [
+     5,
+     6
+    ]
+   },
+   {
+    "claim": "ChatGPT Temporary Chats are not used for training",
+    "sources": [
+     5,
+     6
+    ]
+   },
+   {
+    "claim": "Learning from chats happens when a company trains a new version, not inside the live chat",
+    "sources": [
+     0,
+     1
+    ]
+   }
+  ],
+  "post": {
+   "title": "Does AI learn from what you tell it?",
+   "tiktok_caption": "You told your AI your dog's name. A new chat, and it has no idea. Does AI learn from what you tell it? #AI #FredsDesk #AIexplained #ChatGPT #AItips",
+   "yt_caption": "Does AI learn from what you tell it? You share your name and your dog, then open a new chat and it knows nothing. Training versus chatting, the context window, memory, and the setting that decides if chats help train future models, explained step by step. Follow FredsDesk for daily AI",
+   "pinned_comment": "The person in this story is fictional and the story is an illustration. Apps with a memory feature turned on can behave differently from the chat shown. The facts come from AI explainers and news reports: a trained model is fixed while you chat, each message is sent with the conversation so far, and some companies may use personal chats to help train future models unless you switch that off. Settings and policies change, so check your own app. The two tips are practical suggestions, not guarantees.",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#AIexplained",
+    "#ChatGPT",
+    "#AItips",
+    "#AIprivacy",
+    "#LearnOnTikTok"
+   ],
+   "sources": [
+    {
+     "name": "Simon Willison, Training is not the same as chatting",
+     "url": "https://simonwillison.net/2024/May/29/training-not-chatting/"
+    },
+    {
+     "name": "AI Hero, AI coding dictionary: inference",
+     "url": "https://www.aihero.dev/ai-coding-dictionary/inference"
+    },
+    {
+     "name": "Developer Way, How AI remembers and forgets (part 1)",
+     "url": "https://www.developerway.com/posts/how-ai-remembers-and-forgets-part1"
+    },
+    {
+     "name": "Tom's Guide, Your Claude chats are being used to train AI",
+     "url": "https://www.tomsguide.com/ai/claude/your-claude-chats-are-being-used-to-train-ai-heres-how-to-opt-out"
+    },
+    {
+     "name": "heise online, Anthropic will use user data for training",
+     "url": "https://heise.de/-10625683"
+    },
+    {
+     "name": "Evenfall, Does ChatGPT train on your conversations?",
+     "url": "https://www.evenfall.ai/guides/does-chatgpt-train-on-your-conversations"
+    },
+    {
+     "name": "LLMnesia, Does ChatGPT train on your conversations?",
+     "url": "https://www.llmnesia.com/blog/does-chatgpt-train-on-your-conversations"
+    }
+   ]
+  },
+  "recipe": {
+   "layout": "card",
+   "caption_style": "stack",
+   "caption_pos": "mid",
+   "hook_style": "sticker",
+   "hook_pos": "low",
+   "fonts": "anton",
+   "camera": "punchy",
+   "finish": "film",
+   "transitions": "glitchy",
+   "anim": "smooth",
+   "sfx": "soft",
+   "progress": false,
+   "family": "paper+aurora",
+   "sound": "soft|gentle"
+  },
+  "caption_preset": "stack"
+ }
+}
