@@ -125,18 +125,37 @@ def hit_chip(key, s):
     return norm(stereo(m), -8), 0
 
 
-def whoosh(key, dur=.7, apex=.68, gain=1.0):
+# Transition whoosh voicings (user review 2026-10-24: every cut sounded the same). Picked per cut at random, never the same one twice in a row.
+# fields: dur, apex (where the peak sits), lo/hi (band centre at rest / at the peak, Hz), width (band spread), sweep (bell | down | up), pdir (pan direction), gain
+WHOOSH_VARIANTS = [
+    dict(name="classic", dur=.70, apex=.68, lo=250, hi=2850, width=1.0, sweep="bell", pdir=1, gain=1.0),
+    dict(name="deep", dur=.90, apex=.60, lo=110, hi=1500, width=.8, sweep="bell", pdir=1, gain=1.15),
+    dict(name="airy", dur=.55, apex=.70, lo=600, hi=5200, width=1.3, sweep="bell", pdir=-1, gain=.9),
+    dict(name="rise", dur=.80, apex=.88, lo=200, hi=4200, width=1.0, sweep="up", pdir=-1, gain=1.0),
+    dict(name="fall", dur=.75, apex=.30, lo=300, hi=3600, width=1.0, sweep="down", pdir=1, gain=1.0),
+    dict(name="zip", dur=.36, apex=.55, lo=900, hi=6200, width=1.5, sweep="bell", pdir=-1, gain=.85),
+    dict(name="wide", dur=.95, apex=.62, lo=160, hi=2200, width=1.6, sweep="bell", pdir=-1, gain=1.05),
+]
+
+
+def whoosh(key, dur=.7, apex=.68, gain=1.0, v=None):
+    v = v or WHOOSH_VARIANTS[0]
+    dur, apex = v["dur"], v["apex"]
     rng = rng_for(key, "wh"); n = int(dur * SR); src = np.cumsum(rng.standard_normal(n)); src -= signal.savgol_filter(src, 2001, 2)  # brown-ish
     t = env_t(dur); amp = np.exp(-((t - dur * apex) / (dur * .22)) ** 2)
-    # time-varying band-pass via overlap-add blocks; center follows the motion
+    # time-varying band-pass via overlap-add blocks; the centre follows the motion
     hop = 1024; win = np.hanning(2 * hop); out = np.zeros(n + 2 * hop); padded = np.pad(src, (0, 2 * hop))
+    span = v["hi"] - v["lo"]
     for i in range(0, n, hop):
-        c = 250 + 2600 * np.exp(-((i / SR - dur * apex) / (dur * .25)) ** 2)
-        sos = signal.butter(2, [c * .6, min(c * 1.6, SR / 2.2)], "band", fs=SR, output="sos")
+        x = i / SR / dur
+        if v["sweep"] == "bell": c = v["lo"] + span * np.exp(-((i / SR - dur * apex) / (dur * .25)) ** 2)
+        elif v["sweep"] == "up": c = v["lo"] + span * min(1.0, x / max(apex, .1)) ** 1.6
+        else: c = v["hi"] - span * min(1.0, x / max(1 - apex, .1)) ** .8 if x > apex else v["hi"]
+        w = v["width"]; sos = signal.butter(2, [max(40, c * (1 - .4 * w)), min(c * (1 + .6 * w), SR / 2.2)], "band", fs=SR, output="sos")
         out[i:i + 2 * hop] += signal.sosfilt(sos, padded[i:i + 2 * hop]) * win
-    m = out[:n] * amp; pan = np.clip((t - dur * apex) / (dur * .5), -1, 1)  # equal-power pan as it passes
+    m = out[:n] * amp; pan = np.clip((t - dur * apex) / (dur * .5), -1, 1) * v["pdir"]  # equal-power pan as it passes
     L, Rr = np.cos((pan + 1) * np.pi / 4), np.sin((pan + 1) * np.pi / 4)
-    return norm(np.stack([m * L, m * Rr]), -12 + 6 * (gain - 1)), int(dur * apex * SR)
+    return norm(np.stack([m * L, m * Rr]), -12 + 6 * (gain - 1) + 20 * np.log10(v["gain"]) / 6), int(dur * apex * SR)
 
 
 def riser(key, dur=1.6):
@@ -185,9 +204,12 @@ def build(work):
     vid = tl.get("title", "") + str(tl["seed"])
     if tl.get("hook"):   # opening hit at 0.0 s from the style's kit: the first sound stops the swipe
         place(0.02, HIT.get(kit, hit_cinematic)((vid, "open"), 1.2), gain * .95, "open-hit")
+    wrng = rng_for(vid, "whoosh-order"); last_v = -1
     for s in tl["scenes"]:
         if s["i"] > 0 and s.get("transition") != "none":
-            place(s["start"], whoosh((vid, "cut", s["i"]), .7 if kit != "soft" else 1.0), .8 * gain, "whoosh")
+            choices = [k for k in range(len(WHOOSH_VARIANTS)) if k != last_v]; last_v = int(wrng.choice(choices))   # random, never the same voicing twice in a row
+            vv = dict(WHOOSH_VARIANTS[last_v]); vv["dur"] = vv["dur"] * (1.2 if kit == "soft" else 1.0)
+            place(s["start"], whoosh((vid, "cut", s["i"]), gain=1.0, v=vv), .8 * gain, "whoosh:" + vv["name"])
         for j, k in enumerate(s["keys"] if keyhits else []):   # keyhits false (format E): no punch sound on highlighted words, risers or braams
             strength = k["str"]; gen = HIT.get(kit, hit_cinematic)((vid, s["i"], j), strength)
             place(k["s"], gen, gain * (.55 + .35 * min(strength, 1.5)), f"hit:{k['w']}")
