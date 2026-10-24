@@ -48,7 +48,7 @@ BG.drawArt = (art, e, o = {}) => {
     const colr = s.keep ? BG.col(s.c || 'ink', e) : fixc(BG.col(s.c || 'ink', e)), fillOn = s.fill !== undefined ? !!s.fill : (st !== 'line');
     let fillCol = colr; if (o.tint) fillCol = mixc(colr, '#ffffff', o.tint);
     const lw = s.sw ?? (s.t === 'rect' ? undefined : s.w) ?? (st === 'line' ? 8 : st === 'blueprint' ? 4 : st === 'sticker' ? 9 : 7);
-    const strokeCol = (st === 'sticker' || st === 'flat' || st === 'paper') ? (bgL < .5 ? '#fbf8f0' : '#14141a') : (st === 'blueprint' ? mixc(colr, '#ffffff', .25) : colr);
+    const strokeCol = s.edge ? (bgL < .5 ? mixc(e.bg[0], '#000000', .78) : '#0b0b10') : (st === 'sticker' || st === 'flat' || st === 'paper') ? (bgL < .5 ? '#fbf8f0' : '#14141a') : (st === 'blueprint' ? mixc(colr, '#ffffff', .25) : colr);
     const P2 = () => {
       x.beginPath();
       if (s.t === 'rect') { x.roundRect(s.x, s.y, s.w, s.h, s.r || 0); }

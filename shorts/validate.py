@@ -168,7 +168,7 @@ def main():
     if fmt == "E":
         import jake as JK
         lib = JK.build(); art_ = meta.get("art") or {}
-        if meta.get("character") != "Jake": E('format E: meta.character must be "Jake"')
+        if meta.get("character") not in ("Jake", "You"): E('format E: meta.character must be "Jake" or "You" (unnamed figure, second-person story)')
         q = str(meta.get("question", "")).strip()
         if not q.endswith("?") or len(q.split()) < 3: E("format E: meta.question must be the viewer's question (ends with ?)")
         pc = post.get("pinned_comment", "")
@@ -191,7 +191,7 @@ def main():
         n_ = len(scenes)
         try:
             fp, rh, fa = int(rt["first_payoff_scene"]), int(rt["rehook_scene"]), int(rt["final_answer_scene"])
-            if fp > 1: E("retention.first_payoff_scene must be 0 or 1 (a first answer fragment inside the first 2 scenes, about 5-8 s)")
+            if fp > 7: E("retention.first_payoff_scene must be 7 or less: a first clue (not the full answer) inside the first ~20 s; the answer itself is held for the last third")
             if not .3 * n_ <= rh <= .7 * n_: E(f"retention.rehook_scene {rh} must sit in the middle third of {n_} scenes")
             if fa < max(rh + 1, .6 * n_) or fa > n_ - 1: E(f"retention.final_answer_scene {fa} must come after the re-hook, in the last 40% of the video")
             if 0 <= rh < n_ and not REHOOK.search(" ".join(scenes[rh].get("lines") or [])): E("the re-hook scene needs a turn word (but / however / here's the catch / turns out / wait ...)")

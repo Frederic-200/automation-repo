@@ -15,7 +15,7 @@ The validator does not count jake_* drawings toward the 2-6 drawing limit and sk
 import json, re, sys
 
 SKIN, SKIN2, HAIR = "#f2c29b", "#e0a77c", "#2b2433"
-WHITE, PUPIL, BLUSH, MOUTH = "#ffffff", "#1d1b26", "#ee9a8a", "#7a2e3a"
+WHITE, PUPIL, BLUSH, MOUTH = "#ffffff", "#1d1b26", "#ee9a8a", "#0b0b10"
 SWEAT = "#7ec8ff"
 
 
@@ -75,7 +75,7 @@ def build():
         # per-shape shadows on eyes, brows, hair and cheeks looked misplaced (user review 2026-10-24)
         sil = [S("path", d="M27 207 Q27 157 69 147 L141 147 Q183 157 183 207 Z", c="#000000", o=.30, w=0, keep=True, noshadow=True),
                S("ellipse", x=105, y=95, rx=46, ry=50, c="#000000", o=.30, w=0, keep=True, noshadow=True)]
-        for sh in a["shapes"]: sh["noshadow"] = True
+        for sh in a["shapes"]: sh["noshadow"] = True; sh["edge"] = True    # outline follows the background (dark shade on dark scenes, near-black on light), mouth is black
         a["shapes"] = sil + a["shapes"]
     for a in A.values():                      # keep: the engine's automatic contrast fix must never recolour Jake (skin, eyes, hair stay identical in every video)
         for sh in a["shapes"]:
