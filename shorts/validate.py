@@ -186,6 +186,9 @@ def main():
         for i_ in sorted(used):
             if i_ not in lib: E(f"unknown Jake drawing '{i_}' (see python3 shorts/jake.py --list)")
             elif art_.get(i_) != lib[i_]: E(f"'{i_}' in meta.art differs from the Jake library: run python3 shorts/jake.py <file>")
+        # user review 2026-10-24: never open with the answer
+        for i_, sc_ in enumerate(scenes[:7]):
+            if re.search(r"\b(short answer|the answer is|simple answer|quick answer|in short)\b", " ".join(sc_.get("lines") or []), re.I): E(f"scene {i_}: do not give the answer or say 'the short answer' in the opening (hold the answer for the last third; give a clue instead)")
         # retention plan (a checkable commitment): open loop at the hook, first payoff early, re-hook in the middle, full answer late
         rt = meta.get("retention") or {}
         n_ = len(scenes)
