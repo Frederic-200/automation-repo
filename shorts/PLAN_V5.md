@@ -21,3 +21,9 @@ Goal: answer the questions AI lovers actually ask ("Can AI get sued?", "Will AI 
 - Retention cannot be measured from here. After posting, the user sends the retention graphs (average view duration, first-3-second drop-off) and the hook and pacing rules are tuned from them.
 - Jake is drawn by code: 7 expressions (neutral, think, worried, surprised, happy, confused, blank). New poses need engine work.
 - Legal and "takeover" questions are explained neutrally with sources; no legal advice, no scare framing.
+
+## Revision 2026-10-24 (user approved sample v3, "why AI makes things up")
+- Jake is retired as a NAME: the story is told to "you" (the viewer), the drawn figure stays, unnamed. Outline adapts to the background, mouth black.
+- Never open with the answer: scenario first, question named after about 20 s, first clue by scene 7, answer in the last third.
+- Typical length 100-170 s; render takes 45-60 min (workflow timeout 120 min).
+- The daily task is re-enabled for this format. The news image carousel task is still to be built.
