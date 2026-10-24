@@ -42,7 +42,7 @@ concurrency:
 jobs:
   shorts:
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 120
     env:
       VIDEO_KIT_CACHE: /home/runner/.cache/video-kit
     steps:
