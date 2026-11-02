@@ -6,8 +6,8 @@ on:
   push:
     branches: [main]
     paths: ["shorts/queue/*.json"]
-  schedule:
-    - cron: "20 19 * * *"   # backup: 19:20 UTC = 03:20 Philippine time. Builds today's script only if it exists and is not published yet.
+  # schedule:  # PAUSED - replaced by the daily loop (loops.yml). Un-comment these 2 lines to bring it back.
+  #   - cron: "20 19 * * *"   # backup: 19:20 UTC = 03:20 Philippine time. Builds today's script only if it exists and is not published yet.
   workflow_dispatch:
     inputs:
       file:
