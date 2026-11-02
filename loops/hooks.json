@@ -92,10 +92,10 @@
  {
   "lines": [
    {
-    "text": "Just"
+    "text": "Watch what"
    },
    {
-    "text": "watch",
+    "text": "the middle does",
     "accent": true,
     "big": true
    }
@@ -314,10 +314,10 @@
  {
   "lines": [
    {
-    "text": "Keep"
+    "text": "Watch the"
    },
    {
-    "text": "watching",
+    "text": "last second",
     "accent": true,
     "big": true
    }
@@ -386,10 +386,10 @@
  {
   "lines": [
    {
-    "text": "Hold"
+    "text": "It gets"
    },
    {
-    "text": "on",
+    "text": "better",
     "accent": true,
     "big": true
    }
@@ -422,10 +422,10 @@
  {
   "lines": [
    {
-    "text": "Stay"
+    "text": "Stay for"
    },
    {
-    "text": "with it",
+    "text": "the last second",
     "accent": true,
     "big": true
    }
@@ -536,10 +536,10 @@
  {
   "lines": [
    {
-    "text": "Built from"
+    "text": "Every frame"
    },
    {
-    "text": "pure code",
+    "text": "is math",
     "accent": true,
     "big": true
    }
@@ -572,10 +572,10 @@
  {
   "lines": [
    {
-    "text": "Zero"
+    "text": "Guess how"
    },
    {
-    "text": "footage",
+    "text": "this was made",
     "accent": true,
     "big": true
    }
@@ -584,10 +584,10 @@
  {
   "lines": [
    {
-    "text": "All"
+    "text": "Nothing here"
    },
    {
-    "text": "code",
+    "text": "was filmed",
     "accent": true,
     "big": true
    }
@@ -1014,10 +1014,10 @@
  {
   "lines": [
    {
-    "text": "Pause"
+    "text": "Quick"
    },
    {
-    "text": "here",
+    "text": "reset",
     "accent": true,
     "big": true
    }
@@ -1140,10 +1140,10 @@
  {
   "lines": [
    {
-    "text": "Daily"
+    "text": "A new loop"
    },
    {
-    "text": "loops",
+    "text": "every night",
     "accent": true,
     "big": true
    }
@@ -1200,7 +1200,7 @@
  {
   "lines": [
    {
-    "text": "Fresh"
+    "text": "Tonight's"
    },
    {
     "text": "loop",
@@ -1787,6 +1787,246 @@
   ],
   "scenes": [
    "morph"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Every cube"
+   },
+   {
+    "text": "gets a turn",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "cubes"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Watch them fall"
+   },
+   {
+    "text": "into line",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "cubes"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the last cube",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "cubes"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the last domino",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "domino"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "One push"
+   },
+   {
+    "text": "starts it all",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "domino"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Watch them"
+   },
+   {
+    "text": "drift apart",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "pendulum"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Now watch"
+   },
+   {
+    "text": "them realign",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "pendulum"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Every tooth"
+   },
+   {
+    "text": "fits",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "gears"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Nothing"
+   },
+   {
+    "text": "slips",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "gears"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Never"
+   },
+   {
+    "text": "collide",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "rings"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Stairs that"
+   },
+   {
+    "text": "never end",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "helix"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Climb"
+   },
+   {
+    "text": "forever",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "helix"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Watch the"
+   },
+   {
+    "text": "ripples travel",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "wave"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Watch it"
+   },
+   {
+    "text": "shapeshift",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "morph"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Count the"
+   },
+   {
+    "text": "bounces",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "bounce"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Follow"
+   },
+   {
+    "text": "one bead",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "ribbons"
   ]
  }
 ]

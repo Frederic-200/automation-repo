@@ -73,7 +73,7 @@ window.init = async function (config) {
   const cap = document.getElementById('cap'); cap.innerHTML = '';
   capLines = (cfg.caption || []).map((ln, i) => {
     const el = document.createElement('span'); el.className = 'ln'; el.textContent = ln.text;
-    const fs = C.clamp(930 / (ln.text.length * 0.66), 78, ln.big ? 215 : 165); el.style.fontSize = fs + 'px';
+    const fs = C.clamp(930 / (ln.text.length * 0.66), 56, ln.big ? 215 : 165); el.style.fontSize = fs + 'px';
     if (ln.accent) el.style.color = palette.ramp[0];
     el.style.opacity = 0; cap.appendChild(el); return el;
   });
