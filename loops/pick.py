@@ -14,7 +14,7 @@ SCENES = ["domino", "cubes", "pendulum", "rings", "bounce", "morph", "ribbons", 
 RECENT_SCENES_EXCLUDED = 4                       # a scene cannot come back until 4 other scenes have been used
 MATERIALS = ["matte", "glossy", "metal", "toon", "glass"]
 CAMERAS = ["orbit", "pushin", "sway", "rise"]
-FPS, SECONDS = 30, 15
+FPS, SECONDS = 30, int(os.environ.get("LOOPS_SECONDS", 15))      # LOOPS_SECONDS only for quick pipeline tests
 
 
 def load(name, default):

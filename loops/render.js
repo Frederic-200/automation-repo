@@ -7,7 +7,8 @@
    Every frame is drawn at an exact time (not real-time), so output is identical on every run/machine. */
 'use strict';
 const fs = require('fs'), path = require('path'), http = require('http'), { spawn } = require('child_process');
-const { chromium } = require('playwright');
+let pw; try { pw = require('playwright'); } catch (e) { pw = require('playwright-core'); }
+const { chromium } = pw;
 
 const args = process.argv.slice(2);
 const opt = (n, d = null) => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : d; };

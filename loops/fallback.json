@@ -1,0 +1,7 @@
+{
+ "scene": "domino",
+ "palette": "sunset",
+ "material": "glossy",
+ "seed": 11,
+ "note": "known-good recipe (approved Phase 1 sample 1). Used only when the normal build fails its quality gate."
+}
