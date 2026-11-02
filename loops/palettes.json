@@ -1,0 +1,122 @@
+[
+ {
+  "name": "sunset",
+  "bg": [
+   "#2b1055",
+   "#ff6a3d"
+  ],
+  "ramp": [
+   "#ffd166",
+   "#ff6a3d",
+   "#c9184a",
+   "#7b2cbf"
+  ],
+  "ground": "#3a1a5c",
+  "key": "#fff1d6"
+ },
+ {
+  "name": "ice",
+  "bg": [
+   "#0b1d3a",
+   "#5fb8ff"
+  ],
+  "ramp": [
+   "#e8f7ff",
+   "#8fd3ff",
+   "#3a8dde",
+   "#1b4f9c"
+  ],
+  "ground": "#102a52",
+  "key": "#e6f4ff"
+ },
+ {
+  "name": "mint",
+  "bg": [
+   "#06241f",
+   "#2ec4a6"
+  ],
+  "ramp": [
+   "#f4fff8",
+   "#9ff5d1",
+   "#2ec4a6",
+   "#0b7a75"
+  ],
+  "ground": "#0c3a35",
+  "key": "#f0fff7"
+ },
+ {
+  "name": "candy",
+  "bg": [
+   "#3a0ca3",
+   "#f72585"
+  ],
+  "ramp": [
+   "#fff0f6",
+   "#ffb3d9",
+   "#f72585",
+   "#7209b7"
+  ],
+  "ground": "#4a1580",
+  "key": "#fff2f8"
+ },
+ {
+  "name": "gold",
+  "bg": [
+   "#14110f",
+   "#6b4f1d"
+  ],
+  "ramp": [
+   "#fff3c4",
+   "#ffd166",
+   "#e09f1f",
+   "#8a5a00"
+  ],
+  "ground": "#241b10",
+  "key": "#fff6dc"
+ },
+ {
+  "name": "lava",
+  "bg": [
+   "#1a0505",
+   "#e63946"
+  ],
+  "ramp": [
+   "#ffe8d6",
+   "#ff9e6d",
+   "#e63946",
+   "#6a040f"
+  ],
+  "ground": "#2b0a0a",
+  "key": "#ffeede"
+ },
+ {
+  "name": "forest",
+  "bg": [
+   "#0a1f12",
+   "#52b788"
+  ],
+  "ramp": [
+   "#d8f3dc",
+   "#95d5b2",
+   "#40916c",
+   "#1b4332"
+  ],
+  "ground": "#10281a",
+  "key": "#f1fff3"
+ },
+ {
+  "name": "mono",
+  "bg": [
+   "#0d0d12",
+   "#3a3a4a"
+  ],
+  "ramp": [
+   "#ffffff",
+   "#c9ccd6",
+   "#8a8fa3",
+   "#454a5e"
+  ],
+  "ground": "#17171f",
+  "key": "#ffffff"
+ }
+]
