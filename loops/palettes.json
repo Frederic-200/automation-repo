@@ -118,5 +118,405 @@
   ],
   "ground": "#17171f",
   "key": "#ffffff"
+ },
+ {
+  "name": "aurora",
+  "bg": [
+   "#041a2b",
+   "#2de2a6"
+  ],
+  "ramp": [
+   "#eafff6",
+   "#7cf5c8",
+   "#2aa9d6",
+   "#6a4bd8"
+  ],
+  "ground": "#06283a",
+  "key": "#f0fffb"
+ },
+ {
+  "name": "peach",
+  "bg": [
+   "#3b1a2c",
+   "#ff9a76"
+  ],
+  "ramp": [
+   "#fff3e6",
+   "#ffc29a",
+   "#ff8a65",
+   "#c2477a"
+  ],
+  "ground": "#4a2036",
+  "key": "#fff4ea"
+ },
+ {
+  "name": "ocean",
+  "bg": [
+   "#021b33",
+   "#0aa6c2"
+  ],
+  "ramp": [
+   "#e0fbff",
+   "#7de0ee",
+   "#1ba0c9",
+   "#0b5a99"
+  ],
+  "ground": "#05304f",
+  "key": "#e6fcff"
+ },
+ {
+  "name": "grape",
+  "bg": [
+   "#1a0b2e",
+   "#8e44ad"
+  ],
+  "ramp": [
+   "#f3e5ff",
+   "#c79bff",
+   "#8e44ad",
+   "#4a1d7a"
+  ],
+  "ground": "#27103f",
+  "key": "#f7eeff"
+ },
+ {
+  "name": "citrus",
+  "bg": [
+   "#1f2a0d",
+   "#c6e03a"
+  ],
+  "ramp": [
+   "#fffde0",
+   "#f2e94e",
+   "#ff9f1c",
+   "#e4572e"
+  ],
+  "ground": "#2b3a12",
+  "key": "#fffbe0"
+ },
+ {
+  "name": "rose",
+  "bg": [
+   "#2a0a18",
+   "#e63a7a"
+  ],
+  "ramp": [
+   "#fff0f5",
+   "#ffb0cc",
+   "#e63a7a",
+   "#8c1b4e"
+  ],
+  "ground": "#3d1024",
+  "key": "#fff2f7"
+ },
+ {
+  "name": "teal-gold",
+  "bg": [
+   "#04252b",
+   "#e0a526"
+  ],
+  "ramp": [
+   "#fff7d6",
+   "#f2c14e",
+   "#2aa198",
+   "#0b6e6e"
+  ],
+  "ground": "#073338",
+  "key": "#fff8e0"
+ },
+ {
+  "name": "slate",
+  "bg": [
+   "#10141c",
+   "#5a6b8c"
+  ],
+  "ramp": [
+   "#f1f4fa",
+   "#b8c4de",
+   "#7d8fb5",
+   "#3c4a6b"
+  ],
+  "ground": "#1a2030",
+  "key": "#f4f7ff"
+ },
+ {
+  "name": "coral",
+  "bg": [
+   "#2b0d12",
+   "#ff6f61"
+  ],
+  "ramp": [
+   "#fff1ea",
+   "#ffc1a6",
+   "#ff6f61",
+   "#c23b4b"
+  ],
+  "ground": "#3d141b",
+  "key": "#fff3ec"
+ },
+ {
+  "name": "lime-night",
+  "bg": [
+   "#06100a",
+   "#3be07a"
+  ],
+  "ramp": [
+   "#eaffe0",
+   "#9bff6b",
+   "#2fd47a",
+   "#0b8f5a"
+  ],
+  "ground": "#0b2013",
+  "key": "#f0ffe8"
+ },
+ {
+  "name": "steel-blue",
+  "bg": [
+   "#0a1626",
+   "#4a8fd6"
+  ],
+  "ramp": [
+   "#eef6ff",
+   "#a6cdf5",
+   "#4a8fd6",
+   "#1f4e8c"
+  ],
+  "ground": "#12243a",
+  "key": "#f0f7ff"
+ },
+ {
+  "name": "sand",
+  "bg": [
+   "#2a1f14",
+   "#d9a566"
+  ],
+  "ramp": [
+   "#fff6e5",
+   "#f0cf9a",
+   "#d9a566",
+   "#8a5a2b"
+  ],
+  "ground": "#3a2b1c",
+  "key": "#fff7e8"
+ },
+ {
+  "name": "neon",
+  "bg": [
+   "#08031a",
+   "#7a1bff"
+  ],
+  "ramp": [
+   "#fff0ff",
+   "#ff4de3",
+   "#2de2ff",
+   "#7a1bff"
+  ],
+  "ground": "#150633",
+  "key": "#fff2ff"
+ },
+ {
+  "name": "berry",
+  "bg": [
+   "#1c0620",
+   "#c2185b"
+  ],
+  "ramp": [
+   "#ffe6f2",
+   "#ff8ac0",
+   "#c2185b",
+   "#6a1b9a"
+  ],
+  "ground": "#2d0a33",
+  "key": "#ffeef6"
+ },
+ {
+  "name": "mint-cream",
+  "bg": [
+   "#0d2b26",
+   "#9ee6cf"
+  ],
+  "ramp": [
+   "#ffffff",
+   "#d8f7ec",
+   "#7fd8bd",
+   "#2a9d8f"
+  ],
+  "ground": "#12403a",
+  "key": "#ffffff"
+ },
+ {
+  "name": "copper",
+  "bg": [
+   "#1a0e08",
+   "#b8662e"
+  ],
+  "ramp": [
+   "#fff0e0",
+   "#f0b27a",
+   "#b8662e",
+   "#6b2f12"
+  ],
+  "ground": "#2b160c",
+  "key": "#fff2e2"
+ },
+ {
+  "name": "twilight",
+  "bg": [
+   "#0b0f2e",
+   "#e07ab8"
+  ],
+  "ramp": [
+   "#fff0fa",
+   "#ffb3e0",
+   "#8f7cf2",
+   "#3f4fd8"
+  ],
+  "ground": "#151a45",
+  "key": "#fff3fb"
+ },
+ {
+  "name": "tropical",
+  "bg": [
+   "#032b2b",
+   "#ffb703"
+  ],
+  "ramp": [
+   "#fff8dc",
+   "#ffd24a",
+   "#2ec4b6",
+   "#e63946"
+  ],
+  "ground": "#054040",
+  "key": "#fffbe8"
+ },
+ {
+  "name": "christmas",
+  "bg": [
+   "#0b2a14",
+   "#c1121f"
+  ],
+  "ramp": [
+   "#f8fff4",
+   "#e63946",
+   "#2a9d4a",
+   "#f2c14e"
+  ],
+  "ground": "#123a1c",
+  "key": "#fff9ee",
+  "months": [
+   12
+  ]
+ },
+ {
+  "name": "halloween",
+  "bg": [
+   "#0f0614",
+   "#ff7a00"
+  ],
+  "ramp": [
+   "#fff3e0",
+   "#ffa733",
+   "#7b2cbf",
+   "#2b0a3d"
+  ],
+  "ground": "#1b0a24",
+  "key": "#fff1de",
+  "months": [
+   10
+  ]
+ },
+ {
+  "name": "sakura",
+  "bg": [
+   "#3a1a2b",
+   "#ffb7d1"
+  ],
+  "ramp": [
+   "#ffffff",
+   "#ffd6e5",
+   "#ff9ec2",
+   "#c75b8a"
+  ],
+  "ground": "#4d2338",
+  "key": "#fff6fa",
+  "months": [
+   3,
+   4
+  ]
+ },
+ {
+  "name": "valentine",
+  "bg": [
+   "#2b0614",
+   "#ff3d6e"
+  ],
+  "ramp": [
+   "#fff0f3",
+   "#ff9bb3",
+   "#ff3d6e",
+   "#a8123a"
+  ],
+  "ground": "#3d0c1f",
+  "key": "#fff2f6",
+  "months": [
+   2
+  ]
+ },
+ {
+  "name": "summer",
+  "bg": [
+   "#052a45",
+   "#ffd23f"
+  ],
+  "ramp": [
+   "#fffbe0",
+   "#ffe066",
+   "#3ec1d3",
+   "#ff6b6b"
+  ],
+  "ground": "#083a5c",
+  "key": "#fffce8",
+  "months": [
+   6,
+   7,
+   8
+  ]
+ },
+ {
+  "name": "newyear",
+  "bg": [
+   "#0a0a1e",
+   "#d4af37"
+  ],
+  "ramp": [
+   "#fffbe6",
+   "#f5d76e",
+   "#c0c0d8",
+   "#6c63ff"
+  ],
+  "ground": "#14142e",
+  "key": "#fffdf0",
+  "months": [
+   1
+  ]
+ },
+ {
+  "name": "harvest",
+  "bg": [
+   "#2a1507",
+   "#e08a1e"
+  ],
+  "ramp": [
+   "#fff2d6",
+   "#f2b84b",
+   "#c8601f",
+   "#7a2e12"
+  ],
+  "ground": "#3a1f0c",
+  "key": "#fff4dc",
+  "months": [
+   9,
+   11
+  ]
  }
 ]

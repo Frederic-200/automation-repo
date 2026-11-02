@@ -55,7 +55,7 @@ window.init = async function (config) {
   const fitLog = [];
   for (let it = 0; it < 12; it++) {            // converge both ways: pull back if it overflows, move in if it is too small
     const w = worst(), topPx = (1 - w.top) / 2 * cfg.height + shift, botPx = (1 - w.bot) / 2 * cfg.height + shift;
-    const k = Math.max(w.wx / 0.93, 1 + (700 - topPx) / 1400, 1 + (botPx - 1800) / 1400);
+    const k = Math.max(w.wx / 0.95, 1 + (700 - topPx) / 1400, 1 + (botPx - 1800) / 1400);
     fitLog.push({ it, wx: +w.wx.toFixed(3), topPx: Math.round(topPx), botPx: Math.round(botPx), k: +k.toFixed(3), dist: +sc.view.dist.toFixed(2) });
     if (Math.abs(k - 1) < 0.012) break; sc.view.dist *= C.clamp(k, 0.75, 1.3);
   }

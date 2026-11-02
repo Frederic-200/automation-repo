@@ -26,8 +26,7 @@
  {
   "lines": [
    {
-    "text": "Watch it",
-    "big": true
+    "text": "Watch it"
    },
    {
     "text": "again",
@@ -63,18 +62,6 @@
  {
   "lines": [
    {
-    "text": "Pure"
-   },
-   {
-    "text": "code magic",
-    "accent": true,
-    "big": true
-   }
-  ]
- },
- {
-  "lines": [
-   {
     "text": "Stay for"
    },
    {
@@ -82,6 +69,12 @@
     "accent": true,
     "big": true
    }
+  ],
+  "scenes": [
+   "wave",
+   "bounce",
+   "cubes",
+   "domino"
   ]
  },
  {
@@ -94,6 +87,1706 @@
     "accent": true,
     "big": true
    }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Just"
+   },
+   {
+    "text": "watch",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the drop",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Almost"
+   },
+   {
+    "text": "hypnotic",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Don't"
+   },
+   {
+    "text": "blink",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Watch"
+   },
+   {
+    "text": "closely",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "It keeps"
+   },
+   {
+    "text": "going",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Find the"
+   },
+   {
+    "text": "start",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Where does"
+   },
+   {
+    "text": "it begin?",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Is it"
+   },
+   {
+    "text": "over yet?",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Pure"
+   },
+   {
+    "text": "satisfaction",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Zero"
+   },
+   {
+    "text": "stress",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Slow"
+   },
+   {
+    "text": "down",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Breathe"
+   },
+   {
+    "text": "in",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait"
+   },
+   {
+    "text": "for it",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Look"
+   },
+   {
+    "text": "closer",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Bet you"
+   },
+   {
+    "text": "can't find the seam",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Count the"
+   },
+   {
+    "text": "waves",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "wave",
+   "bounce",
+   "cubes",
+   "domino"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Follow"
+   },
+   {
+    "text": "the motion",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Keep"
+   },
+   {
+    "text": "watching",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "You can't"
+   },
+   {
+    "text": "stop now",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "This is"
+   },
+   {
+    "text": "oddly calming",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Listen"
+   },
+   {
+    "text": "closely",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Turn the"
+   },
+   {
+    "text": "sound on",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Just a"
+   },
+   {
+    "text": "little more",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Hold"
+   },
+   {
+    "text": "on",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "One more"
+   },
+   {
+    "text": "time",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Watch till"
+   },
+   {
+    "text": "the end",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Stay"
+   },
+   {
+    "text": "with it",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Feel the"
+   },
+   {
+    "text": "rhythm",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Ride the"
+   },
+   {
+    "text": "wave",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "wave",
+   "bounce",
+   "cubes",
+   "domino"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Find your"
+   },
+   {
+    "text": "calm",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Mind"
+   },
+   {
+    "text": "reset",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Quiet"
+   },
+   {
+    "text": "moment",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Made by"
+   },
+   {
+    "text": "code",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "No camera"
+   },
+   {
+    "text": "just code",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Every pixel"
+   },
+   {
+    "text": "is code",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Built from"
+   },
+   {
+    "text": "pure code",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Coded"
+   },
+   {
+    "text": "not filmed",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "100% code"
+   },
+   {
+    "text": "0% camera",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Zero"
+   },
+   {
+    "text": "footage",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "All"
+   },
+   {
+    "text": "code",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Math"
+   },
+   {
+    "text": "in motion",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Maths"
+   },
+   {
+    "text": "made visible",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Physics?"
+   },
+   {
+    "text": "nope, math",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Pure"
+   },
+   {
+    "text": "geometry",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Patterns"
+   },
+   {
+    "text": "everywhere",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Order"
+   },
+   {
+    "text": "from chaos",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Chaos"
+   },
+   {
+    "text": "tamed",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Perfect"
+   },
+   {
+    "text": "timing",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Perfectly"
+   },
+   {
+    "text": "synced",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "In"
+   },
+   {
+    "text": "sync",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Out of sync"
+   },
+   {
+    "text": "then back",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Watch them"
+   },
+   {
+    "text": "realign",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "pendulum",
+   "domino",
+   "cubes"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "They all"
+   },
+   {
+    "text": "line up",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "pendulum",
+   "domino",
+   "cubes"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "The loop"
+   },
+   {
+    "text": "is hidden",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Spot the"
+   },
+   {
+    "text": "seam",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "There is"
+   },
+   {
+    "text": "no seam",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Seamless"
+   },
+   {
+    "text": "by design",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Endless"
+   },
+   {
+    "text": "motion",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Forever"
+   },
+   {
+    "text": "loops",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Again"
+   },
+   {
+    "text": "and again",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Round"
+   },
+   {
+    "text": "and round",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "rings",
+   "gears",
+   "helix",
+   "morph"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Spin"
+   },
+   {
+    "text": "spin spin",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "rings",
+   "gears",
+   "morph",
+   "helix"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Your brain"
+   },
+   {
+    "text": "loves this",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Brain"
+   },
+   {
+    "text": "candy",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Eye"
+   },
+   {
+    "text": "candy",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Pure"
+   },
+   {
+    "text": "eye candy",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Mood"
+   },
+   {
+    "text": "booster",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Instant"
+   },
+   {
+    "text": "calm",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Tiny reset"
+   },
+   {
+    "text": "for your brain",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "A tiny"
+   },
+   {
+    "text": "break",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Take a"
+   },
+   {
+    "text": "30 sec break",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Scroll"
+   },
+   {
+    "text": "pause",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Stop"
+   },
+   {
+    "text": "scrolling",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Pause"
+   },
+   {
+    "text": "here",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "You needed"
+   },
+   {
+    "text": "this",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Today's"
+   },
+   {
+    "text": "loop",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Today's"
+   },
+   {
+    "text": "calm",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Loop of"
+   },
+   {
+    "text": "the day",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Daily"
+   },
+   {
+    "text": "dose",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Your daily"
+   },
+   {
+    "text": "satisfying",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Daily"
+   },
+   {
+    "text": "wave",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "wave",
+   "bounce",
+   "cubes",
+   "domino"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "New loop"
+   },
+   {
+    "text": "every day",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Follow for"
+   },
+   {
+    "text": "daily loops",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Daily"
+   },
+   {
+    "text": "loops",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Tomorrow's"
+   },
+   {
+    "text": "loop is wilder",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "See you"
+   },
+   {
+    "text": "tomorrow",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Day"
+   },
+   {
+    "text": "by day",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Another day,"
+   },
+   {
+    "text": "another loop",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Fresh"
+   },
+   {
+    "text": "loop",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Hot"
+   },
+   {
+    "text": "off the render",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Just"
+   },
+   {
+    "text": "rendered",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Straight"
+   },
+   {
+    "text": "from code",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Watch the"
+   },
+   {
+    "text": "colors",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "domino",
+   "cubes",
+   "pendulum",
+   "rings",
+   "bounce",
+   "morph",
+   "ribbons",
+   "gears",
+   "helix",
+   "wave"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Love the"
+   },
+   {
+    "text": "colors",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Those"
+   },
+   {
+    "text": "colors",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Rainbow"
+   },
+   {
+    "text": "vibes",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Soft"
+   },
+   {
+    "text": "colors",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Glow"
+   },
+   {
+    "text": "mode",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Shine"
+   },
+   {
+    "text": "bright",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Glossy"
+   },
+   {
+    "text": "goodness",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Shiny"
+   },
+   {
+    "text": "and smooth",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Smooth"
+   },
+   {
+    "text": "as it gets",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Smooth"
+   },
+   {
+    "text": "motion",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Silky"
+   },
+   {
+    "text": "smooth",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Crisp"
+   },
+   {
+    "text": "and clean",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Clean"
+   },
+   {
+    "text": "and calm",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Neat"
+   },
+   {
+    "text": "little loop",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Tidy"
+   },
+   {
+    "text": "chaos",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Little"
+   },
+   {
+    "text": "wonders",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Tiny"
+   },
+   {
+    "text": "details",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Notice"
+   },
+   {
+    "text": "the detail",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Spot the"
+   },
+   {
+    "text": "detail",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Rate it"
+   },
+   {
+    "text": "1 to 10",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Pick a"
+   },
+   {
+    "text": "favorite spot",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Where do"
+   },
+   {
+    "text": "you look?",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "What do"
+   },
+   {
+    "text": "you see?",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Which one"
+   },
+   {
+    "text": "is first?",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Guess the"
+   },
+   {
+    "text": "next move",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "domino",
+   "cubes",
+   "bounce",
+   "pendulum"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Predict"
+   },
+   {
+    "text": "the wave",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "wave",
+   "bounce",
+   "cubes",
+   "domino"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Ready for"
+   },
+   {
+    "text": "the wave?",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "wave",
+   "bounce",
+   "cubes",
+   "domino"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Here it"
+   },
+   {
+    "text": "comes",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "And"
+   },
+   {
+    "text": "again",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the flip",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "cubes"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the ripple",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "wave",
+   "bounce",
+   "cubes"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the swing",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "pendulum"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the twist",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "rings",
+   "helix",
+   "morph"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the click",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "gears",
+   "domino"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the bounce",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "bounce"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the glow",
+    "accent": true,
+    "big": true
+   }
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the spiral",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "domino",
+   "helix"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the flow",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "ribbons",
+   "wave"
+  ]
+ },
+ {
+  "lines": [
+   {
+    "text": "Wait for"
+   },
+   {
+    "text": "the shape",
+    "accent": true,
+    "big": true
+   }
+  ],
+  "scenes": [
+   "morph"
   ]
  }
 ]

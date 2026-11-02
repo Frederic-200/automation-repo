@@ -55,6 +55,11 @@ def thud(f, vel, rng):
     n = rng.standard_normal(len(t)); b, a = signal.butter(2, 900 / (SR / 2), "low")
     return (body * 0.8 + tone + signal.lfilter(b, a, n) * np.exp(-t * 90) * 0.3) * vel * (1 - np.exp(-t * 1800))
 
+def chime(f, vel, rng):
+    dur = 1.4; t = np.arange(int(dur * SR)) / SR
+    x = sum(a * np.sin(2 * np.pi * f * r * t) * np.exp(-t * d) for r, a, d in ((1, 1.0, 2.6), (2.76, 0.45, 4.2), (5.4, 0.2, 7.5), (8.9, 0.08, 11)))
+    return x * 0.5 * vel * (1 - np.exp(-t * 1200))
+
 def periodic_noise(N, lo, hi, rng):
     """band-limited noise that loops perfectly (random phases in the frequency domain)."""
     spec = np.zeros(N // 2 + 1, complex); fr = np.fft.rfftfreq(N, 1 / SR)
@@ -69,14 +74,16 @@ def main(d):
     cfg = json.load(open(os.path.join(d, "cfg.json"))); ev = json.load(open(os.path.join(d, "events.json")))
     D = ev["duration"]; N = int(D * SR); rng = rng_for("audio", cfg["date"], cfg["seed"])
     root = int(rng.integers(45, 53)); scale = str(rng.choice(list(SCALES)))
-    kind = {"domino": "click", "cubes": "thud"}.get(cfg["scene"], "click")
-
-    # ---- SFX layer from scene events (thinned so it never turns into noise) -----------------------------------------
-    sfx = np.zeros((2, N)); evs = sorted(ev["events"], key=lambda e: e["t"]); last = -1.0; gap = 0.06 if kind == "click" else 0.11
-    for e in evs:
-        if e["t"] - last < gap: continue
-        last = e["t"]; idx = int(e["pitch"] * 9) % 10; f = mtof(note(root + 12, scale, idx + (4 if kind == "click" else 0)))
-        sig = click(f, e["vel"] * rng.uniform(0.75, 1.0), rng) if kind == "click" else thud(f, e["vel"] * rng.uniform(0.8, 1.0), rng)
+    # ---- SFX layer from scene events: each event kind has its own voice, thinned so it never turns into noise ----------
+    VOICE = {"tick": (click, 0.06, 16), "thud": (thud, 0.11, 0), "ping": (None, 0.09, 12), "chime": (chime, 0.28, 24)}
+    sfx = np.zeros((2, N)); last = {}
+    for e in sorted(ev["events"], key=lambda e: e["t"]):
+        fn, gap, oct0 = VOICE.get(e["kind"], VOICE["tick"])
+        if e["t"] - last.get(e["kind"], -1.0) < gap: continue
+        last[e["kind"]] = e["t"]; idx = int(e["pitch"] * 9) % 10
+        f = mtof(note(root + 12, scale, idx + (4 if e["kind"] == "tick" else 0), 1 if e["kind"] in ("ping", "chime") else 0))
+        v = e["vel"] * rng.uniform(0.8, 1.0)
+        sig = pluck(f * 2, 0.9) * v * 0.5 if e["kind"] == "ping" else fn(f * (2 if e["kind"] == "chime" else 1), v, rng)
         add_wrap(sfx, int(e["t"] * SR), sig, pan=float(rng.uniform(-0.35, 0.35)))
     sfx *= 0.9
 

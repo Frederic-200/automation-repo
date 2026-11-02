@@ -10,8 +10,9 @@ import argparse, hashlib, json, os, random
 from datetime import date
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SCENES = ["domino", "cubes"]                       # P2 grows this list to ~10
-MATERIALS = ["matte", "glossy", "metal", "toon"]
+SCENES = ["domino", "cubes", "pendulum", "rings", "bounce", "morph", "ribbons", "gears", "helix", "wave"]
+RECENT_SCENES_EXCLUDED = 4                       # a scene cannot come back until 4 other scenes have been used
+MATERIALS = ["matte", "glossy", "metal", "toon", "glass"]
 CAMERAS = ["orbit", "pushin", "sway", "rise"]
 FPS, SECONDS = 30, 15
 
@@ -41,8 +42,10 @@ def main():
     best = None
     for attempt in range(40):                      # re-roll until it differs from the last 14 videos
         r = random.Random(seed + attempt * 7919)
-        scene = a.scene or r.choice([s for s in SCENES if not history or s != history[-1]["scene"]] or SCENES)
-        pal = next((p for p in palettes if p["name"] == a.palette), None) if a.palette else r.choice(palettes)
+        recent = [h["scene"] for h in history[-RECENT_SCENES_EXCLUDED:]]
+        scene = a.scene or r.choice([s for s in SCENES if s not in recent] or SCENES)
+        month = int(a.date.split("-")[1]); seasonal = [p for p in palettes if month in p.get("months", [])]; regular = [p for p in palettes if "months" not in p]
+        pal = next((p for p in palettes if p["name"] == a.palette), None) if a.palette else (r.choice(seasonal) if seasonal and r.random() < 0.6 else r.choice(regular))
         rec = dict(scene=scene, palette_name=pal["name"], material=a.material or r.choice(MATERIALS),
                    camera=dict(move=r.choice(CAMERAS), amp=round(r.uniform(0.6, 1.0), 2)),
                    light=dict(az=r.randint(15, 60), el=r.randint(44, 62), swing=r.randint(10, 24)), sceneSeed=r.getrandbits(31))
@@ -50,7 +53,8 @@ def main():
         if best is None or score > best[0]: best = (score, rec, pal)
         if score >= 3: break
     _, rec, pal = best
-    hook = hooks[seed_of(a.date, "hook", a.reroll) % len(hooks)]
+    fits = [h for h in hooks if rec["scene"] in h.get("scenes", [rec["scene"]])] or hooks      # scene-specific hooks only on scenes they describe
+    hook = fits[seed_of(a.date, "hook", a.reroll) % len(fits)]
     cfg = dict(width=1080, height=1920, fps=FPS, frames=FPS * SECONDS, scene=rec["scene"], sceneSeed=rec["sceneSeed"], palette=pal,
                material=rec["material"], camera=rec["camera"], light=rec["light"], caption=hook["lines"], date=a.date, seed=seed, recipe=rec)
     os.makedirs(a.out, exist_ok=True)

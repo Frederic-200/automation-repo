@@ -34,13 +34,14 @@ export function rampColor(THREE, palette, u) {
 }
 
 // ---- materials -----------------------------------------------------------------------------------
-export const MATERIAL_KINDS = ['matte', 'glossy', 'metal', 'toon'];
+export const MATERIAL_KINDS = ['matte', 'glossy', 'metal', 'toon', 'glass'];
 export function makeMaterial(THREE, kind, envMap, opts = {}) {
   const base = { color: 0xffffff, ...opts };
   switch (kind) {
     case 'glossy': return new THREE.MeshPhysicalMaterial({ ...base, roughness: 0.18, metalness: 0.0, clearcoat: 1, clearcoatRoughness: 0.08, envMap, envMapIntensity: 1.0 });
     case 'metal':  return new THREE.MeshStandardMaterial({ ...base, roughness: 0.28, metalness: 0.9, envMap, envMapIntensity: 1.25 });
     case 'toon':   return new THREE.MeshToonMaterial({ ...base });
+    case 'glass':  return new THREE.MeshPhysicalMaterial({ ...base, roughness: 0.06, metalness: 0, transmission: 0.9, thickness: 0.9, ior: 1.45, clearcoat: 1, clearcoatRoughness: 0.04, envMap, envMapIntensity: 1.4, attenuationDistance: 3, attenuationColor: new THREE.Color(opts.color ?? 0xffffff) });
     default:       return new THREE.MeshStandardMaterial({ ...base, roughness: 0.62, metalness: 0.0, envMap, envMapIntensity: 0.6 });
   }
 }
@@ -75,13 +76,28 @@ export function placeCamera(THREE, camera, view, cam, t) {
   const s = Math.sin(TAU * t), c = Math.cos(TAU * t);
   let az = view.azim, el = view.elev, d = view.dist;
   switch (cam.move) {
-    case 'orbit':  az += cam.amp * 38 * s; el += 2.5 * c; break;
+    case 'orbit':  az += cam.amp * 24 * s; el += 2.5 * c; break;
     case 'pushin': d *= 1 - 0.13 * cam.amp * (0.5 - 0.5 * c); az += 6 * s; break;
-    case 'sway':   az += cam.amp * 16 * s; el += cam.amp * 7 * c; break;
-    case 'rise':   el += cam.amp * 11 * (0.5 - 0.5 * c); d *= 1 + 0.04 * s; az += 10 * s; break;
+    case 'sway':   az += cam.amp * 11 * s; el += cam.amp * 5 * c; break;
+    case 'rise':   el += cam.amp * 10 * (0.5 - 0.5 * c); d *= 1 + 0.04 * s; az += 7 * s; break;
   }
   const A = az * Math.PI / 180, E = el * Math.PI / 180;
   const [cx, cy, cz] = view.center;
   camera.position.set(cx + d * Math.cos(E) * Math.sin(A), cy + d * Math.sin(E), cz + d * Math.cos(E) * Math.cos(A));
   camera.lookAt(cx, cy, cz);
+}
+
+// ---- helpers shared by scenes ---------------------------------------------------------------------
+export function addShadowFloor(THREE, scene, palette, size = 160) {
+  const f = new THREE.Mesh(new THREE.PlaneGeometry(size, size), new THREE.ShadowMaterial({ color: new THREE.Color(palette.ground).multiplyScalar(0.35), opacity: 0.55 }));
+  f.rotation.x = -Math.PI / 2; f.receiveShadow = true; scene.add(f); return f;
+}
+export function instanced(THREE, scene, geo, mat, n, shadow = true) {
+  const m = new THREE.InstancedMesh(geo, mat, n); m.castShadow = shadow; m.receiveShadow = shadow; m.frustumCulled = false; scene.add(m); return m;
+}
+export function ringHull(THREE, radius, ys, n = 40, cx = 0, cz = 0) {
+  const pts = []; for (let k = 0; k < n; k++) for (const y of ys) pts.push(new THREE.Vector3(cx + Math.cos(k / n * TAU) * radius, y, cz + Math.sin(k / n * TAU) * radius)); return pts;
+}
+export function boxHull(THREE, hx, hz, ys) {
+  const pts = []; for (const sx of [-1, 1]) for (const sz of [-1, 1]) for (const y of ys) pts.push(new THREE.Vector3(sx * hx, y, sz * hz)); return pts;
 }
