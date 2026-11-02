@@ -4,3 +4,5 @@ models/
 node_modules/
 __pycache__/
 .env
+loops/out/
+node_modules/

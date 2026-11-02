@@ -1,0 +1,119 @@
+name: Daily FredsDesk Loop
+
+# One seamless 3D loop per day, rendered with plain code (Three.js in headless Chromium + ffmpeg). No model is used anywhere.
+# PAUSED until the supervised test runs are approved: to go live, un-comment the schedule below.
+on:
+  # schedule:
+  #   - cron: "7 18 * * *"   # 18:07 UTC = 02:07 Philippine time (off the hour: GitHub drops on-the-hour jobs under load) -> ready well before 3am
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date to build, YYYY-MM-DD (default: today, Manila)"
+        required: false
+      scene:
+        description: "Force a scene: domino cubes pendulum rings bounce morph ribbons gears helix wave (default: automatic)"
+        required: false
+      upload:
+        description: "Upload to Google Drive"
+        type: boolean
+        default: true
+      folder:
+        description: "Google Drive folder id to upload to instead of the 'FredsDesk Loops' folder (sample/test runs)"
+        required: false
+      force:
+        description: "Build even if today is already in loops/history.json"
+        type: boolean
+        default: false
+      log:
+        description: "Record in loops/history.json (set false for tests so the rotation history stays clean)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-loop
+  cancel-in-progress: false
+
+jobs:
+  loop:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120          # normal build ~10 min; worst case = 3 re-rolls + fallback
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install system tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
+        run: pip install numpy scipy pillow soundfile google-api-python-client google-auth
+
+      - name: Install Node packages
+        run: npm ci --no-audit --no-fund
+
+      - name: Cache Chromium
+        id: chromium
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: chromium-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Chromium (first run / after upgrades)
+        run: npx playwright-core install --with-deps chromium
+
+      - name: Build the loop (and upload to Drive)
+        env:
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID_LOOPS: ${{ secrets.GDRIVE_FOLDER_ID_LOOPS }}
+          IN_DATE: ${{ github.event.inputs.date }}
+          IN_SCENE: ${{ github.event.inputs.scene }}
+          IN_UPLOAD: ${{ github.event.inputs.upload }}
+          IN_FOLDER: ${{ github.event.inputs.folder }}
+          IN_FORCE: ${{ github.event.inputs.force }}
+          IN_LOG: ${{ github.event.inputs.log }}
+        run: |
+          args=""
+          if [ -n "$IN_DATE" ]; then args="$args --date $IN_DATE"; fi
+          if [ -n "$IN_SCENE" ]; then args="$args --scene $IN_SCENE"; fi
+          if [ "$IN_UPLOAD" = "false" ]; then args="$args --no-upload"; fi
+          if [ -n "$IN_FOLDER" ]; then args="$args --drive-folder-id $IN_FOLDER"; fi
+          if [ "$IN_FORCE" = "true" ]; then args="$args --force"; fi
+          if [ "$IN_LOG" = "false" ]; then args="$args --no-log"; fi
+          set +e
+          python3 loops/daily.py $args 2>&1 | tee /tmp/loop.log
+          rc=${PIPESTATUS[0]}
+          if [ $rc -ne 0 ]; then echo "::error title=Loop build failed::$(tail -c 900 /tmp/loop.log | tr '\n' '|' | sed 's/%/%25/g')"; fi
+          exit $rc
+
+      - name: Keep a 7-day backup copy
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: loop-output
+          path: |
+            output/loops/final_music.mp4
+            output/loops/final_tiktok.mp4
+            output/loops/preview.jpg
+            output/loops/post.txt
+            output/loops/qa.json
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Record in history (this daily commit also keeps the repo active so GitHub never pauses the schedule)
+        if: success()
+        run: |
+          git config user.name "fredsdesk-bot"
+          git config user.email "fredsdesk-bot@users.noreply.github.com"
+          git add loops/history.json
+          git diff --cached --quiet || (git commit -m "Loop published: update history" && git pull --rebase --autostash origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME")

@@ -1,0 +1,103 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Archivo Black'; src: url('/fonts/archivo-black-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Share Tech Mono'; src: url('/fonts/share-tech-mono-latin-400-normal.woff2') format('woff2'); }
+  html, body { margin: 0; background: #000; overflow: hidden; }
+  #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+  canvas { display: block; }
+  #vig { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(8,4,16,.55) 0, rgba(8,4,16,0) 520px), radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.40) 100%); }
+  #cap { position: absolute; left: 0; width: 1080px; top: 320px; text-align: center; pointer-events: none; }
+  .ln { font-family: 'Archivo Black', sans-serif; text-transform: uppercase; line-height: .98; color: #fff; display: block; white-space: nowrap;
+        -webkit-text-stroke: 14px rgba(18,8,32,.62); paint-order: stroke fill; text-shadow: 0 8px 0 rgba(0,0,0,.25); will-change: transform, opacity; }
+  #brand { position: absolute; left: 44px; top: 176px; display: flex; align-items: center; gap: 14px; opacity: .92; pointer-events: none; }
+  #brand img.i { height: 62px; } #brand img.w { height: 30px; }
+  #tag { position: absolute; left: 46px; top: 252px; font-family: 'Share Tech Mono', monospace; font-size: 25px; letter-spacing: 3px; color: #fff; opacity: .78;
+         text-shadow: 0 2px 8px rgba(0,0,0,.55); pointer-events: none; }
+</style></head>
+<body>
+<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><div id="vig"></div><div id="cap"></div>
+  <div id="brand"><img class="i" src="/brand/icon_nocursor.png"><img class="w" src="/brand/word.png"></div><div id="tag">MADE 100% BY CODE</div></div>
+<script type="importmap">{"imports":{"three":"/vendor/three.module.min.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import * as C from '/engine/common.js';
+
+let R, scene, camera, key, rim, hemi, sc, cfg, capLines = [], D = 15;
+const easeOutBack = x => { const c1 = 1.9, c3 = c1 + 1; x = C.clamp(x); return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+
+window.init = async function (config) {
+  cfg = config; D = cfg.frames / cfg.fps;
+  const palette = cfg.palette;
+  R = new THREE.WebGLRenderer({ canvas: document.getElementById('gl'), antialias: true, powerPreference: 'high-performance' });
+  R.setPixelRatio(1); R.setSize(cfg.width, cfg.height, false);
+  R.outputColorSpace = THREE.SRGBColorSpace; R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = cfg.exposure ?? 1.05;
+  R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  scene = new THREE.Scene();
+  scene.background = C.gradientTexture(THREE, palette.bg[0], palette.bg[1]);
+  const env = C.makeStudioEnv(THREE, R, palette); scene.environment = env;
+  camera = new THREE.PerspectiveCamera(cfg.fov ?? 32, cfg.width / cfg.height, 0.5, 400);
+
+  const rng = C.mulberry32(cfg.sceneSeed);
+  const mod = await import(`/scenes/${cfg.scene}.js`);
+  const P = { ...mod.params(rng), ...(cfg.params || {}) };
+  const makeMat = () => C.makeMaterial(THREE, cfg.material, env, {});
+  sc = mod.build({ THREE, scene, palette, makeMat, P, shadowRadius: 12 });
+
+  // auto-fit: pull the camera back until the scene's hull stays inside the safe frame for the WHOLE loop
+  const shift = cfg.shiftY ?? 270, v = new THREE.Vector3();
+  const worst = () => { let wx = 0, top = -9, bot = 9;
+    for (let k = 0; k < 24; k++) { C.placeCamera(THREE, camera, sc.view, cfg.camera, k / 24); camera.updateMatrixWorld(); camera.updateProjectionMatrix();
+      for (const h of sc.hull) { v.copy(h).project(camera); wx = Math.max(wx, Math.abs(v.x)); top = Math.max(top, v.y); bot = Math.min(bot, v.y); } }
+    return { wx, top, bot }; };
+  camera.clearViewOffset();                                  // measure without the shift, then apply it to the limits
+  const fitLog = [];
+  for (let it = 0; it < 12; it++) {            // converge both ways: pull back if it overflows, move in if it is too small
+    const w = worst(), topPx = (1 - w.top) / 2 * cfg.height + shift, botPx = (1 - w.bot) / 2 * cfg.height + shift;
+    const k = Math.max(w.wx / 0.95, 1 + (700 - topPx) / 1400, 1 + (botPx - 1800) / 1400);
+    fitLog.push({ it, wx: +w.wx.toFixed(3), topPx: Math.round(topPx), botPx: Math.round(botPx), k: +k.toFixed(3), dist: +sc.view.dist.toFixed(2) });
+    if (Math.abs(k - 1) < 0.012) break; sc.view.dist *= C.clamp(k, 0.75, 1.3);
+  }
+  camera.setViewOffset(cfg.width, cfg.height, 0, -shift, cfg.width, cfg.height);
+  // lights
+  hemi = new THREE.HemisphereLight(new THREE.Color(palette.key), new THREE.Color(palette.ground), cfg.hemi ?? 0.55); scene.add(hemi);
+  key = new THREE.DirectionalLight(new THREE.Color(palette.key), cfg.keyIntensity ?? 2.6);
+  key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
+  const sr = sc.shadowRadius * 1.3; Object.assign(key.shadow.camera, { left: -sr, right: sr, top: sr, bottom: -sr, near: 1, far: 120 });
+  key.shadow.bias = -0.0004; key.shadow.normalBias = 0.03; key.shadow.radius = 4;
+  scene.add(key, key.target);
+  rim = new THREE.DirectionalLight(new THREE.Color(palette.ramp[0]), 0.9); rim.position.set(-20, 12, -25); scene.add(rim);
+
+  // caption lines
+  const cap = document.getElementById('cap'); cap.innerHTML = '';
+  capLines = (cfg.caption || []).map((ln, i) => {
+    const el = document.createElement('span'); el.className = 'ln'; el.textContent = ln.text;
+    const fs = C.clamp(930 / (ln.text.length * 0.66), 78, ln.big ? 215 : 165); el.style.fontSize = fs + 'px';
+    if (ln.accent) el.style.color = palette.ramp[0];
+    el.style.opacity = 0; cap.appendChild(el); return el;
+  });
+  await document.fonts.ready;
+  window.ready = true;
+  return { events: sc.events, duration: D, params: P, fit: fitLog };
+};
+
+window.frame = function (f) {
+  const t = f / cfg.frames, secs = t * D;
+  sc.update(t);
+  // light swing (periodic)
+  const L = cfg.light || { az: 35, el: 52, swing: 18 };
+  const az = (L.az + L.swing * Math.sin(C.TAU * t)) * Math.PI / 180, el = L.el * Math.PI / 180, r = 45;
+  key.position.set(r * Math.cos(el) * Math.sin(az), r * Math.sin(el), r * Math.cos(el) * Math.cos(az));
+  C.placeCamera(THREE, camera, sc.view, cfg.camera, t);
+  R.render(scene, camera);
+  // caption: staggered pop-in, hold, pop-out. Gone long before the end so the loop seam is clean.
+  const hold = cfg.captionHold ?? 2.9;
+  capLines.forEach((el, i) => {
+    const t0 = 0.12 + i * 0.2, k = (secs - t0) / 0.3, out = C.clamp((secs - hold - i * 0.06) / 0.28);
+    const a = C.clamp(k * 1.6) * (1 - out), s = (0.55 + 0.45 * easeOutBack(k)) * (1 - 0.1 * out);
+    el.style.opacity = a; el.style.transform = `translateY(${(1 - C.clamp(k)) * 26 - out * 18}px) scale(${s})`;
+  });
+  return true;
+};
+</script></body></html>
