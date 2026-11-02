@@ -72,7 +72,7 @@ def main():
         if args.drive_folder_id: os.environ["GDRIVE_FOLDER_ID_LOOPS"] = args.drive_folder_id
         sys.path.insert(0, HERE); import drive as D
         try:
-            dr = D.client(); folder = D.ensure_folder(dr); have = D.existing_names(dr, folder)
+            dr = D.client(); folder = D.ensure_subfolder(dr, D.ensure_folder(dr), f"{args.date} - {NOUN.get(cfg['scene'], cfg['scene'])}"); have = D.existing_names(dr, folder)
             for path, name in files.items():
                 if name in have: print("already in Drive, skipping:", name); continue
                 print("uploaded:", name, D.upload(dr, folder, path, name))

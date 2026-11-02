@@ -3,7 +3,7 @@
 
 Env: GDRIVE_CLIENT_ID, GDRIVE_CLIENT_SECRET, GDRIVE_REFRESH_TOKEN
      GDRIVE_FOLDER_ID_LOOPS  (optional: upload into this folder id; if empty the folder named FOLDER_NAME is found or created)
-All files go flat into ONE folder (no per-day subfolders).
+Each day gets its own subfolder inside the main folder ("YYYY-MM-DD - Title") holding that day's 4 files.
 """
 import mimetypes, os
 
@@ -27,6 +27,15 @@ def ensure_folder(drive, name=FOLDER_NAME):
     found = drive.files().list(q=q, fields="files(id,name)", pageSize=10, spaces="drive").execute().get("files", [])
     if found: return found[0]["id"]
     return drive.files().create(body={"name": name, "mimeType": "application/vnd.google-apps.folder"}, fields="id").execute()["id"]
+
+
+def ensure_subfolder(drive, parent_id, name):
+    """id of the subfolder `name` inside `parent_id` (found, or created; a re-run never makes a duplicate)."""
+    safe = name.replace("\\", " ").replace("'", "")
+    q = f"name = '{safe}' and mimeType = 'application/vnd.google-apps.folder' and '{parent_id}' in parents and trashed = false"
+    found = drive.files().list(q=q, fields="files(id,name)", pageSize=10).execute().get("files", [])
+    if found: return found[0]["id"]
+    return drive.files().create(body={"name": safe, "mimeType": "application/vnd.google-apps.folder", "parents": [parent_id]}, fields="id").execute()["id"]
 
 
 def existing_names(drive, folder_id):
