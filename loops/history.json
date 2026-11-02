@@ -1,1 +1,20 @@
-[]
+[
+ {
+  "date": "2026-11-03",
+  "scene": "bounce",
+  "palette_name": "harvest",
+  "material": "glossy",
+  "camera": {
+   "move": "sway",
+   "amp": 0.91
+  },
+  "hook": "So satisfying",
+  "fallback": false,
+  "qa": [
+   "1080x1920 30fps 15.00s",
+   "brightness 82-87, motion 8.5, frozen pairs 0",
+   "seam diff 0.000 (one frame of motion = 0.86)",
+   "audio -15.0 LUFS"
+  ]
+ }
+]
