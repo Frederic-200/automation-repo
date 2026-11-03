@@ -16,5 +16,23 @@
    "seam diff 0.000 (one frame of motion = 0.86)",
    "audio -15.0 LUFS"
   ]
+ },
+ {
+  "date": "2026-11-04",
+  "scene": "wave",
+  "palette_name": "neon",
+  "material": "metal",
+  "camera": {
+   "move": "orbit",
+   "amp": 0.98
+  },
+  "hook": "Almost hypnotic",
+  "fallback": false,
+  "qa": [
+   "1080x1920 30fps 15.00s",
+   "brightness 48-63, motion 12.8, frozen pairs 0",
+   "seam diff 0.000 (one frame of motion = 3.13)",
+   "audio -15.0 LUFS"
+  ]
  }
 ]
