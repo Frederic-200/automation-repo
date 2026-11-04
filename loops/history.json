@@ -34,5 +34,23 @@
    "seam diff 0.000 (one frame of motion = 3.13)",
    "audio -15.0 LUFS"
   ]
+ },
+ {
+  "date": "2026-11-05",
+  "scene": "domino",
+  "palette_name": "harvest",
+  "material": "metal",
+  "camera": {
+   "move": "pushin",
+   "amp": 0.63
+  },
+  "hook": "Watch till the end",
+  "fallback": false,
+  "qa": [
+   "1080x1920 30fps 15.00s",
+   "brightness 77-86, motion 6.2, frozen pairs 0",
+   "seam diff 0.000 (one frame of motion = 0.71)",
+   "audio -15.1 LUFS"
+  ]
  }
 ]
