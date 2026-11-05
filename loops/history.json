@@ -52,5 +52,23 @@
    "seam diff 0.000 (one frame of motion = 0.71)",
    "audio -15.1 LUFS"
   ]
+ },
+ {
+  "date": "2026-11-06",
+  "scene": "ribbons",
+  "palette_name": "harvest",
+  "material": "toon",
+  "camera": {
+   "move": "orbit",
+   "amp": 0.85
+  },
+  "hook": "Order from chaos",
+  "fallback": false,
+  "qa": [
+   "1080x1920 30fps 15.00s",
+   "brightness 79-93, motion 8.9, frozen pairs 0",
+   "seam diff 0.000 (one frame of motion = 5.12)",
+   "audio -15.0 LUFS"
+  ]
  }
 ]
