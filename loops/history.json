@@ -70,5 +70,23 @@
    "seam diff 0.000 (one frame of motion = 5.12)",
    "audio -15.0 LUFS"
   ]
+ },
+ {
+  "date": "2026-11-07",
+  "scene": "gears",
+  "palette_name": "mono",
+  "material": "glass",
+  "camera": {
+   "move": "sway",
+   "amp": 0.73
+  },
+  "hook": "Out of sync then back",
+  "fallback": false,
+  "qa": [
+   "1080x1920 30fps 15.00s",
+   "brightness 38-51, motion 2.9, frozen pairs 0",
+   "seam diff 0.016 (one frame of motion = 0.54)",
+   "audio -15.0 LUFS"
+  ]
  }
 ]
