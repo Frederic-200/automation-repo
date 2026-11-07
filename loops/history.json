@@ -88,5 +88,23 @@
    "seam diff 0.016 (one frame of motion = 0.54)",
    "audio -15.0 LUFS"
   ]
+ },
+ {
+  "date": "2026-11-08",
+  "scene": "morph",
+  "palette_name": "citrus",
+  "material": "toon",
+  "camera": {
+   "move": "orbit",
+   "amp": 0.77
+  },
+  "hook": "Little wonders",
+  "fallback": false,
+  "qa": [
+   "1080x1920 30fps 15.00s",
+   "brightness 105-115, motion 5.3, frozen pairs 0",
+   "seam diff 0.000 (one frame of motion = 3.40)",
+   "audio -15.0 LUFS"
+  ]
  }
 ]
