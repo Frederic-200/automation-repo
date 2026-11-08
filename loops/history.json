@@ -106,5 +106,23 @@
    "seam diff 0.000 (one frame of motion = 3.40)",
    "audio -15.0 LUFS"
   ]
+ },
+ {
+  "date": "2026-11-09",
+  "scene": "bounce",
+  "palette_name": "rose",
+  "material": "glass",
+  "camera": {
+   "move": "rise",
+   "amp": 0.91
+  },
+  "hook": "Wait for the drop",
+  "fallback": false,
+  "qa": [
+   "1080x1920 30fps 15.00s",
+   "brightness 60-71, motion 5.7, frozen pairs 0",
+   "seam diff 0.000 (one frame of motion = 0.70)",
+   "audio -15.0 LUFS"
+  ]
  }
 ]
