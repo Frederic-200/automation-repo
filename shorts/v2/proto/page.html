@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Bricolage';src:url('/fonts/bricolage-grotesque-latin-800-normal.woff2');font-weight:800}
+@font-face{font-family:'Fraunces';src:url('/fonts/fraunces-latin-900-normal.woff2');font-weight:900;font-style:normal}
+@font-face{font-family:'Fraunces';src:url('/fonts/fraunces-latin-900-italic.woff2');font-weight:900;font-style:italic}
+@font-face{font-family:'JBMono';src:url('/fonts/jetbrains-mono-latin-700-normal.woff2');font-weight:700}
+@font-face{font-family:'DMSerif';src:url('/fonts/dm-serif-display-latin-400-normal.woff2');font-weight:400}
+html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}
+</style></head><body><canvas id="c"></canvas>
+<script type="importmap">{"imports":{"three":"/vendor/three.module.min.js"}}</script>
+<script type="module">
+const q = new URLSearchParams(location.search), W = +q.get('w'), H = +q.get('h'), D = +q.get('d');
+const cv = document.getElementById('c'); cv.width = W; cv.height = H;
+await Promise.all(['800 40px Bricolage', 'italic 900 40px Fraunces', '900 40px Fraunces', '700 40px JBMono', '400 40px DMSerif'].map(f => document.fonts.load(f, 'Aa?.')));
+await document.fonts.ready;
+const mod = await import(`/worlds/${q.get('world')}.js`);
+const api = await mod.init({ canvas: cv, W, H, D });
+window.frame = (f, fps) => api.frame(f / fps, D);
+window.ready = true;
+</script></body></html>
