@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Bricolage';src:url('/proto/fonts/bricolage-grotesque-latin-800-normal.woff2');font-weight:800}
+@font-face{font-family:'Fraunces';src:url('/proto/fonts/fraunces-latin-900-normal.woff2');font-weight:900;font-style:normal}
+@font-face{font-family:'Fraunces';src:url('/proto/fonts/fraunces-latin-900-italic.woff2');font-weight:900;font-style:italic}
+@font-face{font-family:'JBMono';src:url('/proto/fonts/jetbrains-mono-latin-700-normal.woff2');font-weight:700}
+@font-face{font-family:'DMSerif';src:url('/proto/fonts/dm-serif-display-latin-400-normal.woff2');font-weight:400}
+html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}
+</style></head><body><canvas id="c"></canvas>
+<script type="importmap">{"imports":{"three":"/proto/vendor/three.module.min.js"}}</script>
+<script type="module">
+import { createEngine } from '/engine/engine.js';
+window.init = async tl => {
+  await Promise.all(['800 40px Bricolage', 'italic 900 40px Fraunces', '900 40px Fraunces', '700 40px JBMono', '400 40px DMSerif'].map(f => document.fonts.load(f, 'Aa?.')));
+  await document.fonts.ready;
+  const eng = await createEngine(tl, document.getElementById('c'));
+  window.frame = f => eng.frame(f);
+  window.ready = true; return eng.info;
+};
+</script></body></html>

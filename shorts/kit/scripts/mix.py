@@ -69,7 +69,8 @@ def build(work, music_db=-20.0):
     sfx = load(os.path.join(work, "sfx.wav"), n)
     if sfx is not None:
         pk = np.percentile(np.abs(sfx[np.abs(sfx) > 1e-4]), 99.9) if np.any(np.abs(sfx) > 1e-4) else 1
-        sfx = sfx / (pk or 1) * 10 ** ((v_ref + 12) / 20) * .85
+        lvl = json.load(open(os.path.join(work, 'style.json'))).get('sfx', {}).get('level_db', 12) if os.path.exists(os.path.join(work, 'style.json')) else 12   # v2 foley sets a lower level; default unchanged
+        sfx = sfx / (pk or 1) * 10 ** ((v_ref + lvl) / 20) * .85
         sfx *= 10 ** (-3 * env / 20)                                                   # SFX duck 0-3 dB
     mix = np.stack([vmono, vmono]) + music + (sfx if sfx is not None else 0)
     # master: glue + soft clip + oversampled peak limit
