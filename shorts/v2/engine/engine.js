@@ -21,6 +21,7 @@ export async function createEngine(tl, canvas) {
   scenes.forEach(sc => { sc.chunks = chunks(sc); sc.dur = sc.end - sc.start; });
   for (const sc of scenes) if (!world.kinds[sc.type]) throw new Error(`world ${tl.v2.world} has no scene kind "${sc.type}"`);
   const env = { pal, tl, W: 1080, H: 1920 };
+  if (world.init) await world.init(env);                                   // worlds with their own renderer (e.g. WebGL) set up here
   const draw = (i, lt) => { c.save(); world.kinds[scenes[i].type].draw(c, lt, scenes[i], env); c.restore(); };
 
   return {
@@ -31,7 +32,7 @@ export async function createEngine(tl, canvas) {
       c.setTransform(S, 0, 0, S, 0, 0); world.background(c, t, env, sc);
       if (i > 0 && lt < TRANSITION) {
         const prev = scenes[i - 1]; draw(i - 1, prev.dur + lt);                 // outgoing scene keeps animating underneath
-        c.save(); world.wipe(c, lt / TRANSITION, env, () => draw(i, lt)); c.restore();
+        c.save(); world.wipe(c, lt / TRANSITION, env, () => draw(i, lt), () => world.background(c, t, env, sc)); c.restore();
       } else draw(i, lt);
       if (world.kinds[sc.type].caps !== false) {
         const ch = sc.chunks.find(k => t >= k.s - .05 && t < k.e + .22) || null; if (ch) { c.save(); world.captions(c, t, ch, env, sc); c.restore(); }

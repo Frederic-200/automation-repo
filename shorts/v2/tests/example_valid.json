@@ -1,0 +1,238 @@
+{
+ "title": "v2 example why AI answers change",
+ "v2": {
+  "world": "a",
+  "palette": "cobalt",
+  "number": 12,
+  "kicker": "ABOUT AI",
+  "footer": "ASK TWICE"
+ },
+ "hook": "ASK AI TWICE GET TWO ANSWERS",
+ "voice": "am_fenrir",
+ "audio": {
+  "music": "lofi",
+  "sfx": "foley"
+ },
+ "end_tail": 1.2,
+ "scenes": [
+  {
+   "kind": "headline",
+   "lines": [
+    "Ask AI the same question twice, and you can get two different answers.",
+    "Does that mean it is broken? No."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "ASK AI TWICE"
+     },
+     {
+      "text": "GET TWO ANSWERS",
+      "font": "serif",
+      "color": "acc",
+      "size": 220
+     }
+    ],
+    "underline": 1
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "That is not a glitch. It is how the model is built.",
+    "It was designed to work this way, on purpose."
+   ],
+   "params": {
+    "small": "NOT A BUG",
+    "big": "ON PURPOSE",
+    "sub": "by design"
+   }
+  },
+  {
+   "kind": "bars",
+   "lines": [
+    "Each answer starts as a list of likely next words.",
+    "Every word has a score, and higher scores win more often."
+   ],
+   "params": {
+    "title": "NEXT WORD CHANCES",
+    "rows": [
+     {
+      "label": "WORD ONE",
+      "value": 0.45,
+      "color": "acc"
+     },
+     {
+      "label": "WORD TWO",
+      "value": 0.35,
+      "color": "ink"
+     },
+     {
+      "label": "WORD THREE",
+      "value": 0.2,
+      "color": "ink"
+     }
+    ],
+    "note": "ILLUSTRATION. NOT REAL DATA."
+   }
+  },
+  {
+   "kind": "headline",
+   "lines": [
+    "But the model does not always pick the top word.",
+    "That is the catch."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "NOT ALWAYS",
+      "font": "serif",
+      "color": "acc",
+      "size": 220
+     },
+     {
+      "text": "THE TOP WORD"
+     }
+    ],
+    "underline": 0
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "It rolls weighted dice, so a close second can win.",
+    "Small chances still happen."
+   ],
+   "params": {
+    "small": "WEIGHTED",
+    "big": "DICE",
+    "sub": "a close second can win"
+   }
+  },
+  {
+   "kind": "bars",
+   "lines": [
+    "Run it twice, and the dice can land on different words.",
+    "Same question, same scores, different pick."
+   ],
+   "params": {
+    "title": "TWO RUNS",
+    "rows": [
+     {
+      "label": "RUN ONE PICKS",
+      "value": 0.45,
+      "color": "acc"
+     },
+     {
+      "label": "RUN TWO PICKS",
+      "value": 0.35,
+      "color": "ink",
+      "wobble": true
+     }
+    ],
+    "gap": {
+     "from": 0,
+     "to": 1,
+     "label": "DIFFERENT PICK"
+    },
+    "note": "ILLUSTRATION. NOT REAL DATA."
+   }
+  },
+  {
+   "kind": "headline",
+   "lines": [
+    "One different word early on changes everything after it.",
+    "The rest of the answer follows that word."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "ONE WORD"
+     },
+     {
+      "text": "CHANGES",
+      "font": "serif",
+      "color": "acc",
+      "size": 220
+     },
+     {
+      "text": "THE REST"
+     }
+    ],
+    "underline": 1
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "So two answers can both sound sure, and still disagree.",
+    "The tone never tells you which one is right."
+   ],
+   "params": {
+    "small": "SAME QUESTION",
+    "big": "DIFFER",
+    "sub": "both sound sure"
+   }
+  },
+  {
+   "kind": "bars",
+   "lines": [
+    "When it matters, ask again and compare the two answers.",
+    "Agreement is a good sign. A mismatch is a warning."
+   ],
+   "params": {
+    "title": "ASK TWICE",
+    "rows": [
+     {
+      "label": "ANSWER ONE",
+      "value": 0.7,
+      "color": "acc"
+     },
+     {
+      "label": "ANSWER TWO",
+      "value": 0.7,
+      "color": "ink"
+     }
+    ],
+    "note": "ILLUSTRATION. NOT REAL DATA."
+   }
+  },
+  {
+   "kind": "finale",
+   "lines": [
+    "If they match, good. If they do not, check a real source.",
+    "Which answer do you trust more, the first or the second?"
+   ],
+   "params": {
+    "top": "ASK",
+    "accent": "TWICE",
+    "mark": "eq",
+    "bottom": [
+     "THEN",
+     "COMPARE"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "slug": "why-ai-answers-change",
+  "topic": "why AI gives different answers to the same question",
+  "kind": "concept",
+  "hook_type": "curiosity_gap",
+  "ending": "loop",
+  "post": {
+   "title": "Why AI gives two different answers to the same question",
+   "tiktok_caption": "Ask the same question twice and you can get two answers. Here is why. Which one do you trust?",
+   "yt_caption": "Why AI can answer the same question differently, and what to do about it.",
+   "pinned_comment": "Have you ever got two different answers from the same AI? Which one did you trust?",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#ChatGPT",
+    "#AIexplained",
+    "#Tech",
+    "#LearnAI"
+   ]
+  }
+ }
+}

@@ -1,0 +1,19 @@
+{
+  "title": "v2 test C why AI sounds sure",
+  "v2": {"world": "c", "palette": "indigo", "number": 7, "kicker": "ABOUT AI", "footer": "CONFIDENCE VS TRUTH"},
+  "hook": "WHY DOES AI SOUND SO SURE WHEN IT IS WRONG",
+  "voice": "af_heart",
+  "audio": {"music": "gentle", "sfx": "foley"},
+  "say": {"AI": "A I"},
+  "end_tail": 1.2,
+  "scenes": [
+    {"kind": "headline", "lines": ["Why does AI sound so *sure*, even when it is wrong?"],
+     "params": {"underline": 4, "lines": [{"text": "WHY DOES"}, {"text": "AI SOUND"}, {"text": "SO SURE", "font": "serif", "color": "acc", "size": 240}, {"text": "WHEN IT'S"}, {"text": "WRONG?", "size": 240}]}},
+    {"kind": "bars", "lines": ["Because sounding sure and being right are two *different* things.", "The model is built to write the most likely next word."],
+     "params": {"title": "SURE VS RIGHT", "rows": [{"label": "HOW SURE IT SOUNDS", "value": 1.0, "color": "acc"}, {"label": "HOW OFTEN IT IS RIGHT", "value": 0.56, "color": "ink", "wobble": true}], "gap": {"from": 0, "to": 1, "label": "THE GAP"}, "note": "ILLUSTRATION. NOT REAL DATA."}},
+    {"kind": "stat", "lines": ["Fluent writing looks the *same* whether the answer is solid or a guess."],
+     "params": {"small": "THE TONE", "big": "SAME", "sub": "solid answer\nor a guess"}},
+    {"kind": "finale", "lines": ["So check anything that *matters*.", "Sounding sure is not the same as being *right*."],
+     "params": {"top": "SOUNDING", "accent": "SURE", "mark": "neq", "bottom": ["BEING", "RIGHT"]}}
+  ]
+}

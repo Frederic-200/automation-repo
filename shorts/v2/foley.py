@@ -24,13 +24,21 @@ def band(rng, dur, f0, f1, q=2.2, shape="bell", attack=.02):
     return out * env / (np.abs(out * env).max() or 1)
 
 
+PACKS = {   # world voicing: ranges the generators draw from (world A = dry/typographic, world B = paper)
+    "a": {},
+    "c": dict(line="stamp", slide=(450, 1000), tick=(1100, 2100), tick_tau=.012, stamp=(85, 125), stamp_slap=.55, swish=(150, 300, 1200, 2200), swish_q=(.8, 1.2)),
+    "b": dict(slide=(700, 1500), slide_q=(.9, 1.4), tick=(650, 1300), tick_tau=.016, stamp=(110, 150), stamp_slap=.35, swish=(250, 500, 1800, 2800), swish_q=(.7, 1.0), rip=True),
+}
+PK = {}   # active pack (set in build)
+
+
 def pan(m, p):
     l, r = np.cos((p + 1) * np.pi / 4), np.sin((p + 1) * np.pi / 4); return np.stack([m * l, m * r])
 
 
 def slide(rng, g=1.0):   # paper / mask sliding: short airy scrape
-    d = rng.uniform(.14, .26); f0 = rng.uniform(1400, 2600); up = rng.random() < .5
-    m = band(rng, d, f0, f0 * (rng.uniform(1.5, 2.2) if up else rng.uniform(.5, .7)), q=rng.uniform(1.6, 2.6)) * .5 * g
+    d = rng.uniform(.14, .26); f0 = rng.uniform(*PK.get('slide', (1400, 2600))); up = rng.random() < .5
+    m = band(rng, d, f0, f0 * (rng.uniform(1.5, 2.2) if up else rng.uniform(.5, .7)), q=rng.uniform(*PK.get('slide_q', (1.6, 2.6)))) * .5 * g
     return pan(m, rng.uniform(-.35, .35)), 0
 
 
@@ -41,20 +49,22 @@ def ink(rng, g=1.0):   # underline / rule drawn: lower, longer, softer swipe
 
 
 def tick(rng, g=1.0, f=None):   # ruler / bar tick: tiny dry click
-    f = f or rng.uniform(1800, 3400); t = env_t(.05)
-    m = (np.sin(2 * np.pi * f * t) * np.exp(-t / .006) + .5 * np.sin(2 * np.pi * f * 2.76 * t) * np.exp(-t / .003)) * .5
+    f = f or rng.uniform(*PK.get('tick', (1800, 3400))); t = env_t(.05); tau = PK.get('tick_tau', .006)
+    m = (np.sin(2 * np.pi * f * t) * np.exp(-t / tau) + .5 * np.sin(2 * np.pi * f * 2.76 * t) * np.exp(-t / .003)) * .5
     m[:int(.002 * SR)] += rng.standard_normal(int(.002 * SR)) * .5
     return pan(m * g * .6, rng.uniform(-.3, .3)), 0
 
 
 def stamp(rng, g=1.0):   # ink stamp: dull thump + paper slap, no pitch you could hum
-    f0 = rng.uniform(150, 210); body = drop(f0, rng.uniform(48, 62), .22, rng.uniform(.06, .09)) * .8
-    slap = noise(rng, .05, .012, [900, 4200]) * rng.uniform(.5, .8); m = np.zeros(int(.3 * SR)); m[:body.size] += body; m[:slap.size] += slap
+    f0 = rng.uniform(*PK.get('stamp', (150, 210))); body = drop(f0, rng.uniform(48, 62), .22, rng.uniform(.06, .09)) * .8
+    slap = noise(rng, .05, .012, [900, 4200]) * rng.uniform(.5, .8) * PK.get('stamp_slap', 1.0); m = np.zeros(int(.3 * SR)); m[:body.size] += body; m[:slap.size] += slap
     return pan(sat(m, 1.6) * .75 * g, rng.uniform(-.15, .15)), 0
 
 
 def swish(rng, g=1.0):   # scene wipe: bar sweeping across, small knock where it lands
-    d = .38; m = band(rng, d, rng.uniform(500, 800), rng.uniform(3500, 5500), q=rng.uniform(1.0, 1.6), attack=.06) * .5
+    d = .38; a0, a1, b0, b1 = PK.get('swish', (500, 800, 3500, 5500)); m = band(rng, d, rng.uniform(a0, a1), rng.uniform(b0, b1), q=rng.uniform(*PK.get('swish_q', (1.0, 1.6))), attack=.06) * .5
+    if PK.get('rip'):   # torn paper: crackly amplitude-modulated grain on top of the slide
+        mod = (rng.random(int(d * SR)) > .55).astype(float); mod = signal.sosfilt(signal.butter(1, 900, fs=SR, output='sos'), mod); m = m * (.35 + .9 * mod)
     k = drop(rng.uniform(120, 150), 55, .16, .05) * .45; m = np.pad(m, (0, int(.3 * SR))); m[int(d * SR) - int(.02 * SR):int(d * SR) - int(.02 * SR) + k.size] += k
     return pan(m * g, rng.uniform(-.3, .3)), 0
 
@@ -78,7 +88,7 @@ def events(tl):
         at = lambda lt: t0 + max(lt, 0.02) + (.1 if s["i"] > 0 else 0)   # incoming scene is covered by the wipe for its first ~0.38 s
         if ty == "headline":
             for i, _ in enumerate(P.get("lines", [])):
-                ev.append((at(-.2 + i * .14 + .08), "slide", .55 if i else .7, f"line{i}"))
+                ev.append((at(-.2 + i * .14 + .08), PK.get("line", "slide"), (.55 if i else .7) * (.75 if PK.get("line") == "stamp" else 1), f"line{i}"))
             if P.get("underline") is not None: ev.append((at(.5 + P["underline"] * .14), "ink", .8, "underline"))
         elif ty == "bars":
             if P.get("title"): ev.append((at(0), "slide", .7, "title"))
@@ -106,7 +116,7 @@ GEN = dict(slide=slide, ink=ink, tick=tick, stamp=stamp, swish=swish, snap=snap,
 
 
 def build(work):
-    tl = json.load(open(os.path.join(work, "timeline.json"))); vid = tl.get("title", "") + str(tl["seed"])
+    tl = json.load(open(os.path.join(work, "timeline.json"))); PK.clear(); PK.update(PACKS.get(tl.get('v2', {}).get('world', 'a'), {})); vid = tl.get("title", "") + str(tl["seed"])
     n = int((tl["duration"] + 1) * SR); bus = np.zeros((2, n)); log = []; last = {}
     for j, (t, kind, g, label) in enumerate(sorted(events(tl))):
         rng = rng_for(vid, "foley", j, kind); a, _ = GEN[kind](rng, g)
