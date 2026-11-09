@@ -124,5 +124,23 @@
    "seam diff 0.000 (one frame of motion = 0.70)",
    "audio -15.0 LUFS"
   ]
+ },
+ {
+  "date": "2026-11-10",
+  "scene": "cubes",
+  "palette_name": "forest",
+  "material": "metal",
+  "camera": {
+   "move": "rise",
+   "amp": 0.78
+  },
+  "hook": "A new loop every night",
+  "fallback": false,
+  "qa": [
+   "1080x1920 30fps 15.00s",
+   "brightness 68-82, motion 5.5, frozen pairs 0",
+   "seam diff 0.000 (one frame of motion = 0.50)",
+   "audio -15.0 LUFS"
+  ]
  }
 ]
