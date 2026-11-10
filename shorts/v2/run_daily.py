@@ -5,7 +5,7 @@
 Exit codes: 0 ok, 2 validation failed, 3 too close to a recent video (re-roll world/palette with pick_world.py), 4 render/upload failed.
 Never writes the novelty log: that happens only after Frederic accepts and posts the video (novelty.py add).
 """
-import json, os, subprocess, sys
+import shutil, json, os, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); PY = sys.executable
 
 
@@ -26,11 +26,20 @@ def main():
         rc = run([PY, os.path.join(HERE, "novelty.py"), "check", prev])
         if rc == 3: print("TOO CLOSE to a recent video: re-roll with pick_world.py --reroll N+1"); sys.exit(3)
         if rc != 0: sys.exit(4)
-    if run([PY, os.path.join(HERE, "build.py"), script, "--out", out]) != 0: sys.exit(4)
+    if run([PY, os.path.join(HERE, "build.py"), script, "--out", out, "--keep-frames"]) != 0: sys.exit(4)
     mp4 = [f for f in os.listdir(out) if f.endswith(".mp4")]
     if not mp4: print("no mp4 produced"); sys.exit(4)
     mp4 = os.path.join(out, mp4[0]); print("VIDEO:", mp4)
-    if "--no-upload" not in a and run([PY, os.path.join(HERE, "upload_v2.py"), script, mp4]) != 0: sys.exit(4)
+    # second version without background music: same frames, only the audio is rebuilt (a failure here never blocks the main video)
+    nm = None; out2 = out + "-nomusic"
+    if run([PY, os.path.join(HERE, "build.py"), script, "--out", out2, "--no-music", "--reuse-frames", os.path.join(out, "work", "frames")]) == 0:
+        f2 = [f for f in os.listdir(out2) if f.endswith(".mp4")]
+        if f2:
+            nm = mp4[:-4] + "-no-music.mp4"; shutil.copy(os.path.join(out2, f2[0]), nm); print("VIDEO (no music):", nm)
+    else: print("WARNING: the no-music version failed; continuing with the main video only")
+    shutil.rmtree(os.path.join(out, "work", "frames"), ignore_errors=True)
+    if "--no-upload" not in a:
+        if run([PY, os.path.join(HERE, "upload_v2.py"), script, mp4] + (["--no-music-video", nm] if nm else [])) != 0: sys.exit(4)
     print("RUN_DAILY OK")
 
 

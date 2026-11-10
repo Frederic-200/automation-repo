@@ -34,7 +34,7 @@ def main():
     if au.get("music"): st["music"]["mood"] = au["music"]
     if au.get("sfx"): st["sfx"]["kit"] = au["sfx"]
     foley_on = au.get("sfx") == "foley"
-    if foley_on: st["sfx"]["level_db"] = float(au.get("sfx_db", 7))
+    if foley_on: st["sfx"]["level_db"] = float(au.get("sfx_db", 14))
     json.dump(st, open(os.path.join(work, "style.json"), "w"), indent=1)
     s2 = json.loads(json.dumps(script))
     for sc in s2["scenes"]: sc["type"] = sc["kind"]                       # the kit's timeline reads "type"
