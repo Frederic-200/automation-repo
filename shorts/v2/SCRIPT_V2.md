@@ -22,7 +22,7 @@ Scene kinds (same in every world): `headline` (lines[{text,font,color,size}], un
 **Beats (one focal point per moment).** `stage` scenes show ONE drawn prop at a time (book mic document cursor coin toggle arrow bubble lock magnifier warning dice gear check) with a label of at most 3 words; captions carry the sentence at the bottom.
 `params.beats: [{cue: "word of the narration" | t: seconds, prop, label, move: pop|drop|slide, slot: c|l|r}]`. A new beat in a slot replaces the old one; l and r show two props side by side.
 Rules: first beat within about 1 s, no gap over 3.6 s between beats, a beat near the end, props only from the library, generic metaphors only (no people, products or logos).
-**Hook with beats.** Scene 0 stays a `headline` (text equals `hook`, so frame 0 is still the hook) and may also carry `params.beats`: a prop moves under the hook text from frame 0 (use headline size about 125 and `params.y` about 170 so the prop has room). Captions stay hidden for the first 2.6 s. World A only so far.
+**Hook with beats.** Scene 0 stays a `headline` (text equals `hook`, so frame 0 is still the hook) and may also carry `params.beats`: a prop moves under the hook text from frame 0 (use headline size about 125 and `params.y` about 170 so the prop has room). Captions stay hidden for the first 2.6 s.
 
 ## Rules the validator enforces
 - **Frame 0 is the hook.** Scene 0 is a `headline` whose text equals `hook` (<= 8 words). Hook type rotates: curiosity_gap, doing_it_wrong, pov, myth_bust, number_shock, comment_reply (never the same as either of the last 2).
@@ -42,6 +42,6 @@ Rules: first beat within about 1 s, no gap over 3.6 s between beats, a beat near
 - Short sentences, plain words, second person. Write for someone watching with the sound off: the headline/stat text must carry the point alone.
 
 ## Known limits (honest)
-- Beats/stage exist in world A only; worlds B and C still need their prop renderers (paper cut-out, 3D extrusion). Kinds list, versus, counter, steps exist in all worlds. Motion and focus checks (frame-difference) are not built yet; only the beat-timing checks in the validator exist.
+- Beats/stage exist in all three worlds (A flat, B paper, C 3D). Kinds list, versus, counter, steps exist in all worlds. Motion and focus checks (frame-difference) are not built yet; only the beat-timing checks in the validator exist.
 - Palette-only changes are small (novelty distance ~0.05 for the same script); real variety comes from the world and from different scene content.
 - Music and sfx pools are small; foley variation comes from per-video seeds.
