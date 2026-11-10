@@ -8,6 +8,29 @@ import json, os, re, sys, tempfile
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from loops import drive as D   # reuse the loops helpers (client, ensure_subfolder, upload)
 
+def upload_retry(drive, folder_id, path, name, tries=5):
+    """Chunked resumable upload that survives dropped connections (big files got SSL EOF with the one-shot helper)."""
+    import mimetypes, time
+    from googleapiclient.http import MediaFileUpload
+    last = None
+    for attempt in range(1, tries + 1):
+        try:
+            media = MediaFileUpload(path, mimetype=mimetypes.guess_type(path)[0] or "application/octet-stream",
+                                    resumable=True, chunksize=4 * 1024 * 1024)
+            req = drive.files().create(body={"name": name, "parents": [folder_id]}, media_body=media, fields="id,webViewLink")
+            resp = None
+            while resp is None:
+                _, resp = req.next_chunk(num_retries=5)
+            return resp.get("webViewLink")
+        except Exception as e:
+            last = e
+            print(f"upload attempt {attempt}/{tries} failed for {name}: {e!r}", flush=True)
+            time.sleep(5 * attempt)
+            try: drive = D.client()
+            except Exception: pass
+    raise last
+
+
 FOLDER = "FredsDesk v2"
 
 
@@ -30,9 +53,9 @@ def main():
     drive = D.client()
     root = D.ensure_folder(drive, FOLDER) if not os.environ.get("GDRIVE_FOLDER_ID_V2") else os.environ["GDRIVE_FOLDER_ID_V2"]
     sub = D.ensure_subfolder(drive, root, f"{day} - {script.get('title', 'video')}")
-    for v in videos: print("uploaded:", os.path.basename(v), D.upload(drive, sub, v, os.path.basename(v)))
+    for v in videos: print("uploaded:", os.path.basename(v), upload_retry(drive, sub, v, os.path.basename(v)))
     with tempfile.TemporaryDirectory() as t:
-        f = os.path.join(t, "post.txt"); open(f, "w").write(post_text(script)); print("uploaded: post.txt", D.upload(drive, sub, f, "post.txt"))
+        f = os.path.join(t, "post.txt"); open(f, "w").write(post_text(script)); print("uploaded: post.txt", upload_retry(drive, sub, f, "post.txt"))
 
 
 if __name__ == "__main__":
