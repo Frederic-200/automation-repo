@@ -41,6 +41,18 @@ Rules: first beat within about 1 s, no gap over 3.6 s between beats, a beat near
 - One idea per video. Say it in the hook, complicate it in the middle, resolve it late, then ask the viewer something.
 - Short sentences, plain words, second person. Write for someone watching with the sound off: the headline/stat text must carry the point alone.
 
+## Making the script feel alive (learned from the sample2b rewrites, Nov 2026)
+Kokoro reads exactly what the punctuation says and cannot act, so the life has to be in the writing.
+- **Punctuation:** `!`, `!!` and `?!` change almost nothing (measured: same pitch, same loudness, about 0.05-0.1 s longer). Do not rely on them. What works is **pauses**: short sentences, fragments, a comma, or "..." right before the key word ("He'd turned to AI... three times"). A mid-sentence "..." adds about 0.4 s. A `?` gives a slight lift at the end.
+- **Open on a reaction, not a report:** "Okay, so a novel just won France's top prize." beats "France's top literary prize went to a novel that used ChatGPT."
+- **Vary the rhythm:** mix one-word or three-word fragments ("Three. That's it.") with normal sentences. Avoid several sentences of the same length in a row.
+- **Talk to the viewer** in the middle too ("His view? You can't ignore AI." "So where do you draw the line?"), not only in the last line. Contractions are fine and sound more natural.
+- **Every scene must add something new.** No scene that only repeats an earlier number or restates a view. Cut recap scenes, abstract "what is a tool?" scenes and runs of "he said / they said".
+- **Build to a contrast, not a list of reactions.** The second half works when it holds a sourced tension (one book dropped for suspected AI, the other crowned) and then the question. Look for it in the sources before writing.
+- **Facts stay inside the sources:** if only one site says it, leave it out or keep the wording generic; where the two sites disagree (e.g. shortlist vs longlist), use the vague common wording ("dropped from the prize"). No people's names unless needed.
+- **Rhyme does not add life** (poem experiment felt the same). Style experiments that did change the feel were spoken-style voices (gossip, suspense); ask which one Frederic prefers before fixing a house style.
+- Beat cues must be exact words of the narration ("where's" counts as one word), and the validator's beat-gap and sentence-length rules still apply: after rewriting lines, re-run `validate_v2.py` and fix timing by moving cues or splitting scenes, never by loosening the validator.
+
 ## Known limits (honest)
 - Beats/stage exist in all three worlds (A flat, B paper, C 3D). Kinds list, versus, counter, steps exist in all worlds. Motion and focus checks (frame-difference) are not built yet; only the beat-timing checks in the validator exist.
 - Palette-only changes are small (novelty distance ~0.05 for the same script); real variety comes from the world and from different scene content.
