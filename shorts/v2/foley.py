@@ -4,7 +4,7 @@ Events are derived from timeline.json (scene starts, scene kind, params) using t
 Every sound is randomized from a per-video seed (pitch, band, length, pan), and the same voicing is never used twice in a row.
 Relative levels matter: mix.py scales the whole bus (style.sfx.level_db); slides are quiet, stamps medium, the finale thud is the peak.
 """
-import json, os, sys
+import json, os, re, sys
 import numpy as np, soundfile as sf
 from scipy import signal
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "kit", "scripts"))
@@ -103,6 +103,17 @@ def events(tl):
             if P.get("small"): ev.append((at(-.1), "tick", .8, "small"))
             ev.append((at(-.05), "stamp", .9, "big")); ev.append((at(.4), "ink", .6, "rule"))
             for i, _ in enumerate((P.get("sub") or "").split("\n")): ev.append((at(.5 + i * .15), "slide", .5, f"sub{i}"))
+        elif ty == "stage":
+            words = [w for ln in s.get("lines", []) for w in ln.get("words", [])]; prev = -1
+            for j, b in enumerate(P.get("beats", [])):
+                if isinstance(b.get("t"), (int, float)): bt = b["t"]
+                elif b.get("cue"):
+                    w = next((x for x in words if x["s"] - t0 >= prev + .05 and re.sub(r"[^a-z0-9']", "", x["w"].lower()) == str(b["cue"]).lower()), None); bt = (w["s"] - t0 - .06) if w else max(prev, 0) + 1.5
+                else: bt = 0 if j == 0 else prev + 1.5
+                bt = max(0, bt); prev = bt; mv = b.get("move", "pop")
+                if mv == "drop": ev.append((at(bt + .3), "stamp", .8, f"beat{j}"))
+                elif mv == "slide": ev.append((at(bt + .05), "slide", .65, f"beat{j}"))
+                else: ev.append((at(bt + .12), "tick" if j else "stamp", .8 if j == 0 else .7, f"beat{j}"))
         elif ty == "list":
             if P.get("title"): ev.append((at(0), "slide", .7, "title"))
             for i, _ in enumerate(P.get("items", [])): ev.append((at(.25 + i * .45), "slide", .65, f"item{i}"))

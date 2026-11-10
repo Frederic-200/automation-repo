@@ -13,10 +13,11 @@ import pick_world as PW
 
 KINDS = {   # required params per scene kind (the same kinds exist in worlds a, b, c)
     "headline": ["lines"], "bars": ["rows"], "stat": ["big"], "finale": ["top", "accent"],
-    "list": ["items"], "versus": ["a", "b"], "counter": ["label", "to"], "steps": ["steps"],
+    "list": ["items"], "versus": ["a", "b"], "counter": ["label", "to"], "steps": ["steps"], "stage": ["beats"],
 }
 WORLDS = PW.WORLDS; LEN = (60, 90); WPS = {"am_fenrir": 2.75, "af_heart": 2.6}
-MAX_SAME_KIND = 3; MIN_KINDS = 5; MAX_SCENE_SEC = 9.5; MAX_SENT = 14
+MAX_SAME_KIND = 3; MIN_KINDS = 5; BEAT_GAP = 3.6
+STAGE_PROPS = set(json.load(open(os.path.join(HERE, 'props', 'prop_names.json')))); MAX_SCENE_SEC = 9.5; MAX_SENT = 14
 TURN = re.compile(r"\b(but|however|except|catch|twist|wait|turns out|here is|here's|yet|until|instead)\b", re.I)
 NORM = lambda s: re.sub(r"[^a-z0-9 ]", "", s.lower().replace("it's", "it is").replace("*", ""))
 
@@ -54,6 +55,23 @@ def main():
             if len(P.get("rows") or []) > 3: E(f"scene {i}: at most 3 bar rows fit")
             if P.get("gap") is None and len(P.get("rows") or []) >= 2: pass
             if "ILLUSTRATION" not in str(P.get("note", "")).upper() and not meta.get("data_sourced"): E(f"scene {i}: bars need params.note 'ILLUSTRATION. NOT REAL DATA.' unless meta.data_sourced is true and sources are listed")
+        if k == "stage":
+            bs = P.get("beats") or []; lines = " ".join(sc.get("lines") or []); toks = re.findall(r"[A-Za-z0-9']+", strip(lines)); dur = len(toks) / WPS.get(voice, 2.7) + .45; last_t = 0.0
+            for j, b in enumerate(bs):
+                if b.get("prop") not in STAGE_PROPS: E(f"scene {i} beat {j}: unknown prop '{b.get('prop')}' (known: {sorted(STAGE_PROPS)})")
+                if len(str(b.get("label", "")).split()) > 3: E(f"scene {i} beat {j}: label max 3 words")
+                if b.get("slot", "c") not in ("c", "l", "r"): E(f"scene {i} beat {j}: slot must be c, l or r")
+                if b.get("cue"):
+                    idx = [n for n, t in enumerate(toks) if t.lower() == str(b["cue"]).lower()]
+                    if not idx: E(f"scene {i} beat {j}: cue '{b['cue']}' is not a word of the narration"); continue
+                    t = idx[0] / max(len(toks), 1) * dur
+                elif isinstance(b.get("t"), (int, float)): t = b["t"]
+                else: t = 0.0 if j == 0 else last_t + 1.5
+                if j == 0 and t > 1.2: E(f"scene {i}: first beat must start within about one second (starts ~{t:.1f}s)")
+                if j and t - last_t > BEAT_GAP: E(f"scene {i} beat {j}: about {t - last_t:.1f}s since the previous beat (max {BEAT_GAP}s)")
+                last_t = max(last_t, t)
+            if dur - last_t > BEAT_GAP + 1: E(f"scene {i}: last beat about {dur - last_t:.1f}s before the scene ends: add a beat")
+            if not bs: E(f"scene {i}: stage needs beats")
         if k == "list" and not 2 <= len(P.get("items") or []) <= 5: E(f"scene {i}: list needs 2 to 5 items")
         if k == "steps" and not 2 <= len(P.get("steps") or []) <= 4: E(f"scene {i}: steps needs 2 to 4 steps")
         if k in ("list", "steps") and any(len(str(t).split()) > 6 for t in (P.get("items") or P.get("steps") or [])): E(f"scene {i}: each {k} entry max 6 words")
@@ -69,10 +87,10 @@ def main():
     if scenes and kinds[0] != "headline": E("scene 0 must be a headline: the hook is on screen from frame 0")
     if scenes and kinds[-1] != "finale": E("last scene must be the finale")
     if kinds.count("finale") > 1: E("one finale only")
-    for k in set(kinds):
+    for k in set(kinds) - {"stage"}:
         if kinds.count(k) > MAX_SAME_KIND: E(f"scene kind '{k}' used {kinds.count(k)} times (max {MAX_SAME_KIND}): vary the visuals")
-    if len(set(kinds)) < MIN_KINDS and len(scenes) >= 8: E(f"use at least {MIN_KINDS} different scene kinds")
-    if any(kinds[i] == kinds[i + 1] for i in range(len(kinds) - 1)): E("the same scene kind must not appear twice in a row")
+    if len(set(kinds)) < (4 if "stage" in kinds else MIN_KINDS) and len(scenes) >= 8: E(f"use at least {MIN_KINDS} different scene kinds")
+    if any(kinds[i] == kinds[i + 1] and kinds[i] != "stage" for i in range(len(kinds) - 1)): E("the same scene kind must not appear twice in a row")
 
     # ---- hook (frame 0, <= 8 words, rotating type)
     hook = str(S.get("hook") or ""); hw = hook.split()

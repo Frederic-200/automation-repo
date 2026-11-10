@@ -1,7 +1,9 @@
 // WORLD A - "Type + Data" (v2 scene kinds). Swiss-poster typography on a coloured paper, hard masked reveals, data panels.
 // Motion grammar: masked line reveals, expo/linear wipes, bars that shoot or crawl. No springs, no figure, no hero object.
 // Scene kinds: headline, bars, stat, finale.   Captions: word-timed plain type at the bottom.
-import { clamp, lerp, seg, eInOut, eOutExpo, eOutCubic, vnoise } from '/proto/worlds/util.js';
+import { clamp, lerp, seg, eInOut, eOutExpo, eOutCubic, eOutBack, vnoise } from '/proto/worlds/util.js';
+import { PROPS } from '/props/props.js';
+import { drawProp } from '/props/style_a.js';
 
 const BR = s => `800 ${s}px Bricolage`, FR = s => `italic 900 ${s}px Fraunces`, MONO = s => `700 ${s}px JBMono`;
 const palettes = {
@@ -136,6 +138,32 @@ Object.assign(kinds, {
         if (last) { c.fillStyle = pal.acc; c.fillRect(80, y, 920, bh); } else { c.fillStyle = pal.soft; c.fillRect(80, y, 920, bh); c.strokeStyle = pal.ink; c.lineWidth = 4; c.strokeRect(82, y + 2, 916, bh - 4); }
         const ink = last ? pal.paper : pal.ink; mono(c, num2(i), 120, y + bh / 2 + 12, 34, last ? pal.paper : pal.acc); c.font = BR(fitSize(c, t, BR, 84, 700)); c.fillStyle = ink; c.fillText(t, 230, y + bh / 2 + 28); c.restore();
       });
+    }
+  },
+});
+
+// ---- stage: ONE focal object at a time (a prop from the shared library) + a <=3 word label; beats follow the narration
+// params.beats: [{cue:'word' | t:seconds, prop, label, slot:'c'|'l'|'r', move:'pop'|'drop'|'slide', anim:{on:1}}]. A new beat in a slot replaces what was there.
+export function beatTimes(sc) {
+  if (sc.__beats) return sc.__beats; const words = (sc.lines || []).flatMap(l => l.words || []), nm = w => w.w.toLowerCase().replace(/[^a-z0-9']/g, ''); let prev = -1;
+  sc.__beats = (sc.params.beats || []).map((b, i) => { let t; if (typeof b.t === 'number') t = b.t; else if (b.cue) { const w = words.find(x => x.s - sc.start >= prev + .05 && nm(x) === String(b.cue).toLowerCase()); t = w ? w.s - sc.start - .06 : Math.max(prev, 0) + 1.5; } else t = i ? prev + 1.5 : 0; t = Math.max(0, t); prev = t; return { ...b, t }; });
+  return sc.__beats;
+}
+const SLOT = { c: [540, 840, 560], l: [290, 840, 340], r: [790, 840, 340] };
+Object.assign(kinds, {
+  stage: {
+    draw(c, lt, sc, { pal }) {
+      const B = beatTimes(sc), lr = B.filter(b => b.slot === 'l' || b.slot === 'r').map(b => b.t), firstLR = lr.length ? Math.min(...lr) : 1e9, slots = {};
+      B.forEach(b => { const s = b.slot || 'c'; if (b.t > lt) return; if (s === 'c' && lt >= firstLR) return; (slots[s] = slots[s] || []).push(b); });
+      const show = (b, age, out) => {
+        const spec = PROPS[b.prop]; if (!spec) return; const s = b.slot || 'c', dual = lt >= firstLR && s !== 'c', [x0, y0, sz0] = SLOT[s] || SLOT.c, mv = b.move || 'pop';
+        let dx = 0, dy = 0, k = 1; if (mv === 'drop') { const q = eOutBack(clamp(age / .55), 1.7); dy = (1 - q) * -700; } else if (mv === 'slide') { dx = (1 - eOutExpo(clamp(age / .5))) * 520; } else { k = eOutBack(clamp(age / .5), 2); }
+        dy += Math.sin(age * 2.3) * 9; let al = clamp(age / .15); if (out != null) { dx += (s === 'r' ? 1 : -1) * out * 520; al = 1 - out; }
+        c.save(); c.globalAlpha = al; drawProp(c, spec, x0 + dx, y0 + dy, sz0 * Math.max(k, .001), pal, { on: eOutCubic(seg(age, .35, 1.0)), ...(b.anim || {}) }); c.restore();
+        if (b.label && out == null) { const sz = fitSize(c, b.label, BR, 96, s === 'c' ? 900 : 400), p = eOutExpo(seg(age, .15, .55)); maskLine(c, b.label, BR, sz, x0, y0 + sz0 * .62 + 40, pal.ink, p, 'center', s === 'c' ? 960 : 420); if (p > 0) { c.font = BR(sz); const w = c.measureText(b.label).width; c.fillStyle = pal.acc; c.fillRect(x0 - w / 2 * p, y0 + sz0 * .62 + 40 + sz * .98, w * p, 10); } }
+      };
+      for (const s in slots) { const a = slots[s], cur = a[a.length - 1], prv = a[a.length - 2]; if (prv && lt - cur.t < .3) show(prv, lt - prv.t, eInOut((lt - cur.t) / .3)); show(cur, lt - cur.t, null); }
+      if (firstLR < 1e9 && lt >= firstLR && lt < firstLR + .3) { const a = B.filter(b => (b.slot || 'c') === 'c' && b.t < firstLR), prv = a[a.length - 1]; if (prv) show(prv, lt - prv.t, eInOut((lt - firstLR) / .3)); }
     }
   },
 });
