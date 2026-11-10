@@ -1,0 +1,324 @@
+{
+  "title": "AI replaced them, now they're asked back",
+  "v2": {
+    "world": "c",
+    "palette": "teal",
+    "number": 1,
+    "kicker": "ABOUT AI",
+    "footer": "ASKED BACK"
+  },
+  "hook": "AI REPLACED THEM. NOW THEY'RE ASKED BACK.",
+  "voice": "am_fenrir",
+  "audio": {
+    "music": "synthwave",
+    "sfx": "foley"
+  },
+  "end_tail": 1.2,
+  "scenes": [
+    {
+      "kind": "headline",
+      "lines": [
+        "Okay, this one's strange. Companies swapped people for AI.",
+        "Now some of them... are asking those people to come back."
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "AI REPLACED THEM.",
+            "size": 125
+          },
+          {
+            "text": "NOW THEY'RE",
+            "size": 125
+          },
+          {
+            "text": "ASKED BACK.",
+            "color": "acc",
+            "size": 125
+          }
+        ],
+        "underline": 2,
+        "y": 170,
+        "beats": [
+          {
+            "t": 0.1,
+            "prop": "warning",
+            "label": "STRANGE",
+            "move": "pop"
+          },
+          {
+            "cue": "swapped",
+            "prop": "gear",
+            "label": "SWAPPED FOR AI",
+            "move": "slide"
+          },
+          {
+            "cue": "asking",
+            "prop": "bubble",
+            "label": "COME BACK?",
+            "move": "pop"
+          },
+          {
+            "cue": "back",
+            "prop": "arrow",
+            "label": "BACK",
+            "move": "slide"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "A new survey asked workers about exactly this. In the US, and the UK."
+      ],
+      "params": {
+        "beats": [
+          {
+            "t": 0.2,
+            "prop": "document",
+            "label": "NEW SURVEY",
+            "move": "drop"
+          },
+          {
+            "cue": "workers",
+            "prop": "magnifier",
+            "label": "ASKED WORKERS",
+            "move": "slide"
+          },
+          {
+            "cue": "UK",
+            "prop": "bubble",
+            "label": "US AND UK",
+            "move": "pop"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stat",
+      "lines": [
+        "The result? Nearly one in five US workers said it happened to them.",
+        "Replaced by AI... then asked to return."
+      ],
+      "params": {
+        "small": "REPLACED BY AI",
+        "big": "1 IN 5",
+        "sub": "asked to come back"
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Sounds like a happy ending, right? Welcome back, all is forgiven.",
+        "But here's the catch. Those workers had demands."
+      ],
+      "params": {
+        "beats": [
+          {
+            "t": 0.2,
+            "prop": "check",
+            "label": "WELCOME BACK",
+            "move": "pop"
+          },
+          {
+            "cue": "right",
+            "prop": "book",
+            "label": "ALL FORGIVEN",
+            "move": "drop"
+          },
+          {
+            "cue": "But",
+            "prop": "warning",
+            "label": "THE CATCH",
+            "move": "pop"
+          },
+          {
+            "cue": "demands",
+            "prop": "document",
+            "label": "DEMANDS",
+            "move": "slide"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "counter",
+      "lines": [
+        "About half said they'd want a big pay rise to return.",
+        "Half. Think about that."
+      ],
+      "params": {
+        "label": "WANT A BIG PAY RISE",
+        "from": 0,
+        "to": 5,
+        "sub": "out of ten, roughly"
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "And about four in ten wanted job security... in writing.",
+        "A promise on paper this time."
+      ],
+      "params": {
+        "beats": [
+          {
+            "t": 0.2,
+            "prop": "lock",
+            "label": "JOB SECURITY",
+            "move": "drop"
+          },
+          {
+            "cue": "writing",
+            "prop": "document",
+            "label": "IN WRITING",
+            "move": "slide"
+          },
+          {
+            "cue": "promise",
+            "prop": "check",
+            "label": "A PROMISE",
+            "move": "pop"
+          },
+          {
+            "cue": "paper",
+            "prop": "book",
+            "label": "ON PAPER",
+            "move": "slide"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stat",
+      "lines": [
+        "Another four in ten wanted honesty about where the company uses AI.",
+        "So, no more surprises."
+      ],
+      "params": {
+        "small": "ALSO ON THE LIST",
+        "big": "BE HONEST",
+        "size": 220,
+        "sub": "about where AI is used"
+      }
+    },
+    {
+      "kind": "headline",
+      "lines": [
+        "Quick reality check. This is one survey of workers.",
+        "A snapshot, not the whole story."
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "ONE SURVEY."
+          },
+          {
+            "text": "NOT THE",
+            "color": "acc"
+          },
+          {
+            "text": "FULL STORY."
+          }
+        ],
+        "underline": 1
+      }
+    },
+    {
+      "kind": "versus",
+      "lines": [
+        "First, they were replaced. Now, they're setting terms.",
+        "Funny how fast that flips."
+      ],
+      "params": {
+        "a": {
+          "label": "FIRST",
+          "text": "REPLACED\nBY AI"
+        },
+        "b": {
+          "label": "NOW",
+          "text": "NAMING\nTHEIR TERMS"
+        }
+      }
+    },
+    {
+      "kind": "finale",
+      "lines": [
+        "Tomorrow, which jobs does AI take first?",
+        "So... if your old boss called, would you go back?"
+      ],
+      "params": {
+        "top": "WOULD YOU",
+        "accent": "GO BACK?",
+        "mark": "eq",
+        "bottom": [
+          "TELL ME",
+          "WHY OR WHY NOT"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "slug": "ai-replaced-them-asked-back",
+    "topic": "A survey says nearly one in five US workers replaced by AI were later asked to return, and many would want more pay and written job security",
+    "hook_type": "curiosity_gap",
+    "ending": "cliffhanger",
+    "next_question": "Which jobs is AI really taking over first?",
+    "data_sourced": true,
+    "facts": [
+      {
+        "claim": "In a survey run for SHL, nearly one in five US workers said they were laid off or replaced by AI and later asked to return to their employer",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "Roughly half of those would want a significant pay rise, and about four in ten would want written job security guarantees",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "About four in ten wanted transparency about how AI would be used",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "The survey covered workers in the US and the UK",
+        "sources": [
+          0,
+          1
+        ]
+      }
+    ],
+    "post": {
+      "title": "AI replaced them. Now they're being asked back.",
+      "tiktok_caption": "Nearly one in five US workers replaced by AI were asked to come back, says a new survey. Would you go back?",
+      "yt_caption": "A new SHL survey says nearly one in five US workers replaced by AI were asked to return. Here is what they want in exchange.",
+      "pinned_comment": "If your old boss called, would you go back? And what would you ask for?",
+      "hashtags": [
+        "#AI",
+        "#FredsDesk",
+        "#AINews",
+        "#Jobs",
+        "#TechNews",
+        "#Future"
+      ],
+      "sources": [
+        {
+          "name": "AI Weekly, citing Fortune",
+          "url": "https://aiweekly.co/alerts/shl-19-of-us-workers-displaced-by-ai-asked-back-by-employers"
+        },
+        {
+          "name": "People Matters",
+          "url": "https://www.peoplematters.in/news/business/nearly-1-in-5-workers-laid-off-due-to-ai-are-asked-to-return-survey-finds-53098"
+        }
+      ]
+    }
+  }
+}
