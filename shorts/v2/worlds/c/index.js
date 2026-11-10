@@ -30,9 +30,9 @@ function makeBlock(txt, h, st) {
 const setOp = (g, o) => { g.userData.body.material.opacity = o; g.userData.tag.material.opacity = o; g.visible = o > .01; };
 function dropIn(b, lt, t0, sgn = 1) { const k = settle(lt - t0), h = b.userData.home; b.position.set(h.x, h.y + (1 - k) * 7, h.z); b.rotation.z = (1 - k) * .25 * sgn; setOp(b, clamp((lt - t0) / .12)); }
 // a centred row of word blocks, scaled down to fit W3; blocks get .userData.home
-function row(group, text, h, st, y) {
-  const ws = text.split(/\s+/).filter(Boolean), n = ws.length, tot1 = ws.reduce((a, w) => a + wordW1(w), 0) + .3 * (n - 1), hh = Math.min(h, W3 / tot1), gap = .3 * hh;
-  const bl = ws.map(w => makeBlock(w, hh, st)), tot = bl.reduce((a, b) => a + b.userData.w, 0) + gap * (n - 1); let px = -tot / 2;
+function row(group, text, h, st, y, maxW = W3, cx = 0) {
+  const ws = text.split(/\s+/).filter(Boolean), n = ws.length, tot1 = ws.reduce((a, w) => a + wordW1(w), 0) + .3 * (n - 1), hh = Math.min(h, maxW / tot1), gap = .3 * hh;
+  const bl = ws.map(w => makeBlock(w, hh, st)), tot = bl.reduce((a, b) => a + b.userData.w, 0) + gap * (n - 1); let px = cx - tot / 2;
   bl.forEach(b => { b.userData.home = new THREE.Vector3(px + b.userData.w / 2, y, 0); px += b.userData.w + gap; group.add(b); }); return { blocks: bl, h: hh, w: tot };
 }
 const box = (w, h, d, mat) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.castShadow = true; m.receiveShadow = true; return m; };
@@ -94,6 +94,36 @@ const BUILD = {
   },
 };
 
+Object.assign(BUILD, {
+  list(P) {
+    const g = new THREE.Group(), items = P.items || [], title = P.title ? row(g, P.title, .85, STY.gold, 5.0) : null, y0 = P.title ? 3.3 : 3.6, step = Math.min(1.7, 6.4 / Math.max(items.length, 1));
+    const rows = items.map((t, i) => { const last = i === items.length - 1, r = row(g, t, .95, last ? STY.gold : (i % 2 ? STY.alt : STY.cream), y0 - i * step, 5.5, .35), nb = makeBlock(String(i + 1), .7, STY.gold); nb.userData.home = new THREE.Vector3(-3.15, y0 - i * step, 0); g.add(nb); return { r, nb }; });
+    return { group: g, update(lt) { if (title) title.blocks.forEach((b, j) => dropIn(b, lt, -.1 + j * .08)); rows.forEach(({ r, nb }, i) => { const t0 = .25 + i * .45; dropIn(nb, lt, t0); r.blocks.forEach((b, j) => dropIn(b, lt, t0 + .05 + j * .06)); }); } };
+  },
+  versus(P) {
+    const g = new THREE.Group(), col = (d, cx, st, t0) => { d = d || {}; const lab = row(g, d.label || '', .5, STY.alt, 3.6, 3.3, cx); const rows = (d.text || '').split('\n').map((ln, i) => row(g, ln, 1.3, st, 1.9 - i * 1.55, 3.3, cx)); return { lab, rows, t0 }; };
+    const A = col(P.a, -1.95, STY.cream, .2), B = col(P.b, 1.95, STY.gold, .6), vs = makeBlock('VS', .8, STY.alt); vs.userData.home = new THREE.Vector3(0, -1.2, 1.0); g.add(vs);
+    return { group: g, update(lt) { [A, B].forEach(c => { c.lab.blocks.forEach((b, j) => dropIn(b, lt, c.t0 + j * .05)); c.rows.forEach((r, i) => r.blocks.forEach((b, j) => dropIn(b, lt, c.t0 + .1 + i * .12 + j * .05))); }); dropIn(vs, lt, .5, -1); } };
+  },
+  counter(P) {
+    const g = new THREE.Group(), to = +P.to, from = +(P.from || 0), dec = P.decimals || 0, fmt = v => (dec ? v.toFixed(dec) : Math.round(v).toString()) + (P.suffix || ''), fin = fmt(to);
+    const hb = Math.min(3.2, (P.size || 360) / 360 * 3.0), big = makeBlock(fin, Math.min(hb, W3 / wordW1(fin)), STY.gold); big.userData.home = new THREE.Vector3(0, 1.45, 0); g.add(big);
+    let sm = null; if (P.label) { sm = makeBlock(P.label, .55, STY.alt); sm.userData.home = new THREE.Vector3(-3.4 + sm.userData.w / 2, 3.65, 0); g.add(sm); }
+    const subs = (P.sub || '').split('\n').filter(Boolean).map((s, i) => row(g, s, .95, STY.cream, -.95 - i * 1.25)); let last = fin, tex = null;
+    return { group: g, update(lt) {
+      const v = lerp(from, to, eOutCubic(seg(lt, .1, 1.4))), s = fmt(v); if (s !== last) { const u = big.userData; if (tex) tex.dispose(); tex = label(s, u.w, u.h, STY.gold.ink); u.tag.material.map = tex; u.tag.material.needsUpdate = true; last = s; }
+      dropIn(big, lt, -.05, -1); if (sm) dropIn(sm, lt, -.1); subs.forEach((r, i) => r.blocks.forEach((b, j) => dropIn(b, lt, 1.0 + i * .15 + j * .06)));
+    } };
+  },
+  steps(P) {
+    const g = new THREE.Group(), st = P.steps || [], n = st.length, title = P.title ? row(g, P.title, .85, STY.gold, 5.0) : null, y0 = P.title ? 3.3 : 3.7, step = Math.min(2.2, 6.6 / Math.max(n, 1));
+    const arrM = new THREE.MeshStandardMaterial({ color: pal.acc, emissive: pal.accEm, roughness: .4 });
+    const rows = st.map((t, i) => { const last = i === n - 1, r = row(g, t, 1.0, last ? STY.gold : (i % 2 ? STY.alt : STY.cream), y0 - i * step, 6.0); let ar = null;
+      if (i > 0) { ar = new THREE.Group(); const sh = box(.2, step - 1.35, .25, arrM), cone = new THREE.Mesh(new THREE.ConeGeometry(.3, .38, 4), arrM); cone.rotation.x = Math.PI; cone.rotation.y = Math.PI / 4; cone.position.y = -(step - 1.35) / 2 - .05; ar.add(sh, cone); ar.position.set(0, y0 - i * step + step / 2, .1); g.add(ar); } return { r, ar }; });
+    return { group: g, update(lt) { if (title) title.blocks.forEach((b, j) => dropIn(b, lt, -.1 + j * .08)); rows.forEach(({ r, ar }, i) => { const t0 = .25 + i * .5; r.blocks.forEach((b, j) => dropIn(b, lt, t0 + j * .06)); if (ar) { const pa = eOutExpo(seg(lt, t0 - .2, t0 + .1)); ar.scale.set(1, Math.max(.001, pa), 1); ar.visible = pa > .01; } }); } };
+  },
+});
+
 function renderScene(sc, lt) {
   const t = sc.start + lt; if (!sc.__c) { sc.__c = BUILD[sc.type](sc.params || {}); root.add(sc.__c.group); built.push(sc.__c); }
   built.forEach(b => b.group.visible = false); sc.__c.group.visible = true; flash.intensity = 0;
@@ -104,7 +134,7 @@ function renderScene(sc, lt) {
   cam.position.set(Math.sin(t * .5) * .35, -.2 + Math.cos(t * .4) * .2, z); cam.lookAt(0, 0, 0); R.render(root, cam);
 }
 
-const kinds = Object.fromEntries(['headline', 'bars', 'stat', 'finale'].map(k => [k, { caps: k !== 'finale', draw(c, lt, sc) { renderScene(sc, lt); c.drawImage(GL, 0, 0, 1080, 1920); } }]));
+const kinds = Object.fromEntries(['headline', 'bars', 'stat', 'finale', 'list', 'versus', 'counter', 'steps'].map(k => [k, { caps: k !== 'finale', draw(c, lt, sc) { renderScene(sc, lt); c.drawImage(GL, 0, 0, 1080, 1920); } }]));
 
 export default {
   name: 'C', title: 'Token blocks (3D)', palettes, kinds,

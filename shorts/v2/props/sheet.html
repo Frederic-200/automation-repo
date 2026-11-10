@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Bricolage';src:url('/proto/fonts/bricolage-grotesque-latin-800-normal.woff2');font-weight:800}
+@font-face{font-family:'JBMono';src:url('/proto/fonts/jetbrains-mono-latin-700-normal.woff2');font-weight:700}
+html,body{margin:0;background:#000}canvas{display:block}</style></head><body><canvas id="c" width="1080" height="1620"></canvas>
+<script type="module">
+import { PROPS, PROP_NAMES } from '/props/props.js';
+const style = new URLSearchParams(location.search).get('style') || 'a';
+const mod = await import(`/props/style_${style}.js`);
+await Promise.all(['800 40px Bricolage', '700 40px JBMono'].map(f => document.fonts.load(f, 'Aa$')));
+const pals = { ember: { paper: '#F1EDE4', ink: '#121212', acc: '#FF4A1C' }, cobalt: { paper: '#EAF0F8', ink: '#0B1B33', acc: '#2F5BFF' } };
+const pal = pals[new URLSearchParams(location.search).get('pal') || 'ember'], c = document.getElementById('c').getContext('2d');
+c.fillStyle = pal.paper; c.fillRect(0, 0, 1080, 1620);
+PROP_NAMES.forEach((n, i) => { const col = i % 4, row = Math.floor(i / 4), x = 135 + col * 270, y = 190 + row * 400;
+  mod.drawProp(c, PROPS[n], x, y, 190, pal, { on: row === 0 && col === 0 ? 0 : 1 });
+  c.fillStyle = pal.ink; c.font = '700 26px JBMono'; c.textAlign = 'center'; c.fillText(n.toUpperCase(), x, y + 150); });
+window.ready = true;
+</script></body></html>

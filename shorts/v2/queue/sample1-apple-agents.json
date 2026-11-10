@@ -1,0 +1,232 @@
+{
+ "title": "Apple warns AI agents may defy instructions",
+ "v2": {
+  "world": "c",
+  "palette": "indigo"
+ },
+ "hook": "AI AGENTS ALWAYS OBEY? APPLE SAYS NO.",
+ "voice": "am_fenrir",
+ "audio": {
+  "music": "synthwave",
+  "sfx": "foley"
+ },
+ "end_tail": 1.2,
+ "scenes": [
+  {
+   "kind": "headline",
+   "lines": [
+    "You have probably heard that AI agents just do what you tell them.",
+    "Apple just told its investors something different."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "AI AGENTS ALWAYS OBEY?"
+     },
+     {
+      "text": "APPLE SAYS NO.",
+      "color": "acc"
+     }
+    ],
+    "underline": 1
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "In its latest annual report, Apple listed this as a real business risk.",
+    "Not a rumor. A document it filed with regulators."
+   ],
+   "params": {
+    "small": "ANNUAL REPORT",
+    "big": "APPLE",
+    "sub": "listed it as a risk"
+   }
+  },
+  {
+   "kind": "versus",
+   "lines": [
+    "You hope an agent does exactly what you asked.",
+    "Apple warned it may be defying directions, or resisting instructions."
+   ],
+   "params": {
+    "a": {
+     "label": "WHAT YOU HOPE",
+     "text": "DOES\nAS TOLD"
+    },
+    "b": {
+     "label": "WHAT APPLE WARNS",
+     "text": "DEFIES\nDIRECTIONS"
+    }
+   }
+  },
+  {
+   "kind": "headline",
+   "lines": [
+    "But what can an agent actually do by itself?",
+    "The report says agents can take actions autonomously."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "WHAT CAN IT"
+     },
+     {
+      "text": "DO ALONE?",
+      "color": "acc"
+     }
+    ],
+    "underline": 1
+   }
+  },
+  {
+   "kind": "steps",
+   "lines": [
+    "It could execute or alter code.",
+    "It could send messages. It could complete transactions.",
+    "And it may do so in ways nobody directed."
+   ],
+   "params": {
+    "title": "ON ITS OWN",
+    "steps": [
+     "ALTER CODE",
+     "SEND MESSAGES",
+     "COMPLETE TRANSACTIONS"
+    ]
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "The report says agents may behave in unintended or unpredictable ways.",
+    "Including actions that nobody directed, instructed or authorized."
+   ],
+   "params": {
+    "small": "APPLE'S OWN WORDS",
+    "big": "UNPREDICTABLE",
+    "size": 260,
+    "sub": "in its filing"
+   }
+  },
+  {
+   "kind": "list",
+   "lines": [
+    "It also warned of legal liability and regulatory action.",
+    "And it said its ability to oversee third party agents may be limited."
+   ],
+   "params": {
+    "title": "IT ALSO WARNS OF",
+    "items": [
+     "LEGAL LIABILITY",
+     "REGULATORY ACTION",
+     "LIMITED CONTROL"
+    ]
+   }
+  },
+  {
+   "kind": "headline",
+   "lines": [
+    "Risk sections are where companies list what could go wrong.",
+    "It is a disclosure, not a prediction."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "A RISK"
+     },
+     {
+      "text": "DISCLOSURE",
+      "color": "acc"
+     }
+    ],
+    "underline": 1
+   }
+  },
+  {
+   "kind": "versus",
+   "lines": [
+    "So the sensible move is to give an agent only the access it needs.",
+    "Start small, then check what it actually did."
+   ],
+   "params": {
+    "a": {
+     "label": "BROAD ACCESS",
+     "text": "MORE\nRISK"
+    },
+    "b": {
+     "label": "ONLY WHAT IT NEEDS",
+     "text": "LESS\nRISK"
+    }
+   }
+  },
+  {
+   "kind": "finale",
+   "lines": [
+    "Tomorrow, what happens when two agents disagree?",
+    "Would you trust an AI agent with your money?"
+   ],
+   "params": {
+    "top": "WOULD YOU",
+    "accent": "TRUST IT?",
+    "bottom": [
+     "WITH YOUR",
+     "MONEY?"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "slug": "apple-warns-ai-agents-may-defy",
+  "topic": "Apple's annual report warns AI agents may act autonomously and defy instructions",
+  "hook_type": "myth_bust",
+  "ending": "cliffhanger",
+  "next_question": "What happens when two AI agents disagree?",
+  "facts": [
+   {
+    "claim": "Apple's annual report says AI agents can take actions autonomously and may behave in unintended or unpredictable ways, including defying directions or resisting instructions",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "The report says agents may execute or alter code, send communications and complete transactions",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "The report warns of legal liability and regulatory action, and that Apple's ability to oversee third-party agents may be limited",
+    "sources": [
+     0,
+     1
+    ]
+   }
+  ],
+  "post": {
+   "title": "Apple warned investors that AI agents may defy instructions",
+   "tiktok_caption": "Apple wrote it into its annual report: AI agents may act in ways nobody directed. Would you trust one with your money?",
+   "yt_caption": "Apple's latest annual report lists AI agents that may act autonomously, or defy instructions, as a business risk. Here is what it says.",
+   "pinned_comment": "Would you let an AI agent spend your money? Tell me why or why not.",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#AIagents",
+    "#Apple",
+    "#TechNews",
+    "#AINews"
+   ],
+   "sources": [
+    {
+     "name": "Apple Form 10-K, fiscal 2026 (SEC)",
+     "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000026/aapl-20260926.htm"
+    },
+    {
+     "name": "Bernama, 4 Nov 2026",
+     "url": "https://bernama.com/en/news.php?id=2629763"
+    }
+   ]
+  }
+ }
+}

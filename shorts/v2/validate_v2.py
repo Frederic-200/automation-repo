@@ -13,9 +13,10 @@ import pick_world as PW
 
 KINDS = {   # required params per scene kind (the same kinds exist in worlds a, b, c)
     "headline": ["lines"], "bars": ["rows"], "stat": ["big"], "finale": ["top", "accent"],
+    "list": ["items"], "versus": ["a", "b"], "counter": ["label", "to"], "steps": ["steps"],
 }
 WORLDS = PW.WORLDS; LEN = (60, 90); WPS = {"am_fenrir": 2.75, "af_heart": 2.6}
-MAX_SAME_KIND = 3; MIN_KINDS = 4; MAX_SCENE_SEC = 9.5; MAX_SENT = 14
+MAX_SAME_KIND = 3; MIN_KINDS = 5; MAX_SCENE_SEC = 9.5; MAX_SENT = 14
 TURN = re.compile(r"\b(but|however|except|catch|twist|wait|turns out|here is|here's|yet|until|instead)\b", re.I)
 NORM = lambda s: re.sub(r"[^a-z0-9 ]", "", s.lower().replace("it's", "it is").replace("*", ""))
 
@@ -53,6 +54,15 @@ def main():
             if len(P.get("rows") or []) > 3: E(f"scene {i}: at most 3 bar rows fit")
             if P.get("gap") is None and len(P.get("rows") or []) >= 2: pass
             if "ILLUSTRATION" not in str(P.get("note", "")).upper() and not meta.get("data_sourced"): E(f"scene {i}: bars need params.note 'ILLUSTRATION. NOT REAL DATA.' unless meta.data_sourced is true and sources are listed")
+        if k == "list" and not 2 <= len(P.get("items") or []) <= 5: E(f"scene {i}: list needs 2 to 5 items")
+        if k == "steps" and not 2 <= len(P.get("steps") or []) <= 4: E(f"scene {i}: steps needs 2 to 4 steps")
+        if k in ("list", "steps") and any(len(str(t).split()) > 6 for t in (P.get("items") or P.get("steps") or [])): E(f"scene {i}: each {k} entry max 6 words")
+        if k == "versus":
+            for side in ("a", "b"):
+                if not (P.get(side) or {}).get("text"): E(f"scene {i}: versus.{side}.text missing")
+        if k == "counter":
+            if not isinstance(P.get("to"), (int, float)): E(f"scene {i}: counter.to must be a number")
+            if "ILLUSTRATION" not in str(P.get("note", "")).upper() and not meta.get("data_sourced"): E(f"scene {i}: counter needs params.note 'ILLUSTRATION. NOT REAL DATA.' unless meta.data_sourced is true and sources are listed")
         if k == "headline" and sum(len(l.get("text", "").split()) for l in P.get("lines") or []) > 9: E(f"scene {i}: headline longer than 9 words")
         if k == "headline" and len(P.get("lines") or []) > 5: E(f"scene {i}: at most 5 headline lines")
     kinds = [sc.get("kind") for sc in scenes]

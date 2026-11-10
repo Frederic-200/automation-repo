@@ -51,14 +51,23 @@ def main():
     if "--preview" in a:
         tl2 = json.load(open(os.path.join(work, "timeline.json"))); times = ",".join(str(round(s["start"] + min(1.2, s["dur"] if "dur" in s else (s["end"] - s["start"]) * .5), 2)) for s in tl2["scenes"])
         print(run(node + [out_dir, "--mode", "preview", "--times", "0.1," + times]).strip().splitlines()[-1]); lap("preview"); print(json.dumps({"timings_s": T})); return
-    rp = subprocess.Popen(node + [fdir], stdout=open(os.path.join(work, "render.log"), "w"), stderr=subprocess.STDOUT)
+    reuse = opt("--reuse-frames")   # same script, different audio (e.g. the no-music version): reuse an earlier --keep-frames render instead of re-rendering
+    if reuse:
+        import glob
+        n = len(glob.glob(os.path.join(reuse, "*.jpg")))
+        if n != tl["frames"]: raise RuntimeError(f"--reuse-frames: {n} frames in {reuse}, timeline needs {tl['frames']} (script or voice changed)")
+        shutil.rmtree(fdir, ignore_errors=True); os.symlink(os.path.abspath(reuse), fdir); rp = None
+    else: rp = subprocess.Popen(node + [fdir], stdout=open(os.path.join(work, "render.log"), "w"), stderr=subprocess.STDOUT)
     (foley.build if foley_on else sfx.build)(work); mix.build(work, float(opt("--music-db", -20))); lap("audio")
-    rc = rp.wait(); log = open(os.path.join(work, "render.log")).read()
-    if rc: raise RuntimeError("render failed:\n" + log[-3000:])
-    print(log.strip().splitlines()[-1]); lap("frames")
+    if rp:
+        rc = rp.wait(); log = open(os.path.join(work, "render.log")).read()
+        if rc: raise RuntimeError("render failed:\n" + log[-3000:])
+        print(log.strip().splitlines()[-1])
+    lap("frames")
     out = os.path.join(out_dir, mv.slug(script.get("title")) + ".mp4"); mv.encode(work, out); lap("encode")
     v = qa.video(out, work); aq = qa.audio(os.path.join(work, "mix.wav")); T["total"] = round(time.time() - t0, 1)
-    if "--keep-frames" not in a: shutil.rmtree(fdir, ignore_errors=True)
+    if reuse: os.unlink(fdir)
+    elif "--keep-frames" not in a: shutil.rmtree(fdir, ignore_errors=True)
     print(json.dumps({"mp4": out, "duration": round(v["duration"], 2), "mb": round(v["mb"], 1), "lufs": aq["lufs"], "true_peak": aq["true_peak"], "timings_s": T}, indent=1))
 
 

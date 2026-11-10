@@ -103,6 +103,21 @@ def events(tl):
             if P.get("small"): ev.append((at(-.1), "tick", .8, "small"))
             ev.append((at(-.05), "stamp", .9, "big")); ev.append((at(.4), "ink", .6, "rule"))
             for i, _ in enumerate((P.get("sub") or "").split("\n")): ev.append((at(.5 + i * .15), "slide", .5, f"sub{i}"))
+        elif ty == "list":
+            if P.get("title"): ev.append((at(0), "slide", .7, "title"))
+            for i, _ in enumerate(P.get("items", [])): ev.append((at(.25 + i * .45), "slide", .65, f"item{i}"))
+        elif ty == "versus":
+            ev.append((at(.2), "stamp", .75, "a")); ev.append((at(.5), "snap", .8, "vs")); ev.append((at(.6), "stamp", .85, "b"))
+        elif ty == "counter":
+            if P.get("label"): ev.append((at(-.1), "tick", .8, "label"))
+            for k in range(8): ev.append((at(.1 + 1.3 * k / 8), "tick", .3 + .05 * k, f"count{k}"))
+            ev.append((at(1.42), "stamp", .9, "done"))
+            if P.get("sub"): ev.append((at(1.0), "slide", .5, "sub"))
+        elif ty == "steps":
+            if P.get("title"): ev.append((at(0), "slide", .7, "title"))
+            for i, _ in enumerate(P.get("steps", [])):
+                ev.append((at(.25 + i * .5), "stamp", .7, f"step{i}"))
+                if i: ev.append((at(.25 + i * .5 - .15), "ink", .45, f"arrow{i}"))
         elif ty == "finale":
             ev.append((at(.05), "thud", 1.0, "panel"))
             if P.get("top"): ev.append((at(.3), "slide", .6, "top"))

@@ -86,6 +86,60 @@ const kinds = {
   },
 };
 
+// ---- more kinds (same params in every world): list, versus, counter, steps
+const num2 = i => String(i + 1).padStart(2, '0');
+const titleLine = (c, P, lt, pal) => { if (P.title) maskLine(c, P.title, BR, fitSize(c, P.title, BR, 110, 920), 80, 250, pal.ink, eOutExpo(seg(lt, -.1, .45))); };
+Object.assign(kinds, {
+  // params.title?, params.items [2-5 short strings]
+  list: {
+    draw(c, lt, sc, { pal }) {
+      const P = sc.params, items = P.items || []; titleLine(c, P, lt, pal); const y0 = P.title ? 560 : 400, step = Math.min(230, 980 / Math.max(items.length, 1));
+      items.forEach((it, i) => {
+        const t0 = .25 + i * .45, p = eOutExpo(seg(lt, t0, t0 + .4)); if (p <= 0) return; const y = y0 + i * step;
+        line(c, 80, y - 20, 80 + 920 * p, y - 20, 3, pal.ink); mono(c, num2(i), 80, y + 40, 34, pal.acc); maskLine(c, it, BR, fitSize(c, it, BR, 92, 790), 190, y - 8, i === items.length - 1 ? pal.acc : pal.ink, p);
+      });
+    }
+  },
+  // params.a / params.b: {label, text (lines separated by \n)}
+  versus: {
+    draw(c, lt, sc, { pal }) {
+      const P = sc.params, panel = (d, side, t0) => {
+        d = d || {}; const p = eOutExpo(seg(lt, t0, t0 + .5)); if (p <= 0) return; const x0 = side ? 556 : 80, w = 444, y0 = 330, h = 940;
+        c.save(); c.beginPath(); c.rect(x0, y0 + h * (1 - p), w, h * p); c.clip();
+        if (side) { c.fillStyle = pal.acc; c.fillRect(x0, y0, w, h); } else { c.fillStyle = pal.soft; c.fillRect(x0, y0, w, h); c.strokeStyle = pal.ink; c.lineWidth = 4; c.strokeRect(x0 + 2, y0 + 2, w - 4, h - 4); }
+        const ink = side ? pal.paper : pal.ink; mono(c, d.label || '', x0 + 36, y0 + 80, 30, ink);
+        (d.text || '').split('\n').forEach((ln, i) => { const sz = fitSize(c, ln, BR, 120, w - 70); c.font = BR(sz); c.fillStyle = ink; c.fillText(ln, x0 + 36, y0 + 260 + i * 140); });
+        c.restore();
+      };
+      panel(P.a, 0, .2); panel(P.b, 1, .6);
+      const pv = eOutExpo(seg(lt, .5, .8)); if (pv > 0) { c.save(); c.translate(540, 800); c.scale(pv, pv); c.fillStyle = pal.ink; c.beginPath(); c.arc(0, 0, 62, 0, 7); c.fill(); c.fillStyle = pal.paper; c.font = MONO(40); c.textAlign = 'center'; c.fillText('VS', 0, 14); c.restore(); c.textAlign = 'left'; }
+    }
+  },
+  // params.label, params.to (number), params.from, params.suffix, params.decimals, params.sub, params.note
+  counter: {
+    draw(c, lt, sc, { pal }) {
+      const P = sc.params, to = +P.to, from = +(P.from || 0), dec = P.decimals || 0, fmt = v => (dec ? v.toFixed(dec) : Math.round(v).toString()) + (P.suffix || ''), v = lerp(from, to, eOutCubic(seg(lt, .1, 1.4)));
+      if (P.label) { c.globalAlpha = eOutExpo(seg(lt, -.1, .3)); mono(c, P.label, 80, 520, 32, pal.ink); c.globalAlpha = 1; }
+      const fin = fmt(to), sz = fitSize(c, fin, FR, P.size || 420, 920); c.font = FR(sz); c.fillStyle = pal.acc; c.fillText(fmt(v), 80, 600 + sz * .8);
+      const pb = eOutExpo(seg(lt, .4, 1.0)); c.fillStyle = pal.ink; c.fillRect(80, 600 + sz * .92 + 24, 920 * pb, 12);
+      (P.sub || '').split('\n').forEach((t, i) => maskLine(c, t, BR, fitSize(c, t, BR, 100, 920), 80, 600 + sz * .92 + 80 + i * 110, pal.ink, eOutExpo(seg(lt, 1.0 + i * .15, 1.5 + i * .15))));
+      if (P.note) mono(c, P.note, 80, 1480, 24, pal.mute);
+    }
+  },
+  // params.title?, params.steps [2-4 short strings]: boxes joined by arrows
+  steps: {
+    draw(c, lt, sc, { pal }) {
+      const P = sc.params, st = P.steps || [], n = st.length; titleLine(c, P, lt, pal); const y0 = P.title ? 520 : 380, bh = 170, step = Math.min(330, (1060 - bh) / Math.max(n - 1, 1));
+      st.forEach((t, i) => {
+        const t0 = .25 + i * .5, p = eOutExpo(seg(lt, t0, t0 + .4)), y = y0 + i * step; if (i > 0) { const pa = eOutExpo(seg(lt, t0 - .2, t0 + .1)), ya = y0 + (i - 1) * step + bh; if (pa > 0) { line(c, 540, ya + 6, 540, ya + 6 + (step - bh - 12) * pa, 6, pal.ink); if (pa > .9) { c.fillStyle = pal.ink; c.beginPath(); c.moveTo(540, y - 4); c.lineTo(522, y - 30); c.lineTo(558, y - 30); c.closePath(); c.fill(); } } }
+        if (p <= 0) return; const last = i === n - 1; c.save(); c.beginPath(); c.rect(80, y, 920 * p, bh); c.clip();
+        if (last) { c.fillStyle = pal.acc; c.fillRect(80, y, 920, bh); } else { c.fillStyle = pal.soft; c.fillRect(80, y, 920, bh); c.strokeStyle = pal.ink; c.lineWidth = 4; c.strokeRect(82, y + 2, 916, bh - 4); }
+        const ink = last ? pal.paper : pal.ink; mono(c, num2(i), 120, y + bh / 2 + 12, 34, last ? pal.paper : pal.acc); c.font = BR(fitSize(c, t, BR, 84, 700)); c.fillStyle = ink; c.fillText(t, 230, y + bh / 2 + 28); c.restore();
+      });
+    }
+  },
+});
+
 export default {
   name: 'A', title: 'Type + Data', palettes, kinds,
   background(c, t, { pal, tl }) {

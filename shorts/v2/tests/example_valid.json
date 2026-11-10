@@ -98,44 +98,35 @@
    }
   },
   {
-   "kind": "stat",
+   "kind": "steps",
    "lines": [
     "It rolls weighted dice, so a close second can win.",
     "Small chances still happen."
    ],
    "params": {
-    "small": "WEIGHTED",
-    "big": "DICE",
-    "sub": "a close second can win"
+    "title": "HOW IT PICKS",
+    "steps": [
+     "LIST THE WORDS",
+     "ROLL THE DICE",
+     "PICK ONE WORD"
+    ]
    }
   },
   {
-   "kind": "bars",
+   "kind": "versus",
    "lines": [
     "Run it twice, and the dice can land on different words.",
     "Same question, same scores, different pick."
    ],
    "params": {
-    "title": "TWO RUNS",
-    "rows": [
-     {
-      "label": "RUN ONE PICKS",
-      "value": 0.45,
-      "color": "acc"
-     },
-     {
-      "label": "RUN TWO PICKS",
-      "value": 0.35,
-      "color": "ink",
-      "wobble": true
-     }
-    ],
-    "gap": {
-     "from": 0,
-     "to": 1,
-     "label": "DIFFERENT PICK"
+    "a": {
+     "label": "RUN ONE",
+     "text": "WORD\nONE"
     },
-    "note": "ILLUSTRATION. NOT REAL DATA."
+    "b": {
+     "label": "RUN TWO",
+     "text": "WORD\nTWO"
+    }
    }
   },
   {
@@ -163,38 +154,33 @@
    }
   },
   {
-   "kind": "stat",
+   "kind": "counter",
    "lines": [
     "So two answers can both sound sure, and still disagree.",
     "The tone never tells you which one is right."
    ],
    "params": {
-    "small": "SAME QUESTION",
-    "big": "DIFFER",
-    "sub": "both sound sure"
+    "label": "HOW SURE IT SOUNDS",
+    "from": 0,
+    "to": 100,
+    "suffix": "%",
+    "sub": "both answers",
+    "note": "ILLUSTRATION. NOT REAL DATA."
    }
   },
   {
-   "kind": "bars",
+   "kind": "list",
    "lines": [
     "When it matters, ask again and compare the two answers.",
     "Agreement is a good sign. A mismatch is a warning."
    ],
    "params": {
-    "title": "ASK TWICE",
-    "rows": [
-     {
-      "label": "ANSWER ONE",
-      "value": 0.7,
-      "color": "acc"
-     },
-     {
-      "label": "ANSWER TWO",
-      "value": 0.7,
-      "color": "ink"
-     }
-    ],
-    "note": "ILLUSTRATION. NOT REAL DATA."
+    "title": "WHEN IT MATTERS",
+    "items": [
+     "ASK AGAIN",
+     "COMPARE THE TWO",
+     "CHECK A SOURCE"
+    ]
    }
   },
   {

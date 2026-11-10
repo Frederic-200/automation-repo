@@ -128,6 +128,51 @@ const kinds = {
   },
 };
 
+// ---- more kinds (same params in every world): list, versus, counter, steps
+function card(c, x, y, w, h, fill, rot, p, drawIn) {   // a sheet of paper that drops in and settles; drawIn(c) draws its contents in local coords (0,0 = centre)
+  if (p <= 0) return; c.save(); c.translate(x + w / 2, y + h / 2 + (1 - p) * -90); c.rotate(rot + (1 - p) * .12); c.scale(.85 + .15 * p, .85 + .15 * p); c.globalAlpha = clamp(p * 1.6);
+  c.shadowColor = SH(.45); c.shadowBlur = 22; c.shadowOffsetY = 12; c.fillStyle = fill; c.beginPath(); c.rect(-w / 2, -h / 2, w, h); c.fill(); c.shadowColor = 'transparent'; grainOver(c, .1); if (drawIn) drawIn(c); c.restore();
+}
+const fitBR = (c, t, base, maxW) => { c.font = BR(base); return base * Math.min(1, maxW / (c.measureText(t).width || 1)); };
+const bTitle = (c, P, lt, pal) => { if (P.title) { const sz = fitCut(c, P.title, 100, 900); cutLine(c, P.title, 300, sz, pal.tiles[0], pal.ink, -.1, lt, 2); } };
+const disc = (c, x, y, r, fill, txt, ink, size, rot = 0) => { c.save(); c.translate(x, y); c.rotate(rot); c.shadowColor = SH(.4); c.shadowBlur = 12; c.shadowOffsetY = 6; c.fillStyle = fill; c.beginPath(); c.arc(0, 0, r, 0, 7); c.fill(); c.shadowColor = 'transparent'; grainOver(c, .1); c.fillStyle = ink; c.font = MONO(size); c.textAlign = 'center'; c.fillText(txt, 0, size * .35); c.restore(); };
+Object.assign(kinds, {
+  list: {
+    draw(c, lt, sc, { pal }) {
+      const Pm = sc.params, items = Pm.items || []; bTitle(c, Pm, lt, pal); const y0 = Pm.title ? 480 : 340, step = Math.min(250, 1000 / Math.max(items.length, 1)), h = Math.min(160, step - 30);
+      items.forEach((it, i) => { const t0 = .25 + i * .45, p = eOutBack(seg(lt, t0, t0 + .5), 1.6), last = i === items.length - 1;
+        card(c, 80, y0 + i * step, 920, h, last ? pal.acc : pal.white, (i % 2 ? .012 : -.012), p, cc => { disc(cc, -920 / 2 + 80, 0, 38, pal.tiles[0], String(i + 1), pal.ink, 34); cc.fillStyle = last ? pal.white : pal.ink; cc.textAlign = 'left'; cc.font = BR(fitBR(cc, it, 80, 720)); cc.fillText(it, -920 / 2 + 150, 26); }); });
+    }
+  },
+  versus: {
+    draw(c, lt, sc, { pal }) {
+      const Pm = sc.params, side = (d, x, t0, fill, ink, rot) => { d = d || {}; const p = eOutBack(seg(lt, t0, t0 + .55), 1.6);
+        card(c, x, 340, 440, 920, fill, rot, p, cc => { cc.fillStyle = ink; cc.textAlign = 'left'; cc.font = MONO(30); cc.fillText(d.label || '', -184, -380); (d.text || '').split('\n').forEach((ln, i) => { cc.font = FR(fitBR(cc, ln, 110, 360)); cc.fillStyle = ink; cc.fillText(ln, -184, -170 + i * 140); }); }); };
+      side(Pm.a, 70, .2, pal.white, pal.ink, -.02); side(Pm.b, 570, .6, pal.acc, pal.white, .02);
+      const pv = eOutBack(seg(lt, .5, .85), 2); if (pv > 0) disc(c, 540, 800, 66 * pv, pal.tiles[0], 'VS', pal.ink, 40, -.08);
+    }
+  },
+  counter: {
+    draw(c, lt, sc, { pal }) {
+      const Pm = sc.params, to = +Pm.to, from = +(Pm.from || 0), dec = Pm.decimals || 0, fmt = v => (dec ? v.toFixed(dec) : Math.round(v).toString()) + (Pm.suffix || ''), v = lerp(from, to, eOutCubic(seg(lt, .1, 1.4)));
+      if (Pm.label) tag(c, Pm.label, 80, 520, 30, pal.tiles[0], pal.ink, -.03, eOutExpo(seg(lt, -.1, .3)));
+      const p = eOutBack(seg(lt, -.05, .45), 1.7), fin = fmt(to); c.font = FR(100); const sz = Math.min(P_size(Pm), 100 * 820 / (c.measureText(fin).width || 1));
+      card(c, 80, 600, 920, sz * 1.5, pal.white, -.015, p, cc => { cc.font = FR(sz); cc.fillStyle = pal.acc; cc.textAlign = 'left'; cc.fillText(fmt(v), -920 / 2 + 50, sz * .36); });
+      (Pm.sub || '').split('\n').forEach((t, i) => card(c, 130, 600 + sz * 1.5 + 70 + i * 130, 820, 110, pal.tiles[0], (i % 2 ? .012 : -.012), eOutBack(seg(lt, 1.0 + i * .15, 1.5 + i * .15), 1.6), cc => { cc.fillStyle = pal.ink; cc.textAlign = 'center'; cc.font = BR(fitBR(cc, t, 70, 760)); cc.fillText(t, 0, 24); }));
+      if (Pm.note) { c.font = MONO(24); c.fillStyle = 'rgba(43,27,43,.6)'; c.textAlign = 'left'; c.fillText(Pm.note, 80, 1470); }
+    }
+  },
+  steps: {
+    draw(c, lt, sc, { pal }) {
+      const Pm = sc.params, st = Pm.steps || [], n = st.length; bTitle(c, Pm, lt, pal); const y0 = Pm.title ? 480 : 360, bh = 170, step = Math.min(330, (1060 - bh) / Math.max(n - 1, 1));
+      st.forEach((t, i) => { const t0 = .25 + i * .5, p = eOutBack(seg(lt, t0, t0 + .5), 1.6), y = y0 + i * step, last = i === n - 1;
+        if (i > 0) { const pa = eOutExpo(seg(lt, t0 - .2, t0 + .1)), ya = y0 + (i - 1) * step + bh; if (pa > 0) { strip(c, 520, ya + 4, 1, 1, pal.ink); c.save(); c.shadowColor = SH(.35); c.shadowBlur = 8; c.shadowOffsetY = 4; c.fillStyle = pal.acc; c.fillRect(526, ya + 6, 28, (step - bh - 12) * pa); if (pa > .9) { c.beginPath(); c.moveTo(540, y - 2); c.lineTo(510, y - 34); c.lineTo(570, y - 34); c.closePath(); c.fill(); } c.restore(); } }
+        card(c, 80, y, 920, bh, last ? pal.acc : pal.white, (i % 2 ? .01 : -.01), p, cc => { disc(cc, -920 / 2 + 80, 0, 42, pal.tiles[0], String(i + 1), pal.ink, 36); cc.fillStyle = last ? pal.white : pal.ink; cc.textAlign = 'left'; cc.font = BR(fitBR(cc, t, 78, 700)); cc.fillText(t, -920 / 2 + 150, 26); }); });
+    }
+  },
+});
+function P_size(Pm) { return Pm.size || 330; }
+
 export default {
   name: 'B', title: 'Paper cut-out', palettes, kinds,
   background(c, t, { pal }) {
