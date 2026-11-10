@@ -103,7 +103,7 @@ def events(tl):
             if P.get("small"): ev.append((at(-.1), "tick", .8, "small"))
             ev.append((at(-.05), "stamp", .9, "big")); ev.append((at(.4), "ink", .6, "rule"))
             for i, _ in enumerate((P.get("sub") or "").split("\n")): ev.append((at(.5 + i * .15), "slide", .5, f"sub{i}"))
-        elif ty == "stage":
+        elif ty == "stage" or (ty == "headline" and P.get("beats")):
             words = [w for ln in s.get("lines", []) for w in ln.get("words", [])]; prev = -1
             for j, b in enumerate(P.get("beats", [])):
                 if isinstance(b.get("t"), (int, float)): bt = b["t"]

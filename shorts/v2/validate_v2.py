@@ -55,7 +55,7 @@ def main():
             if len(P.get("rows") or []) > 3: E(f"scene {i}: at most 3 bar rows fit")
             if P.get("gap") is None and len(P.get("rows") or []) >= 2: pass
             if "ILLUSTRATION" not in str(P.get("note", "")).upper() and not meta.get("data_sourced"): E(f"scene {i}: bars need params.note 'ILLUSTRATION. NOT REAL DATA.' unless meta.data_sourced is true and sources are listed")
-        if k == "stage":
+        if k == "stage" or (k == "headline" and P.get("beats")):
             bs = P.get("beats") or []; lines = " ".join(sc.get("lines") or []); toks = re.findall(r"[A-Za-z0-9']+", strip(lines)); dur = len(toks) / WPS.get(voice, 2.7) + .45; last_t = 0.0
             for j, b in enumerate(bs):
                 if b.get("prop") not in STAGE_PROPS: E(f"scene {i} beat {j}: unknown prop '{b.get('prop')}' (known: {sorted(STAGE_PROPS)})")

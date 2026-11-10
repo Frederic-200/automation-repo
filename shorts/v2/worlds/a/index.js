@@ -35,6 +35,7 @@ const kinds = {
         if (sc.params.underline === i) { const pb = eOutExpo(seg(lt, .5 + i * .14, 1.0 + i * .14)); c.font = f(sz); c.fillStyle = pal.acc; c.fillRect(80, y + sz * .92 + 6, c.measureText(ln.text).width * pb, 22); }
         y += sz * .92;
       });
+      if (sc.params.beats && kinds.stage) kinds.stage.draw(c, lt, sc, { pal });   // hook scene: a prop moves under the hook text from frame 0
     }
   },
   // params.title, params.rows [{label, value 0..1, color, wobble}], params.gap {from, to, label}, params.note

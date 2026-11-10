@@ -1,350 +1,380 @@
 {
- "title": "A prize-winning novel used ChatGPT (beats)",
- "v2": {
-  "world": "a",
-  "palette": "ember",
-  "number": 14,
-  "kicker": "ABOUT AI",
-  "footer": "TOOL OR CHEAT"
- },
- "hook": "A PRIZE-WINNING NOVEL USED CHATGPT",
- "voice": "af_heart",
- "audio": {
-  "music": "lofi",
-  "sfx": "foley"
- },
- "end_tail": 1.2,
- "scenes": [
-  {
-   "kind": "headline",
-   "lines": [
-    "France's top literary prize just went to a novel that used ChatGPT.",
-    "Yes, really. The author said so himself."
-   ],
-   "params": {
-    "lines": [
-     {
-      "text": "A PRIZE-WINNING"
-     },
-     {
-      "text": "NOVEL USED"
-     },
-     {
-      "text": "CHATGPT",
-      "color": "acc"
-     }
-    ],
-    "underline": 2
-   }
+  "title": "A prize-winning novel used ChatGPT (beats)",
+  "v2": {
+    "world": "a",
+    "palette": "ember",
+    "number": 14,
+    "kicker": "ABOUT AI",
+    "footer": "TOOL OR CHEAT"
   },
-  {
-   "kind": "stage",
-   "lines": [
-    "A day after winning, the author went on French radio.",
-    "He said he turned to AI three times while writing."
-   ],
-   "params": {
-    "beats": [
-     {
-      "cue": "day",
-      "prop": "book",
-      "label": "THE NOVELIST",
-      "move": "drop"
-     },
-     {
-      "cue": "radio",
-      "prop": "mic",
-      "label": "ON RADIO",
-      "move": "slide"
-     },
-     {
-      "cue": "turned",
-      "prop": "bubble",
-      "label": "HE ASKED AI",
-      "move": "slide"
-     },
-     {
-      "cue": "three",
-      "prop": "dice",
-      "label": "THREE TIMES",
-      "move": "pop"
-     }
-    ]
-   }
+  "hook": "A PRIZE-WINNING NOVEL USED CHATGPT",
+  "voice": "af_heart",
+  "audio": {
+    "music": "lofi",
+    "sfx": "foley"
   },
-  {
-   "kind": "stage",
-   "lines": [
-    "One was a sentence written by ChatGPT, added to play with the reader.",
-    "Another made fun of how absurd its answers can be."
-   ],
-   "params": {
-    "beats": [
-     {
-      "cue": "one",
-      "prop": "book",
-      "label": "HIS NOVEL",
-      "slot": "l",
-      "move": "drop"
-     },
-     {
-      "cue": "sentence",
-      "prop": "bubble",
-      "label": "CHATGPT LINE",
-      "slot": "r",
-      "move": "slide"
-     },
-     {
-      "cue": "play",
-      "prop": "dice",
-      "label": "TO PLAY",
-      "slot": "r",
-      "move": "pop"
-     },
-     {
-      "cue": "another",
-      "prop": "warning",
-      "label": "ABSURD ANSWERS",
-      "slot": "r",
-      "move": "pop"
-     }
-    ]
-   }
-  },
-  {
-   "kind": "stage",
-   "lines": [
-    "But the jury only heard about it on the day of the award.",
-    "He told the jurors, and he joked about it."
-   ],
-   "params": {
-    "beats": [
-     {
-      "cue": "but",
-      "prop": "document",
-      "label": "THE JURY",
-      "move": "drop"
-     },
-     {
-      "cue": "heard",
-      "prop": "bubble",
-      "label": "HEARD LATE",
-      "move": "slide"
-     },
-     {
-      "cue": "day",
-      "prop": "check",
-      "label": "AWARD DAY",
-      "move": "pop"
-     },
-     {
-      "cue": "told",
-      "prop": "document",
-      "label": "TOLD JURORS",
-      "move": "drop"
-     },
-     {
-      "cue": "joked",
-      "prop": "bubble",
-      "label": "HE JOKED",
-      "move": "slide"
-     }
-    ]
-   }
-  },
-  {
-   "kind": "stage",
-   "lines": [
-    "Online, people split. Some said it is just a tool.",
-    "Others asked why a novelist would need it."
-   ],
-   "params": {
-    "beats": [
-     {
-      "cue": "online",
-      "prop": "bubble",
-      "label": "ONLINE",
-      "move": "drop"
-     },
-     {
-      "cue": "some",
-      "prop": "gear",
-      "label": "JUST A TOOL",
-      "slot": "l",
-      "move": "pop"
-     },
-     {
-      "cue": "others",
-      "prop": "magnifier",
-      "label": "WHY NEED IT?",
-      "slot": "r",
-      "move": "slide"
-     }
-    ]
-   }
-  },
-  {
-   "kind": "stage",
-   "lines": [
-    "His view is that you cannot ignore AI.",
-    "He said we must acknowledge it, and tame it."
-   ],
-   "params": {
-    "beats": [
-     {
-      "cue": "view",
-      "prop": "toggle",
-      "label": "HIS VIEW",
-      "move": "pop"
-     },
-     {
-      "cue": "ignore",
-      "prop": "warning",
-      "label": "CAN'T IGNORE AI",
-      "move": "pop"
-     },
-     {
-      "cue": "acknowledge",
-      "prop": "check",
-      "label": "ACKNOWLEDGE IT",
-      "move": "pop"
-     },
-     {
-      "cue": "tame",
-      "prop": "lock",
-      "label": "TAME IT",
-      "move": "drop"
-     }
-    ]
-   }
-  },
-  {
-   "kind": "counter",
-   "lines": [
-    "Three uses, inside one whole novel.",
-    "Small, he said, and playful."
-   ],
-   "params": {
-    "label": "TIMES HE USED AI",
-    "from": 0,
-    "to": 3,
-    "sub": "by his own account"
-   }
-  },
-  {
-   "kind": "stage",
-   "lines": [
-    "So where is the line between a tool and a coauthor?",
-    "A spellchecker fixes words. ChatGPT can write whole sentences."
-   ],
-   "params": {
-    "beats": [
-     {
-      "cue": "where",
-      "prop": "arrow",
-      "label": "WHERE'S THE LINE?",
-      "move": "slide"
-     },
-     {
-      "cue": "tool",
-      "prop": "gear",
-      "label": "TOOL",
-      "slot": "l",
-      "move": "pop"
-     },
-     {
-      "cue": "coauthor",
-      "prop": "book",
-      "label": "COAUTHOR?",
-      "slot": "r",
-      "move": "drop"
-     },
-     {
-      "cue": "fixes",
-      "prop": "check",
-      "label": "FIXES WORDS",
-      "slot": "l",
-      "move": "pop"
-     },
-     {
-      "cue": "write",
-      "prop": "bubble",
-      "label": "WRITES SENTENCES",
-      "slot": "r",
-      "move": "slide"
-     }
-    ]
-   }
-  },
-  {
-   "kind": "finale",
-   "lines": [
-    "Be honest with me.",
-    "If a novel you loved used ChatGPT once, would you still read it?"
-   ],
-   "params": {
-    "top": "WOULD YOU",
-    "accent": "READ IT?",
-    "mark": "eq",
-    "bottom": [
-     "TOOL OR",
-     "CHEAT?"
-    ]
-   }
-  }
- ],
- "meta": {
-  "slug": "prize-winning-novel-used-chatgpt-beats",
-  "topic": "The 2026 Prix Goncourt winner said he used ChatGPT three times",
-  "hook_type": "curiosity_gap",
-  "ending": "loop",
-  "data_sourced": true,
-  "facts": [
-   {
-    "claim": "The winner of France's top literary prize said on French radio that he used AI three times while writing the novel",
-    "sources": [
-     0,
-     1
-    ]
-   },
-   {
-    "claim": "One use was a ChatGPT-written sentence inserted to play with the reader, and another made fun of ChatGPT's absurd answers about a technical detail",
-    "sources": [
-     0,
-     1
-    ]
-   },
-   {
-    "claim": "He told the jurors about the sentence on the day of the award and said AI must be acknowledged and tamed; reactions online were split",
-    "sources": [
-     0,
-     1
-    ]
-   }
-  ],
-  "post": {
-   "title": "A prize-winning novel used ChatGPT three times",
-   "tiktok_caption": "France's top literary prize winner says he used ChatGPT three times. Tool or cheat? Would you still read it?",
-   "yt_caption": "The winner of France's top literary prize said he used ChatGPT three times while writing. What he said, and why people are split.",
-   "pinned_comment": "If a novel you loved used ChatGPT once, would you still read it? Tool or cheat?",
-   "hashtags": [
-    "#AI",
-    "#FredsDesk",
-    "#ChatGPT",
-    "#Books",
-    "#AINews",
-    "#TechNews"
-   ],
-   "sources": [
+  "end_tail": 1.2,
+  "scenes": [
     {
-     "name": "Euronews, 4 Nov 2026",
-     "url": "https://www.euronews.com/2026/11/04/goncourt-2026-winner-philippe-jaenada-admits-using-ai-in-novel-sparking-ai-debate-in-liter"
+      "kind": "headline",
+      "lines": [
+        "France's top literary prize just went to a novel that used ChatGPT.",
+        "Yes, really. The author said so himself."
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "A PRIZE-WINNING",
+            "size": 125
+          },
+          {
+            "text": "NOVEL USED",
+            "size": 125
+          },
+          {
+            "text": "CHATGPT",
+            "color": "acc",
+            "size": 125
+          }
+        ],
+        "underline": 2,
+        "y": 170,
+        "beats": [
+          {
+            "t": 0.1,
+            "prop": "book",
+            "label": "A PRIZE NOVEL",
+            "move": "drop"
+          },
+          {
+            "cue": "novel",
+            "prop": "bubble",
+            "label": "AI HELPED",
+            "move": "slide"
+          },
+          {
+            "cue": "really",
+            "prop": "warning",
+            "label": "REALLY",
+            "move": "pop"
+          },
+          {
+            "cue": "author",
+            "prop": "mic",
+            "label": "HE ADMITTED IT",
+            "move": "slide"
+          }
+        ]
+      }
     },
     {
-     "name": "UNN (citing The Guardian), 5 Nov 2026",
-     "url": "https://unn.ua/en/news/goncourt-prize-winner-admits-to-using-ai-in-novel"
+      "kind": "stage",
+      "lines": [
+        "A day after winning, the author went on French radio.",
+        "He said he turned to AI three times while writing."
+      ],
+      "params": {
+        "beats": [
+          {
+            "cue": "day",
+            "prop": "book",
+            "label": "THE NOVELIST",
+            "move": "drop"
+          },
+          {
+            "cue": "radio",
+            "prop": "mic",
+            "label": "ON RADIO",
+            "move": "slide"
+          },
+          {
+            "cue": "turned",
+            "prop": "bubble",
+            "label": "HE ASKED AI",
+            "move": "slide"
+          },
+          {
+            "cue": "three",
+            "prop": "dice",
+            "label": "THREE TIMES",
+            "move": "pop"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "One was a sentence written by ChatGPT, added to play with the reader.",
+        "Another made fun of how absurd its answers can be."
+      ],
+      "params": {
+        "beats": [
+          {
+            "cue": "one",
+            "prop": "book",
+            "label": "HIS NOVEL",
+            "slot": "l",
+            "move": "drop"
+          },
+          {
+            "cue": "sentence",
+            "prop": "bubble",
+            "label": "CHATGPT LINE",
+            "slot": "r",
+            "move": "slide"
+          },
+          {
+            "cue": "play",
+            "prop": "dice",
+            "label": "TO PLAY",
+            "slot": "r",
+            "move": "pop"
+          },
+          {
+            "cue": "another",
+            "prop": "warning",
+            "label": "ABSURD ANSWERS",
+            "slot": "r",
+            "move": "pop"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "But the jury only heard about it on the day of the award.",
+        "He told the jurors, and he joked about it."
+      ],
+      "params": {
+        "beats": [
+          {
+            "cue": "but",
+            "prop": "document",
+            "label": "THE JURY",
+            "move": "drop"
+          },
+          {
+            "cue": "heard",
+            "prop": "bubble",
+            "label": "HEARD LATE",
+            "move": "slide"
+          },
+          {
+            "cue": "day",
+            "prop": "check",
+            "label": "AWARD DAY",
+            "move": "pop"
+          },
+          {
+            "cue": "told",
+            "prop": "document",
+            "label": "TOLD JURORS",
+            "move": "drop"
+          },
+          {
+            "cue": "joked",
+            "prop": "bubble",
+            "label": "HE JOKED",
+            "move": "slide"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Online, people split. Some said it is just a tool.",
+        "Others asked why a novelist would need it."
+      ],
+      "params": {
+        "beats": [
+          {
+            "cue": "online",
+            "prop": "bubble",
+            "label": "ONLINE",
+            "move": "drop"
+          },
+          {
+            "cue": "some",
+            "prop": "gear",
+            "label": "JUST A TOOL",
+            "slot": "l",
+            "move": "pop"
+          },
+          {
+            "cue": "others",
+            "prop": "magnifier",
+            "label": "WHY NEED IT?",
+            "slot": "r",
+            "move": "slide"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "His view is that you cannot ignore AI.",
+        "He said we must acknowledge it, and tame it."
+      ],
+      "params": {
+        "beats": [
+          {
+            "cue": "view",
+            "prop": "toggle",
+            "label": "HIS VIEW",
+            "move": "pop"
+          },
+          {
+            "cue": "ignore",
+            "prop": "warning",
+            "label": "CAN'T IGNORE AI",
+            "move": "pop"
+          },
+          {
+            "cue": "acknowledge",
+            "prop": "check",
+            "label": "ACKNOWLEDGE IT",
+            "move": "pop"
+          },
+          {
+            "cue": "tame",
+            "prop": "lock",
+            "label": "TAME IT",
+            "move": "drop"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "counter",
+      "lines": [
+        "Three uses, inside one whole novel.",
+        "Small, he said, and playful."
+      ],
+      "params": {
+        "label": "TIMES HE USED AI",
+        "from": 0,
+        "to": 3,
+        "sub": "by his own account"
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "So where is the line between a tool and a coauthor?",
+        "A spellchecker fixes words. ChatGPT can write whole sentences."
+      ],
+      "params": {
+        "beats": [
+          {
+            "cue": "where",
+            "prop": "arrow",
+            "label": "WHERE'S THE LINE?",
+            "move": "slide"
+          },
+          {
+            "cue": "tool",
+            "prop": "gear",
+            "label": "TOOL",
+            "slot": "l",
+            "move": "pop"
+          },
+          {
+            "cue": "coauthor",
+            "prop": "book",
+            "label": "COAUTHOR?",
+            "slot": "r",
+            "move": "drop"
+          },
+          {
+            "cue": "fixes",
+            "prop": "check",
+            "label": "FIXES WORDS",
+            "slot": "l",
+            "move": "pop"
+          },
+          {
+            "cue": "write",
+            "prop": "bubble",
+            "label": "WRITES SENTENCES",
+            "slot": "r",
+            "move": "slide"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "finale",
+      "lines": [
+        "Be honest with me.",
+        "If a novel you loved used ChatGPT once, would you still read it?"
+      ],
+      "params": {
+        "top": "WOULD YOU",
+        "accent": "READ IT?",
+        "mark": "eq",
+        "bottom": [
+          "TOOL OR",
+          "CHEAT?"
+        ]
+      }
     }
-   ]
+  ],
+  "meta": {
+    "slug": "prize-winning-novel-used-chatgpt-beats",
+    "topic": "The 2026 Prix Goncourt winner said he used ChatGPT three times",
+    "hook_type": "curiosity_gap",
+    "ending": "loop",
+    "data_sourced": true,
+    "facts": [
+      {
+        "claim": "The winner of France's top literary prize said on French radio that he used AI three times while writing the novel",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "One use was a ChatGPT-written sentence inserted to play with the reader, and another made fun of ChatGPT's absurd answers about a technical detail",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "He told the jurors about the sentence on the day of the award and said AI must be acknowledged and tamed; reactions online were split",
+        "sources": [
+          0,
+          1
+        ]
+      }
+    ],
+    "post": {
+      "title": "A prize-winning novel used ChatGPT three times",
+      "tiktok_caption": "France's top literary prize winner says he used ChatGPT three times. Tool or cheat? Would you still read it?",
+      "yt_caption": "The winner of France's top literary prize said he used ChatGPT three times while writing. What he said, and why people are split.",
+      "pinned_comment": "If a novel you loved used ChatGPT once, would you still read it? Tool or cheat?",
+      "hashtags": [
+        "#AI",
+        "#FredsDesk",
+        "#ChatGPT",
+        "#Books",
+        "#AINews",
+        "#TechNews"
+      ],
+      "sources": [
+        {
+          "name": "Euronews, 4 Nov 2026",
+          "url": "https://www.euronews.com/2026/11/04/goncourt-2026-winner-philippe-jaenada-admits-using-ai-in-novel-sparking-ai-debate-in-liter"
+        },
+        {
+          "name": "UNN (citing The Guardian), 5 Nov 2026",
+          "url": "https://unn.ua/en/news/goncourt-prize-winner-admits-to-using-ai-in-novel"
+        }
+      ]
+    }
   }
- }
 }

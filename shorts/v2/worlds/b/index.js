@@ -2,6 +2,9 @@
 // Layered torn-paper hills with parallax, every letter a cut piece of paper with a shadow, strips and notes that drop and settle.
 // Scene kinds: headline, bars, stat, finale.   Captions: a paper label with word-timed type.
 import { clamp, lerp, seg, eInOut, eOutExpo, eOutCubic, eOutBack, rng, vnoise } from '/proto/worlds/util.js';
+import { PROPS } from '/props/props.js';
+import { drawProp } from '/props/style_b.js';
+import { beatTimes } from '/worlds/a/index.js';   // beat cue timing is shared by every world
 
 const FR = s => `900 ${s}px Fraunces`, MONO = s => `700 ${s}px JBMono`, BR = s => `800 ${s}px Bricolage`;
 const palettes = {
@@ -72,6 +75,7 @@ const kinds = {
         if (sc.params.underline === i) { const pb = eOutExpo(seg(lt, .5 + i * .14, 1.0 + i * .14)), w = measure(c, ln.text, sz, .08).reduce((a, b) => a + b, 0); strip(c, 540 - w / 2, y + sz * 1.0, (w + 20) * pb, 22, pal.acc, 5 + i); }
         y += sz * 1.12;
       });
+      if (sc.params.beats && kinds.stage) kinds.stage.draw(c, lt, sc, { pal });   // hook scene: a paper prop moves under the hook text from frame 0
     }
   },
   // params.title, params.rows [{label, value 0..1, color:'acc'|'ink', wobble}], params.gap {from,to,label}, params.note
@@ -172,6 +176,28 @@ Object.assign(kinds, {
   },
 });
 function P_size(Pm) { return Pm.size || 330; }
+
+// ---- stage (see world A): ONE paper prop at a time + a cut-letter label of <=3 words; beats follow the narration
+const SLOT = { c: [540, 840, 560], l: [290, 840, 340], r: [790, 840, 340] };
+const grainFill = (c, a) => grainOver(c, a);
+Object.assign(kinds, {
+  stage: {
+    draw(c, lt, sc, { pal }) {
+      const B = beatTimes(sc), lr = B.filter(b => b.slot === 'l' || b.slot === 'r').map(b => b.t), firstLR = lr.length ? Math.min(...lr) : 1e9, slots = {};
+      B.forEach(b => { const s = b.slot || 'c'; if (b.t > lt) return; if (s === 'c' && lt >= firstLR) return; (slots[s] = slots[s] || []).push(b); });
+      const show = (b, age, out) => {
+        const spec = PROPS[b.prop]; if (!spec) return; const s = b.slot || 'c', [x0, y0, sz0] = SLOT[s] || SLOT.c, mv = b.move || 'pop';
+        let dx = 0, dy = 0, k = 1, rot = 0; if (mv === 'drop') { const q = eOutBack(clamp(age / .55), 1.7); dy = (1 - q) * -700; rot = (1 - q) * .35; } else if (mv === 'slide') { dx = (1 - eOutExpo(clamp(age / .5))) * 520; rot = (1 - eOutExpo(clamp(age / .5))) * .2; } else { k = eOutBack(clamp(age / .5), 2); }
+        dy += Math.sin(age * 2.3) * 9; let al = clamp(age / .15); if (out != null) { dx += (s === 'r' ? 1 : -1) * out * 520; al = 1 - out; }
+        c.save(); c.globalAlpha = al; c.translate(x0 + dx, y0 + dy); c.rotate(rot + Math.sin(age * 1.7) * .02);
+        drawProp(c, spec, 0, 0, sz0 * Math.max(k, .001), pal, { on: eOutCubic(seg(age, .35, 1.0)), ...(b.anim || {}) }, grainFill); c.restore();
+        if (b.label && out == null) { const sz = fitCut(c, b.label, 92, s === 'c' ? 900 : 400); cutLine(c, b.label, y0 + sz0 * .62 + 60, sz, pal.tiles[age < 0 ? 0 : (b.prop.length % 3)], pal.ink, .12, age, b.prop.length, .08, x0); }
+      };
+      for (const s in slots) { const a = slots[s], cur = a[a.length - 1], prv = a[a.length - 2]; if (prv && lt - cur.t < .3) show(prv, lt - prv.t, eInOut((lt - cur.t) / .3)); show(cur, lt - cur.t, null); }
+      if (firstLR < 1e9 && lt >= firstLR && lt < firstLR + .3) { const a = B.filter(b => (b.slot || 'c') === 'c' && b.t < firstLR), prv = a[a.length - 1]; if (prv) show(prv, lt - prv.t, eInOut((lt - firstLR) / .3)); }
+    }
+  },
+});
 
 export default {
   name: 'B', title: 'Paper cut-out', palettes, kinds,

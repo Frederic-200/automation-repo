@@ -3,6 +3,8 @@
 // captions and the wipe are 2D on top.
 import * as THREE from 'three';
 import { clamp, lerp, seg, eInOut, eOutExpo, eOutCubic, rng, vnoise } from '/proto/worlds/util.js';
+import { PROPS } from '/props/props.js';
+import { beatTimes } from '/worlds/a/index.js';   // beat cue timing is shared by every world
 
 const palettes = {
   indigo: { wall: 0x3a2f86, bgTop: '#1b1440', bgBot: '#07051a', hemiS: 0xa8acff, hemiG: 0x2a2060, key: 0xffe2b0, rim: 0x6c8cff, acc: 0xffc857, accEm: 0x6b4a00, accCss: '#ffc857', block: 0xf4efe6, blockInk: '#1a1230', alt: 0x6c5ce7, altInk: '#ffffff', altEm: 0x1a1260, dust: 0xb9b0ff, deep: 0x120c33 },
@@ -39,13 +41,15 @@ const box = (w, h, d, mat) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w
 
 // ------------------------------------------------------------------ scene kinds: build(params) -> {group, update(lt)}
 const BUILD = {
-  headline(P) {
-    const g = new THREE.Group(), L = P.lines || [], rows = [], hs = L.map(l => Math.min(1.8, Math.max(.8, (l.size || 150) / 150 * 1.05))), tot = hs.reduce((a, h) => a + h * 1.32, 0); let top = 1.6 + tot / 2;
+  headline(P, sc) {
+    const g = new THREE.Group(), L = P.lines || [], rows = [], hs = L.map(l => Math.min(1.8, Math.max(.8, (l.size || 150) / 150 * 1.05))), tot = hs.reduce((a, h) => a + h * 1.32, 0); let top = P.beats ? 6.2 : 1.6 + tot / 2;
     L.forEach((ln, i) => {
       const st = ln.color === 'acc' ? STY.gold : [STY.cream, STY.alt, STY.cream][i % 3], y = top - hs[i] * .66, r = row(g, ln.text, hs[i], st, y); rows.push(r); top -= hs[i] * 1.32;
       if (P.underline === i) { const bar = box(1, .17, .3, new THREE.MeshStandardMaterial({ color: pal.acc, emissive: pal.accEm, roughness: .4 })); bar.position.set(0, y - r.h * .62, .1); g.add(bar); r.bar = bar; }
     });
+    const hk = P.beats ? BUILD.stage(P, sc, true) : null; if (hk) g.add(hk.group);   // hook scene: a 3D prop moves under the hook text from frame 0
     return { group: g, update(lt) {
+      if (hk) hk.update(lt);
       rows.forEach((r, i) => { r.blocks.forEach((b, j) => dropIn(b, lt, -.2 + i * .14 + j * .08, (i + j) % 2 ? 1 : -1)); if (r.bar) { const pb = eOutExpo(seg(lt, .5 + i * .14, 1.0 + i * .14)); r.bar.scale.x = Math.max(.001, (r.w + .2) * pb); r.bar.visible = pb > .01; } });
     } };
   },
@@ -124,8 +128,57 @@ Object.assign(BUILD, {
   },
 });
 
+// ---- stage (see worlds A and B): ONE 3D prop at a time (the shared prop shapes, extruded, on a token tile) + a block label of <=3 words
+const SLOT3 = { c: [0, .85, 1.9, -2.75], l: [-1.76, .85, 1.2, -1.9], r: [1.76, .85, 1.2, -1.9] };
+function capsule(a, b, w, mat) {
+  const dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy), g = new THREE.ExtrudeGeometry(rrect(len + w, w, w / 2), { depth: .05, bevelEnabled: false, curveSegments: 6 }), m = new THREE.Mesh(g, mat);
+  m.position.set((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, 0); m.rotation.z = Math.atan2(dy, dx); m.castShadow = true; return m;
+}
+function propGroup(spec) {
+  const g = new THREE.Group(), col = r => ({ main: new THREE.Color(pal.blockInk), ink: new THREE.Color(pal.blockInk), acc: new THREE.Color(pal.acc), paper: new THREE.Color(pal.block), soft: new THREE.Color(pal.alt).lerp(new THREE.Color(0xffffff), .55), glass: new THREE.Color(pal.acc) }[r] || new THREE.Color(pal.blockInk));
+  const mk = sh => { const m = new THREE.MeshStandardMaterial({ color: col(sh.c), roughness: .45, metalness: .05, transparent: true }); m.userData.base = sh.c === 'glass' ? .4 : 1; if (sh.c === 'acc') m.emissive = new THREE.Color(pal.accEm).multiplyScalar(.6); return m; };
+  const tile = new THREE.Mesh(new THREE.ExtrudeGeometry(rrect(2.7, 2.7, .55), { depth: .12, bevelEnabled: true, bevelThickness: .04, bevelSize: .04, bevelSegments: 2, curveSegments: 8 }), (() => { const m = new THREE.MeshStandardMaterial({ color: pal.alt, roughness: .4, emissive: pal.altEm, transparent: true }); m.userData.base = 1; return m; })());
+  tile.position.z = -.2; tile.castShadow = true; tile.receiveShadow = true; g.add(tile);
+  const ED = { depth: .06, bevelEnabled: true, bevelThickness: .012, bevelSize: .012, bevelSegments: 1, curveSegments: 12 };
+  spec.forEach((sh, n) => {
+    const mat = mk(sh), z = .02 + n * .05, holder = new THREE.Group(); let meshes = [];
+    if (sh.k === 'rect') { const m = new THREE.Mesh(new THREE.ExtrudeGeometry(rrect(sh.w, sh.h, Math.min((sh.r || 0) * .6, sh.w / 2, sh.h / 2)), ED), mat); m.position.set(sh.x + sh.w / 2, -(sh.y + sh.h / 2), 0); meshes.push(m); }
+    else if (sh.k === 'circ') { const sp = new THREE.Shape(); sp.absarc(0, 0, sh.r, 0, Math.PI * 2, false); const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sp, ED), mat); m.position.set(sh.x, -sh.y, 0); meshes.push(m); }
+    else if (sh.k === 'poly') { const sp = new THREE.Shape(); sh.p.forEach(([x, y], i) => i ? sp.lineTo(x, -y) : sp.moveTo(x, -y)); sp.closePath(); meshes.push(new THREE.Mesh(new THREE.ExtrudeGeometry(sp, ED), mat)); }
+    else if (sh.k === 'line') { for (let i = 1; i < sh.p.length; i++) meshes.push(capsule([sh.p[i - 1][0], -sh.p[i - 1][1]], [sh.p[i][0], -sh.p[i][1]], sh.w, mat)); }
+    else if (sh.k === 'arc') { const N = Math.max(6, Math.round(Math.abs(sh.a1 - sh.a0) / (Math.PI * 2) * 28)); let prev = null; for (let i = 0; i <= N; i++) { const a = sh.a0 + (sh.a1 - sh.a0) * i / N, pt = [sh.x + sh.r * Math.cos(a), -(sh.y + sh.r * Math.sin(a))]; if (prev) meshes.push(capsule(prev, pt, sh.w, mat)); prev = pt; } }
+    else if (sh.k === 'text') { const cv = document.createElement('canvas'); cv.width = cv.height = 256; const cg = cv.getContext('2d'); cg.font = `900 ${sh.sz * 150}px Bricolage`; cg.textAlign = 'center'; cg.textBaseline = 'middle'; cg.fillStyle = '#' + col(sh.c).getHexString(); cg.fillText(sh.s, 128, 128 + 6); const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace; const m = new THREE.Mesh(new THREE.PlaneGeometry(1.7, 1.7), new THREE.MeshBasicMaterial({ map: tx, transparent: true, toneMapped: false })); m.material.userData.base = 1; m.position.set(sh.x, -sh.y, .08); meshes.push(m); }
+    meshes.forEach(m => { const thin = sh.k === 'line' || sh.k === 'arc'; if (sh.k !== 'text') { m.castShadow = !thin; m.receiveShadow = !thin; } holder.add(m); });
+    holder.position.z = z; holder.userData.mv = sh.mv || null; g.add(holder); (g.userData.parts = g.userData.parts || []).push(holder);
+  });
+  return g;
+}
+const setPropOp = (g, o) => g.traverse(m => { if (m.material) m.material.opacity = (m.material.userData.base ?? 1) * o; });
+BUILD.stage = function (P, sc, hook = false) {
+  const g = new THREE.Group(), B = beatTimes(sc), lr = B.filter(b => b.slot === 'l' || b.slot === 'r').map(b => b.t), firstLR = lr.length ? Math.min(...lr) : 1e9, dyH = hook ? -.65 : 0, kH = hook ? .88 : 1;
+  const items = B.map((b, i) => {
+    const spec = PROPS[b.prop], sl = b.slot || 'c', [x0, y0, k0, ly] = SLOT3[sl] || SLOT3.c, holder = new THREE.Group(); holder.position.set(x0, y0 + dyH, 0); g.add(holder);
+    const pg = spec ? propGroup(spec) : new THREE.Group(); pg.scale.setScalar(k0 * kH * (1 / 1.35)); holder.add(pg);
+    const lab = b.label ? row(holder, b.label, sl === 'c' ? .9 : .7, [STY.cream, STY.gold, STY.alt][i % 3], ly * kH + (hook ? .15 : 0), sl === 'c' ? 6.2 : 2.7, 0) : { blocks: [] };
+    let te = Infinity; for (let j = i + 1; j < B.length; j++) if ((B[j].slot || 'c') === sl) { te = B[j].t; break; } if (sl === 'c') te = Math.min(te, firstLR > b.t ? firstLR : Infinity);
+    return { b, sl, holder, pg, lab, te, x0, y0: y0 + dyH };
+  });
+  return { group: g, update(lt) {
+    items.forEach(it => {
+      const age = lt - it.b.t, out = lt - it.te, mv = it.b.move || 'pop';
+      if (age < 0 || out > .3) { it.holder.visible = false; return; } it.holder.visible = true;
+      const k = settle(age), sc0 = it.pg.userData.s0 ?? (it.pg.userData.s0 = it.pg.scale.x); let dx = 0, dy = 0, rz = 0, sk = 1;
+      if (mv === 'drop') { dy = (1 - k) * 7; rz = (1 - k) * .35; } else if (mv === 'slide') { dx = (1 - k) * 5; rz = (1 - k) * -.2; } else { sk = Math.max(.001, k); }
+      let o = clamp(age / .12); if (out > 0) { const q = eInOut(out / .3); dx += (it.sl === 'r' ? 1 : -1) * q * 5; o = 1 - q; }
+      it.pg.position.set(dx, dy + Math.sin(age * 2.3) * .05, 0); it.pg.rotation.z = rz + Math.sin(age * 1.7) * .02; it.pg.scale.setScalar(sc0 * sk); setPropOp(it.pg, o);
+      const on = eOutCubic(seg(age, .35, 1.0)); (it.pg.userData.parts || []).forEach(h => { const mv2 = h.userData.mv; if (mv2 && mv2.on) { h.position.x = mv2.on[0] * on; h.position.y = -mv2.on[1] * on; } });
+      it.lab.blocks.forEach((bl, j) => { if (out > 0) setOp(bl, o); else dropIn(bl, age, .12 + j * .06); });
+    });
+  } };
+};
+
 function renderScene(sc, lt) {
-  const t = sc.start + lt; if (!sc.__c) { sc.__c = BUILD[sc.type](sc.params || {}); root.add(sc.__c.group); built.push(sc.__c); }
+  const t = sc.start + lt; if (!sc.__c) { sc.__c = BUILD[sc.type](sc.params || {}, sc); root.add(sc.__c.group); built.push(sc.__c); }
   built.forEach(b => b.group.visible = false); sc.__c.group.visible = true; flash.intensity = 0;
   const dark = sc.__c.dark ? eInOut(seg(lt, -.05, .45)) : 0; wall.material.color.setHex(pal.wall).lerp(new THREE.Color(pal.deep), dark * .8);
   sc.__c.update(lt);
@@ -134,7 +187,7 @@ function renderScene(sc, lt) {
   cam.position.set(Math.sin(t * .5) * .35, -.2 + Math.cos(t * .4) * .2, z); cam.lookAt(0, 0, 0); R.render(root, cam);
 }
 
-const kinds = Object.fromEntries(['headline', 'bars', 'stat', 'finale', 'list', 'versus', 'counter', 'steps'].map(k => [k, { caps: k !== 'finale', draw(c, lt, sc) { renderScene(sc, lt); c.drawImage(GL, 0, 0, 1080, 1920); } }]));
+const kinds = Object.fromEntries(['headline', 'bars', 'stat', 'finale', 'list', 'versus', 'counter', 'steps', 'stage'].map(k => [k, { caps: k !== 'finale', draw(c, lt, sc) { renderScene(sc, lt); c.drawImage(GL, 0, 0, 1080, 1920); } }]));
 
 export default {
   name: 'C', title: 'Token blocks (3D)', palettes, kinds,
