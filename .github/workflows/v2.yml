@@ -1,4 +1,5 @@
 name: FredsDesk v2 video
+# This file lives on main (GitHub only registers workflows there); the engine and scripts are checked out from the `branch` input (default v2-prototypes).
 # Renders ONE v2 script (shorts/v2/queue/*.json) and uploads it to Drive ("FredsDesk v2" folder). Manual start only for now: there is NO schedule,
 # so enabling the daily flow later is a separate, explicit step. Does not touch loops, shorts, news or lessons.
 on:
@@ -13,6 +14,9 @@ on:
       skip_novelty:
         description: "Skip the novelty (too-similar) check"
         default: "false"
+      branch:
+        description: "Branch that holds the v2 engine and the script (this workflow file lives on main, the code on v2-prototypes)"
+        default: "v2-prototypes"
 
 concurrency:
   group: fredsdesk-v2
@@ -24,6 +28,8 @@ jobs:
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch || 'v2-prototypes' }}
 
       - uses: actions/setup-python@v5
         with:
