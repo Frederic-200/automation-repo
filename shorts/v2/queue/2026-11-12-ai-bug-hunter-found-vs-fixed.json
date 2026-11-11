@@ -1,0 +1,412 @@
+{
+ "title": "AI bug hunter: found vs fixed",
+ "v2": {
+  "world": "c",
+  "palette": "indigo",
+  "number": 2,
+  "kicker": "ABOUT AI",
+  "footer": "FOUND VS FIXED"
+ },
+ "hook": "YOU'RE COUNTING AI BUGS WRONG",
+ "voice": "af_heart",
+ "audio": {
+  "music": "synthwave",
+  "sfx": "foley"
+ },
+ "end_tail": 1.2,
+ "scenes": [
+  {
+   "kind": "headline",
+   "lines": [
+    "Okay, so an AI company built a bug hunter. It found tens of thousands of flaws.",
+    "Sounds amazing. Right?"
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "YOU'RE COUNTING",
+      "size": 125
+     },
+     {
+      "text": "AI BUGS",
+      "size": 125
+     },
+     {
+      "text": "WRONG",
+      "color": "acc",
+      "size": 125
+     }
+    ],
+    "underline": 2,
+    "y": 170,
+    "beats": [
+     {
+      "prop": "magnifier",
+      "label": "BUG HUNTER",
+      "move": "drop",
+      "t": 0.1
+     },
+     {
+      "prop": "gear",
+      "label": "AI COMPANY",
+      "move": "slide",
+      "cue": "company"
+     },
+     {
+      "prop": "warning",
+      "label": "TENS OF THOUSANDS",
+      "move": "pop",
+      "cue": "tens"
+     },
+     {
+      "prop": "check",
+      "label": "SOUNDS AMAZING",
+      "move": "slide",
+      "cue": "amazing"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Then a security researcher checked the list. And he didn't count the finds. He counted the fixes."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "document",
+      "label": "THE LIST",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "magnifier",
+      "label": "OUTSIDE CHECK",
+      "move": "slide",
+      "cue": "checked"
+     },
+     {
+      "prop": "dice",
+      "label": "NOT THE FINDS",
+      "move": "pop",
+      "cue": "count"
+     },
+     {
+      "prop": "check",
+      "label": "COUNT THE FIXES",
+      "move": "pop",
+      "cue": "fixes"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "Fixed? Fewer than one in a hundred.",
+    "Almost all of it... still waiting."
+   ],
+   "params": {
+    "small": "ACTUALLY FIXED",
+    "big": "UNDER 1%",
+    "size": 220,
+    "sub": "of what was reported"
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Now, the company says over ninety percent of its reports are real.",
+    "And that's a big claim."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "bubble",
+      "label": "THE CLAIM",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "document",
+      "label": "ITS REPORTS",
+      "move": "slide",
+      "cue": "reports"
+     },
+     {
+      "prop": "check",
+      "label": "OVER NINETY PERCENT",
+      "move": "pop",
+      "cue": "real"
+     },
+     {
+      "prop": "warning",
+      "label": "BIG CLAIM",
+      "move": "slide",
+      "cue": "big"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "But here's the catch. The AI rated most findings as serious.",
+    "The people fixing the code? Far fewer."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "warning",
+      "label": "THE CATCH",
+      "move": "pop",
+      "t": 0.2
+     },
+     {
+      "prop": "bubble",
+      "label": "AI: SERIOUS",
+      "move": "drop",
+      "cue": "rated"
+     },
+     {
+      "prop": "gear",
+      "label": "THE FIXERS",
+      "move": "slide",
+      "cue": "people"
+     },
+     {
+      "prop": "magnifier",
+      "label": "FAR FEWER",
+      "move": "pop",
+      "cue": "Far"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "versus",
+   "lines": [
+    "The AI said, urgent. The maintainers said, maybe.",
+    "Same list. Two very different views."
+   ],
+   "params": {
+    "a": {
+     "label": "THE AI",
+     "text": "URGENT"
+    },
+    "b": {
+     "label": "MAINTAINERS",
+     "text": "FAR FEWER"
+    }
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "And every report needs a human to check it. By hand.",
+    "That's the slow part. The bottleneck."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "document",
+      "label": "EVERY REPORT",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "gear",
+      "label": "A HUMAN CHECKS",
+      "move": "slide",
+      "cue": "human"
+     },
+     {
+      "prop": "magnifier",
+      "label": "BY HAND",
+      "move": "pop",
+      "cue": "hand"
+     },
+     {
+      "prop": "lock",
+      "label": "THE BOTTLENECK",
+      "move": "pop",
+      "cue": "bottleneck"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "list",
+   "lines": [
+    "So what do the numbers really say?",
+    "Lots found. Few fixed. Barely any attacked."
+   ],
+   "params": {
+    "title": "THE SCORECARD",
+    "items": [
+     "LOTS FOUND",
+     "FEW FIXED",
+     "BARELY ATTACKED"
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Yes, barely attacked. Researchers found around one percent, or less, of these flaws used in real attacks.",
+    "So, not useless."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "magnifier",
+      "label": "IN REAL ATTACKS",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "warning",
+      "label": "BARELY ATTACKED",
+      "move": "pop",
+      "cue": "Researchers"
+     },
+     {
+      "prop": "check",
+      "label": "ONE PERCENT",
+      "move": "pop",
+      "cue": "percent"
+     },
+     {
+      "prop": "lock",
+      "label": "REAL ATTACKS",
+      "move": "slide",
+      "cue": "real"
+     },
+     {
+      "prop": "check",
+      "label": "NOT USELESS",
+      "move": "slide",
+      "cue": "useless"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Some real flaws did get fixed. But a giant list isn't the same as a safer internet."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "check",
+      "label": "SOME FIXED",
+      "move": "pop",
+      "t": 0.2
+     },
+     {
+      "prop": "book",
+      "label": "A GIANT LIST",
+      "move": "drop",
+      "cue": "giant"
+     },
+     {
+      "prop": "lock",
+      "label": "SAFER INTERNET",
+      "move": "slide",
+      "cue": "safer"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "finale",
+   "lines": [
+    "Okay, be honest.",
+    "When an AI shows you a huge number... do you trust the count, or the fixes?"
+   ],
+   "params": {
+    "top": "TRUST THE",
+    "accent": "FIXES?",
+    "mark": "neq",
+    "bottom": [
+     "COUNT OR",
+     "FIXES?"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "slug": "ai-bug-hunter-found-vs-fixed",
+  "topic": "An AI company's bug-hunting program reported tens of thousands of findings; an outside audit counts under one percent fixed and a severity gap between the AI and maintainers",
+  "hook_type": "doing_it_wrong",
+  "ending": "loop",
+  "data_sourced": true,
+  "facts": [
+   {
+    "claim": "The program has reported tens of thousands of findings, and fewer than one in a hundred are marked fixed",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "The company claims a true-positive rate above ninety percent",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "The AI rated most findings high or critical while maintainers rated far fewer that way",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Human checking of each report is the bottleneck",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Around one percent or fewer of the linked flaws are known to be exploited in real attacks",
+    "sources": [
+     1,
+     2
+    ]
+   }
+  ],
+  "post": {
+   "title": "AI found tens of thousands of bugs. How many got fixed?",
+   "tiktok_caption": "An AI bug hunter reported tens of thousands of flaws. Fewer than one in a hundred are fixed. Do you trust the count or the fixes?",
+   "yt_caption": "An outside audit looks at an AI bug-hunting program: huge number of findings, very few fixes, and a gap between what the AI called serious and what maintainers did.",
+   "pinned_comment": "When an AI shows you a huge number, do you trust the count or the fixes?",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#AINews",
+    "#Cybersecurity",
+    "#TechNews",
+    "#Future"
+   ],
+   "sources": [
+    {
+     "name": "Dark Reading, Sept 2026",
+     "url": "https://darkreading.com/application-security/mythos-vulnerability-firehose-hits-human-bottleneck"
+    },
+    {
+     "name": "TechTarget, 29 Sept 2026",
+     "url": "https://www.techtarget.com/it-infrastructure/news/366651381/Glasswing-results-put-AI-vulnpocalypse-to-the-test"
+    },
+    {
+     "name": "The Register, 21 Sept 2026",
+     "url": "https://www.theregister.com/security/2026/09/21/anthropic-linked-cves-pile-up-attackers-mostly-shrug/5298018"
+    }
+   ]
+  }
+ }
+}
