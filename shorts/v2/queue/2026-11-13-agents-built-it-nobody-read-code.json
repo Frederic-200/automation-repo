@@ -1,0 +1,326 @@
+{
+  "title": "Amazon's new tool was built by AI agents, no human read the code",
+  "v2": {
+    "world": "a",
+    "palette": "ember",
+    "number": 3,
+    "kicker": "ABOUT AI",
+    "footer": "UNREAD CODE"
+  },
+  "hook": "POV: NO HUMAN READ THE CODE",
+  "voice": "af_heart",
+  "audio": {
+    "music": "epic",
+    "sfx": "foley"
+  },
+  "end_tail": 1.2,
+  "scenes": [
+    {
+      "kind": "headline",
+      "lines": [
+        "Okay, picture this. Amazon just released a free tool.",
+        "And nobody on the team read the code. Not one line... seriously."
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "POV: NO HUMAN",
+            "size": 125
+          },
+          {
+            "text": "READ THE",
+            "size": 125
+          },
+          {
+            "text": "CODE",
+            "color": "acc",
+            "size": 125
+          }
+        ],
+        "underline": 2,
+        "y": 170,
+        "beats": [
+          {
+            "prop": "gear",
+            "label": "A NEW TOOL",
+            "move": "drop",
+            "t": 0.1
+          },
+          {
+            "prop": "coin",
+            "label": "FREE",
+            "move": "pop",
+            "cue": "free"
+          },
+          {
+            "prop": "magnifier",
+            "label": "NOBODY READ IT",
+            "move": "slide",
+            "cue": "nobody"
+          },
+          {
+            "prop": "document",
+            "label": "NOT ONE LINE",
+            "move": "pop",
+            "cue": "Not"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "So who wrote it? Software agents. Thousands of them, working on their own."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "bubble",
+            "label": "WHO WROTE IT?",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "gear",
+            "label": "AI AGENTS",
+            "move": "slide",
+            "cue": "agents"
+          },
+          {
+            "prop": "dice",
+            "label": "THOUSANDS",
+            "move": "pop",
+            "cue": "Thousands"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "counter",
+      "lines": [
+        "Three teams. Writers, finders, fixers. All of them agents."
+      ],
+      "params": {
+        "label": "TEAMS OF AGENTS",
+        "from": 0,
+        "to": 3,
+        "sub": "writers, finders, fixers"
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Even the reviewers are agents. Agents checking agents, fixing thousands of issues every day."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "magnifier",
+            "label": "AGENT REVIEWERS",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "gear",
+            "label": "AGENTS CHECK AGENTS",
+            "move": "slide",
+            "cue": "checking"
+          },
+          {
+            "prop": "check",
+            "label": "FIXES EVERY DAY",
+            "move": "pop",
+            "cue": "fixing"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stat",
+      "lines": [
+        "So what keeps it honest? Tens of thousands of tests, checked against the real cloud."
+      ],
+      "params": {
+        "small": "TESTS KEEPING IT HONEST",
+        "big": "TENS OF THOUSANDS",
+        "size": 120,
+        "sub": "checked against the real cloud"
+      }
+    },
+    {
+      "kind": "list",
+      "lines": [
+        "The code is public, under a public-domain license. Anyone can read it. Copy it. Use it."
+      ],
+      "params": {
+        "title": "THE CODE IS",
+        "items": [
+          "PUBLIC",
+          "FREE TO COPY",
+          "OPEN TO ALL"
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "But here's the catch. Amazon says it doesn't check access rules the way the real cloud does."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "warning",
+            "label": "THE CATCH",
+            "move": "pop",
+            "t": 0.2
+          },
+          {
+            "prop": "lock",
+            "label": "ACCESS RULES",
+            "move": "drop",
+            "cue": "access"
+          },
+          {
+            "prop": "magnifier",
+            "label": "NOT CHECKED",
+            "move": "slide",
+            "cue": "check"
+          },
+          {
+            "prop": "warning",
+            "label": "NOT REAL CLOUD",
+            "move": "pop",
+            "cue": "real"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "versus",
+      "lines": [
+        "So... don't use it for security testing.",
+        "Code nobody read. A tool that can't test security. Interesting mix, right?"
+      ],
+      "params": {
+        "a": {
+          "label": "THE CODE",
+          "text": "UNREAD"
+        },
+        "b": {
+          "label": "SECURITY",
+          "text": "NOT TESTED"
+        }
+      }
+    },
+    {
+      "kind": "list",
+      "lines": [
+        "So the plan is simple. Test on your laptop. Fix fast. Then check in the real cloud."
+      ],
+      "params": {
+        "title": "THE REAL PLAN",
+        "items": [
+          "TEST ON LAPTOP",
+          "FIX FAST",
+          "CHECK IN REAL CLOUD"
+        ]
+      }
+    },
+    {
+      "kind": "finale",
+      "lines": [
+        "Okay, be honest.",
+        "Would you trust software that no human ever read? Tell me in the comments."
+      ],
+      "params": {
+        "top": "WOULD YOU",
+        "accent": "TRUST IT?",
+        "mark": "neq",
+        "bottom": [
+          "UNREAD",
+          "CODE?"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "slug": "agents-built-it-nobody-read-code",
+    "topic": "Amazon's free open-source local cloud emulator was written by autonomous AI agents with no human code review; Amazon says it should not be used for security testing",
+    "hook_type": "pov",
+    "ending": "cliffhanger",
+    "next_question": "Can AI agents be trusted to check their own work?",
+    "data_sourced": true,
+    "facts": [
+      {
+        "claim": "Amazon released a free, open-source local emulator of its cloud services",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "The team says it hasn't written or reviewed any of the code; autonomous agents wrote it",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "Agent teams write tests, find failures and fix them; agents also review changes; thousands of issues fixed per day",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "It relies on tens of thousands of tests checked against the real cloud",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "It does not evaluate access-permission policies like the real cloud and is not meant for security testing",
+        "sources": [
+          1,
+          2
+        ]
+      },
+      {
+        "claim": "Developers are advised to test in the real cloud before production; the tool runs locally",
+        "sources": [
+          1,
+          2
+        ]
+      }
+    ],
+    "post": {
+      "title": "Amazon's new tool: no human read the code",
+      "tiktok_caption": "Amazon released a free tool written by AI agents. The team says no human read the code. Would you trust it?",
+      "yt_caption": "Amazon's free local cloud emulator was built by AI agents, with no human code review. What it can do, and what it can't.",
+      "pinned_comment": "Would you trust software that no human ever read?",
+      "hashtags": [
+        "#AI",
+        "#FredsDesk",
+        "#AINews",
+        "#Amazon",
+        "#TechNews",
+        "#AIAgents"
+      ],
+      "sources": [
+        {
+          "name": "Amazon News, How we built the agents that built AWS Emulator",
+          "url": "https://www.aboutamazon.com/news/aws/how-autonomous-ai-agents-built-aws-emulator"
+        },
+        {
+          "name": "Help Net Security, AWS Emulator built by autonomous AI agents",
+          "url": "https://www.helpnetsecurity.com/2026/11/12/aws-ai-agents-built-emulator/"
+        },
+        {
+          "name": "Cloud Computing News, AWS launches cloud emulator built entirely by AI agents",
+          "url": "https://www.cloudcomputing-news.net/news/aws-cloud-emulator-ai-agents/"
+        }
+      ]
+    }
+  }
+}
