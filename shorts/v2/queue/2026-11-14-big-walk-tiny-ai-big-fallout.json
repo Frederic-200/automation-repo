@@ -1,0 +1,336 @@
+{
+  "title": "Indie hit Big Walk admitted a tiny bit of AI",
+  "v2": {
+    "world": "c",
+    "palette": "indigo",
+    "number": 4,
+    "kicker": "ABOUT AI",
+    "footer": "HOW MUCH IS TOO MUCH"
+  },
+  "hook": "YOU ASKED: IS A LITTLE AI OKAY?",
+  "voice": "af_heart",
+  "audio": {
+    "music": "epic",
+    "sfx": "foley"
+  },
+  "end_tail": 1.2,
+  "scenes": [
+    {
+      "kind": "headline",
+      "lines": [
+        "Okay, you asked. A hit indie game just admitted using AI.",
+        "Just a little. And the internet... did not stay calm."
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "YOU ASKED:",
+            "size": 125
+          },
+          {
+            "text": "IS A LITTLE AI",
+            "color": "acc",
+            "size": 125
+          },
+          {
+            "text": "OKAY?",
+            "size": 125
+          }
+        ],
+        "underline": 2,
+        "y": 170,
+        "beats": [
+          {
+            "prop": "dice",
+            "label": "AN INDIE GAME",
+            "move": "drop",
+            "t": 0.1
+          },
+          {
+            "prop": "mic",
+            "label": "THEY ADMITTED IT",
+            "move": "slide",
+            "cue": "admitted"
+          },
+          {
+            "prop": "gear",
+            "label": "A LITTLE AI",
+            "move": "pop",
+            "cue": "little"
+          },
+          {
+            "prop": "bubble",
+            "label": "INTERNET REACTS",
+            "move": "slide",
+            "cue": "internet"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "The game is called Big Walk. It's been tipped as a game of the year contender."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "dice",
+            "label": "BIG WALK",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "coin",
+            "label": "AWARD FAVORITE",
+            "move": "pop",
+            "cue": "tipped"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Nobody caught them. The makers told everyone themselves, in public.",
+        "They could have stayed quiet."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "magnifier",
+            "label": "NOBODY CAUGHT IT",
+            "move": "slide",
+            "t": 0.2
+          },
+          {
+            "prop": "mic",
+            "label": "THEY TOLD US",
+            "move": "slide",
+            "cue": "makers"
+          },
+          {
+            "prop": "check",
+            "label": "IN PUBLIC",
+            "move": "pop",
+            "cue": "public"
+          },
+          {
+            "prop": "lock",
+            "label": "STAYED QUIET",
+            "move": "pop",
+            "cue": "quiet"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stat",
+      "lines": [
+        "So how much AI? Tiny. Reports call it a tiny bit, and that's it.",
+        "Not the whole game. Not even close."
+      ],
+      "params": {
+        "small": "HOW MUCH AI?",
+        "big": "A TINY BIT",
+        "size": 120,
+        "sub": "by most reports"
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "But here's the catch. The award crowd was not happy about it."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "warning",
+            "label": "THE CATCH",
+            "move": "pop",
+            "cue": "But"
+          },
+          {
+            "prop": "document",
+            "label": "AWARD CROWD",
+            "move": "drop",
+            "cue": "award"
+          },
+          {
+            "prop": "bubble",
+            "label": "NOT HAPPY",
+            "move": "slide",
+            "cue": "happy"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Backlash hit the awards fast. Not just the game, the whole debate around them."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "bubble",
+            "label": "BACKLASH",
+            "move": "pop",
+            "t": 0.2
+          },
+          {
+            "prop": "coin",
+            "label": "THE AWARDS",
+            "move": "drop",
+            "cue": "awards"
+          },
+          {
+            "prop": "magnifier",
+            "label": "THE DEBATE",
+            "move": "slide",
+            "cue": "debate"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "versus",
+      "lines": [
+        "Tiny use. Big fallout.",
+        "Funny, right? The smallest thing made the loudest noise.",
+        "That's the whole puzzle."
+      ],
+      "params": {
+        "a": {
+          "label": "THE AI",
+          "text": "TINY"
+        },
+        "b": {
+          "label": "THE FALLOUT",
+          "text": "BIG"
+        }
+      }
+    },
+    {
+      "kind": "list",
+      "lines": [
+        "So where does AI count? A line of code? A picture? A whole game?"
+      ],
+      "params": {
+        "title": "WHERE DOES IT COUNT?",
+        "items": [
+          "A LINE OF CODE",
+          "A PICTURE",
+          "A WHOLE GAME"
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Some say, any AI is too much. Others say, it's just a tool."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "lock",
+            "label": "NO AI",
+            "move": "pop",
+            "cue": "some",
+            "slot": "l"
+          },
+          {
+            "prop": "gear",
+            "label": "JUST A TOOL",
+            "move": "slide",
+            "cue": "others",
+            "slot": "r"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "finale",
+      "lines": [
+        "Okay, be honest.",
+        "Does a tiny bit of AI make a great game less great? Tell me in the comments."
+      ],
+      "params": {
+        "top": "LESS GREAT",
+        "accent": "WITH A LITTLE AI?",
+        "mark": "neq",
+        "bottom": [
+          "YOUR",
+          "CALL"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "slug": "big-walk-tiny-ai-big-fallout",
+    "topic": "Indie game Big Walk, an awards contender, disclosed a tiny amount of AI use and faced a big backlash around the indie awards",
+    "hook_type": "comment_reply",
+    "ending": "cliffhanger",
+    "next_question": "Who decides how much AI is too much?",
+    "data_sourced": true,
+    "facts": [
+      {
+        "claim": "Big Walk is an indie game seen as a game of the year contender",
+        "sources": [
+          0,
+          2
+        ]
+      },
+      {
+        "claim": "Its makers disclosed that they used AI",
+        "sources": [
+          0,
+          2
+        ]
+      },
+      {
+        "claim": "The AI use was described as tiny",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "The disclosure caused backlash and debate around the indie game awards",
+        "sources": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "post": {
+      "title": "Big Walk used a tiny bit of AI. Big fallout.",
+      "tiktok_caption": "A hit indie game admitted a tiny bit of AI and got a big backlash. Is a little AI okay?",
+      "yt_caption": "Indie game Big Walk disclosed a tiny bit of AI use. Why the awards debate got so big.",
+      "pinned_comment": "Does a tiny bit of AI make a great game less great?",
+      "hashtags": [
+        "#AI",
+        "#FredsDesk",
+        "#AINews",
+        "#Gaming",
+        "#IndieGames",
+        "#TechNews"
+      ],
+      "sources": [
+        {
+          "name": "GameSpot, Big Walk's AI usage was tiny, but its disclosure has sparked a bigger debate",
+          "url": "https://www.gamespot.com/articles/big-walks-ai-usage-was-tiny-but-its-disclosure-has-sparked-a-bigger-debate/"
+        },
+        {
+          "name": "Gizmodo, A tiny bit of AI has created a big problem for an indie game darling",
+          "url": "https://gizmodo.com/a-tiny-bit-of-ai-has-created-a-big-problem-for-an-indie-game-darling-2000838305"
+        },
+        {
+          "name": "Kotaku, 2026 GOTY-contender Big Walk reveals AI use amid controversy",
+          "url": "https://kotaku.com/house-igf-awards-big-walk-gen-ai-llm-untitled-goose-game-2000755488"
+        }
+      ]
+    }
+  }
+}
