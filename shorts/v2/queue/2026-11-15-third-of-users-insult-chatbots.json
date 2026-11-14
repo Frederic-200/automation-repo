@@ -1,0 +1,339 @@
+{
+  "title": "A third of chatbot users insult AI",
+  "v2": {
+    "world": "c",
+    "palette": "teal",
+    "number": 5,
+    "kicker": "ABOUT AI",
+    "footer": "YELLING AT AI"
+  },
+  "hook": "YOU YELLED AT CHATGPT, DIDN'T YOU?",
+  "voice": "am_fenrir",
+  "audio": {
+    "music": "gentle",
+    "sfx": "foley"
+  },
+  "end_tail": 1.2,
+  "scenes": [
+    {
+      "kind": "headline",
+      "lines": [
+        "Okay, be honest.",
+        "You've yelled at a chatbot. Haven't you?"
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "YOU YELLED AT",
+            "size": 125
+          },
+          {
+            "text": "CHATGPT,",
+            "color": "acc",
+            "size": 125
+          },
+          {
+            "text": "DIDN'T YOU?",
+            "size": 125
+          }
+        ],
+        "underline": 2,
+        "y": 170,
+        "beats": [
+          {
+            "prop": "bubble",
+            "label": "YOU TYPED ANGRY",
+            "move": "drop",
+            "t": 0.1
+          },
+          {
+            "prop": "magnifier",
+            "label": "BE HONEST",
+            "move": "pop",
+            "cue": "honest"
+          },
+          {
+            "prop": "warning",
+            "label": "YELLED",
+            "move": "pop",
+            "cue": "yelled"
+          },
+          {
+            "prop": "check",
+            "label": "MANY DID",
+            "move": "slide",
+            "cue": "Haven't"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "A new survey looked at eight million messages.",
+        "Sent to ChatGPT, Gemini and Claude."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "document",
+            "label": "A NEW SURVEY",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "bubble",
+            "label": "EIGHT MILLION MESSAGES",
+            "move": "slide",
+            "cue": "eight"
+          },
+          {
+            "prop": "gear",
+            "label": "THREE CHATBOTS",
+            "move": "pop",
+            "cue": "ChatGPT"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "counter",
+      "lines": [
+        "And the result? About one in three users swore at it... or insulted it."
+      ],
+      "params": {
+        "label": "PERCENT INSULTED A BOT",
+        "from": 0,
+        "to": 33,
+        "sub": "US chatbot users"
+      }
+    },
+    {
+      "kind": "bars",
+      "lines": [
+        "So what sets them off? Mostly, it didn't do what they asked.",
+        "Or it got something wrong. Or it just misunderstood."
+      ],
+      "params": {
+        "title": "WHAT SETS THEM OFF",
+        "rows": [
+          {
+            "label": "IGNORED THE ASK",
+            "value": 0.19,
+            "color": "acc"
+          },
+          {
+            "label": "GOT IT WRONG",
+            "value": 0.18
+          },
+          {
+            "label": "MISUNDERSTOOD",
+            "value": 0.15
+          }
+        ],
+        "note": "SHARE OF INSULTS. SURVEY DATA."
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "But here's the catch.",
+        "Yelling doesn't seem to help."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "warning",
+            "label": "THE CATCH",
+            "move": "pop",
+            "t": 0.2
+          },
+          {
+            "prop": "bubble",
+            "label": "YELLING",
+            "move": "slide",
+            "cue": "Yelling"
+          },
+          {
+            "prop": "lock",
+            "label": "NO HELP",
+            "move": "pop",
+            "cue": "help"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "versus",
+      "lines": [
+        "After an insult, the bot fixed the problem next time about one in four.",
+        "Calm users? A little over one in three."
+      ],
+      "params": {
+        "a": {
+          "label": "YELLED AT IT",
+          "text": "1 IN 4"
+        },
+        "b": {
+          "label": "STAYED CALM",
+          "text": "OVER 1 IN 3"
+        }
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "So did the yelling cause that? The report doesn't say.",
+        "But it sure didn't pay off."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "magnifier",
+            "label": "CAUSE?",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "toggle",
+            "label": "NOT PROVEN",
+            "move": "slide",
+            "cue": "report"
+          },
+          {
+            "prop": "coin",
+            "label": "NO PAYOFF",
+            "move": "pop",
+            "cue": "pay"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Some of it followed a refusal.",
+        "The bot said no... and people snapped.",
+        "A small slice, but real."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "lock",
+            "label": "BOT SAID NO",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "warning",
+            "label": "A REFUSAL",
+            "move": "pop",
+            "cue": "refusal"
+          },
+          {
+            "prop": "bubble",
+            "label": "PEOPLE SNAPPED",
+            "move": "slide",
+            "cue": "snapped"
+          },
+          {
+            "prop": "dice",
+            "label": "SMALL SLICE",
+            "move": "pop",
+            "cue": "small"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stat",
+      "lines": [
+        "Now one AI company is drawing a line.",
+        "Anthropic's rules now ban sustained, needless cruelty toward its chatbot."
+      ],
+      "params": {
+        "small": "ANTHROPIC'S RULES NOW BAN",
+        "big": "CRUELTY",
+        "sub": "sustained and needless"
+      }
+    },
+    {
+      "kind": "finale",
+      "lines": [
+        "Okay, last one.",
+        "When did you last yell at a chatbot... and what did it do? Tell me in the comments."
+      ],
+      "params": {
+        "top": "YOU EVER",
+        "accent": "YELLED AT AI?",
+        "mark": "eq",
+        "bottom": [
+          "TELL ME",
+          "WHY"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "slug": "third-of-users-insult-chatbots",
+    "topic": "A survey of eight million US chatbot messages found about one in three users swore at or insulted AI, and insults got fewer fixes; Anthropic's rules now ban sustained cruelty toward its chatbot",
+    "hook_type": "comment_reply",
+    "ending": "cliffhanger",
+    "next_question": "Does being polite to AI get you better answers?",
+    "data_sourced": true,
+    "facts": [
+      {
+        "claim": "A survey of about eight million messages to ChatGPT, Gemini and Claude found about one in three US users swore at or insulted a chatbot",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "Top triggers were the bot not doing what was asked, a wrong answer, and being misunderstood; a smaller share followed a refusal",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "After an insult the next reply fixed the complaint about 24 percent of the time versus about 35 percent without one",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "Anthropic's usage rules now ban sustained and needless abusive or cruel behavior toward its models",
+        "sources": [
+          0,
+          1
+        ]
+      }
+    ],
+    "post": {
+      "title": "One in three people yell at AI. It doesn't work.",
+      "tiktok_caption": "A survey of eight million chatbot messages says about one in three people insult AI. And it fixes less. Have you yelled at one?",
+      "yt_caption": "What a new survey says about people swearing at ChatGPT, Gemini and Claude, and why insults got fewer fixes.",
+      "pinned_comment": "When did you last yell at a chatbot, and what did it do?",
+      "hashtags": [
+        "#AI",
+        "#FredsDesk",
+        "#ChatGPT",
+        "#AINews",
+        "#TechNews",
+        "#Claude"
+      ],
+      "sources": [
+        {
+          "name": "The Register, 12 Nov 2026",
+          "url": "https://www.theregister.com/ai-and-ml/2026/11/12/a-third-of-us-ai-chatters-are-hot-at-bots-hurling-insults-at-llms/5309506"
+        },
+        {
+          "name": "Searchable survey, Nov 2026",
+          "url": "https://www.searchable.com/data/how-mean-are-americans-to-ai-chatbots"
+        }
+      ]
+    }
+  }
+}
