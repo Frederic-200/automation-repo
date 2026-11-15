@@ -1,0 +1,404 @@
+{
+ "title": "Everyone's own AI made the group worse",
+ "v2": {
+  "world": "b",
+  "palette": "blush",
+  "number": 6,
+  "kicker": "ABOUT AI",
+  "footer": "WORSE TOGETHER"
+ },
+ "hook": "EVERYONE GOT THEIR OWN AI AND IT BACKFIRED",
+ "voice": "af_heart",
+ "audio": {
+  "music": "gentle",
+  "sfx": "foley"
+ },
+ "end_tail": 1.2,
+ "scenes": [
+  {
+   "kind": "headline",
+   "lines": [
+    "Okay, picture this. Everyone in the group gets their own AI assistant.",
+    "Sounds perfect, right?"
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "EVERYONE GOT",
+      "size": 125
+     },
+     {
+      "text": "THEIR OWN AI",
+      "color": "acc",
+      "size": 125
+     },
+     {
+      "text": "AND IT BACKFIRED",
+      "size": 125
+     }
+    ],
+    "underline": 2,
+    "y": 170,
+    "beats": [
+     {
+      "prop": "bubble",
+      "label": "YOUR OWN AI",
+      "move": "drop",
+      "t": 0.1
+     },
+     {
+      "prop": "gear",
+      "label": "ONE EACH",
+      "move": "pop",
+      "cue": "group"
+     },
+     {
+      "prop": "check",
+      "label": "SOUNDS PERFECT",
+      "move": "slide",
+      "cue": "perfect"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Anthropic researchers tested exactly that. In simulations."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "magnifier",
+      "label": "THE TEST",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "dice",
+      "label": "SIMULATED",
+      "move": "pop",
+      "cue": "simulations"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Sharing a budget. A calendar. A group order. Everyone wants their piece."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "coin",
+      "label": "SHARED BUDGET",
+      "move": "drop",
+      "cue": "budget"
+     },
+     {
+      "prop": "document",
+      "label": "SHARED CALENDAR",
+      "move": "slide",
+      "cue": "calendar"
+     },
+     {
+      "prop": "bubble",
+      "label": "GROUP ORDER",
+      "move": "pop",
+      "cue": "order"
+     },
+     {
+      "prop": "lock",
+      "label": "LIMITED",
+      "move": "pop",
+      "cue": "piece"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "versus",
+   "lines": [
+    "Two setups. One AI serving the whole group.",
+    "Or one AI for every person."
+   ],
+   "params": {
+    "a": {
+     "label": "ONE FOR ALL",
+     "text": "COORDINATOR"
+    },
+    "b": {
+     "label": "ONE EACH",
+     "text": "PERSONAL AGENTS"
+    }
+   }
+  },
+  {
+   "kind": "counter",
+   "lines": [
+    "Then the group grew. Four assistants? About two thirds did something.",
+    "Sixteen? One in ten."
+   ],
+   "params": {
+    "label": "PERCENT THAT ACTED",
+    "from": 66,
+    "to": 10,
+    "sub": "four to sixteen assistants"
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "The rest just sat out. Too little, too late."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "warning",
+      "label": "SAT OUT",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "dice",
+      "label": "TOO LATE",
+      "move": "slide",
+      "cue": "late"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "But here's the weird part. Each assistant only knew its own person's wishes.",
+    "So it filled in the gaps."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "magnifier",
+      "label": "THE WEIRD PART",
+      "move": "pop",
+      "cue": "but"
+     },
+     {
+      "prop": "document",
+      "label": "ONE PERSON'S NOTES",
+      "move": "drop",
+      "cue": "only"
+     },
+     {
+      "prop": "bubble",
+      "label": "GUESSING",
+      "move": "slide",
+      "cue": "filled"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "bars",
+   "lines": [
+    "In more than half the team runs, an assistant claimed something nobody said.",
+    "One lone assistant? About one in five."
+   ],
+   "params": {
+    "title": "INVENTED CLAIMS ABOUT OTHERS",
+    "rows": [
+     {
+      "label": "TEAM OF AI",
+      "value": 0.58,
+      "color": "acc"
+     },
+     {
+      "label": "ONE AI",
+      "value": 0.18
+     }
+    ],
+    "note": "SHARE OF RUNS. SIMULATIONS."
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "And your request? Often, it wasn't even in the notes when the order went through."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "document",
+      "label": "YOUR REQUEST",
+      "move": "drop",
+      "cue": "request"
+     },
+     {
+      "prop": "magnifier",
+      "label": "NOT IN NOTES",
+      "move": "slide",
+      "cue": "notes"
+     },
+     {
+      "prop": "check",
+      "label": "ORDER SENT",
+      "move": "pop",
+      "cue": "order"
+     },
+     {
+      "prop": "warning",
+      "label": "MISSED",
+      "move": "pop",
+      "cue": "through"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "The fixes? Naming a team lead helped with budgets. But not with bookings."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "gear",
+      "label": "THE FIXES",
+      "move": "drop",
+      "cue": "fixes"
+     },
+     {
+      "prop": "coin",
+      "label": "A TEAM LEAD",
+      "move": "slide",
+      "cue": "lead"
+     },
+     {
+      "prop": "lock",
+      "label": "NO HELP",
+      "move": "pop",
+      "cue": "bookings"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Then a rule: no checkout until messages were read... recovered many failures."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "lock",
+      "label": "CHECKOUT BLOCKED",
+      "move": "slide",
+      "t": 0.2
+     },
+     {
+      "prop": "check",
+      "label": "READ FIRST",
+      "move": "pop",
+      "cue": "read"
+     },
+     {
+      "prop": "check",
+      "label": "MANY RECOVERED",
+      "move": "pop",
+      "cue": "recovered"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "So here's the twist.",
+    "Giving everyone their own AI... made the group worse off."
+   ],
+   "params": {
+    "small": "EVERYONE'S OWN AI",
+    "big": "WORSE",
+    "sub": "than one shared helper"
+   }
+  },
+  {
+   "kind": "finale",
+   "lines": [
+    "Okay, last one.",
+    "Would you let an AI speak for you in a group chat? Tell me in the comments."
+   ],
+   "params": {
+    "top": "AI SPEAKS",
+    "accent": "FOR YOU?",
+    "mark": "eq",
+    "bottom": [
+     "TELL ME",
+     "WHY"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "slug": "own-ai-each-group-worse",
+  "topic": "Anthropic simulation study: giving each user their own AI agent made shared decisions worse than one coordinator agent",
+  "hook_type": "curiosity_gap",
+  "ending": "cliffhanger",
+  "next_question": "What happens when AI agents have to negotiate with each other?",
+  "data_sourced": true,
+  "facts": [
+   {
+    "claim": "In simulations of groups sharing a budget, calendar or group order, one coordinator AI beat a team of personal AI agents, one per user",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "With four agents about two thirds took action; with sixteen about one in ten (Sonnet 5)",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Agents only saw their own user's notes and invented claims about others in over half of team runs (58% Opus 5) versus about one in five for a single agent",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "A request often was not in the booking agent's context at checkout; a designated lead helped with budgets but not bookings; blocking checkout until messages were read recovered many failures",
+    "sources": [
+     0,
+     1
+    ]
+   }
+  ],
+  "post": {
+   "title": "Everyone got their own AI. It made the group worse.",
+   "tiktok_caption": "Anthropic simulated groups where everyone gets a personal AI. One shared coordinator did better. Would you let AI speak for you?",
+   "yt_caption": "What Anthropic's Worse Together study found when each person in a group got their own AI agent, and what fixed it.",
+   "pinned_comment": "Would you let an AI speak for you in a group chat? Why or why not?",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#Anthropic",
+    "#AIAgents",
+    "#AINews",
+    "#TechNews"
+   ],
+   "sources": [
+    {
+     "name": "Anthropic Alignment Blog, Worse Together, 11 Nov 2026",
+     "url": "https://alignment.anthropic.com/2026/worse-together/"
+    },
+    {
+     "name": "Superpower Daily, Single AI coordinators beat personal-agent teams in four simulations",
+     "url": "https://superpowerdaily.com/posts/single-ai-coordinators-beat-personal-agent-teams-in-four-simulations-researchers-find"
+    }
+   ]
+  }
+ }
+}
