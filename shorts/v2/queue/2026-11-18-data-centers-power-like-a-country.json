@@ -1,0 +1,404 @@
+{
+  "title": "403 data centers, one country's carbon",
+  "v2": {
+    "world": "c",
+    "palette": "indigo",
+    "number": 7,
+    "kicker": "ABOUT AI",
+    "footer": "POWER BILL"
+  },
+  "hook": "YOU ASKED: HOW MUCH POWER DOES AI EAT?",
+  "voice": "am_fenrir",
+  "audio": {
+    "music": "lofi",
+    "sfx": "foley"
+  },
+  "end_tail": 1.2,
+  "scenes": [
+    {
+      "kind": "headline",
+      "lines": [
+        "You asked how much power AI really eats. Okay... Harvard just counted."
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "YOU ASKED:",
+            "size": 125
+          },
+          {
+            "text": "HOW MUCH POWER",
+            "size": 125
+          },
+          {
+            "text": "DOES AI EAT?",
+            "color": "acc",
+            "size": 125
+          }
+        ],
+        "underline": 2,
+        "y": 170,
+        "beats": [
+          {
+            "t": 0.1,
+            "prop": "bubble",
+            "label": "YOU ASKED",
+            "move": "drop"
+          },
+          {
+            "cue": "power",
+            "prop": "gear",
+            "label": "POWER",
+            "move": "pop"
+          },
+          {
+            "cue": "Harvard",
+            "prop": "magnifier",
+            "label": "HARVARD COUNTED",
+            "move": "slide"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "They found the biggest data centers from space. Satellite pictures, one by one."
+      ],
+      "params": {
+        "beats": [
+          {
+            "t": 0.2,
+            "prop": "magnifier",
+            "label": "FROM ABOVE",
+            "move": "drop"
+          },
+          {
+            "cue": "Satellite",
+            "prop": "document",
+            "label": "SATELLITE PICTURES",
+            "move": "slide"
+          },
+          {
+            "cue": "one",
+            "prop": "check",
+            "label": "ONE BY ONE",
+            "move": "pop"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "counter",
+      "lines": [
+        "Four hundred and three of them. The biggest ones in the country."
+      ],
+      "params": {
+        "label": "BIGGEST DATA CENTERS",
+        "from": 0,
+        "to": 403,
+        "sub": "in the US",
+        "note": "SOURCED: HARVARD-LED STUDY"
+      }
+    },
+    {
+      "kind": "stat",
+      "lines": [
+        "Together? About as much power as a few whole US states.",
+        "Real ones."
+      ],
+      "params": {
+        "small": "SAME POWER AS",
+        "big": "A FEW STATES",
+        "sub": "depends on the scenario"
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Sounds enormous, right?",
+        "Yet these four hundred and three use under two percent of US electricity."
+      ],
+      "params": {
+        "beats": [
+          {
+            "t": 0.2,
+            "prop": "warning",
+            "label": "SOUNDS HUGE",
+            "move": "pop"
+          },
+          {
+            "cue": "Yet",
+            "prop": "toggle",
+            "label": "UNDER TWO PERCENT",
+            "move": "slide"
+          },
+          {
+            "cue": "percent",
+            "prop": "coin",
+            "label": "TWO PERCENT",
+            "move": "pop"
+          },
+          {
+            "cue": "electricity",
+            "prop": "gear",
+            "label": "US POWER",
+            "move": "drop"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "bars",
+      "lines": [
+        "But here's the catch. More than half of that power comes from fossil fuels.",
+        "Mostly gas, and coal."
+      ],
+      "params": {
+        "title": "WHERE THE POWER COMES FROM",
+        "rows": [
+          {
+            "label": "FOSSIL FUELS",
+            "value": 0.54,
+            "color": "acc"
+          },
+          {
+            "label": "EVERYTHING ELSE",
+            "value": 0.46,
+            "color": "ink"
+          }
+        ],
+        "note": "ABOUT HALF. FROM THE STUDY."
+      }
+    },
+    {
+      "kind": "stat",
+      "lines": [
+        "So the carbon adds up. Every year, about as much as Denmark gives off.",
+        "A whole country."
+      ],
+      "params": {
+        "small": "SAME CARBON AS",
+        "big": "DENMARK",
+        "sub": "every single year"
+      }
+    },
+    {
+      "kind": "versus",
+      "lines": [
+        "Next to the whole US, it's small. Next to Denmark? It's equal.",
+        "Funny what a comparison does."
+      ],
+      "params": {
+        "a": {
+          "label": "NEXT TO THE US",
+          "text": "SMALL"
+        },
+        "b": {
+          "label": "NEXT TO DENMARK",
+          "text": "EQUAL"
+        }
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "And where the plug is matters. Oregon is second for power use, but its grid is cleaner.",
+        "Same kind of machines. Very different carbon."
+      ],
+      "params": {
+        "beats": [
+          {
+            "t": 0.2,
+            "prop": "lock",
+            "label": "WHERE IT PLUGS",
+            "move": "pop"
+          },
+          {
+            "cue": "Oregon",
+            "prop": "gear",
+            "label": "OREGON POWER",
+            "slot": "l",
+            "move": "drop"
+          },
+          {
+            "cue": "power",
+            "prop": "coin",
+            "label": "SECOND PLACE",
+            "slot": "l",
+            "move": "pop"
+          },
+          {
+            "cue": "cleaner",
+            "prop": "check",
+            "label": "CLEANER GRID",
+            "slot": "r",
+            "move": "pop"
+          },
+          {
+            "cue": "machines",
+            "prop": "dice",
+            "label": "SAME MACHINES",
+            "move": "slide"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Quick honest note. These are estimates, not meter readings.",
+        "Companies don't have to share their power use."
+      ],
+      "params": {
+        "beats": [
+          {
+            "t": 0.2,
+            "prop": "document",
+            "label": "ESTIMATES",
+            "move": "drop"
+          },
+          {
+            "cue": "meter",
+            "prop": "magnifier",
+            "label": "NOT METERED",
+            "move": "slide"
+          },
+          {
+            "cue": "share",
+            "prop": "lock",
+            "label": "NOT SHARED",
+            "move": "pop"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "And that count is already old. More have opened since, so the real number is probably higher."
+      ],
+      "params": {
+        "beats": [
+          {
+            "t": 0.2,
+            "prop": "warning",
+            "label": "ALREADY OLD",
+            "move": "pop"
+          },
+          {
+            "cue": "opened",
+            "prop": "gear",
+            "label": "MORE OPENED",
+            "move": "drop"
+          },
+          {
+            "cue": "higher",
+            "prop": "arrow",
+            "label": "PROBABLY HIGHER",
+            "move": "slide"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "finale",
+      "lines": [
+        "So what's the real problem?",
+        "The machines, or the power behind them? Tell me in the comments."
+      ],
+      "params": {
+        "top": "MACHINES OR",
+        "accent": "POWER?",
+        "mark": "neq",
+        "bottom": [
+          "WHICH ONE",
+          "IS IT?"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "slug": "data-centers-power-like-a-country",
+    "topic": "A Harvard-led study of the 403 largest US data centers: power use, fossil share and carbon about equal to Denmark",
+    "hook_type": "comment_reply",
+    "ending": "cliffhanger",
+    "next_question": "Can AI help clean up its own power bill?",
+    "data_sourced": true,
+    "facts": [
+      {
+        "claim": "A Harvard-led study published in Nature Sustainability found 403 of the largest US data centers using satellite imagery",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "Together they use about as much electricity as a few whole US states, about one point eight percent of US electricity",
+        "sources": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "claim": "More than half of their electricity comes from fossil fuels, mainly gas and coal",
+        "sources": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "claim": "Their carbon dioxide is roughly the annual emissions of Denmark",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "Oregon is second for power use but has lower emissions because of a cleaner grid",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "The figures are modelled estimates, operators do not have to disclose power use, and the real number is likely higher now",
+        "sources": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "post": {
+      "title": "AI data centers emit as much carbon as Denmark",
+      "tiktok_caption": "Harvard counted the 403 biggest US data centers. Their carbon equals a whole country. Machines or power, which is the problem?",
+      "yt_caption": "A Harvard-led study counted the largest US data centers: how much power they use, where it comes from and how much carbon that adds up to.",
+      "pinned_comment": "Is the real problem the machines, or the power behind them? Tell me below.",
+      "hashtags": [
+        "#AI",
+        "#FredsDesk",
+        "#DataCenters",
+        "#AINews",
+        "#Energy",
+        "#TechNews"
+      ],
+      "sources": [
+        {
+          "name": "TIME, 16 Nov 2026",
+          "url": "https://time.com/article/2026/11/16/ai-data-centers-electricity-carbon-emissions-study/"
+        },
+        {
+          "name": "The Next Web, 17 Nov 2026",
+          "url": "https://thenextweb.com/news/us-data-centres-emissions-denmark-harvard-study"
+        },
+        {
+          "name": "Newsmax via Yahoo, 17 Nov 2026",
+          "url": "https://www.yahoo.com/news/science/articles/harvard-study-data-centers-1-011917660.html"
+        }
+      ]
+    }
+  }
+}
