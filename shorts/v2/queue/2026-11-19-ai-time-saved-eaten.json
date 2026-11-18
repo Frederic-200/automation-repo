@@ -1,0 +1,332 @@
+{
+ "title": "AI saves a day a week, then work eats it",
+ "v2": {
+  "world": "c",
+  "palette": "teal",
+  "number": 20,
+  "kicker": "ABOUT AI",
+  "footer": "TIME BACK"
+ },
+ "hook": "POV: AI GAVE YOU YOUR FRIDAY BACK",
+ "voice": "am_fenrir",
+ "audio": {
+  "music": "epic",
+  "sfx": "foley"
+ },
+ "end_tail": 1.2,
+ "scenes": [
+  {
+   "kind": "headline",
+   "lines": [
+    "Okay, picture this. AI hands you back almost one whole day, every week."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "POV: AI GAVE",
+      "size": 125
+     },
+     {
+      "text": "YOU YOUR",
+      "size": 125
+     },
+     {
+      "text": "FRIDAY BACK",
+      "color": "acc",
+      "size": 125
+     }
+    ],
+    "underline": 2,
+    "y": 170,
+    "beats": [
+     {
+      "t": 0.1,
+      "prop": "gear",
+      "label": "AI AT WORK",
+      "move": "drop"
+     },
+     {
+      "cue": "hands",
+      "prop": "check",
+      "label": "A DAY BACK",
+      "move": "pop"
+     },
+     {
+      "cue": "week",
+      "prop": "coin",
+      "label": "EVERY WEEK",
+      "move": "slide"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "That's not a dream. About three thousand professionals said AI saves them nineteen percent of their week."
+   ],
+   "params": {
+    "small": "TIME SAVED BY AI",
+    "big": "19%",
+    "sub": "of the working week"
+   }
+  },
+  {
+   "kind": "counter",
+   "lines": [
+    "And most of them use it. Seventy-four percent, at work. Not a few nerds. Most of us."
+   ],
+   "params": {
+    "label": "USE AI AT WORK",
+    "from": 0,
+    "to": 74,
+    "sub": "percent of those asked"
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "So where did all that free time go? Naps? Long lunches? Nope."
+   ],
+   "params": {
+    "beats": [
+     {
+      "t": 0.2,
+      "prop": "magnifier",
+      "label": "WHERE IT WENT",
+      "move": "pop"
+     },
+     {
+      "cue": "Naps",
+      "prop": "dice",
+      "label": "NAPS?",
+      "move": "drop"
+     },
+     {
+      "cue": "Nope",
+      "prop": "warning",
+      "label": "NOPE",
+      "move": "pop"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "headline",
+   "lines": [
+    "But here's the twist. Seventy-two percent of that time... went straight back into work."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "72% OF IT"
+     },
+     {
+      "text": "WENT BACK",
+      "color": "acc",
+      "font": "serif",
+      "size": 200
+     },
+     {
+      "text": "INTO WORK"
+     }
+    ],
+    "underline": 1
+   }
+  },
+  {
+   "kind": "steps",
+   "lines": [
+    "Half of them took on new projects. More tasks. More responsibility. The free day? Gone."
+   ],
+   "params": {
+    "title": "THE LOOP",
+    "steps": [
+     "AI SAVES TIME",
+     "YOU TAKE MORE",
+     "THE TIME IS GONE"
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "And there's pressure too. Nearly half of workers fear being judged... for not using AI enough."
+   ],
+   "params": {
+    "beats": [
+     {
+      "t": 0.2,
+      "prop": "lock",
+      "label": "PRESSURE",
+      "move": "drop"
+     },
+     {
+      "cue": "Nearly",
+      "prop": "magnifier",
+      "label": "BEING JUDGED",
+      "move": "slide"
+     },
+     {
+      "cue": "fear",
+      "prop": "gear",
+      "label": "NOT ENOUGH AI",
+      "move": "pop"
+     },
+     {
+      "cue": "enough",
+      "prop": "warning",
+      "label": "TOO LITTLE AI",
+      "move": "pop"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "versus",
+   "lines": [
+    "Forty-eight percent fear being judged for using it too little.",
+    "Only twenty percent fear being judged for using it."
+   ],
+   "params": {
+    "a": {
+     "label": "USING TOO LITTLE",
+     "text": "48%"
+    },
+    "b": {
+     "label": "USING IT",
+     "text": "20%"
+    }
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Small note. This is what people say about their own work, not measured output."
+   ],
+   "params": {
+    "beats": [
+     {
+      "t": 0.2,
+      "prop": "document",
+      "label": "SURVEY",
+      "move": "drop"
+     },
+     {
+      "cue": "say",
+      "prop": "bubble",
+      "label": "SELF REPORTED",
+      "move": "slide"
+     },
+     {
+      "cue": "measured",
+      "prop": "magnifier",
+      "label": "NOT MEASURED",
+      "move": "pop"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "So here's my question. Did AI give you your time back... or just more to do?"
+   ],
+   "params": {
+    "small": "TIME BACK OR",
+    "big": "MORE WORK?",
+    "sub": "your honest answer"
+   }
+  },
+  {
+   "kind": "finale",
+   "lines": [
+    "Tomorrow, why some people save far more. Tell me in the comments."
+   ],
+   "params": {
+    "top": "TELL ME",
+    "accent": "IN THE COMMENTS",
+    "mark": "neq",
+    "bottom": [
+     "TIME BACK",
+     "OR MORE WORK?"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "slug": "ai-time-saved-eaten",
+  "topic": "A London School of Economics and Protiviti survey of 3001 professionals: AI saves 19 percent of the working week, most of it reinvested in more work, and 48 percent fear being judged for not using AI enough",
+  "hook_type": "pov",
+  "ending": "cliffhanger",
+  "next_question": "Why do trained workers save more time with AI than untrained ones?",
+  "data_sourced": true,
+  "facts": [
+   {
+    "claim": "A survey of 3,001 professionals found 74 percent use AI at work",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Respondents said AI saves them an average of 19 percent of their working week, and they reinvested 72 percent of that time in other work",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Half said they use the saved time to take on new responsibilities or projects",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "48 percent worry about being judged for not using AI enough versus 20 percent worried about being judged for using it",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "The findings are self-reported perceptions, not independently measured productivity",
+    "sources": [
+     1,
+     2
+    ]
+   }
+  ],
+  "post": {
+   "title": "AI saves you a day a week. Then work eats it.",
+   "tiktok_caption": "AI saves workers nineteen percent of their week, but most of that time goes right back into work. Did AI give you time back or more to do?",
+   "yt_caption": "A new study of about three thousand professionals: AI saves nearly a day a week, but most of the saved time is absorbed by more work. And nearly half fear being judged for using AI too little.",
+   "pinned_comment": "Did AI give you your time back, or just more to do?",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#AINews",
+    "#FutureOfWork",
+    "#Productivity",
+    "#TechNews"
+   ],
+   "sources": [
+    {
+     "name": "HRreview, Nearly half of workers fear being judged for not using AI enough",
+     "url": "https://hrreview.co.uk/spotlight/nearly-half-of-workers-fear-being-judged-for-not-using-ai-enough/407454"
+    },
+    {
+     "name": "TechTimes UK, Nearly Half of Employees Fear Being Judged for Not Using AI Enough",
+     "url": "https://www.techtimes.co.uk/workers-fear-being-judged-not-using-ai-1810021"
+    },
+    {
+     "name": "Silicon Republic, Is increased AI productivity leading to workload creep?",
+     "url": "https://www.siliconrepublic.com/careers/workload-creep-ai-working-life-report-survey-balance-productivity"
+    }
+   ]
+  }
+ }
+}
