@@ -1,0 +1,410 @@
+{
+  "title": "Banks: your AI agent, your risk",
+  "v2": {
+    "world": "b",
+    "palette": "harbor",
+    "number": 22,
+    "kicker": "ABOUT AI",
+    "footer": "YOUR LOGIN"
+  },
+  "hook": "DON'T GIVE YOUR AI YOUR BANK LOGIN",
+  "voice": "am_fenrir",
+  "audio": {
+    "music": "gentle",
+    "sfx": "foley"
+  },
+  "end_tail": 1.2,
+  "scenes": [
+    {
+      "kind": "headline",
+      "lines": [
+        "Stop. Before you give an AI your bank login, listen to this."
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "DON'T GIVE YOUR",
+            "size": 125
+          },
+          {
+            "text": "AI YOUR",
+            "size": 125
+          },
+          {
+            "text": "BANK LOGIN",
+            "color": "acc",
+            "size": 125
+          }
+        ],
+        "underline": 2,
+        "y": 170,
+        "beats": [
+          {
+            "prop": "lock",
+            "label": "YOUR LOGIN",
+            "move": "drop",
+            "t": 0.1
+          },
+          {
+            "prop": "bubble",
+            "label": "AN AI AGENT",
+            "move": "slide",
+            "cue": "AI"
+          },
+          {
+            "prop": "coin",
+            "label": "YOUR MONEY",
+            "move": "pop",
+            "cue": "bank"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Okay, so Citi just rewrote its user agreement. And it's all about AI agents."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "document",
+            "label": "NEW RULES",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "bubble",
+            "label": "USER AGREEMENT",
+            "move": "slide",
+            "cue": "agreement"
+          },
+          {
+            "prop": "gear",
+            "label": "AI AGENTS",
+            "move": "slide",
+            "cue": "agents"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "If you let an outside AI agent into your account... you're responsible for what it does."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "bubble",
+            "label": "OUTSIDE AI",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "lock",
+            "label": "YOUR ACCOUNT",
+            "move": "slide",
+            "cue": "account"
+          },
+          {
+            "prop": "warning",
+            "label": "YOU'RE RESPONSIBLE",
+            "move": "pop",
+            "cue": "responsible"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Even if it leaks your password. Even if it gets hacked."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "lock",
+            "label": "LEAKED",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "document",
+            "label": "YOUR PASSWORD",
+            "move": "slide",
+            "cue": "password"
+          },
+          {
+            "prop": "warning",
+            "label": "HACKED",
+            "move": "pop",
+            "cue": "hacked"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "counter",
+      "lines": [
+        "And it's not just one bank. Five big names have now warned customers."
+      ],
+      "params": {
+        "label": "BANKS WARNING YOU",
+        "from": 0,
+        "to": 5,
+        "sub": "similar message, one way or another"
+      }
+    },
+    {
+      "kind": "headline",
+      "lines": [
+        "But here's the catch. Citi says its own AI tools are fine."
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "THE BANK'S OWN AI"
+          },
+          {
+            "text": "IS FINE",
+            "color": "acc",
+            "font": "serif",
+            "size": 200
+          },
+          {
+            "text": "YOURS IS NOT"
+          }
+        ],
+        "underline": 1,
+        "beats": [
+          {
+            "prop": "warning",
+            "label": "THE CATCH",
+            "move": "pop",
+            "t": 0.2
+          },
+          {
+            "prop": "gear",
+            "label": "ITS OWN TOOLS",
+            "move": "slide",
+            "cue": "own"
+          },
+          {
+            "prop": "check",
+            "label": "FINE",
+            "move": "pop",
+            "cue": "fine"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "versus",
+      "lines": [
+        "Use the bank's agent? No extra liability.",
+        "Bring your own... and the risk is yours."
+      ],
+      "params": {
+        "a": {
+          "label": "BANK'S AI",
+          "text": "NO EXTRA RISK"
+        },
+        "b": {
+          "label": "YOUR AI",
+          "text": "YOUR RISK"
+        }
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Citi says it just wants you to understand the risk of sharing your credentials."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "mic",
+            "label": "CITI'S REASON",
+            "move": "slide",
+            "t": 0.2
+          },
+          {
+            "prop": "magnifier",
+            "label": "UNDERSTAND",
+            "move": "slide",
+            "cue": "understand"
+          },
+          {
+            "prop": "lock",
+            "label": "SHARED LOGINS",
+            "move": "drop",
+            "cue": "sharing"
+          },
+          {
+            "prop": "magnifier",
+            "label": "THE RISK",
+            "move": "pop",
+            "cue": "risk"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stat",
+      "lines": [
+        "So the rule is simple. Hand over your login... and whatever happens next is yours."
+      ],
+      "params": {
+        "small": "THE NEW RULE",
+        "big": "YOUR PROBLEM",
+        "sub": "if you share the login"
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Think about it. These agents promise to handle your money for you. But the safety net might stay behind."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "bubble",
+            "label": "THE PROMISE",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "coin",
+            "label": "YOUR MONEY",
+            "move": "pop",
+            "cue": "money"
+          },
+          {
+            "prop": "toggle",
+            "label": "AGENT ON",
+            "move": "slide",
+            "cue": "agents"
+          },
+          {
+            "prop": "warning",
+            "label": "NO SAFETY NET?",
+            "move": "pop",
+            "cue": "safety"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Tomorrow, what these agents can really do with a login."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "arrow",
+            "label": "TOMORROW",
+            "move": "slide",
+            "t": 0.2
+          },
+          {
+            "prop": "cursor",
+            "label": "WITH A LOGIN",
+            "move": "pop",
+            "cue": "login"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "finale",
+      "lines": [
+        "But first... tell me in the comments.",
+        "Would you hand an AI the keys to your bank account?"
+      ],
+      "params": {
+        "top": "WOULD YOU",
+        "accent": "HAND IT OVER?",
+        "mark": "neq",
+        "bottom": [
+          "YOUR LOGIN",
+          "YOUR RISK"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "slug": "bank-ai-agent-your-risk",
+    "topic": "Citi updated its online user agreement so customers who give third-party AI agents account access are responsible for what the agents do, including after a leak or hack; the bank's own AI tools are exempt; other big banks issued similar warnings",
+    "hook_type": "doing_it_wrong",
+    "ending": "cliffhanger",
+    "next_question": "What can an AI agent actually do with your bank login?",
+    "data_sourced": true,
+    "facts": [
+      {
+        "claim": "Citi updated its online user agreement so customers who give third-party AI agents access to their accounts are responsible for activity done through those agents",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "Under Citi's terms the customer is also responsible if the AI tool leaks their credentials or is hacked",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "Citi's terms exempt AI tools provided by Citi itself",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "Other big banks (JPMorgan, Bank of America, PNC, Citizens) have issued similar warnings or terms, five banks in all",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "A Citi spokesperson said the change is meant to reinforce that customers should understand the risks of sharing banking credentials",
+        "sources": [
+          0,
+          2
+        ]
+      }
+    ],
+    "post": {
+      "title": "Don't give your AI your bank login (Citi's new rule)",
+      "tiktok_caption": "Citi says if you give an outside AI agent your login, what it does is on you, even if it gets hacked. Would you still do it?",
+      "yt_caption": "Citi rewrote its user agreement: customers who give third-party AI agents account access are responsible for what the agents do, even after a hack. Other big banks warn the same.",
+      "pinned_comment": "Would you hand an AI agent your bank login? Tell me why or why not.",
+      "hashtags": [
+        "#AI",
+        "#FredsDesk",
+        "#AINews",
+        "#Banking",
+        "#TechNews",
+        "#AIAgents"
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch, More banks say customers using AI agents are on their own",
+          "url": "https://techcrunch.com/2026/11/18/more-banks-says-customers-using-ai-agents-are-on-their-own-even-if-they-get-hacked/"
+        },
+        {
+          "name": "TFTC, Citi's AI agent clause puts customers on the hook",
+          "url": "https://www.tftc.io/citi-ai-agent-liability-customers-section-h"
+        },
+        {
+          "name": "All About Cookies, Citi says you're still on the hook if an AI chatbot is hacked",
+          "url": "https://allaboutcookies.org/citi-ai-agent-banking-liability"
+        }
+      ]
+    }
+  }
+}
