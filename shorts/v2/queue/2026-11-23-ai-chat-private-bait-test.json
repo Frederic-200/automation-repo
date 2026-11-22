@@ -1,0 +1,436 @@
+{
+ "title": "Is your AI chat really private? A bait test",
+ "v2": {
+  "world": "b",
+  "palette": "earth",
+  "number": 24,
+  "kicker": "ABOUT AI",
+  "footer": "NOT A LOCK"
+ },
+ "hook": "YOU ASKED: IS MY AI CHAT PRIVATE?",
+ "voice": "af_heart",
+ "audio": {
+  "music": "synthwave",
+  "sfx": "foley"
+ },
+ "end_tail": 1.2,
+ "scenes": [
+  {
+   "kind": "headline",
+   "lines": [
+    "Is your AI chat really private? Okay... a new test just answered that."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "YOU ASKED:",
+      "size": 125
+     },
+     {
+      "text": "IS MY AI CHAT",
+      "size": 125
+     },
+     {
+      "text": "PRIVATE?",
+      "color": "acc",
+      "size": 125
+     }
+    ],
+    "underline": 2,
+    "y": 170,
+    "beats": [
+     {
+      "prop": "lock",
+      "label": "YOUR CHAT",
+      "move": "drop",
+      "t": 0.1
+     },
+     {
+      "prop": "bubble",
+      "label": "AI CHAT",
+      "move": "slide",
+      "cue": "chat"
+     },
+     {
+      "prop": "magnifier",
+      "label": "A NEW TEST",
+      "move": "pop",
+      "cue": "test"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "A security researcher played detective. He wanted to see who peeks at your prompts."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "document",
+      "label": "A RESEARCHER",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "magnifier",
+      "label": "DETECTIVE",
+      "move": "slide",
+      "cue": "detective"
+     },
+     {
+      "prop": "warning",
+      "label": "WHO PEEKS?",
+      "move": "pop",
+      "cue": "peeks"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "counter",
+   "lines": [
+    "So he sent nearly two million prompts. Each one hiding a fake secret."
+   ],
+   "params": {
+    "label": "BAIT PROMPTS SENT",
+    "from": 0,
+    "to": 2,
+    "sub": "million, each with a fake secret"
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "A bait password. A hidden link. A cloud key that looked real... but opened nothing."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "lock",
+      "label": "BAIT PASSWORD",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "arrow",
+      "label": "HIDDEN LINK",
+      "move": "slide",
+      "cue": "hidden"
+     },
+     {
+      "prop": "gear",
+      "label": "EMPTY KEY",
+      "move": "pop",
+      "cue": "cloud"
+     },
+     {
+      "prop": "warning",
+      "label": "OPENS NOTHING",
+      "move": "pop",
+      "cue": "nothing"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Then he waited. And the bait... started getting used."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "magnifier",
+      "label": "WATCHING",
+      "move": "slide",
+      "t": 0.2
+     },
+     {
+      "prop": "warning",
+      "label": "BAIT USED",
+      "move": "pop",
+      "cue": "used"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "About two hundred fake keys got stolen. Then tried, tens of thousands of times."
+   ],
+   "params": {
+    "small": "FAKE KEYS STOLEN",
+    "big": "ABOUT 200",
+    "sub": "then tried tens of thousands of times"
+   }
+  },
+  {
+   "kind": "headline",
+   "lines": [
+    "But here's the catch. Some were copied before the AI even read them."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "COPIED BEFORE"
+     },
+     {
+      "text": "THE AI",
+      "color": "acc",
+      "font": "serif",
+      "size": 200
+     },
+     {
+      "text": "EVEN READ IT"
+     }
+    ],
+    "underline": 1,
+    "beats": [
+     {
+      "prop": "warning",
+      "label": "THE CATCH",
+      "move": "pop",
+      "t": 0.2
+     },
+     {
+      "prop": "document",
+      "label": "COPIED",
+      "move": "drop",
+      "cue": "copied"
+     },
+     {
+      "prop": "bubble",
+      "label": "THE AI",
+      "move": "slide",
+      "cue": "AI"
+     },
+     {
+      "prop": "magnifier",
+      "label": "NOT READ YET",
+      "move": "pop",
+      "cue": "read"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "At least three AI hosting companies were compromised. Not one company. Three."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "gear",
+      "label": "HOSTING",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "lock",
+      "label": "THREE BREACHED",
+      "move": "pop",
+      "cue": "three"
+     },
+     {
+      "prop": "warning",
+      "label": "NOT ONE",
+      "move": "slide",
+      "cue": "Not"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "versus",
+   "lines": [
+    "Some chats said, don't keep my data. Reality? Copied anyway."
+   ],
+   "params": {
+    "a": {
+     "label": "THE SETTING",
+     "text": "DON'T KEEP"
+    },
+    "b": {
+     "label": "REALITY",
+     "text": "COPIED ANYWAY"
+    }
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "One planted link even popped up in a company chat in China... twenty-four days later."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "arrow",
+      "label": "PLANTED LINK",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "bubble",
+      "label": "A COMPANY CHAT",
+      "move": "slide",
+      "cue": "chat"
+     },
+     {
+      "prop": "dice",
+      "label": "DAYS LATER",
+      "move": "pop",
+      "cue": "days"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "A popular AI router, OpenRouter, cut off three providers. And pulled a privacy label from a hundred and twenty-five endpoints."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "gear",
+      "label": "OPENROUTER",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "lock",
+      "label": "CUT OFF THREE",
+      "move": "pop",
+      "cue": "three"
+     },
+     {
+      "prop": "check",
+      "label": "LABEL PULLED",
+      "move": "slide",
+      "cue": "label"
+     },
+     {
+      "prop": "document",
+      "label": "125 ENDPOINTS",
+      "move": "pop",
+      "cue": "endpoints"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "So, is your chat private? Not always... even with the setting on."
+   ],
+   "params": {
+    "small": "IS MY CHAT PRIVATE?",
+    "big": "NOT ALWAYS",
+    "sub": "even with the setting on"
+   }
+  },
+  {
+   "kind": "finale",
+   "lines": [
+    "Okay, be honest. A setting is a promise, not a lock.",
+    "Would you still paste a password into an AI chat?"
+   ],
+   "params": {
+    "top": "WOULD YOU",
+    "accent": "PASTE IT?",
+    "mark": "neq",
+    "bottom": [
+     "A PROMISE",
+     "NOT A LOCK"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "slug": "ai-chat-private-bait-test",
+  "topic": "A security researcher sent nearly two million bait prompts to AI services; at least three hosting providers were compromised, about two hundred planted cloud keys were stolen, privacy flags did not hold, and OpenRouter cut three providers and pulled a privacy label from 125 endpoints",
+  "hook_type": "comment_reply",
+  "ending": "loop",
+  "data_sourced": true,
+  "facts": [
+   {
+    "claim": "A security researcher at Dragos sent nearly two million test prompts, each carrying a unique fake secret (bait password, hidden link or real-but-empty cloud key), from July to November",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Evidence of compromises at at least three AI hosting providers; about two hundred planted cloud keys were stolen and used for tens of thousands of API calls",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Some bait requests were copied even though they were rejected before a model processed them",
+    "sources": [
+     0,
+     2
+    ]
+   },
+   {
+    "claim": "Some requests marked as zero data retention (do not keep data) were still kept or forwarded",
+    "sources": [
+     0,
+     2
+    ]
+   },
+   {
+    "claim": "A test link sent to a US provider surfaced in a company chat in China twenty-four days later",
+    "sources": [
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "OpenRouter removed three inference providers and removed 125 endpoints from zero-data-retention eligibility, saying OpenRouter itself was not breached",
+    "sources": [
+     2,
+     3
+    ]
+   }
+  ],
+  "post": {
+   "title": "Is your AI chat really private? A bait test",
+   "tiktok_caption": "Researchers sent two million bait prompts to AI services. Some were copied anyway. Would you still paste a password into an AI chat?",
+   "yt_caption": "A security test with nearly two million bait prompts found at least three AI hosting providers compromised, and some privacy settings did not hold.",
+   "pinned_comment": "Would you still paste a password into an AI chat? Or is a privacy setting enough for you?",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#AIPrivacy",
+    "#Cybersecurity",
+    "#AINews",
+    "#TechNews"
+   ],
+   "sources": [
+    {
+     "name": "CybrSec Media, Dragos study",
+     "url": "https://www.cybrsecmedia.com/two-million-ai-prompts-expose-breaches-data-theft-and-supply-chain-failures/"
+    },
+    {
+     "name": "Notebookcheck",
+     "url": "https://www.notebookcheck.net/AI-routers-leaked-passwords-from-prompts-to-attackers-study-finds.1456739.0.html"
+    },
+    {
+     "name": "Cybersecurity News",
+     "url": "https://cybersecuritynews.com/openrouter-ai-chat-leaks/"
+    },
+    {
+     "name": "Unite.AI",
+     "url": "https://www.unite.ai/openrouter-cuts-three-providers-after-ai-prompt-exposure-findings/"
+    }
+   ]
+  }
+ }
+}
