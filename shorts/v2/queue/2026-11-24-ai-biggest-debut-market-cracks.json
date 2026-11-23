@@ -1,0 +1,87 @@
+{
+  "title": "Biggest AI debut ever, then the market cracked",
+  "v2": {"world": "b", "palette": "harbor", "number": 24, "kicker": "ABOUT AI", "footer": "BUBBLE OR DIP"},
+  "hook": "BIGGEST AI DEBUT EVER. THEN THIS.",
+  "voice": "am_fenrir",
+  "audio": {"music": "lofi", "sfx": "foley"},
+  "end_tail": 1.2,
+  "scenes": [
+    {"kind": "headline",
+     "lines": ["Okay, so the biggest stock market debut ever... was an AI company.", "And then, the market cracked."],
+     "params": {"lines": [{"text": "BIGGEST AI", "size": 125}, {"text": "DEBUT EVER.", "size": 125}, {"text": "THEN THIS.", "color": "acc", "size": 125}],
+       "underline": 2, "y": 170,
+       "beats": [
+         {"t": 0.1, "prop": "coin", "label": "BIGGEST DEBUT", "move": "drop"},
+         {"cue": "debut", "prop": "gear", "label": "AN AI COMPANY", "move": "pop"},
+         {"cue": "company", "prop": "bubble", "label": "AI COMPANY", "move": "slide"},
+         {"cue": "cracked", "prop": "warning", "label": "MARKET CRACKED", "move": "pop"}]}},
+    {"kind": "stage",
+     "lines": ["Anthropic went public this week. The biggest debut of its kind, ever.", "Huge money. Huge hype."],
+     "params": {"beats": [
+         {"t": 0.2, "prop": "document", "label": "WENT PUBLIC", "move": "drop"},
+         {"cue": "biggest", "prop": "coin", "label": "BIGGEST EVER", "move": "pop"},
+         {"cue": "hype", "prop": "bubble", "label": "HUGE HYPE", "move": "slide"}]}},
+    {"kind": "stat",
+     "lines": ["Then, that same week... the Nasdaq sank about five percent.", "It wiped out its gains for the whole year."],
+     "params": {"small": "NASDAQ", "big": "DOWN 5%", "sub": "that same week"}},
+    {"kind": "stage",
+     "lines": ["Two of Wall Street's biggest indexes slid into a correction.", "That's a drop of ten percent from a recent peak."],
+     "params": {"beats": [
+         {"t": 0.2, "prop": "arrow", "label": "SLID DOWN", "move": "drop"},
+         {"cue": "correction", "prop": "warning", "label": "CORRECTION", "move": "pop"},
+         {"cue": "ten", "prop": "magnifier", "label": "TEN PERCENT", "move": "slide"}]}},
+    {"kind": "stage",
+     "lines": ["Nvidia, the chipmaker behind so much of AI, plunged too.", "Ouch."],
+     "params": {"beats": [
+         {"t": 0.2, "prop": "gear", "label": "THE CHIPMAKER", "move": "drop"},
+         {"cue": "plunged", "prop": "arrow", "label": "PLUNGED", "move": "slide"},
+         {"cue": "Ouch", "prop": "warning", "label": "OUCH", "move": "pop"}]}},
+    {"kind": "stage",
+     "lines": ["But here's the catch. Both things happened... in the same week.", "A record party, and a sell-off, side by side."],
+     "params": {"beats": [
+         {"cue": "But", "prop": "dice", "label": "BOTH TRUE", "move": "pop"},
+         {"cue": "same", "prop": "check", "label": "SAME WEEK", "move": "slide"},
+         {"cue": "party", "prop": "coin", "label": "RECORD PARTY", "slot": "l", "move": "pop"},
+         {"cue": "side", "prop": "arrow", "label": "SELL-OFF", "slot": "r", "move": "slide"}]}},
+    {"kind": "versus",
+     "lines": ["One side says, look how big AI got.", "The other side says, look how fast it fell."],
+     "params": {"a": {"label": "THE DEBUT", "text": "RECORD"}, "b": {"label": "THE MARKET", "text": "CRACKED"}}},
+    {"kind": "stage",
+     "lines": ["So is this a bubble popping? Or just one bad week?", "People are asking that right now."],
+     "params": {"beats": [
+         {"t": 0.2, "prop": "bubble", "label": "A BUBBLE?", "move": "drop"},
+         {"cue": "bad", "prop": "dice", "label": "ONE BAD WEEK?", "move": "pop"},
+         {"cue": "asking", "prop": "magnifier", "label": "PEOPLE ASK", "move": "slide"}]}},
+    {"kind": "finale",
+     "lines": ["Okay, be honest.", "Is this the AI bubble popping... or just a wobble? Tell me in the comments."],
+     "params": {"top": "BUBBLE", "accent": "OR WOBBLE?", "mark": "neq", "bottom": ["TELL ME", "BELOW"]}}
+  ],
+  "meta": {
+    "slug": "ai-biggest-debut-market-cracks",
+    "topic": "Anthropic's record stock market debut landed in the same week as a tech sell-off that pushed major US indexes into correction and hit Nvidia",
+    "hook_type": "number_shock",
+    "ending": "loop",
+    "data_sourced": true,
+    "facts": [
+      {"claim": "Anthropic went public with the largest stock market debut ever", "sources": [0, 1]},
+      {"claim": "In the same week the Nasdaq fell about five percent, erasing its 2026 gains", "sources": [2, 3]},
+      {"claim": "The Dow and S&P 500 entered a correction that week", "sources": [2, 3]},
+      {"claim": "Nvidia shares plunged during the sell-off", "sources": [4, 5]}
+    ],
+    "post": {
+      "title": "Biggest AI debut ever, then the market cracked",
+      "tiktok_caption": "The biggest AI stock market debut ever landed in the same week the AI trade cracked. Bubble or just a wobble? Tell me below.",
+      "yt_caption": "Anthropic's record stock market debut and a sharp tech sell-off happened in the same week. What happened, and what people are asking.",
+      "pinned_comment": "Is this the AI bubble popping, or just a wobble? Tell me below.",
+      "hashtags": ["#AI", "#FredsDesk", "#Anthropic", "#Nvidia", "#AINews", "#TechNews"],
+      "sources": [
+        {"name": "CNN, Anthropic first day of trading", "url": "https://www.cnn.com/2026/11/19/business/live-news/anthropic-ipo"},
+        {"name": "Yahoo Finance, Anthropic raises record IPO", "url": "https://ca.finance.yahoo.com/news/anthropic-raises-81-3-billion-123000699.html"},
+        {"name": "CNBC, S&P 500 correction", "url": "https://www.cnbc.com/2026/11/20/sp-500-correction-market-sell-off.html"},
+        {"name": "Yahoo Finance, stock market today", "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-19-dow-sp-500-nasdaq-anthropic-nvidia-141644188.html"},
+        {"name": "Axios, Nvidia shares plunge", "url": "https://www.axios.com/2026/11/20/anthropic-ipo-nvidia-ai-tech-selloff"},
+        {"name": "Eurasia Business News, tech rout", "url": "https://eurasiabusinessnews.com/2026/11/22/ai-bubble-bursts-nvidia-and-anthropic-slide-as-tech-rout-erases-trillions/"}
+      ]
+    }
+  }
+}
