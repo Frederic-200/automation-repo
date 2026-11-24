@@ -1,0 +1,403 @@
+{
+  "title": "Six big outages in one week: is AI part of it?",
+  "v2": {
+    "world": "b",
+    "palette": "blush",
+    "number": 25,
+    "kicker": "ABOUT AI",
+    "footer": "FIND FAST FIX SLOW"
+  },
+  "hook": "ONE WEEK. SIX BIG OUTAGES.",
+  "voice": "af_heart",
+  "audio": {
+    "music": "upbeat",
+    "sfx": "foley"
+  },
+  "end_tail": 1.2,
+  "scenes": [
+    {
+      "kind": "headline",
+      "lines": [
+        "Okay, so. One week... six big outages.",
+        "Email. Flights. Banks. Apps. All in the same week."
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "ONE WEEK.",
+            "size": 125
+          },
+          {
+            "text": "SIX BIG",
+            "size": 125
+          },
+          {
+            "text": "OUTAGES.",
+            "color": "acc",
+            "size": 125
+          }
+        ],
+        "underline": 2,
+        "y": 170,
+        "beats": [
+          {
+            "prop": "warning",
+            "label": "SIX OUTAGES",
+            "move": "drop",
+            "t": 0.1
+          },
+          {
+            "prop": "document",
+            "label": "EMAIL",
+            "move": "slide",
+            "cue": "Email"
+          },
+          {
+            "prop": "arrow",
+            "label": "FLIGHTS",
+            "move": "slide",
+            "cue": "Flights"
+          },
+          {
+            "prop": "coin",
+            "label": "BANKS",
+            "move": "pop",
+            "cue": "Banks"
+          },
+          {
+            "prop": "gear",
+            "label": "APPS",
+            "move": "pop",
+            "cue": "Apps"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Flights across the US sat grounded for more than four hours. Just sitting there."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "arrow",
+            "label": "FLIGHTS",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "lock",
+            "label": "GROUNDED",
+            "move": "pop",
+            "cue": "grounded"
+          },
+          {
+            "prop": "dice",
+            "label": "FOUR HOURS+",
+            "move": "slide",
+            "cue": "hours"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "counter",
+      "lines": [
+        "Then banks stalled. Big apps went dark. Count them. Six."
+      ],
+      "params": {
+        "label": "BIG OUTAGES",
+        "from": 0,
+        "to": 6,
+        "sub": "in about a week"
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "So, was it a hack? Early answer... no sign of one.",
+        "Companies blamed upgrades, updates, and maintenance."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "magnifier",
+            "label": "A HACK?",
+            "move": "drop",
+            "t": 0.2
+          },
+          {
+            "prop": "check",
+            "label": "NO SIGN",
+            "move": "pop",
+            "cue": "sign"
+          },
+          {
+            "prop": "gear",
+            "label": "UPGRADES",
+            "move": "slide",
+            "cue": "upgrades"
+          },
+          {
+            "prop": "document",
+            "label": "UPDATES",
+            "move": "pop",
+            "cue": "updates"
+          },
+          {
+            "prop": "lock",
+            "label": "MAINTENANCE",
+            "move": "slide",
+            "cue": "maintenance"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "headline",
+      "lines": [
+        "But here's the catch.",
+        "Experts say AI now finds software flaws faster than ever."
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "AI FINDS"
+          },
+          {
+            "text": "FLAWS",
+            "color": "acc",
+            "font": "serif",
+            "size": 200
+          },
+          {
+            "text": "FASTER"
+          }
+        ],
+        "underline": 1,
+        "beats": [
+          {
+            "prop": "warning",
+            "label": "THE CATCH",
+            "move": "pop",
+            "t": 0.2
+          },
+          {
+            "prop": "bubble",
+            "label": "AI",
+            "move": "slide",
+            "cue": "AI"
+          },
+          {
+            "prop": "magnifier",
+            "label": "FLAWS",
+            "move": "pop",
+            "cue": "flaws"
+          },
+          {
+            "prop": "arrow",
+            "label": "FASTER",
+            "move": "slide",
+            "cue": "faster"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "steps",
+      "lines": [
+        "So companies race to fix them. Then a patch goes live... and something breaks.",
+        "That's the theory."
+      ],
+      "params": {
+        "steps": [
+          "AI FINDS A FLAW",
+          "COMPANY RUSHES A FIX",
+          "PATCH GOES LIVE",
+          "SOMETHING BREAKS"
+        ]
+      }
+    },
+    {
+      "kind": "versus",
+      "lines": [
+        "Finding a flaw? Fast. Fixing it safely? Hard.",
+        "And that gap... is the problem."
+      ],
+      "params": {
+        "a": {
+          "label": "FINDING FLAWS",
+          "text": "FAST"
+        },
+        "b": {
+          "label": "FIXING SAFELY",
+          "text": "HARD"
+        }
+      }
+    },
+    {
+      "kind": "list",
+      "lines": [
+        "Because fixing means changing systems that are already running. All tangled together.",
+        "One small change... ripples."
+      ],
+      "params": {
+        "title": "WHY FIXING IS HARD",
+        "items": [
+          "SYSTEMS ALREADY RUNNING",
+          "ALL TANGLED TOGETHER",
+          "ONE CHANGE RIPPLES"
+        ]
+      }
+    },
+    {
+      "kind": "stat",
+      "lines": [
+        "But hold on. Nobody has proven that link.",
+        "Some experts call the whole week a coincidence."
+      ],
+      "params": {
+        "small": "AI CAUSED THE OUTAGES?",
+        "big": "NOT PROVEN",
+        "sub": "some experts say coincidence"
+      }
+    },
+    {
+      "kind": "stage",
+      "lines": [
+        "Others aren't so sure. They warn more of these are coming, as AI spreads everywhere."
+      ],
+      "params": {
+        "beats": [
+          {
+            "prop": "bubble",
+            "label": "NOT SO SURE",
+            "move": "slide",
+            "t": 0.2
+          },
+          {
+            "prop": "magnifier",
+            "label": "THEY WARN",
+            "move": "slide",
+            "cue": "warn"
+          },
+          {
+            "prop": "warning",
+            "label": "MORE COMING",
+            "move": "pop",
+            "cue": "coming"
+          },
+          {
+            "prop": "gear",
+            "label": "AI EVERYWHERE",
+            "move": "drop",
+            "cue": "everywhere"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "finale",
+      "lines": [
+        "Be honest. Your bank finds a flaw today.",
+        "Fix fast, risk a crash? Or slow, risk a hack?",
+        "Which would you pick?"
+      ],
+      "params": {
+        "top": "WHICH WOULD",
+        "accent": "YOU PICK?",
+        "mark": "neq",
+        "bottom": [
+          "FAST FIX",
+          "OR SLOW",
+          "AND SAFE"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "slug": "six-outages-one-week-ai-patching",
+    "topic": "A cluster of big outages in about a week (email, flights, banks, apps); no cyberattack found, companies blamed upgrades and updates; experts say AI finds flaws faster so rushed patches may cause outages, but no link is proven",
+    "hook_type": "number_shock",
+    "ending": "loop",
+    "data_sourced": true,
+    "facts": [
+      {
+        "claim": "About a week of major outages hit email, US flights (grounded more than four hours), banks and Apple apps",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "Six major outages were counted in about a week",
+        "sources": [
+          0,
+          1
+        ]
+      },
+      {
+        "claim": "No cyberattack was found; causes given were upgrades, software bugs, internal updates and maintenance",
+        "sources": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "claim": "Experts say AI helps find software flaws faster than ever and that patching is hard and can cause outages",
+        "sources": [
+          0,
+          2
+        ]
+      },
+      {
+        "claim": "No established link between AI and the outages; some call the cluster a coincidence",
+        "sources": [
+          2,
+          3
+        ]
+      },
+      {
+        "claim": "Experts expect more such incidents as AI adoption grows",
+        "sources": [
+          0,
+          1
+        ]
+      }
+    ],
+    "post": {
+      "title": "Six big outages in one week: is AI part of it?",
+      "tiktok_caption": "Six big outages in about a week. Experts say AI finds flaws fast, but fixing them is hard. Fast fix or slow and safe?",
+      "yt_caption": "Email, flights, banks and apps went down in about a week. What experts say about AI, patching and outages, and what is not proven.",
+      "pinned_comment": "Your bank finds a flaw today: fix it fast and risk a crash, or slow and risk a hack? Which would you pick?",
+      "hashtags": [
+        "#AI",
+        "#FredsDesk",
+        "#Outage",
+        "#Cybersecurity",
+        "#AINews",
+        "#TechNews"
+      ],
+      "sources": [
+        {
+          "name": "ITV News (AP), 19 Nov 2026",
+          "url": "https://www.itv.com/news/2026-11-19/tech-outages-are-piling-up-could-this-be-the-new-normal"
+        },
+        {
+          "name": "Inc., 18 Nov 2026",
+          "url": "https://www.inc.com/amaya-nichole/6-major-tech-outages-6-days-experts-say-companies-preparing-wrong-problem/91437942"
+        },
+        {
+          "name": "Fox 45 Baltimore, 19 Nov 2026",
+          "url": "https://foxbaltimore.com/news/nation-world/ai-is-finding-security-flaws-faster-than-companies-can-safely-fix-them"
+        },
+        {
+          "name": "The Week, 18 Nov 2026",
+          "url": "https://theweek.com/tech/are-ai-driven-outages-the-new-normal"
+        }
+      ]
+    }
+  }
+}
