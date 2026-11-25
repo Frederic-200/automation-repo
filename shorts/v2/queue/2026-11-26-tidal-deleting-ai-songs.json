@@ -1,0 +1,409 @@
+{
+ "title": "A music app is deleting millions of AI songs",
+ "v2": {
+  "world": "a",
+  "palette": "cobalt",
+  "number": 26,
+  "kicker": "ABOUT AI",
+  "footer": "DELETE OR HIDE"
+ },
+ "hook": "THIS APP IS DELETING MILLIONS OF SONGS",
+ "voice": "am_fenrir",
+ "audio": {
+  "music": "upbeat",
+  "sfx": "foley"
+ },
+ "end_tail": 1.2,
+ "scenes": [
+  {
+   "kind": "headline",
+   "lines": [
+    "Okay, wait. A music app is about to delete... millions of songs.",
+    "On purpose."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "THIS APP IS",
+      "size": 125
+     },
+     {
+      "text": "DELETING",
+      "color": "acc",
+      "size": 125
+     },
+     {
+      "text": "MILLIONS",
+      "size": 125
+     },
+     {
+      "text": "OF SONGS",
+      "size": 125
+     }
+    ],
+    "underline": 1,
+    "y": 170,
+    "beats": [
+     {
+      "prop": "warning",
+      "label": "DELETING",
+      "move": "drop",
+      "t": 0.1
+     },
+     {
+      "prop": "document",
+      "label": "MILLIONS",
+      "move": "slide",
+      "cue": "millions"
+     },
+     {
+      "prop": "check",
+      "label": "ON PURPOSE",
+      "move": "pop",
+      "cue": "purpose"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "The app is Tidal. And the songs on the chopping block?",
+    "The ones made entirely by AI."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "mic",
+      "label": "TIDAL",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "magnifier",
+      "label": "WHICH SONGS",
+      "move": "slide",
+      "cue": "songs"
+     },
+     {
+      "prop": "gear",
+      "label": "FULLY AI",
+      "move": "pop",
+      "cue": "entirely"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "counter",
+   "lines": [
+    "Here's the wild part. Of recent uploads, about forty-three percent were fully AI."
+   ],
+   "params": {
+    "label": "PERCENT FULLY AI",
+    "from": 0,
+    "to": 43,
+    "sub": "of recent uploads, per Tidal"
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "That's tens of thousands of new tracks... every single day.",
+    "Nonstop. Like a firehose."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "document",
+      "label": "NEW TRACKS",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "arrow",
+      "label": "EVERY DAY",
+      "move": "slide",
+      "cue": "every"
+     },
+     {
+      "prop": "warning",
+      "label": "NONSTOP",
+      "move": "pop",
+      "cue": "Nonstop"
+     },
+     {
+      "prop": "gear",
+      "label": "FIREHOSE",
+      "move": "drop",
+      "cue": "firehose"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "But here's the twist. Almost all those AI songs? Zero plays lately.",
+    "Nobody's listening."
+   ],
+   "params": {
+    "small": "MOST FULLY AI SONGS",
+    "big": "ZERO PLAYS",
+    "sub": "no streams lately"
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "So why care? Tidal says real artists get buried under the pile.",
+    "Harder to find. Harder to discover."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "magnifier",
+      "label": "WHY CARE?",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "mic",
+      "label": "REAL ARTISTS",
+      "move": "slide",
+      "cue": "artists"
+     },
+     {
+      "prop": "document",
+      "label": "BURIED",
+      "move": "drop",
+      "cue": "buried"
+     },
+     {
+      "prop": "lock",
+      "label": "HARD TO FIND",
+      "move": "pop",
+      "cue": "find"
+     },
+     {
+      "prop": "magnifier",
+      "label": "DISCOVERY",
+      "move": "slide",
+      "cue": "discover"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "steps",
+   "lines": [
+    "Starting in December, fully AI tracks get blocked at the door.",
+    "And the ones already inside? Removed."
+   ],
+   "params": {
+    "steps": [
+     "AI TRACK ARRIVES",
+     "BLOCKED AT DOOR",
+     "OLD ONES REMOVED"
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "But wait. Songs that only had some help from AI?",
+    "Those can stay."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "warning",
+      "label": "BUT WAIT",
+      "move": "pop",
+      "t": 0.2
+     },
+     {
+      "prop": "mic",
+      "label": "SOME AI HELP",
+      "move": "slide",
+      "cue": "help"
+     },
+     {
+      "prop": "check",
+      "label": "CAN STAY",
+      "move": "pop",
+      "cue": "stay"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Another app, Deezer, is going a different way.",
+    "It's adding a switch, so you can hide fully AI music from search."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "mic",
+      "label": "DEEZER",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "arrow",
+      "label": "DIFFERENT WAY",
+      "move": "slide",
+      "cue": "different"
+     },
+     {
+      "prop": "toggle",
+      "label": "A SWITCH",
+      "move": "pop",
+      "cue": "switch"
+     },
+     {
+      "prop": "lock",
+      "label": "HIDE IT",
+      "move": "drop",
+      "cue": "hide"
+     },
+     {
+      "prop": "magnifier",
+      "label": "FROM SEARCH",
+      "move": "slide",
+      "cue": "search"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "versus",
+   "lines": [
+    "One app takes the choice away. One hands it to you.",
+    "Same flood... two answers."
+   ],
+   "params": {
+    "a": {
+     "label": "TIDAL",
+     "text": "REMOVE"
+    },
+    "b": {
+     "label": "DEEZER",
+     "text": "LET YOU HIDE"
+    }
+   }
+  },
+  {
+   "kind": "finale",
+   "lines": [
+    "So, be honest. You love a song... then learn AI made all of it.",
+    "Should it be deleted, or should you decide?"
+   ],
+   "params": {
+    "top": "DELETE IT",
+    "accent": "OR YOU DECIDE?",
+    "mark": "neq",
+    "bottom": [
+     "WHO PICKS",
+     "WHAT PLAYS?"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "slug": "tidal-deleting-ai-songs",
+  "topic": "Music streaming service Tidal will block and remove fully AI-generated tracks; many recent uploads are fully AI yet almost all get no plays; AI-assisted music stays; Deezer instead lets users hide AI music from search",
+  "hook_type": "curiosity_gap",
+  "ending": "cliffhanger",
+  "next_question": "Can anyone really tell an AI song from a human one?",
+  "data_sourced": true,
+  "facts": [
+   {
+    "claim": "Tidal will block and remove fully AI-generated tracks, starting in December; millions of tracks are affected",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "About 43 percent of tracks uploaded in the past 90 days were fully AI, according to Tidal",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Tidal rejects or will reject tens of thousands of AI tracks a day",
+    "sources": [
+     0,
+     2
+    ]
+   },
+   {
+    "claim": "About 96 percent of the fully AI tracks had no streams",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "Tidal says authentic artists get buried at this scale",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "AI-assisted tracks are still allowed",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Deezer is adding a toggle that lets users hide fully AI music from search without deleting it",
+    "sources": [
+     2,
+     3
+    ]
+   }
+  ],
+  "post": {
+   "title": "A music app is deleting millions of AI songs",
+   "tiktok_caption": "Tidal is removing fully AI-made songs, and almost all of them had no plays. Delete them, or let listeners decide?",
+   "yt_caption": "Tidal is blocking and removing fully AI-generated tracks, while Deezer lets listeners hide them. Which approach would you pick?",
+   "pinned_comment": "If you loved a song and then learned AI made all of it: should it be deleted, or should you decide?",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#AIMusic",
+    "#Tidal",
+    "#AINews",
+    "#TechNews"
+   ],
+   "sources": [
+    {
+     "name": "TechCrunch, 24 Nov 2026",
+     "url": "https://techcrunch.com/2026/11/24/tidal-to-ban-and-remove-millions-of-ai-generated-tracks-as-ai-slop-inundates-music-streaming/"
+    },
+    {
+     "name": "Music Business Worldwide, 24 Nov 2026",
+     "url": "https://www.musicbusinessworldwide.com/tidal-bans-fully-ai-generated-music-from-its-platform/"
+    },
+    {
+     "name": "Engadget, 24 Nov 2026",
+     "url": "https://www.engadget.com/2326812/tidal-is-banning-ai-generated-music-entirely/"
+    },
+    {
+     "name": "TechTimes UK, 18 Nov 2026",
+     "url": "https://www.techtimes.co.uk/deezer-filter-hide-ai-generated-music-december-2026-1810084"
+    }
+   ]
+  }
+ }
+}
