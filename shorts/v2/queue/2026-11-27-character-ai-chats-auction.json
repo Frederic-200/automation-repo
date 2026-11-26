@@ -1,0 +1,489 @@
+{
+ "title": "21 million chat accounts head to auction",
+ "v2": {
+  "world": "a",
+  "palette": "moss",
+  "number": 27,
+  "kicker": "ABOUT AI",
+  "footer": "PRIVATE OR FOR SALE"
+ },
+ "hook": "21 MILLION CHAT ACCOUNTS UP FOR AUCTION",
+ "voice": "af_heart",
+ "audio": {
+  "music": "upbeat",
+  "sfx": "foley"
+ },
+ "end_tail": 1.2,
+ "scenes": [
+  {
+   "kind": "headline",
+   "lines": [
+    "Okay, wait. A chatbot app's user chats... are headed to auction.",
+    "Yes. The chats."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "21 MILLION",
+      "color": "acc",
+      "size": 125
+     },
+     {
+      "text": "CHAT ACCOUNTS",
+      "size": 100
+     },
+     {
+      "text": "UP FOR",
+      "size": 125
+     },
+     {
+      "text": "AUCTION",
+      "size": 125
+     }
+    ],
+    "underline": 0,
+    "y": 170,
+    "beats": [
+     {
+      "prop": "bubble",
+      "label": "AI CHATS",
+      "move": "drop",
+      "t": 0.1
+     },
+     {
+      "prop": "document",
+      "label": "USER CHATS",
+      "move": "slide",
+      "cue": "user"
+     },
+     {
+      "prop": "coin",
+      "label": "AUCTION",
+      "move": "pop",
+      "cue": "auction"
+     },
+     {
+      "prop": "warning",
+      "label": "THE CHATS",
+      "move": "pop",
+      "cue": "Yes"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "It's Character AI, where people chat with made-up characters.",
+    "And the company filed for bankruptcy."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "bubble",
+      "label": "CHARACTER AI",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "cursor",
+      "label": "MADE-UP CHARACTERS",
+      "move": "slide",
+      "cue": "made"
+     },
+     {
+      "prop": "warning",
+      "label": "BANKRUPTCY",
+      "move": "pop",
+      "cue": "company"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "counter",
+   "lines": [
+    "How big is this? More than twenty-one million American accounts."
+   ],
+   "params": {
+    "label": "MILLION US ACCOUNTS",
+    "from": 0,
+    "to": 21,
+    "sub": "more than, per the objecting states"
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Over two million are registered to minors.",
+    "And in some chats... people talked about their health."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "warning",
+      "label": "MINORS TOO",
+      "move": "pop",
+      "t": 0.2
+     },
+     {
+      "prop": "document",
+      "label": "2 MILLION+",
+      "move": "drop",
+      "cue": "registered"
+     },
+     {
+      "prop": "bubble",
+      "label": "SOME CHATS",
+      "move": "slide",
+      "cue": "chats"
+     },
+     {
+      "prop": "lock",
+      "label": "HEALTH TALK",
+      "move": "pop",
+      "cue": "health"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "The opening bid, for the app and that data?",
+    "Ten million dollars."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "coin",
+      "label": "OPENING BID",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "document",
+      "label": "APP PLUS DATA",
+      "move": "slide",
+      "cue": "app"
+     },
+     {
+      "prop": "coin",
+      "label": "$10 MILLION",
+      "move": "pop",
+      "cue": "Ten"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "But here's the twist. Its privacy policy said this.",
+    "We do not sell personal information... for money."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "warning",
+      "label": "THE TWIST",
+      "move": "pop",
+      "t": 0.2
+     },
+     {
+      "prop": "document",
+      "label": "PRIVACY POLICY",
+      "move": "drop",
+      "cue": "privacy"
+     },
+     {
+      "prop": "lock",
+      "label": "DO NOT SELL",
+      "move": "pop",
+      "cue": "sell"
+     },
+     {
+      "prop": "coin",
+      "label": "FOR MONEY",
+      "move": "slide",
+      "cue": "money"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "The company says user information is still protected under that policy.",
+    "It said so when it filed."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "mic",
+      "label": "COMPANY SAYS",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "lock",
+      "label": "STILL PROTECTED",
+      "move": "pop",
+      "cue": "protected"
+     },
+     {
+      "prop": "check",
+      "label": "SINCE FILING",
+      "move": "pop",
+      "cue": "said"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "The states see it differently. Dozens of them objected.",
+    "A new buyer, they warn, might ignore that policy. Even delete requests."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "magnifier",
+      "label": "THE STATES",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "document",
+      "label": "OBJECTION FILED",
+      "move": "slide",
+      "cue": "Dozens"
+     },
+     {
+      "prop": "cursor",
+      "label": "NEW BUYER",
+      "move": "pop",
+      "cue": "buyer"
+     },
+     {
+      "prop": "warning",
+      "label": "IGNORE POLICY",
+      "move": "drop",
+      "cue": "ignore"
+     },
+     {
+      "prop": "toggle",
+      "label": "DELETE REQUESTS",
+      "move": "slide",
+      "cue": "delete"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "versus",
+   "lines": [
+    "One side says, still protected.",
+    "The other says... there's no guarantee."
+   ],
+   "params": {
+    "a": {
+     "label": "COMPANY",
+     "text": "PROTECTED"
+    },
+    "b": {
+     "label": "STATES",
+     "text": "NO GUARANTEE"
+    }
+   }
+  },
+  {
+   "kind": "steps",
+   "lines": [
+    "So is it sold? Not yet. A judge okayed the lead bidder, not the sale.",
+    "The auction is next week."
+   ],
+   "params": {
+    "steps": [
+     "LEAD BIDDER APPROVED",
+     "AUCTION NEXT WEEK",
+     "SALE NOT APPROVED YET"
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Used the app?",
+    "The company says you can delete your account, or export your data."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "cursor",
+      "label": "USED IT?",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "mic",
+      "label": "COMPANY SAYS",
+      "move": "slide",
+      "cue": "company"
+     },
+     {
+      "prop": "toggle",
+      "label": "DELETE ACCOUNT",
+      "move": "pop",
+      "cue": "delete"
+     },
+     {
+      "prop": "arrow",
+      "label": "EXPORT DATA",
+      "move": "slide",
+      "cue": "export"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "finale",
+   "lines": [
+    "So tell me. You pour your heart out to a chatbot...",
+    "Should those words ever go up for auction?"
+   ],
+   "params": {
+    "top": "YOUR CHATS",
+    "accent": "UP FOR AUCTION?",
+    "mark": "neq",
+    "bottom": [
+     "FAIR GAME",
+     "OR OFF LIMITS?"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "slug": "character-ai-chats-auction",
+  "topic": "Character.AI's bankruptcy sale puts its consumer platform and user data (more than 21 million US accounts) up for auction; dozens of states object; company says data stays protected under its privacy policy",
+  "hook_type": "number_shock",
+  "ending": "loop",
+  "data_sourced": true,
+  "facts": [
+   {
+    "claim": "Character.AI, a chatbot app with made-up characters, filed for bankruptcy and its consumer platform and user data, including chats, are set to be auctioned",
+    "sources": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "More than 21 million US accounts are affected, more than 2.1 million of them registered to minors, according to the states",
+    "sources": [
+     0,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "Some chats include disclosures about health",
+    "sources": [
+     1,
+     2
+    ]
+   },
+   {
+    "claim": "The lead bid for the consumer platform and user data is ten million dollars",
+    "sources": [
+     3,
+     6
+    ]
+   },
+   {
+    "claim": "The privacy policy said: we do not sell personal information for monetary consideration",
+    "sources": [
+     1,
+     2,
+     5
+    ]
+   },
+   {
+    "claim": "The company says user information remains protected under its privacy policy, a message it gave when it filed",
+    "sources": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "claim": "Attorneys general of 41 states and DC object and warn a buyer need not follow the privacy policy or honor deletion requests",
+    "sources": [
+     0,
+     2,
+     3
+    ]
+   },
+   {
+    "claim": "A judge approved the lead bidder, the sale itself is not yet approved, and the auction is scheduled for next week",
+    "sources": [
+     3,
+     5,
+     6
+    ]
+   },
+   {
+    "claim": "The company says users can delete their account or export their data",
+    "sources": [
+     3,
+     5
+    ]
+   }
+  ],
+  "post": {
+   "title": "21 million chat accounts are headed to auction",
+   "tiktok_caption": "Character.AI is bankrupt and its user data, chats included, is headed to auction. Should private AI chats ever be sold?",
+   "yt_caption": "Character.AI's bankruptcy auction includes user data and chats. The company says it stays protected; dozens of states say there's no guarantee. What do you think?",
+   "pinned_comment": "Should your private chats with a chatbot ever go up for auction? Fair game, or off limits?",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#CharacterAI",
+    "#Privacy",
+    "#AINews",
+    "#TechNews"
+   ],
+   "sources": [
+    {
+     "name": "TechCrunch, 25 Nov 2026",
+     "url": "https://techcrunch.com/2026/11/25/state-ags-fight-character-ais-plan-to-auction-off-users-private-chats/"
+    },
+    {
+     "name": "Gizmodo, 25 Nov 2026",
+     "url": "https://gizmodo.com/character-ai-wants-to-sell-millions-of-user-chats-to-the-highest-bidder-2000845664"
+    },
+    {
+     "name": "Minnesota Attorney General, 23 Nov 2026",
+     "url": "https://www.ag.state.mn.us/Office/Communications/2026/11/23_CharacterAI.asp"
+    },
+    {
+     "name": "Newsweek",
+     "url": "https://www.newsweek.com/character-ai-bankruptcy-childrens-data-sale-states-12769233"
+    },
+    {
+     "name": "Engadget, 25 Nov 2026",
+     "url": "https://www.engadget.com/2328630/state-ags-are-trying-to-stop-characterai-from-auctioning-off-users-chat-histories/"
+    },
+    {
+     "name": "The Next Web, 26 Nov 2026",
+     "url": "https://thenextweb.com/news/character-ai-chats-auction-attorneys-general-bankruptcy"
+    },
+    {
+     "name": "Bloomberg Law, 25 Nov 2026",
+     "url": "https://news.bloomberglaw.com/bankruptcy-law/character-ai-consumer-platform-bidder-cleared-after-backer-named"
+    }
+   ]
+  }
+ }
+}
