@@ -1,0 +1,449 @@
+{
+ "title": "AI isn't doing your Black Friday shopping",
+ "v2": {
+  "world": "c",
+  "palette": "indigo",
+  "number": 28,
+  "kicker": "ABOUT AI",
+  "footer": "LET IT BUY?"
+ },
+ "hook": "AI ISN'T DOING YOUR BLACK FRIDAY SHOPPING",
+ "voice": "af_heart",
+ "audio": {
+  "music": "upbeat",
+  "sfx": "foley"
+ },
+ "say": {},
+ "end_tail": 1.2,
+ "scenes": [
+  {
+   "kind": "headline",
+   "lines": [
+    "Did a robot do your Black Friday shopping?",
+    "Yeah... probably not."
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "AI ISN'T",
+      "color": "acc",
+      "size": 125
+     },
+     {
+      "text": "DOING YOUR",
+      "size": 115
+     },
+     {
+      "text": "BLACK FRIDAY",
+      "size": 105
+     },
+     {
+      "text": "SHOPPING",
+      "size": 125
+     }
+    ],
+    "underline": 0,
+    "y": 170,
+    "beats": [
+     {
+      "prop": "cursor",
+      "label": "ROBOT SHOPPER",
+      "move": "drop",
+      "t": 0.1
+     },
+     {
+      "prop": "coin",
+      "label": "BLACK FRIDAY",
+      "move": "slide",
+      "cue": "Black"
+     },
+     {
+      "prop": "warning",
+      "label": "PROBABLY NOT",
+      "move": "pop",
+      "cue": "probably"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "The hype says AI agents now shop for you.",
+    "They search, they pick... they buy."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "bubble",
+      "label": "THE HYPE",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "gear",
+      "label": "AI AGENTS",
+      "move": "slide",
+      "cue": "agents"
+     },
+     {
+      "prop": "magnifier",
+      "label": "SEARCH",
+      "move": "pop",
+      "cue": "search"
+     },
+     {
+      "prop": "coin",
+      "label": "BUY",
+      "move": "pop",
+      "cue": "buy"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stat",
+   "lines": [
+    "But here's the catch. One consulting firm checked online orders worldwide.",
+    "AI agents made... less than half of one percent."
+   ],
+   "params": {
+    "small": "ONLINE PURCHASES BY AI AGENTS",
+    "big": "0.4%",
+    "sub": "worldwide, per Bain research"
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "So people aren't using AI? Oh, they are.",
+    "More than half of American adults have used it for shopping."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "magnifier",
+      "label": "NOT USING IT?",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "check",
+      "label": "THEY ARE",
+      "move": "pop",
+      "cue": "Oh"
+     },
+     {
+      "prop": "bubble",
+      "label": "OVER HALF",
+      "move": "slide",
+      "cue": "half"
+     },
+     {
+      "prop": "cursor",
+      "label": "FOR SHOPPING",
+      "move": "pop",
+      "cue": "used"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "But paying? That's different.",
+    "Fewer than one in four trust AI to handle it."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "coin",
+      "label": "BUT PAYING?",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "lock",
+      "label": "TRUST GAP",
+      "move": "pop",
+      "cue": "different"
+     },
+     {
+      "prop": "lock",
+      "label": "UNDER A QUARTER",
+      "move": "slide",
+      "cue": "four"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "counter",
+   "lines": [
+    "And maybe they have a point. Visa tested twenty-two AI models as shoppers."
+   ],
+   "params": {
+    "label": "AI MODELS TESTED",
+    "from": 0,
+    "to": 22,
+    "sub": "on shopping tasks, by Visa"
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Things like picking a TV, or a laptop.",
+    "They failed... more than four times in ten."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "document",
+      "label": "PICK A TV",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "cursor",
+      "label": "OR A LAPTOP",
+      "move": "slide",
+      "cue": "laptop"
+     },
+     {
+      "prop": "warning",
+      "label": "FAILED",
+      "move": "pop",
+      "cue": "failed"
+     },
+     {
+      "prop": "dice",
+      "label": "4 IN 10+",
+      "move": "pop",
+      "cue": "ten"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "And about half of those fails?",
+    "The AI still ended in a buy. Wrong fit, and all."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "warning",
+      "label": "THE FAILS",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "coin",
+      "label": "STILL BUY",
+      "move": "pop",
+      "cue": "still"
+     },
+     {
+      "prop": "magnifier",
+      "label": "WRONG FIT",
+      "move": "slide",
+      "cue": "Wrong"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Meanwhile, the stores are split.",
+    "Earlier this fall, Amazon blocked Meta's shopping agent."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "toggle",
+      "label": "STORES SPLIT",
+      "move": "drop",
+      "t": 0.2
+     },
+     {
+      "prop": "document",
+      "label": "AMAZON",
+      "move": "slide",
+      "cue": "Amazon"
+     },
+     {
+      "prop": "lock",
+      "label": "AGENT BLOCKED",
+      "move": "pop",
+      "cue": "blocked"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "stage",
+   "lines": [
+    "Walmart went another way.",
+    "It built special profiles for AI agents, inside shopper accounts."
+   ],
+   "params": {
+    "beats": [
+     {
+      "prop": "arrow",
+      "label": "ANOTHER WAY",
+      "move": "slide",
+      "t": 0.2
+     },
+     {
+      "prop": "document",
+      "label": "AGENT PROFILES",
+      "move": "drop",
+      "cue": "profiles"
+     },
+     {
+      "prop": "check",
+      "label": "IN ACCOUNTS",
+      "move": "pop",
+      "cue": "inside"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "versus",
+   "lines": [
+    "So one giant shuts the door. Another makes room.",
+    "Which one wins? Nobody knows yet."
+   ],
+   "params": {
+    "a": {
+     "label": "AMAZON",
+     "text": "BLOCKED ONE"
+    },
+    "b": {
+     "label": "WALMART",
+     "text": "MADE ROOM"
+    }
+   }
+  },
+  {
+   "kind": "finale",
+   "lines": [
+    "Okay, your turn. It finds the deal, your card is ready...",
+    "Would you let AI press buy?"
+   ],
+   "params": {
+    "top": "WOULD YOU",
+    "accent": "LET AI BUY?",
+    "mark": "eq",
+    "bottom": [
+     "YES PLEASE",
+     "OR NO WAY?"
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "slug": "ai-agents-black-friday-reality",
+  "topic": "AI shopping agents at Black Friday: hype versus a 0.4% share of online transactions, low payment trust, Visa test failures, and Amazon blocking an agent while Walmart makes room",
+  "hook_type": "myth_bust",
+  "ending": "loop",
+  "data_sourced": true,
+  "facts": [
+   {
+    "claim": "AI agents account for about 0.4% of global e-commerce transactions, per Bain research",
+    "sources": [
+     0,
+     2
+    ]
+   },
+   {
+    "claim": "More than half of US adults (54%) have used AI for at least one shopping task",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Only 23% of US consumers trust generative AI to handle payments for them",
+    "sources": [
+     0,
+     1,
+     3
+    ]
+   },
+   {
+    "claim": "Visa tested 22 AI models on shopping tasks such as buying a TV or laptop; they failed 42.8% of test runs",
+    "sources": [
+     3,
+     0,
+     4
+    ]
+   },
+   {
+    "claim": "About half (54%) of failed runs still ended in a purchase decision; checkout itself was not tested",
+    "sources": [
+     3,
+     4,
+     0
+    ]
+   },
+   {
+    "claim": "Amazon blocked Meta's Muse shopping agent in September",
+    "sources": [
+     0,
+     1
+    ]
+   },
+   {
+    "claim": "Walmart created agent profiles linked to shoppers' accounts",
+    "sources": [
+     1,
+     5
+    ]
+   }
+  ],
+  "post": {
+   "title": "AI isn't doing your Black Friday shopping (yet)",
+   "tiktok_caption": "AI agents were supposed to shop for you. One estimate: under half a percent of online purchases. Would you let AI press buy?",
+   "yt_caption": "The hype says AI agents shop for you now. The numbers say otherwise: a tiny share of online purchases, shaky test results, and stores split on letting bots in.",
+   "pinned_comment": "Would you let AI press buy with your card? Yes please, or no way?",
+   "hashtags": [
+    "#AI",
+    "#FredsDesk",
+    "#BlackFriday",
+    "#AIAgents",
+    "#OnlineShopping",
+    "#AINews"
+   ],
+   "sources": [
+    {
+     "name": "The Next Web, 27 Nov 2026",
+     "url": "https://thenextweb.com/news/ai-shopping-agents-black-friday-retailers-trust"
+    },
+    {
+     "name": "Fortune, 27 Nov 2026",
+     "url": "https://fortune.com/2026/11/27/black-friday-ai-agentic-shopping-consumer-trust/"
+    },
+    {
+     "name": "The Deep View, 27 Nov 2026",
+     "url": "https://www.thedeepview.com/articles/ai-s-shopping-revolution-is-stuck-at-checkout"
+    },
+    {
+     "name": "Visa press release, 5 Nov 2026",
+     "url": "https://investor.visa.com/news/news-details/2026/Visa-Releases-First-of-Its-Kind-Industry-Benchmark-for-AI-Shopping-Almost-Half-of-Test-Runs-Fail/default.aspx"
+    },
+    {
+     "name": "New York Post via Yahoo, 26 Nov 2026",
+     "url": "https://shopping.yahoo.com/deals/articles/six-10-shoppers-plan-ai-181409748.html"
+    },
+    {
+     "name": "City AM, 27 Nov 2026",
+     "url": "https://www.cityam.com/how-ai-agents-are-testing-retailers-on-black-friday/"
+    }
+   ]
+  }
+ }
+}
